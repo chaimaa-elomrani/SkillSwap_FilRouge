@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>SkillSwap - Sign Up</title>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#e11d48',
+            'primary-hover': '#be123c',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-[url('./Group%2072.png')] bg-cover bg-center bg-no-repeat h-screen">
+  <div class="absolute inset-0 bg-black opacity-70"></div>
+
+  <main class="flex flex-col md:flex-row items-center h-full gap-4 md:gap-[10%] justify-center text-white relative z-20 px-4 md:px-0">
+    <div class="text-2xl md:text-4xl text-white font-bold md:w-[30%] text-center md:text-left">
+      <h1>Sign up and Elevate your Skills with SkillSwap</h1>
+    </div>
+
+    <div class="bg-white rounded-3xl w-full max-w-[600px] py-2">
+      <div class="mb-6">
+        <div class="flex items-center justify-center">
+          <img src="logo.png" alt="SkillSwap Logo" class="w-[100px]">
+        </div>
+        <h2 class="text-black font-bold text-center text-xl ">Welcome to SkillSwap</h2>
+        <p class="text-black text-center text-sm">Explore different services</p>
+      </div>
+
+      <form class="flex flex-col gap-4">
+        <div class="px-8 md:px-16">
+          <label for="name" class="text-black text-sm block mb-1">Name</label>
+          <input  id="name"  class="w-full py-2 text-black px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" type="text"  name="name"  placeholder="Enter your name" required >
+        </div>
+
+        <div class="px-8 md:px-16">
+          <label for="email" class="text-black text-sm block mb-1">Email</label>
+          <input  id="email" class="w-full py-2 px-4 text-black border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" type="email"  name="email" placeholder="Enter your email"required>
+        </div>
+
+        <div class="px-8 md:px-16">
+          <label for="password" class="text-black text-sm block mb-1">Password</label>
+          <input  id="password" class="w-full text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"  type="password"  name="password"  placeholder="Create a password" required minlength="8">
+        </div>
+
+        <div class="px-8 md:px-36 mt-2">
+          <button type="submit" class="bg-[#E60023] hover:bg-[#c9001e] transition-colors px-6 py-2 w-full text-white rounded-3xl">Sign Up</button>
+        </div>
+
+        <div class="flex items-center justify-center gap-4 px-8 md:px-16 my-2">
+          <div class="h-px bg-gray-300 flex-grow"></div>
+          <p class="text-black text-sm">Or</p>
+          <div class="h-px bg-gray-300 flex-grow"></div>
+        </div>
+
+        <div class="px-8 md:px-36">
+          <button type="button" class="bg-white hover:bg-gray-50 transition-colors px-6 py-2 w-full flex items-center justify-center gap-2 border-2 border-gray-300 rounded-3xl">
+            <img src="google.png" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+            <span class="text-black">Continue with Google</span>
+          </button>
+        </div>
+        <div class="text-center mt-4">
+          <p class="text-gray-600">
+           Already have an account? 
+            <a href="#" class="text-primary font-medium hover:underline">Log in</a>
+          </p>
+        </div>
+
+        <p class="text-[#767676] text-center text-xs px-4 mt-2">
+          By continuing, you agree to SkillSwap's <a href="#" class="underline hover:text-black">Terms of Service</a> and acknowledge <br>you've read our <a href="#" class="underline hover:text-black">Privacy Policy</a> and <a href="#" class="underline hover:text-black">Notice at collection</a>
+        </p>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>
+
