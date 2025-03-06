@@ -40,7 +40,8 @@
         <p class="text-black text-center text-sm">Explore different services</p>
       </div>
 
-      <form class="flex flex-col gap-4">
+      <form class="flex flex-col gap-4" method="POST" action="register">
+        @csrf
         <div class="px-8 md:px-16">
           <label for="name" class="text-black text-sm block mb-1">Name</label>
           <input  id="name"  class="w-full py-2 text-black px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" type="text"  name="name"  placeholder="Enter your name" required >
@@ -53,7 +54,7 @@
 
         <div class="px-8 md:px-16">
           <label for="password" class="text-black text-sm block">Password</label>
-          <input  id="password" class="w-full text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"  type="password"  name="password"  placeholder="Create a password" required minlength="8">
+          <input  id="password" class="w-full text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"  type="password" name="password"  placeholder="Create a password" required minlength="8">
         </div>
 
         <div class="px-8 md:px-36">
