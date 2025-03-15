@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home</title>
+</head>
+
+<script>
+    tailwind.config = {
+        theme:{
+            extend: {
+                colors: {
+                    primary: '#000000',
+                    // 'primary-hover': '#be123c',
+                    secondary: '#E60023',
+                    section2: '#F1F1F1',
+
+                },
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                },
+            }
+        }
+    }
+
+</script>
+
+
+<body class="bg-white bg-cover w-full ">
+
+    <section class="flex flex-row justify-around gap-10"> 
+        <div class="w-1/2 p-5 flex flex-col gap-4 mt-32 ">
+            <h1 class="text-6xl text-primary font-bold "> Transformez vos talents en opportunités avec <span class="text-secondary">SkillSwap</span></h1>
+            <p class="w-3/4 text-lg text-gray-600 ">SkillSwap, la plateforme où vos compétences s’échangent librement. Apprenez, partagez et collaborez sans limites. Rejoignez-nous !</p>
+            <div class="flex flex-row gap-4">
+            <button class="p-4 px-7 rounded-full bg-secondary  border-2  text-white  flex justify-center">Commencer maintenant</button>
+            <button class="p-4 px-9 rounded-full bg-white border-2 border-black text-primary flex justify-center">Comment ça marche</button>
+           </div>
+        </div>
+
+        <div class="w-[40%] grid grid-cols-2 gap-4 h-64 mt-12">
+            <div class="space-y-4">
+                <img src="./images/calcule.png" alt="Chef cuisinier partageant son expertise" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[3/4]">
+                <img src="./images/designer.png" alt="Développeur web en plein travail" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[4/3]">
+            </div>
+            <div class="space-y-4 mt-8">
+                <img src="./images/marketing.png" alt="Musicien donnant un cours de piano" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[4/3]">
+                <img src="./images/final.png" alt="Professionnelle en réunion" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[3/4]">
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+    <!-- <section>
+        <h1 class="text-5xl text-center mt-6"><b>Échangez vos compétences facilement <br>avec SkillSwap</b></h1>
+        <p class="text-center mt-10">Les utilisateurs viennent sur SkillSwap pour partager leurs savoir-faire, apprendre
+            de nouvelles <br>
+            compétences et collaborer sans contrainte financière. Grâce à notre système de crédits, vous <br>
+            proposer vos services et en recevoir en retour, le tout dans un cadre sécurisé <br>
+            pouvez et équitable. Passez au niveau supérieur avec l’option premium pour booster votre visibilité et <br>
+            accéder à des fonctionnalités exclusives.</p>
+        <button
+            class="p-4 rounded-full bg-white border-2 border-black flex justify-center items-center m-auto mt-6 hover:text-white hover:bg-black">
+            <b>S'inscrire</b>
+        </button>
+
+        <section class="">
+          
+        </section>
+    </section>
+
+    <section class="bg-[#F1F1F1] mt-[38%] p-[60px]">
+        <h1 class="text-3xl text-center"><b>Des solutions efficaces pour chaque objectif</b></h1>
+        <div class="bg-white mx-auto flex flex-row justify-center items-center gap-4 rounded-2xl w-[420px] p-3 mt-14">
+            <a href="#" class="p-4 rounded-2xl hover:bg-black hover:text-white"><b>Notoriété</b></a>
+            <a href="#" class="p-4 rounded-2xl hover:bg-black hover:text-white"><b>Considération</b></a>
+            <a href="#" class="p-4 rounded-2xl hover:bg-black hover:text-white"><b>Conversions</b></a>
+        </div>
+    
+        <div class="h-full">
+            <div class="flex flex-row gap-2 w-[300px] mt-6">
+                <img src="./images/computer.png" alt="walo" class="rounded-3xl">
+                <img src="./images/marketing.png" alt="walo" class="rounded-3xl">
+            </div>
+            <div class="flex flex-row gap-2 w-[300px] mt-4">
+                <img src="./images/calcule.png" alt="walo" class="rounded-3xl">
+                <img src="./images/final.png" alt="walo" class="rounded-3xl">
+            </div>
+        </div>
+    </section> -->
+
+
+
+
+
+
+
+
+</body>
+
+</html>
