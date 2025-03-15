@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer - Échangez vos compétences facilement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF1B84',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Header Navigation -->
+    <header class="fixed w-full bg-black/90 backdrop-blur-sm z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-1">
+                <svg class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="text-xl font-bold">freelancer</span>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-white hover:text-primary transition-colors font-medium">Se connecter</a>
+                <a href="#" class="text-white hover:text-primary transition-colors font-medium">S'inscrire</a>
+                <button class="text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-600/20 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        Donnez-lui vie <br>
+                        <span class="text-white">avec Freelancer</span>
+                    </h1>
+                    <div class="space-y-6 text-gray-300">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Le meilleur talent</h3>
+                            <p>Découvrez des professionnels fiables en explorant leurs portfolios et en vous immergeant dans les commentaires partagés sur leurs profils.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Offres rapides</h3>
+                            <p>Obtenez des devis rapides sans obligation, de freelances compétents. 80 % des travaux reçoivent des offres dans les 60 secondes. Votre idée est sur le point de grandir.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Gardez le contrôle</h3>
+                            <p>Restez en contact même en déplacement. Discutez avec vos freelances et obtenez des mises à jour en temps réel avec notre application mobile. De partout, à tout moment.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-semibold transition-colors">
+                            Commencer maintenant →
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="relative w-full aspect-square">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture%20d%27%C3%A9cran%202025-03-15%20145538-RJ2ZIzHDnSq8DqPsGmsHs35NmpFKLb.png" alt="Interface de la plateforme" class="object-contain w-full h-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-12">
+                Faites réaliser du travail dans 
+                <span class="text-primary">plus de 2.700</span> catégories différentes
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Design de sites Internet</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Applications mobiles</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Applications Android</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Applications iPhone</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Architecture de logiciels</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Design graphique</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Design de logos</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Relations publiques</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Logistique</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Rédaction</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Traduction</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Recherche</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Rédaction scientifique</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Rédaction d'article</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Web Scraping</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">HTML</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">CSS</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">HTML 5</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Javascript</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Traitement de données</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Python</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">WordPress</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Finance</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Droit</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Linux</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Fabrication</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Marketing</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Excel</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">Comptabilité</a>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-200">MySQL</a>
+            </div>
+            <div class="mt-8">
+                <a href="#" class="text-primary hover:text-primary/80 font-semibold inline-flex items-center">
+                    En voir plus →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-24 bg-black/90 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8">
+                        Embaucher les meilleurs freelances pour n'importe quel travail en ligne.
+                    </h2>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center space-x-2">
+                            <span class="text-primary">•</span>
+                            <span>Le plus grand marché au monde de freelance</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-primary">•</span>
+                            <span>Tous les travaux auxquels vous pouvez potentiellement penser</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-primary">•</span>
+                            <span>Économisez jusqu'à 90 % & obtenez gratuitement des devis</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-primary">•</span>
+                            <span>Ne payez que lorsque vous êtes satisfait à 100 %</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#" class="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary/90 transition-colors">
+                            Embaucher un freelance
+                        </a>
+                        <a href="#" class="border border-white text-white px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
+                            Gagner de l'argent en travaillant en freelance
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-900 border border-gray-800 p-4 hover:border-primary transition-colors rounded-xl">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Project preview" class="rounded-lg mb-4 w-full">
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 p-4 hover:border-primary transition-colors rounded-xl mt-8">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Project preview" class="rounded-lg mb-4 w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talent Network Section -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-600/20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                        Puisez dans un 
+                        <span class="text-primary">réseau mondial de talents</span>
+                    </h2>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Publiez votre emploi</h3>
+                            <p class="text-gray-300">
+                                C'est gratuit et simple ! Obtenez de nombreuses offres compétitives qui correspondent à votre budget en quelques minutes. Commencez à donner vie à vos rêves.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Payer en toute sécurité</h3>
+                            <p class="text-gray-300">
+                                Ne payez que lorsque vous êtes satisfait à 100 % du résultat. Notre système de paiement par étape vous protège à chaque étape.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Choisir des freelances</h3>
+                            <p class="text-gray-300">
+                                Aucun travail n'est trop complexe. Nous avons des freelances pour des travaux de toute taille ou budget, dans plus de 2.700 compétences. Laissez nos talents donner vie à vos idées.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-2">Créer le futur.</h3>
+                        <a href="#" class="text-primary hover:text-primary/80 font-semibold">
+                            Commencer maintenant →
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Freelancer Cards -->
+                    <div class="bg-gray-900/50 backdrop-blur border border-gray-800 p-4 rounded-xl">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-10 h-10 bg-gray-800 rounded-full"></div>
+                            <div>
+                                <div class="flex items-center text-primary">
+                                    ★★★★★
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400">Freelance Expert</p>
+                    </div>
+                    <div class="bg-gray-900/50 backdrop-blur border border-gray-800 p-4 rounded-xl">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-10 h-10 bg-gray-800 rounded-full"></div>
+                            <div>
+                                <div class="flex items-center text-primary">
+                                    ★★★★★
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400">Freelance Expert</p>
+                    </div>
+                    <div class="bg-gray-900/50 backdrop-blur border border-gray-800 p-4 rounded-xl">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-10 h-10 bg-gray-800 rounded-full"></div>
+                            <div>
+                                <div class="flex items-center text-primary">
+                                    ★★★★★
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400">Freelance Expert</p>
+                    </div>
+                    <div class="bg-gray-900/50 backdrop-blur border border-gray-800 p-4 rounded-xl">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-10 h-10 bg-gray-800 rounded-full"></div>
+                            <div>
+                                <div class="flex items-center text-primary">
+                                    ★★★★★
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400">Freelance Expert</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Portfolio Grid -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="bg-gray-900/30 rounded-xl overflow-hidden">
+                    <img src="/placeholder.svg?height=250&width=350" alt="Portfolio item" class="w-full h-auto">
+                </div>
+                <div class="bg-gray-900/30 rounded-xl overflow-hidden">
+                    <img src="/placeholder.svg?height=250&width=350" alt="Portfolio item" class="w-full h-auto">
+                </div>
+                <div class="bg-gray-900/30 rounded-xl overflow-hidden">
+                    <img src="/placeholder.svg?height=250&width=350" alt="Portfolio item" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Section -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture%20d%27%C3%A9cran%202025-03-15%20145608-z7L0A7W9RnoZwqNjjcmISDbsppRSHt.png" alt="AI Services" class="w-full h-auto rounded-xl">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                        Renforcez 
+                        <span class="text-primary">l'avantage concurrentiel</span> 
+                        de votre organisation
+                    </h2>
+                    <h3 class="text-2xl font-semibold mb-4">Freelancer Enterprise</h3>
+                    <p class="text-gray-300 mb-8">
+                        Budget de la compagnie ? Faites réaliser plus pour moins. Utilisez notre main d'oeuvre de missions pour aider votre entreprise à grandir.
+                    </p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Prêt à faire grandir votre entreprise avec l'IA ?</h3>
+                        <a href="#" class="text-primary hover:text-primary/80 font-semibold">
+                            Découvrez les services en IA →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
+                <img src="/placeholder.svg?height=300&width=400" alt="Enterprise solution" class="w-full h-auto rounded-lg">
+                <img src="/placeholder.svg?height=300&width=400" alt="Enterprise solution" class="w-full h-auto rounded-lg">
+                <img src="/placeholder.svg?height=300&width=400" alt="Enterprise solution" class="w-full h-auto rounded-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="py-12 bg-black/50 backdrop-blur">
+        <div class="container mx-auto px-4">
+            <p class="text-center text-gray-400 mb-8">Comme utilisé par</p>
+            <div class="flex flex-wrap justify-center items-center gap-8">
+                <div class="text-gray-400 font-semibold text-sm">The New York Times</div>
+                <div class="text-gray-400 font-semibold text-sm">CNN</div>
+                <div class="text-gray-400 font-semibold text-sm">Bloomberg</div>
+                <div class="text-gray-400 font-semibold text-sm">Forbes</div>
+                <div class="text-gray-400 font-semibold text-sm">Yahoo!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <svg class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                        <span class="text-xl font-bold">freelancer</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Échangez vos compétences facilement et développez votre réseau professionnel.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Développement Web</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Design & Créativité</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Marketing Digital</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Formation & Coaching</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">À propos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Notre histoire</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">L'équipe</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Carrières</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Centre d'aide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Communauté</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 Freelancer. Tous droits réservés.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Conditions d'utilisation</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">Politique de confidentialité</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -17,6 +17,7 @@
                     // 'primary-hover': '#be123c',
                     secondary: '#E60023',
                     section2: '#F1F1F1',
+                    pink: '#F1C6C6',
 
                 },
                 fontFamily: {
@@ -31,7 +32,7 @@
 
 <body class="bg-white bg-cover w-full ">
 
-    <section class="flex flex-row justify-around gap-10"> 
+    <section class="flex flex-row justify-around gap-10 h-screen bg-white"> 
         <div class="w-1/2 p-5 flex flex-col gap-4 mt-32 ">
             <h1 class="text-6xl text-primary font-bold "> Transformez vos talents en opportunités avec <span class="text-secondary">SkillSwap</span></h1>
             <p class="w-3/4 text-lg text-gray-600 ">SkillSwap, la plateforme où vos compétences s’échangent librement. Apprenez, partagez et collaborez sans limites. Rejoignez-nous !</p>
@@ -53,50 +54,80 @@
         </div>
 
     </section>
-
-
-
-
-
-
-
-    <!-- <section>
-        <h1 class="text-5xl text-center mt-6"><b>Échangez vos compétences facilement <br>avec SkillSwap</b></h1>
-        <p class="text-center mt-10">Les utilisateurs viennent sur SkillSwap pour partager leurs savoir-faire, apprendre
-            de nouvelles <br>
-            compétences et collaborer sans contrainte financière. Grâce à notre système de crédits, vous <br>
-            proposer vos services et en recevoir en retour, le tout dans un cadre sécurisé <br>
-            pouvez et équitable. Passez au niveau supérieur avec l’option premium pour booster votre visibilité et <br>
-            accéder à des fonctionnalités exclusives.</p>
-        <button
-            class="p-4 rounded-full bg-white border-2 border-black flex justify-center items-center m-auto mt-6 hover:text-white hover:bg-black">
-            <b>S'inscrire</b>
-        </button>
-
-        <section class="">
-          
-        </section>
-    </section>
-
-    <section class="bg-[#F1F1F1] mt-[38%] p-[60px]">
-        <h1 class="text-3xl text-center"><b>Des solutions efficaces pour chaque objectif</b></h1>
-        <div class="bg-white mx-auto flex flex-row justify-center items-center gap-4 rounded-2xl w-[420px] p-3 mt-14">
-            <a href="#" class="p-4 rounded-2xl hover:bg-black hover:text-white"><b>Notoriété</b></a>
-            <a href="#" class="p-4 rounded-2xl hover:bg-black hover:text-white"><b>Considération</b></a>
-            <a href="#" class="p-4 rounded-2xl hover:bg-black hover:text-white"><b>Conversions</b></a>
-        </div>
     
-        <div class="h-full">
-            <div class="flex flex-row gap-2 w-[300px] mt-6">
-                <img src="./images/computer.png" alt="walo" class="rounded-3xl">
-                <img src="./images/marketing.png" alt="walo" class="rounded-3xl">
-            </div>
-            <div class="flex flex-row gap-2 w-[300px] mt-4">
-                <img src="./images/calcule.png" alt="walo" class="rounded-3xl">
-                <img src="./images/final.png" alt="walo" class="rounded-3xl">
+
+    <section class="pb-8 pt-6  bg-section2">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl  font-bold mb-6">Explorez nos services les plus populaires</h2>
+                    <p class="text-lg text-gray-600 mb-8">Parcourez notre sélection des services les plus demandés et découvrez les talents de notre communauté.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="./images/photographer.png" alt="Développeur travaillant sur un ordinateur" class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
+                        <img src="./images/waiter.png" alt="Designer créant une maquette" class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
+                        <img src="./images/marketing.png" alt="Réunion d'affaires" class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
+                        <img src="./images/computer.png" alt="Musicien jouant du piano" class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg mt-32">
+                    <div class="mb-4">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-pink rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold">Développement Web & Mobile</h3>
+                        </div>
+                        <p class="text-gray-600 pl-11">Création de sites web, applications mobiles et solutions e-commerce personnalisées.</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-pink rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold">Design Graphique & UX/UI</h3>
+                        </div>
+                        <p class="text-gray-600 pl-11">Création d'identités visuelles, interfaces utilisateur et expériences digitales innovantes.</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-pink rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold">Marketing Digital & SEO</h3>
+                        </div>
+                        <p class="text-gray-600 pl-11">Stratégies de marketing en ligne, référencement et campagnes publicitaires ciblées.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-pink rounded-full p-2 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold">Coaching & Formation</h3>
+                        </div>
+                        <p class="text-gray-600 pl-11">Accompagnement personnalisé et formations dans divers domaines professionnels.</p>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <a href="#" class="bg-secondary  text-white py-4 px-6 flex justify-center rounded-full font-semibold hover:bg-primary/90 transition-colors ">
+                            Explorer tous les services
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
 
 
