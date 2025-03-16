@@ -10,7 +10,7 @@
 
 <script>
     tailwind.config = {
-        theme:{
+        theme: {
             extend: {
                 colors: {
                     primary: '#000000',
@@ -32,95 +32,222 @@
 
 <body class="bg-white bg-cover w-full ">
 
-    <section class="flex flex-row justify-around gap-10 h-screen bg-white"> 
+    <!-- first section -->
+    <section class="flex flex-row justify-around gap-10 h-screen bg-white">
         <div class="w-1/2 p-5 flex flex-col gap-4 mt-32 ">
-            <h1 class="text-6xl text-primary font-bold "> Transformez vos talents en opportunités avec <span class="text-secondary">SkillSwap</span></h1>
-            <p class="w-3/4 text-lg text-gray-600 ">SkillSwap, la plateforme où vos compétences s’échangent librement. Apprenez, partagez et collaborez sans limites. Rejoignez-nous !</p>
+            <h1 class="text-6xl text-primary font-bold "> Transformez vos talents en opportunités avec <span
+                    class="text-secondary">SkillSwap</span></h1>
+            <p class="w-3/4 text-lg text-gray-600 ">SkillSwap, la plateforme où vos compétences s’échangent librement.
+                Apprenez, partagez et collaborez sans limites. Rejoignez-nous !</p>
             <div class="flex flex-row gap-4">
-            <button class="p-4 px-7 rounded-full bg-secondary  border-2  text-white  flex justify-center">Commencer maintenant</button>
-            <button class="p-4 px-9 rounded-full bg-white border-2 border-black text-primary flex justify-center">Comment ça marche</button>
-           </div>
+                <button class="p-4 px-7 rounded-full bg-secondary  border-2  text-white  flex justify-center">Commencer
+                    maintenant</button>
+                <button
+                    class="p-4 px-9 rounded-full bg-white border-2 border-black text-primary flex justify-center">Comment
+                    ça marche</button>
+            </div>
         </div>
 
         <div class="w-[40%] grid grid-cols-2 gap-4 h-64 mt-12">
             <div class="space-y-4">
-                <img src="./images/calcule.png" alt="Chef cuisinier partageant son expertise" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[3/4]">
-                <img src="./images/designer.png" alt="Développeur web en plein travail" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[4/3]">
+                <img src="./images/calcule.png" alt="Chef cuisinier partageant son expertise"
+                    class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[3/4]">
+                <img src="./images/designer.png" alt="Développeur web en plein travail"
+                    class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[4/3]">
             </div>
             <div class="space-y-4 mt-8">
-                <img src="./images/marketing.png" alt="Musicien donnant un cours de piano" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[4/3]">
-                <img src="./images/final.png" alt="Professionnelle en réunion" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[3/4]">
+                <img src="./images/marketing.png" alt="Musicien donnant un cours de piano"
+                    class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[4/3]">
+                <img src="./images/final.png" alt="Professionnelle en réunion"
+                    class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform h-auto w-full object-cover aspect-[3/4]">
             </div>
         </div>
 
     </section>
-    
 
+    <!-- second section -->
+    <section class="py-28  bg-[#FFEEEE]" id="fonctionnement">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Comment fonctionne SkillSwap ?</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Un processus simple et efficace pour échanger vos
+                    compétences</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow text-center">
+                    <div class="  h-16 flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 64 64">
+                            <path fill="#A6EACA" d="M26.8 45.7h10v7h-10v-7z"></path>
+                            <path fill="#fff" d="M10.8 13.7h42v29h-42v-29z"></path>
+                            <path fill="#E4E5E7" d="M10.8 13.7v3h39v26h3v-29h-42z"></path>
+                            <path fill="#404145"
+                                d="M56.6 43.2h-1 1zm-2.5 2.6v1-1zm-44.6 0v1-1zM7 43.2h1-1zm0-30.7H6h1zm3.6 1v-1c-.6 0-1 .4-1 1h1zm42.4 0h1c0-.6-.4-1-1-1v1zm0 28.7v1c.6 0 1-.4 1-1h-1zm-42.4 0h-1c0 .6.4 1 1 1v-1zm18.2-7.8v1h.1l-.1-1zm1 1-1-.1v.1h1zm-1 1-.1 1h.1v-1zm-1-1h-1v.1l1-.1zm7.4-1-.1 1h.2l-.1-1zm1 1-1-.1v.1h1zm-2 0h1v-.1l-1 .1zM24.1 20.6l1-.3c-.1-.4-.5-.7-1-.7v1zm3.1 10.2-1 .3c.1.4.5.7 1 .7v-1zM9.5 11h44.6V9H9.5v2zm44.6 0c.4 0 .8.2 1.1.4l1.4-1.4c-.7-.7-1.5-1-2.5-1v2zm1.1.4c.3.3.4.7.4 1.1h2c0-.9-.4-1.8-1-2.5l-1.4 1.4zm.4 1.1v30.7h2V12.5h-2zm0 30.7c0 .4-.2.8-.4 1.1l1.4 1.4c.6-.7 1-1.6 1-2.5h-2zm-.4 1.1c-.3.3-.7.5-1.1.5l.1 2c.9 0 1.8-.4 2.5-1.1l-1.5-1.4zm-1.1.5H9.5v2h44.6v-2zm-44.6 0c-.4 0-.8-.2-1.1-.5L7 45.7c.6.7 1.5 1.1 2.5 1.1v-2zm-1.1-.5c-.3-.3-.4-.7-.4-1.1H6c0 .9.4 1.8 1 2.5l1.4-1.4zM8 43.2V12.5H6v30.7h2zm0-30.7c0-.4.2-.8.4-1.1L7 10c-.7.7-1 1.5-1 2.5h2zm.4-1.1c.3-.3.7-.4 1.1-.4V9c-.9 0-1.8.4-2.5 1l1.4 1.4zm2.2 3.1H53v-2H10.6v2zm41.4-1v28.7h2V13.5h-2zm1 27.7H10.6v2H53v-2zm-41.4 1V13.5h-2v28.7h2zm17.3-6.8.6-1.9c-.3-.1-.6-.1-.8-.1l.2 2zm0 0s-.1 0 0 0l1.4-1.4c-.2-.2-.5-.4-.7-.5l-.7 1.9zm-.1 0s0-.1 0 0l1.9-.7c-.1-.3-.2-.5-.5-.7l-1.4 1.4zm0-.1 2 .2c0-.3 0-.6-.1-.8l-1.9.6zm0 .1 1.4 1.4c.4-.4.6-.9.6-1.4h-2zm0 0v2c.5 0 1-.2 1.4-.6l-1.4-1.4zm.1 0s-.1 0 0 0l-1.5 1.4c.3.3.8.6 1.3.6l.2-2zm-.1 0s0-.1 0 0l-2 .1c0 .5.3 1 .6 1.3l1.4-1.4zm0 0L27.4 34c-.4.4-.6.9-.6 1.4h2zm0 0v-2c-.5 0-1 .2-1.4.6l1.4 1.4zm6.5 0 .6-1.9c-.3-.1-.6-.1-.8-.1l.2 2zm0 0s-.1 0 0 0l1.4-1.4c-.2-.2-.4-.4-.7-.5l-.7 1.9zm-.1 0s0-.1 0 0l1.9-.7c-.1-.3-.2-.5-.5-.7l-1.4 1.4zm0-.1 2 .2c0-.3 0-.6-.1-.8l-1.9.6zm0 .1 1.4 1.4c.4-.4.6-.9.6-1.4h-2zm0 0v2c.5 0 1-.2 1.4-.6l-1.4-1.4zm0 0-1.4 1.4c.4.4.9.6 1.4.6v-2zm0 0h-2c0 .5.2 1 .6 1.4l1.4-1.4zm0-.1-1.9-.6c-.1.3-.1.6-.1.8l2-.2zm0 0s0 .1 0 0l-1.4-1.4c-.2.2-.4.5-.5.7l1.9.7zm0 .1s-.1 0 0 0l-.7-1.9c-.3.1-.5.2-.7.5l1.4 1.4zm-.1 0 .2-2c-.3 0-.6 0-.8.1l.6 1.9zM20.7 21.6h3.4v-2h-3.4v2zm2.4-.7 3.1 10.2 1.9-.6L25 20.3l-1.9.6zm4.1 10.9h10.4v-2H27.2v2zm-.6-3.1h12.1v-2H26.6v2zm-.8-3.1h13.6v-2H25.8v2zm9.5 20.5V53h2v-6.9h-2zm-7 6.9v-6.9h-2V53h2zm-9.4 1.4h25.8v-2H18.9v2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Créez votre profil</h3>
+                    <p class="text-gray-600">Inscrivez-vous et présentez vos compétences, expériences et services que
+                        vous souhaitez proposer.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow text-center">
+                    <div class=" flex items-center justify-center mx-auto mb-6">
+                        <svg width="64" height="64" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M40.599 23.377c0 9.719-7.88 17.598-17.599 17.598-9.72 0-17.598-7.879-17.598-17.598 0-9.72 7.879-17.599 17.598-17.599 9.72 0 17.599 7.88 17.599 17.599Z"
+                                fill="#E4E5E7" stroke="#E4E5E7"></path>
+                            <path
+                                d="M43.36 6.044H14.706c-.83 0-1.508.679-1.508 1.508v34.689c0 .83.679 1.508 1.508 1.508h28.656c.83 0 1.508-.679 1.508-1.508V7.552c0-.83-.679-1.508-1.508-1.508Z"
+                                fill="#A6EACA"></path>
+                            <path
+                                d="M13.197 17.355V7.552c0-.83.679-1.508 1.508-1.508h28.656c.83 0 1.508.679 1.508 1.508v34.689c0 .83-.679 1.508-1.508 1.508H14.705c-.83 0-1.508-.679-1.508-1.508V29.42"
+                                stroke="#404145" stroke-width="1.5" stroke-miterlimit="10"></path>
+                            <path d="M41.852 9.06h-25.64v31.673h25.64V9.06Z" fill="#fff"></path>
+                            <path
+                                d="M26.77 17.355h10.558M26.77 21.88h10.558M24.508 15.848l-1.357 3.016H23l-1.508-1.508M24.508 20.372l-1.357 3.017H23l-1.508-1.509"
+                                stroke="#404145" stroke-width="1.5" stroke-miterlimit="10"></path>
+                            <path d="M16.213 20.372V9.061h25.64v31.672h-25.64v-8.295" stroke="#404145"
+                                stroke-width="1.5" stroke-miterlimit="10"></path>
+                            <path
+                                d="M35.066 5.29h-3.017v-.604c0-1.583-1.13-3.016-2.715-3.167-1.81-.15-3.317 1.207-3.317 3.017v.754H23c-1.282 0-2.262.98-2.262 2.262v3.016h16.59V7.552a2.269 2.269 0 0 0-2.262-2.262Z"
+                                fill="#fff" stroke="#404145" stroke-width="1.5" stroke-miterlimit="10"></path>
+                            <path d="M29.033 3.781V5.29" stroke="#404145" stroke-width="1.5" stroke-miterlimit="10">
+                            </path>
+                            <path
+                                d="M6.787 14.717 5.58 13.51c-.603-.603-1.508-.603-2.111 0l-.15.15c-.604.604-.604 1.51 0 2.112l1.206 1.207"
+                                stroke="#404145" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round">
+                            </path>
+                            <path d="M4.147 17.356 21.492 34.7l6.032 3.017-3.016-6.033L7.164 14.34l-3.017 3.016Z"
+                                fill="#fff" stroke="#404145" stroke-width="1.5" stroke-miterlimit="10"
+                                stroke-linejoin="round"></path>
+                            <path d="M24.508 31.684 21.492 34.7M9.426 16.602 4.147 21.88M1.885 19.618l7.541 7.541"
+                                stroke="#404145" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Trouvez des correspondances</h3>
+                    <p class="text-gray-600">Parcourez les profils ou utilisez notre système de mise en relation pour
+                        trouver les compétences dont vous avez besoin.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow text-center">
+                    <div class=" flex items-center justify-center mx-auto mb-6">
+                        <svg width="64" height="64" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M17.102 33.205c8.893 0 16.103-7.21 16.103-16.103S25.995 1 17.102 1 1 8.21 1 17.102c0 8.893 7.21 16.103 16.102 16.103zM9.5 7.23c2.738-2.256 6.256-3.246 9.562-2.562"
+                                stroke="#404145" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round">
+                            </path>
+                            <path
+                                d="M29.44 33.518 39.482 43.56c.586.587 1.466.587 2.052 0l1.026-1.026c.587-.586.587-1.466 0-2.052L32.518 30.44c-.586-.587-1.466-.587-2.052 0l-1.026 1.026c-.587.586-.587 1.466 0 2.052z"
+                                fill="#A6EACA" stroke="#404145" stroke-width="1.5" stroke-miterlimit="10"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="m29.753 30.523-1.687-1.687" stroke="#404145" stroke-width="1.5"
+                                stroke-miterlimit="10" stroke-linecap="round"></path>
+                            <path
+                                d="M38.57 21.703v1.534m0 1.533v1.533m-.766-2.299H36.27m4.6 0h-1.533m3.6 4.598v1.533m0 1.533v1.534m-.767-2.3h-1.533m4.6 0h-1.533m-24.302 5.371v1.534m0 1.533v1.533m-.767-2.299h-1.533m4.6 0h-1.534"
+                                stroke="#C5C6C9" stroke-width="1.5" stroke-miterlimit="10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Échangez et collaborez</h3>
+                    <p class="text-gray-600">Établissez les termes de votre échange, collaborez et développez votre
+                        réseau professionnel.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#"
+                    class="bg-secondary text-white px-8 py-4 rounded-full font-semibold hover:bg-primary/90 transition-colors inline-block">
+                    Commencer maintenant
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
     <section class="pb-8 pt-6  bg-section2">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 gap-8 items-center">
                 <div>
-                    <h2 class="text-3xl  font-bold mb-6">Explorez nos services les plus populaires</h2>
-                    <p class="text-lg text-gray-600 mb-8">Parcourez notre sélection des services les plus demandés et découvrez les talents de notre communauté.</p>
+                    <h2 class="text-3xl mt-10 font-bold mb-6">Explorez nos services les plus populaires</h2>
+                    <p class="text-lg text-gray-600 mb-8">Parcourez notre sélection des services les plus demandés et
+                        découvrez les talents de notre communauté.</p>
                     <div class="grid grid-cols-2 gap-4">
-                        <img src="./images/photographer.png" alt="Développeur travaillant sur un ordinateur" class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
-                        <img src="./images/waiter.png" alt="Designer créant une maquette" class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
-                        <img src="./images/marketing.png" alt="Réunion d'affaires" class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
-                        <img src="./images/computer.png" alt="Musicien jouant du piano" class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
+                        <img src="./images/photographer.png" alt="Développeur travaillant sur un ordinateur"
+                            class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
+                        <img src="./images/waiter.png" alt="Designer créant une maquette"
+                            class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
+                        <img src="./images/marketing.png" alt="Réunion d'affaires"
+                            class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
+                        <img src="./images/computer.png" alt="Musicien jouant du piano"
+                            class="rounded-2xl shadow-md h-auto w-full object-cover aspect-[4/3]">
                     </div>
                 </div>
-                
-                <div class="bg-white rounded-2xl p-8 shadow-lg mt-32">
-                    <div class="mb-4">
-                        <div class="flex items-center mb-4">
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg mt-48">
+                    <div class="mb-5">
+                        <div class="flex items-center mb-5">
                             <div class="bg-pink rounded-full p-2 mr-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold">Développement Web & Mobile</h3>
                         </div>
-                        <p class="text-gray-600 pl-11">Création de sites web, applications mobiles et solutions e-commerce personnalisées.</p>
+                        <p class="text-gray-600 pl-11">Création de sites web, applications mobiles et solutions
+                            e-commerce personnalisées.</p>
                     </div>
-                    
+
                     <div class="mb-8">
-                        <div class="flex items-center mb-4">
+                        <div class="flex items-center mb-5">
                             <div class="bg-pink rounded-full p-2 mr-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold">Design Graphique & UX/UI</h3>
                         </div>
-                        <p class="text-gray-600 pl-11">Création d'identités visuelles, interfaces utilisateur et expériences digitales innovantes.</p>
+                        <p class="text-gray-600 pl-11">Création d'identités visuelles, interfaces utilisateur et
+                            expériences digitales innovantes.</p>
                     </div>
-                    
+
                     <div class="mb-8">
-                        <div class="flex items-center mb-4">
+                        <div class="flex items-center mb-5">
                             <div class="bg-pink rounded-full p-2 mr-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold">Marketing Digital & SEO</h3>
                         </div>
-                        <p class="text-gray-600 pl-11">Stratégies de marketing en ligne, référencement et campagnes publicitaires ciblées.</p>
+                        <p class="text-gray-600 pl-11">Stratégies de marketing en ligne, référencement et campagnes
+                            publicitaires ciblées.</p>
                     </div>
-                    
+
                     <div>
-                        <div class="flex items-center mb-4">
+                        <div class="flex items-center mb-5">
                             <div class="bg-pink rounded-full p-2 mr-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold">Coaching & Formation</h3>
                         </div>
-                        <p class="text-gray-600 pl-11">Accompagnement personnalisé et formations dans divers domaines professionnels.</p>
+                        <p class="text-gray-600 pl-11">Accompagnement personnalisé et formations dans divers domaines
+                            professionnels.</p>
                     </div>
-                    
+
                     <div class="mt-10">
-                        <a href="#" class="bg-secondary  text-white py-4 px-6 flex justify-center rounded-full font-semibold hover:bg-primary/90 transition-colors ">
+                        <a href="#"
+                            class="bg-secondary  text-white py-4 px-6  rounded-full font-semibold hover:bg-primary/90 transition-colors ">
                             Explorer tous les services
                         </a>
                     </div>
@@ -128,6 +255,173 @@
             </div>
         </div>
     </section>
+    <section class="py-16 md:py-24 bg-white" id="tarifs">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Nos formules SkillSwap</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choisissez le plan qui correspond le mieux à vos besoins</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-secondary/10 text-secondary font-semibold px-4 py-1 rounded-full text-sm">
+                        Populaire
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Débutant</h3>
+                        <div class="flex justify-center items-baseline mb-4">
+                            <span class="text-4xl font-bold">€0</span>
+                            <span class="text-gray-500 ml-1">/mois</span>
+                        </div>
+                        <p class="text-gray-600">Parfait pour découvrir la plateforme</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Profil de base</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>5 échanges par mois</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Messagerie de base</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Profil vérifié</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Support prioritaire</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="text-center">
+                        <a href="#" class="border border-secondary text-secondary px-6 py-3 rounded-full font-semibold hover:bg-secondary hover:text-white transition-colors inline-block w-full">
+                            S'inscrire gratuitement
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white border-2 border-secondary rounded-2xl p-8 shadow-lg relative z-10 transform md:-translate-y-4">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-secondary text-white font-semibold px-4 py-1 rounded-full text-sm">
+                        Recommandé
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                        <div class="flex justify-center items-baseline mb-4">
+                            <span class="text-4xl font-bold">€19</span>
+                            <span class="text-gray-500 ml-1">/mois</span>
+                        </div>
+                        <p class="text-gray-600">Idéal pour les professionnels actifs</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Profil premium</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Échanges illimités</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Messagerie avancée</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Profil vérifié</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Support prioritaire</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="text-center">
+                        <a href="#" class="bg-secondary text-white px-6 py-3 rounded-full font-semibold hover:bg-secondary/90 transition-colors inline-block w-full">
+                            Commencer l'essai gratuit
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Entreprise</h3>
+                        <div class="flex justify-center items-baseline mb-4">
+                            <span class="text-4xl font-bold">€49</span>
+                            <span class="text-gray-500 ml-1">/mois</span>
+                        </div>
+                        <p class="text-gray-600">Pour les équipes et entreprises</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Tout ce qui est inclus dans Pro</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>5 utilisateurs inclus</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Gestion d'équipe</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Statistiques avancées</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Support dédié 24/7</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="text-center">
+                        <a href="#" class="border border-secondary text-secondary px-6 py-3 rounded-full font-semibold hover:bg-secondary hover:text-white transition-colors inline-block w-full">
+                            Contacter les ventes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 
 
