@@ -224,7 +224,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <a href="#" class="flex items-center space-x-2">
-                       <img src="./images/logo.png" alt="logo" class="w-10 h-10">
+                       <img src="./images/logo.png" alt="logo" class="w-8 h-8">
                         <span class="text-xl font-bold text-neutral-900">Skill<span class="text-primary-600">Swap</span></span>
                     </a>
                 </div>
