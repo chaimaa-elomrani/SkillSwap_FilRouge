@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="relative group nav-item" data-dropdown="resources-dropdown">
+        <button
+            class="px-4 py-2 text-secondary-700 rounded-md group-hover:text-primary-600 transition-colors duration-200 flex items-center"
+            aria-expanded="false" aria-haspopup="true">
+            Resources
+            <svg class="ml-1 h-4 w-4 text-secondary-400 group-hover:text-primary-500 transition-colors duration-200 dropdown-arrow"
+                viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <!-- Resources Mega Menu -->
+        <div class="absolute left-0 w-screen max-w-7xl px-4 sm:px-6 opacity-0 invisible transition-all duration-300 transform origin-top dropdown-menu z-20"
+            id="resources-dropdown">
+            <div
+                class="grid grid-cols-2 md:grid-cols-4 gap-6 bg-white p-6 rounded-lg shadow-dropdown ring-1 ring-black ring-opacity-5 mt-2">
+                <!-- Column 1 -->
+                <div>
+                    <h3 class="text-sm font-semibold text-secondary-900 mb-3">Documentation</h3>
+                    <ul class="space-y-2">
+                        <li class="stagger-item">
+                            <a href="#" class="text-sm text-secondary-700 hover:text-primary-600 flex items-center">
+                                <svg class="mr-2 h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                                </svg>
+                                Guides
+                            </a>
+                        </li>
+                        <li class="stagger-item">
+                            <a href="#" class="text-sm text-secondary-700 hover:text-primary-600 flex items-center">
+                                <svg class="mr-2 h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                API Reference
+                            </a>
+                        </li>
+                        <li class="stagger-item">
+                            <a href="#" class="text-sm text-secondary-700 hover:text-primary-600 flex items-center">
+                                <svg class="mr-2 h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                </svg>
+                                Tutorials
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-sm font-semibold text-secondary-900 mb-3">Community</h3>
+                    <ul class="space-y-2">
+                        <li class="stagger-item">
+                            <a href="#" class="text-sm text-secondary-700 hover:text-primary-600 flex items-center">
+                                <svg class="mr-2 h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                                    <path
+                                        d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                                </svg>
+                                Forum
+                            </a>
+                        </li>
+                        <li class="stagger-item">
+                            <a href="#" class="text-sm text-secondary-700 hover:text-primary-600 flex items-center">
+                                <svg class="mr-2 h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Events
+                            </a>
+                        </li>
+                        <li class="stagger-item">
+                            <a href="#" class="text-sm text-secondary-700 hover:text-primary-600 flex items-center">
+                                <svg class="mr-2 h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                                </svg>
+                                Webinars
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-span-2">
+                    <h3 class="text-sm font-semibold text-secondary-900 mb-3">Featured Resources</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Featured Item 1 -->
+                        <div
+                            class="stagger-item bg-primary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+                            <div class="p-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs text-secondary-500">Mar 16, 2023</span>
+                                    <span
+                                        class="text-xs font-medium text-primary-600 bg-primary-100 px-2 py-1 rounded-full">Marketing</span>
+                                </div>
+                                <h3 class="text-base font-medium text-secondary-900 mb-2">Boost your conversion rate
+                                </h3>
+                                <p class="text-sm text-secondary-600 mb-3">Learn how to optimize your landing pages and
+                                    improve your conversion rates with our proven strategies.</p>
+                                <a href="#"
+                                    class="text-sm font-medium text-primary-600 hover:text-primary-700 inline-flex items-center">
+                                    Read more
+                                    <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Featured Item 2 -->
+                        <div
+                            class="stagger-item bg-secondary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+                            <div class="p-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs text-secondary-500">Mar 10, 2023</span>
+                                    <span
+                                        class="text-xs font-medium text-secondary-600 bg-secondary-100 px-2 py-1 rounded-full">Sales</span>
+                                </div>
+                                <h3 class="text-base font-medium text-secondary-900 mb-2">How to use search engine
+                                    optimization</h3>
+                                <p class="text-sm text-secondary-600 mb-3">Discover how to leverage SEO to drive more
+                                    traffic to your website and increase your sales.</p>
+                                <a href="#"
+                                    class="text-sm font-medium text-secondary-600 hover:text-secondary-700 inline-flex items-center">
+                                    Read more
+                                    <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Desktop dropdown functionality
+            const navItems = document.querySelectorAll('.nav-item');
+            const dropdowns = document.querySelectorAll('.dropdown-menu');
+            
+            // Function to show dropdown
+            function showDropdown(dropdown) {
+                dropdown.classList.add('opacity-100', 'visible');
+                dropdown.classList.add('dropdown-visible');
+                dropdown.classList.remove('opacity-0', 'invisible');
+                dropdown.style.transform = 'translateY(0)';
+                
+                // Add active class to parent button
+                const parentButton = dropdown.previousElementSibling;
+                if (parentButton) {
+                    parentButton.setAttribute('aria-expanded', 'true');
+                    parentButton.closest('.nav-item').classList.add('dropdown-active');
+                }
+            }
+            
+            // Function to hide dropdown
+            function hideDropdown(dropdown) {
+                dropdown.classList.remove('opacity-100', 'visible');
+                dropdown.classList.remove('dropdown-visible');
+                dropdown.classList.add('opacity-0', 'invisible');
+                dropdown.style.transform = 'translateY(-10px)';
+                
+                // Remove active class from parent button
+                const parentButton = dropdown.previousElementSibling;
+                if (parentButton) {
+                    parentButton.setAttribute('aria-expanded', 'false');
+                    parentButton.closest('.nav-item').classList.remove('dropdown-active');
+                }
+            }
+            
+            // Add event listeners to nav items
+            navItems.forEach(item => {
+                const dropdown = document.getElementById(item.dataset.dropdown);
+                if (!dropdown) return;
+                
+                // Show dropdown on hover
+                item.addEventListener('mouseenter', () => {
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) hideDropdown(d);
+                    });
+                    showDropdown(dropdown);
+                });
+                
+                // Hide dropdown when mouse leaves nav item
+                item.addEventListener('mouseleave', (e) => {
+                    // Check if mouse is moving to the dropdown
+                    if (e.relatedTarget && dropdown.contains(e.relatedTarget)) return;
+                    
+                    // Check if mouse is moving to another nav item
+                    if (e.relatedTarget && e.relatedTarget.closest('.nav-item') === item) return;
+                    
+                    hideDropdown(dropdown);
+                });
+                
+                // Add event listener to dropdown to keep it open when hovered
+                dropdown.addEventListener('mouseenter', () => {
+                    showDropdown(dropdown);
+                });
+                
+                dropdown.addEventListener('mouseleave', () => {
+                    hideDropdown(dropdown);
+                });
+                
+                // Add keyboard accessibility
+                const button = item.querySelector('button');
+                if (button) {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                        
+                        // Close all other dropdowns
+                        dropdowns.forEach(d => {
+                            if (d !== dropdown) hideDropdown(d);
+                        });
+                        
+                        if (isExpanded) {
+                            hideDropdown(dropdown);
+                        } else {
+                            showDropdown(dropdown);
+                        }
+                    });
+                    
+                    button.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') {
+                            hideDropdown(dropdown);
+                            button.focus();
+                        }
+                    });
+                }
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-item') && !e.target.closest('.dropdown-menu')) {
+                    dropdowns.forEach(dropdown => {
+                        hideDropdown(dropdown);
+                    });
+                }
+            });
+            
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenuButton.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+            
+            // Mobile dropdown toggles
+            const mobileDropdownButtons = [
+                { button: document.getElementById('mobile-engagement-button'), dropdown: document.getElementById('mobile-engagement-dropdown'), icon: document.getElementById('mobile-engagement-icon') },
+                { button: document.getElementById('mobile-resources-button'), dropdown: document.getElementById('mobile-resources-dropdown'), icon: document.getElementById('mobile-resources-icon') },
+                { button: document.getElementById('mobile-products-button'), dropdown: document.getElementById('mobile-products-dropdown'), icon: document.getElementById('mobile-products-icon') }
+            ];
+            
+            mobileDropdownButtons.forEach(({ button, dropdown, icon }) => {
+                button.addEventListener('click', () => {
+                    const isExpanded = dropdown.classList.contains('block');
+                    
+                    // Close all other dropdowns
+                    mobileDropdownButtons.forEach(item => {
+                        if (item.dropdown !== dropdown) {
+                            item.dropdown.classList.add('hidden');
+                            item.dropdown.classList.remove('block');
+                            item.icon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    
+                    if (isExpanded) {
+                        dropdown.classList.add('hidden');
+                        dropdown.classList.remove('block');
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        dropdown.classList.remove('hidden');
+                        dropdown.classList.add('block');
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+            
+            // Nav indicator functionality
+            const navIndicator = document.getElementById('nav-indicator');
+            const navLinks = document.querySelectorAll('.nav-item');
+            
+            function positionIndicator(element) {
+                if (!navIndicator) return;
+                
+                const rect = element.getBoundingClientRect();
+                const parentRect = element.parentElement.getBoundingClientRect();
+                
+                navIndicator.style.width = `${rect.width}px`;
+                navIndicator.style.transform = `translateX(${rect.left - parentRect.left}px)`;
+                navIndicator.style.opacity = '1';
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    positionIndicator(link);
+                });
+            });
+            
+            document.querySelector('nav').addEventListener('mouseleave', () => {
+                if (navIndicator) {
+                    navIndicator.style.opacity = '0';
+                }
+            });
+            
+            // Scroll effect for header
+            const header = document.getElementById('main-header');
+            let lastScrollTop = 0;
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    header.classList.add('shadow');
+                } else {
+                    header.classList.remove('shadow');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
+</body>
+
+</html>
