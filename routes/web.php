@@ -9,5 +9,6 @@ use Illuminate\Support\Facades\Route;
 // Route::post('register',[AuthController::class , 'register']);
 
 Route::get('/',[HomeController::class , 'index']);
-// Route::get('login',[AuthController::class , 'showLoginForm']);
+Route::get('/header',[HomeController::class , 'header']);
+// Route::get('login',][AuthController::class , 'showLoginForm']);
 // Route::post('login',[AuthController::class , 'login']);
