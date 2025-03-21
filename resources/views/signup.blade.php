@@ -13,6 +13,8 @@
           colors: {
             primary: '#e11d48',
             'primary-hover': '#be123c',
+            pink: '#f43f5e',
+            buttonBlue: '#0ea5e9', 
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
@@ -21,27 +23,32 @@
       }
     }
   </script>
+    <style>
+      .gradient-text {
+         background: linear-gradient(90deg, #0ea5e9, #f43f5e);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+     }
+
+ </style>
 </head>
 
 <body class="bg-[url('./images/Group%2072.png')] bg-cover bg-center bg-no-repeat h-screen">
   <div class="absolute inset-0 bg-black opacity-70"></div>
 
   <main class="flex flex-col md:flex-row items-center h-full gap-4 md:gap-[10%] justify-center text-white relative z-20 px-4 md:px-0">
-    <div class="text-2xl md:text-4xl text-white font-bold md:w-[30%] text-center md:text-left">
-      <h1>Sign up and Elevate your Skills with SkillSwap</h1>
+    <div class="text-6xl  text-white font-bold md:w-[40%] text-center md:text-left">
+      <h1>Sign up and Elevate your Skills with <span class="gradient-text">SkillSwap</span></h1>
     </div>
 
     <div class="bg-white rounded-3xl w-full max-w-[600px] py-2">
-      <div class="mb-6">
-        <div class="flex items-center justify-center">
-          <img src="images/logo.png" alt="SkillSwap Logo" class="w-[100px]">
-        </div>
+      <div class="mb-6 mt-6">
+        
         <h2 class="text-black font-bold text-center text-xl ">Welcome to SkillSwap</h2>
         <p class="text-black text-center text-sm">Explore different services</p>
       </div>
 
-      <form class="flex flex-col gap-4" method="POST" action="register">
-        @csrf
+      <form class="flex flex-col gap-4">
         <div class="px-8 md:px-16">
           <label for="name" class="text-black text-sm block mb-1">Name</label>
           <input  id="name"  class="w-full py-2 text-black px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" type="text"  name="name"  placeholder="Enter your name" required >
@@ -54,11 +61,11 @@
 
         <div class="px-8 md:px-16">
           <label for="password" class="text-black text-sm block">Password</label>
-          <input  id="password" class="w-full text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"  type="password" name="password"  placeholder="Create a password" required minlength="8">
+          <input  id="password" class="w-full text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"  type="password"  name="password"  placeholder="Create a password" required minlength="8">
         </div>
 
         <div class="px-8 md:px-36">
-          <button type="submit" class="bg-[#E60023] hover:bg-[#c9001e] transition-colors px-6 py-2 w-full text-white rounded-3xl">Sign Up</button>
+          <button type="submit" class="bg-buttonBlue hover:bg-pink transition-colors px-6 py-2 w-full text-white rounded-3xl">Sign Up</button>
         </div>
 
         <div class="flex items-center justify-center gap-4 px-8 md:px-16 ">
@@ -76,7 +83,7 @@
         <div class="text-center ">
           <p class="text-gray-600">
            Already have an account? 
-            <a href="login" class="text-primary font-medium hover:underline">Log in</a>
+            <a href="#" class="text-pink font-medium hover:underline">Log in</a>
           </p>
         </div>
 
