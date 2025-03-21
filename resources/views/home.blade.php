@@ -6,10 +6,10 @@
     <title>SkillSwap - Échangez vos compétences facilement</title>
     <meta name="description" content="Plateforme d'échange de compétences entre particuliers. Trouvez des experts ou partagez votre savoir-faire.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/animation.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/animation.css') }}">
     <script src={{ asset('js/palette.js') }}></script>
-    
+  
 </head>
 
 <body class="bg-white bg-cover w-full">
