@@ -4,6 +4,7 @@ tailwind.config = {
         extend: {
             colors: {
                 primary: {
+                    20: '#F5F3FF',
                     50: '#f0f9ff',
                     100: '#e0f2fe',
                     200: '#bae6fd',
@@ -14,6 +15,7 @@ tailwind.config = {
                     700: '#0369a1',
                     800: '#075985',
                     900: '#0c4a6e',
+                   
                 },
                 secondary: {
                     50: '#fff1f2',

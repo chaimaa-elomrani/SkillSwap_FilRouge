@@ -7,6 +7,7 @@
     <meta name="description" content="Plateforme d'échange de compétences entre particuliers. Trouvez des experts ou partagez votre savoir-faire.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('css/animation.css') }}">
     <script src={{ asset('js/palette.js') }}></script>
   
