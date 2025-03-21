@@ -94,7 +94,7 @@
                         <div class="space-y-4 mt-8">
                             <div class="rounded-2xl overflow-hidden shadow-card animate-float" style="animation-delay: 0.4s;">
                                 <img src="./images/gymCoach.jpeg" alt="Personne peignant" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500">
-                            </div>
+                            </div>j
                             <div class="rounded-2xl overflow-hidden shadow-card animate-float" style="animation-delay: 0.8s;">
                                 <img src="./images/nutritioniste.jpeg" alt="Musicien jouant du piano" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
                             </div>
