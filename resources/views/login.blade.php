@@ -13,77 +13,86 @@
           colors: {
             primary: '#e11d48',
             'primary-hover': '#be123c',
+            pink: '#f43f5e',
+            buttonBlue: '#0ea5e9', 
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
           },
+
         }
       }
     }
   </script>
+   <style>
+      .gradient-text {
+         background: linear-gradient(90deg, #0ea5e9, #f43f5e);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+     }
+
+ </style>
 </head>
 
 <body class="bg-[url('./images/Group%2072.png')] bg-cover bg-center bg-no-repeat h-screen">
-  <div class="absolute inset-0 bg-black opacity-70"></div>
+<div class="absolute inset-0 bg-black opacity-70"></div>
 
-  <main class="flex flex-col md:flex-row items-center h-full gap-4 md:gap-[10%] justify-center text-white relative z-20 px-4 md:px-0">
-    <div class="text-2xl md:text-4xl text-white font-bold md:w-[30%] text-center md:text-left">
-      <h1>Sign up and Elevate your Skills with SkillSwap</h1>
+<main class="flex flex-col md:flex-row items-center h-full gap-4 md:gap-[10%] justify-center text-white relative z-20 px-4 md:px-0">
+  <div class="text-6xl  text-white font-bold md:w-[40%] text-center md:text-left">
+    <h1>Sign in  and Elevate your Skills with <span class="gradient-text">SkillSwap</span></h1>
+  </div>
+
+  <div class="bg-white rounded-3xl w-full max-w-[600px] py-2">
+    <div class="mb-6 mt-6">
+     
+      <h2 class="text-black font-bold text-center text-xl ">Welcome to SkillSwap</h2>
+      <p class="text-black text-center text-sm">Explore different services</p>
     </div>
 
-    <div class="bg-white rounded-3xl w-full max-w-[600px] py-2">
-      <div class="mb-6">
-        <div class="flex items-center justify-center">
-          <img src="images/logo.png" alt="SkillSwap Logo" class="w-[100px]">
-        </div>
-        <h2 class="text-black font-bold text-center text-xl ">Welcome to SkillSwap</h2>
-        <p class="text-black text-center text-sm">Explore different services</p>
+    <form class="flex flex-col gap-4">
+
+      <div class="px-8 md:px-16">
+        <label for="email" class="text-black text-sm block mb-1">Email</label>
+        <input  id="email" class="w-full  text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" type="email"  name="email" placeholder="Enter your email"required>
       </div>
 
-      <form class="flex flex-col gap-4" action="login" method="POST" >
-        @csrf
-        <div class="px-8 md:px-16">
-          <label for="email" class="text-black text-sm block mb-1">Email</label>
-          <input  id="email" class="w-full  text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" type="email"  name="email" placeholder="Enter your email"required>
+      <div class="px-8 md:px-16 ">
+      <div class="flex  justify-between ">
+        <label for="password" class="text-black text-sm block mb-1">Password</label>
+        <a href="#" class="text-pink text-sm hover:underline">Forgot password?</a>
+      </div>
+        <input  id="password" class="w-full text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"  type="password"  name="password"  placeholder="Create a password" required minlength="8">
+      </div>
+
+      <div class="px-8 md:px-36 mt-2">
+        <button type="submit" class="bg-[#0284c7] hover:bg-[#f43f5e] transition-colors px-6 py-2 w-full text-white rounded-3xl">Log in</button>
+      </div>
+
+      <div class="flex items-center justify-center gap-4 px-8 md:px-16 my-2">
+        <div class="h-px bg-gray-300 flex-grow"></div>
+        <p class="text-black text-sm">Or</p>
+        <div class="h-px bg-gray-300 flex-grow"></div>
+      </div>
+
+      <div class="px-8 md:px-36">
+        <button type="button" class="bg-white hover:bg-gray-50 transition-colors px-6 py-2 w-full flex items-center justify-center gap-2 border-2 border-gray-300 rounded-3xl">
+          <img src="images/google.png" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+          <span class="text-black">Continue with Google</span>
+        </button>
+      </div>
+      <div class="text-center mt-4">
+          <p class="text-gray-600">
+            Don't have an account? 
+            <a href="#" class="text-pink font-medium hover:underline">Sign up</a>
+          </p>
         </div>
 
-        <div class="px-8 md:px-16 ">
-        <div class="flex  justify-between ">
-          <label for="password" class="text-black text-sm block mb-1">Password</label>
-          <a href="#" class="text-primary text-sm hover:underline">Forgot password?</a>
-        </div>
-          <input  id="password" class="w-full text-black py-2 px-4 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"  type="password"  name="password"  placeholder="Create a password" required minlength="8">
-        </div>
-
-        <div class="px-8 md:px-36 mt-2">
-          <button type="submit" class="bg-[#E60023] hover:bg-[#c9001e] transition-colors px-6 py-2 w-full text-white rounded-3xl">Log in</button>
-        </div>
-
-        <div class="flex items-center justify-center gap-4 px-8 md:px-16 my-2">
-          <div class="h-px bg-gray-300 flex-grow"></div>
-          <p class="text-black text-sm">Or</p>
-          <div class="h-px bg-gray-300 flex-grow"></div>
-        </div>
-
-        <div class="px-8 md:px-36">
-          <button type="button" class="bg-white hover:bg-gray-50 transition-colors px-6 py-2 w-full flex items-center justify-center gap-2 border-2 border-gray-300 rounded-3xl">
-            <img src="images/google.png" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
-            <span class="text-black">Continue with Google</span>
-          </button>
-        </div>
-        <div class="text-center mt-4">
-            <p class="text-gray-600">
-              Don't have an account? 
-              <a href="signup" class="text-primary font-medium hover:underline">Sign up</a>
-            </p>
-          </div>
-
-        <p class="text-[#767676] text-center text-xs px-4 mt-2">
-          By continuing, you agree to SkillSwap's <a href="#" class="underline hover:text-black">Terms of Service</a> and acknowledge <br>you've read our <a href="#" class="underline hover:text-black">Privacy Policy</a> and <a href="#" class="underline hover:text-black">Notice at collection</a>
-        </p>
-      </form>
-    </div>
-  </main>
+      <p class="text-[#767676] text-center text-xs px-4 mt-2">
+        By continuing, you agree to SkillSwap's <a href="#" class="underline hover:text-black">Terms of Service</a> and acknowledge <br>you've read our <a href="#" class="underline hover:text-black">Privacy Policy</a> and <a href="#" class="underline hover:text-black">Notice at collection</a>
+      </p>
+    </form>
+  </div>
+</main>
 </body>
 
 </html>
