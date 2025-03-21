@@ -11,7 +11,7 @@
     <script src={{ asset('js/palette.js') }}></script>
     <title>Document</title>
 </head>
-<body class="">
+<body class="bg-[url('./images/Group%2072.png')] bg-cover bg-center bg-no-repeat h-screen">
     
 </body>
 </html>
