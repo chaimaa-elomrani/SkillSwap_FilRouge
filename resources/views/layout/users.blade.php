@@ -460,18 +460,18 @@
                 <!-- Right Side Navigation with Icons -->
                 <div class="hidden md:flex items-center space-x-4">
                     <!-- Add Post Icon -->
-                    <button class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-primary-100">
+                    <a id="addPost" class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-primary-100">
                       
                           <img src="{{ asset('images/addService.png') }}" alt="" class="h-6 w-6">
                       
                         <span class="sr-only">Add Post</span>
-                    </button>
-                    <button class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-primary-100">
+                    </a>
+                 <a  href="{{ asset('explore') }}" class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-primary-100">
                       
                           <img src="{{ asset('images/explore.png') }}" alt="" class="h-6 w-6">
                       
                         <span class="sr-only">Add Post</span>
-                    </button>
+                    </a>
                     
                     
                     <!-- Notifications Icon -->
