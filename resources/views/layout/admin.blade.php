@@ -457,14 +457,67 @@
                     <a href="#" class="px-4 py-2 text-secondary-700 rounded-md hover:text-primary-600 transition-colors duration-200 nav-item">Contact</a>
                 </nav>
 
-                <!-- Right Side Navigation -->
+                <!-- Right Side Navigation with Icons -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="#" class="text-secondary-700 hover:text-primary-600 transition-colors duration-200">Sign in</a>
+                    <!-- Add Post Icon -->
+                    <button class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-gray-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <span class="sr-only">Add Post</span>
+                    </button>
+                    
+                    <!-- Notifications Icon -->
+                    <button class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-gray-100 relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span class="sr-only">Notifications</span>
+                        <!-- Notification Badge -->
+                        <span class="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">3</span>
+                    </button>
+                    
+                    <!-- Profile Icon -->
+                    <button class="flex items-center text-secondary-700 hover:text-primary-600 transition-colors duration-200">
+                        <div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center overflow-hidden border border-primary-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </div>
+                    </button>
+                    
                     <a href="#" class="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors duration-200 shadow-sm hover:shadow">Get Started</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden">
+                <div class="md:hidden flex items-center space-x-4">
+                    <!-- Mobile Add Post Icon -->
+                    <button class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-gray-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <span class="sr-only">Add Post</span>
+                    </button>
+                    
+                    <!-- Mobile Notifications Icon -->
+                    <button class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-gray-100 relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span class="sr-only">Notifications</span>
+                        <!-- Notification Badge -->
+                        <span class="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">3</span>
+                    </button>
+                    
+                    <!-- Mobile Profile Icon -->
+                    <button class="flex items-center text-secondary-700 hover:text-primary-600 transition-colors duration-200">
+                        <div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center overflow-hidden border border-primary-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </div>
+                    </button>
+                    
                     <button type="button" class="hamburger flex flex-col justify-center items-center w-10 h-10 rounded-md focus:outline-none" id="mobile-menu-button" aria-label="Menu">
                         <span class="hamburger-line w-6 h-0.5 bg-secondary-700 mb-1.5"></span>
                         <span class="hamburger-line w-6 h-0.5 bg-secondary-700 mb-1.5"></span>
@@ -539,6 +592,78 @@
         </div>
     </header>
 
-    <script src="{{ asset('js/navbar.js') }}"></script>
+    <script>
+        // JavaScript for dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Desktop dropdowns
+            const dropdownButtons = document.querySelectorAll('[data-dropdown]');
+            
+            dropdownButtons.forEach(button => {
+                const dropdownId = button.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                button.addEventListener('mouseenter', () => {
+                    dropdown.classList.add('dropdown-visible');
+                    dropdown.style.opacity = '1';
+                    dropdown.style.visibility = 'visible';
+                    button.classList.add('dropdown-active');
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    setTimeout(() => {
+                        if (!dropdown.matches(':hover')) {
+                            dropdown.classList.remove('dropdown-visible');
+                            dropdown.style.opacity = '0';
+                            dropdown.style.visibility = 'hidden';
+                            button.classList.remove('dropdown-active');
+                        }
+                    }, 100);
+                });
+                
+                dropdown.addEventListener('mouseleave', () => {
+                    dropdown.classList.remove('dropdown-visible');
+                    dropdown.style.opacity = '0';
+                    dropdown.style.visibility = 'hidden';
+                    button.classList.remove('dropdown-active');
+                });
+            });
+            
+            // Mobile menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenuButton.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+            
+            // Mobile dropdowns
+            const mobileDropdownButtons = [
+                document.getElementById('mobile-engagement-button'),
+                document.getElementById('mobile-resources-button'),
+                document.getElementById('mobile-products-button')
+            ];
+            
+            const mobileDropdowns = [
+                document.getElementById('mobile-engagement-dropdown'),
+                document.getElementById('mobile-resources-dropdown'),
+                document.getElementById('mobile-products-dropdown')
+            ];
+            
+            const mobileIcons = [
+                document.getElementById('mobile-engagement-icon'),
+                document.getElementById('mobile-resources-icon'),
+                document.getElementById('mobile-products-icon')
+            ];
+            
+            mobileDropdownButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    mobileDropdowns[index].classList.toggle('hidden');
+                    mobileIcons[index].classList.toggle('transform');
+                    mobileIcons[index].classList.toggle('rotate-180');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
