@@ -66,29 +66,36 @@
 <body class="bg-primary-20 bg-cover bg-full ">
     <!-- sidebar -->
     <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <button id="addServiceBtn" type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            <i class="fas fa-plus mr-2"></i>
-                            Add Service
-                        </button>
+    <div class="flex-shrink-0">
+        <button id="addServiceBtn" type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <i class="fas fa-plus mr-2"></i>
+            Add Service
+        </button>
+    </div>
+    
+    <!-- Modified this div to show on all screen sizes by removing 'hidden' class -->
+    <div class="ml-4 flex-shrink-0 flex items-center">
+        <!-- Improved notification button with indicator -->
+        <button type="button" class="relative p-1 rounded-full text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+            <span class="sr-only">View notifications</span>
+            <i class="fas fa-bell"></i>
+            <!-- Notification indicator dot -->
+            <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-1 ring-white">{{ asset('images/notif.svg') }}</span>
+        </button>
+        
+        <div class="ml-3 relative">
+            <div>
+                <button type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span class="sr-only">Open user menu</span>
+                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium overflow-hidden">
+                        US
                     </div>
-                    <div class="hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center">
-                        <button type="button" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            <span class="sr-only">View notifications</span>
-                            <i class="fas fa-bell"></i>
-                        </button>
-                        <div class="ml-3 relative">
-                            <div>
-                                <button type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                    <span class="sr-only">Open user menu</span>
-                                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium overflow-hidden">
-                                        US
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
     <aside
         class="bg-white w-[18%] p-2 h-auto flex flex-col rounded-xl top-[10%] left-[2%] fixed shadow-sm border border-gray-200">
         <div class="flex flex-col p-2 justify-center items-center gap-4 mb-4">

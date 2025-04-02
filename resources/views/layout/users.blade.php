@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Navigation Bar with Hover Effects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/animation.css') }}">
+    <script src={{ asset('js/palette.js') }}></script>
+    <style type="text/css">
+        /* Custom styles that are difficult to achieve with Tailwind alone */
+        .dropdown-menu {
+            transform-origin: top center;
+            perspective: 1000px;
+            backface-visibility: hidden;
+        }
+        
+        .nav-indicator {
+            position: absolute;
+            height: 3px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .menu-item:hover .menu-icon {
+            transform: translateY(-2px);
+        }
+        
+        .mega-menu-container {
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 0.3s ease;
+        }
+        
+        .mega-menu-active .mega-menu-container {
+            clip-path: inset(0 0 0 0);
+        }
+        
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        /* Fancy hover effect for menu items */
+        .fancy-hover-item {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+        
+        .fancy-hover-item::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            transform: scale(0.95);
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-color: #f0f9ff;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .fancy-hover-item:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Staggered animation for dropdown items */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        .dropdown-visible .stagger-item {
+            animation: staggerFadeIn 0.3s ease forwards;
+        }
+        
+        .dropdown-visible .stagger-item:nth-child(1) { animation-delay: 0.05s; }
+        .dropdown-visible .stagger-item:nth-child(2) { animation-delay: 0.1s; }
+        .dropdown-visible .stagger-item:nth-child(3) { animation-delay: 0.15s; }
+        .dropdown-visible .stagger-item:nth-child(4) { animation-delay: 0.2s; }
+        .dropdown-visible .stagger-item:nth-child(5) { animation-delay: 0.25s; }
+        .dropdown-visible .stagger-item:nth-child(6) { animation-delay: 0.3s; }
+        
+        @keyframes staggerFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile menu animations */
+        .mobile-menu {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: translateY(-10px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Hamburger menu animation */
+        .hamburger-line {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        /* Fix for resources dropdown overflow */
+        body {
+            overflow-x: hidden;
+        }
+        
+        #resources-dropdown {
+            max-width: 100vw;
+            left: 130%;
+            transform: translateX(-50%) translateY(-10px);
+        }
+        
+        #resources-dropdown.dropdown-visible {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300" id="main-header">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <div class="flex items-center">
+                        <a href="#" class="flex items-center space-x-2">
+                           <img src="./images/logo.png" alt="logo" class="w-8 h-8">
+                            <span class="text-xl font-bold text-neutral-900">Skill<span class="text-primary-600">Swap</span></span>
+                        </a>
+                    </div>  
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-1 relative">
+                    <div class="nav-indicator" id="nav-indicator"></div>
+                    
+                    <!-- Engagement Dropdown -->
+                    <div class="relative group nav-item" data-dropdown="engagement-dropdown">
+                        <button class="px-4 py-2 text-grey-700 rounded-md group-hover:text-primary-600 transition-colors duration-200 flex items-center" 
+                                aria-expanded="false"
+                                aria-haspopup="true">
+                            Engagement
+                            <svg class="ml-1 h-4 w-4 text-grey-400 group-hover:text-primary-500 transition-colors duration-200 dropdown-arrow" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        
+                        <!-- Engagement Dropdown Menu -->
+                        <div class="absolute left-0 mt-2 w-56 rounded-md shadow-dropdown bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-300 transform origin-top-left dropdown-menu z-20" id="engagement-dropdown">
+                            <div class="py-2 px-3 divide-y divide-gray-100">
+                                <div class="pb-2">
+                                    <h3 class="text-xs font-semibold text-grey-400 uppercase tracking-wider mb-2">Company</h3>
+                                    <a href="#" class="stagger-item block px-3 py-2 rounded-md text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700 fancy-hover-item">
+                                        <div class="flex items-center">
+                                            <svg class="mr-3 h-5 w-5 text-grey-400 group-hover:text-primary-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                                            </svg>
+                                            About
+                                        </div>
+                                    </a>
+                                    <a href="#" class="stagger-item block px-3 py-2 rounded-md text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700 fancy-hover-item">
+                                        <div class="flex items-center">
+                                            <svg class="mr-3 h-5 w-5 text-grey-400 group-hover:text-primary-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                                            </svg>
+                                            Customers
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="py-2">
+                                    <h3 class="text-xs font-semibold text-grey-400 uppercase tracking-wider mb-2">Resources</h3>
+                                    <a href="#" class="stagger-item block px-3 py-2 rounded-md text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700 fancy-hover-item">
+                                        <div class="flex items-center">
+                                            <svg class="mr-3 h-5 w-5 text-grey-400 group-hover:text-primary-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+                                            </svg>
+                                            Press
+                                        </div>
+                                    </a>
+                                    <a href="#" class="stagger-item block px-3 py-2 rounded-md text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700 fancy-hover-item">
+                                        <div class="flex items-center">
+                                            <svg class="mr-3 h-5 w-5 text-grey-400 group-hover:text-primary-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+                                                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                                            </svg>
+                                            Careers
+                                        </div>
+                                    </a>
+                                    <a href="#" class="stagger-item block px-3 py-2 rounded-md text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700 fancy-hover-item">
+                                        <div class="flex items-center">
+                                            <svg class="mr-3 h-5 w-5 text-grey-400 group-hover:text-primary-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                            </svg>
+                                            Privacy
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Resources Mega Menu -->
+                    <div class="relative group nav-item" data-dropdown="resources-dropdown">
+                        <button class="px-4 py-2 text-grey-700 rounded-md group-hover:text-primary-600 transition-colors duration-200 flex items-center"
+                                aria-expanded="false"
+                                aria-haspopup="true">
+                            Resources
+                            <svg class="ml-1 h-4 w-4 text-grey-400 group-hover:text-primary-500 transition-colors duration-200 dropdown-arrow" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        
+                        <!-- Resources Mega Menu -->
+                        <div class="absolute left-1/2 -translate-x-1/2 max-w-7xl w-screen px-4 sm:px-6 opacity-0 invisible transition-all duration-300 transform dropdown-menu z-20" id="resources-dropdown">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 bg-white p-6 rounded-lg shadow-dropdown ring-1 ring-black ring-opacity-5 mt-2">
+                                <!-- Column 1 -->
+                                <div>
+                                    <h3 class="text-sm font-semibold text-grey-900 mb-3">Documentation</h3>
+                                    <ul class="space-y-2">
+                                        <li class="stagger-item">
+                                            <a href="#" class="text-sm text-grey-700 hover:text-primary-600 flex items-center">
+                                                <svg class="mr-2 h-5 w-5 text-grey-400" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                                                </svg>
+                                                Guides
+                                            </a>
+                                        </li>
+                                        <li class="stagger-item">
+                                            <a href="#" class="text-sm text-grey-700 hover:text-primary-600 flex items-center">
+                                                <svg class="mr-2 h-5 w-5 text-grey-400" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                </svg>
+                                                API Reference
+                                            </a>
+                                        </li>
+                                        <li class="stagger-item">
+                                            <a href="#" class="text-sm text-grey-700 hover:text-primary-600 flex items-center">
+                                                <svg class="mr-2 h-5 w-5 text-grey-400" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                                </svg>
+                                                Tutorials
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Column 2 -->
+                                <div>
+                                    <h3 class="text-sm font-semibold text-grey-900 mb-3">Community</h3>
+                                    <ul class="space-y-2">
+                                        <li class="stagger-item">
+                                            <a href="#" class="text-sm text-grey-700 hover:text-primary-600 flex items-center">
+                                                <svg class="mr-2 h-5 w-5 text-grey-400" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                                                    <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                                                </svg>
+                                                Forum
+                                            </a>
+                                        </li>
+                                        <li class="stagger-item">
+                                            <a href="#" class="text-sm text-grey-700 hover:text-primary-600 flex items-center">
+                                                <svg class="mr-2 h-5 w-5 text-grey-400" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd" />
+                                                </svg>
+                                                Events
+                                            </a>
+                                        </li>
+                                        <li class="stagger-item">
+                                            <a href="#" class="text-sm text-grey-700 hover:text-primary-600 flex items-center">
+                                                <svg class="mr-2 h-5 w-5 text-grey-400" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                                                </svg>
+                                                Webinars
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Column 3 -->
+                                <div class="col-span-2">
+                                    <h3 class="text-sm font-semibold text-grey-900 mb-3">Featured Resources</h3>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <!-- Featured Item 1 -->
+                                        <div class="stagger-item bg-primary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+                                            <div class="p-4">
+                                                <div class="flex justify-between items-center mb-2">
+                                                    <span class="text-xs text-grey-500">Mar 16, 2023</span>
+                                                    <span class="text-xs font-medium text-primary-600 bg-primary-100 px-2 py-1 rounded-full">Marketing</span>
+                                                </div>
+                                                <h3 class="text-base font-medium text-grey-900 mb-2">Boost your conversion rate</h3>
+                                                <p class="text-sm text-grey-600 mb-3">Learn how to optimize your landing pages and improve your conversion rates with our proven strategies.</p>
+                                                <a href="#" class="text-sm font-medium text-primary-600 hover:text-primary-700 inline-flex items-center">
+                                                    Read more
+                                                    <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Featured Item 2 -->
+                                        <div class="stagger-item bg-grey-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+                                            <div class="p-4">
+                                                <div class="flex justify-between items-center mb-2">
+                                                    <span class="text-xs text-grey-500">Mar 10, 2023</span>
+                                                    <span class="text-xs font-medium text-grey-600 bg-grey-100 px-2 py-1 rounded-full">Sales</span>
+                                                </div>
+                                                <h3 class="text-base font-medium text-grey-900 mb-2">How to use search engine optimization</h3>
+                                                <p class="text-sm text-grey-600 mb-3">Discover how to leverage SEO to drive more traffic to your website and increase your sales.</p>
+                                                <a href="#" class="text-sm font-medium text-grey-600 hover:text-grey-700 inline-flex items-center">
+                                                    Read more
+                                                    <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Simple Dropdown -->
+                    <div class="relative group nav-item" data-dropdown="products-dropdown">
+                        <button class="px-4 py-2 text-grey-700 rounded-md group-hover:text-primary-600 transition-colors duration-200 flex items-center"
+                                aria-expanded="false"
+                                aria-haspopup="true">
+                            Products
+                            <svg class="ml-1 h-4 w-4 text-grey-400 group-hover:text-primary-500 transition-colors duration-200 dropdown-arrow" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        
+                        <!-- Products Dropdown Menu -->
+                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-dropdown bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-300 transform origin-top-left dropdown-menu z-20" id="products-dropdown">
+                            <div class="py-1">
+                                <a href="#" class="stagger-item block px-4 py-2 text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700">Analytics</a>
+                                <a href="#" class="stagger-item block px-4 py-2 text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700">Automation</a>
+                                <a href="#" class="stagger-item block px-4 py-2 text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700">Customer Support</a>
+                                <a href="#" class="stagger-item block px-4 py-2 text-sm text-grey-700 hover:bg-primary-50 hover:text-primary-700">Marketing</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Regular Links -->
+                    <a href="#" class="px-4 py-2 text-grey-700 rounded-md hover:text-primary-600 transition-colors duration-200 nav-item">Pricing</a>
+                    <a href="#" class="px-4 py-2 text-grey-700 rounded-md hover:text-primary-600 transition-colors duration-200 nav-item">Contact</a>
+                </nav>
+
+                <!-- Right Side Navigation -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <button id="addServiceBtn" type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i class="fas fa-plus mr-2"></i>
+                            Add Service
+                        </button>
+                    </div>
+                    <div class="hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center">
+                        <button type="button" class="bg-white p-1 rounded-full text-grey-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <span class="sr-only">View notifications</span>
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <div class="ml-3 relative">
+                            <div>
+                                <button type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="sr-only">Open user menu</span>
+                                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium overflow-hidden">
+                                        US
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="hamburger flex flex-col justify-center items-center w-10 h-10 rounded-md focus:outline-none" id="mobile-menu-button" aria-label="Menu">
+                        <span class="hamburger-line w-6 h-0.5 bg-secondary-700 mb-1.5"></span>
+                        <span class="hamburger-line w-6 h-0.5 bg-secondary-700 mb-1.5"></span>
+                        <span class="hamburger-line w-6 h-0.5 bg-secondary-700"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden absolute w-full bg-white shadow-lg z-40" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <!-- Mobile Engagement Dropdown -->
+                <div>
+                    <button class="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700" id="mobile-engagement-button">
+                        Engagement
+                        <svg class="h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor" id="mobile-engagement-icon">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="hidden px-4 py-2 space-y-1" id="mobile-engagement-dropdown">
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">About</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Customers</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Press</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Careers</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Privacy</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile Resources Dropdown -->
+                <div>
+                    <button class="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700" id="mobile-resources-button">
+                        Resources
+                        <svg class="h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor" id="mobile-resources-icon">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="hidden px-4 py-2 space-y-1" id="mobile-resources-dropdown">
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Guides</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">API Reference</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Tutorials</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Forum</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Events</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Webinars</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile Products Dropdown -->
+                <div>
+                    <button class="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700" id="mobile-products-button">
+                        Products
+                        <svg class="h-5 w-5 text-secondary-400" viewBox="0 0 20 20" fill="currentColor" id="mobile-products-icon">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="hidden px-4 py-2 space-y-1" id="mobile-products-dropdown">
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Analytics</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Automation</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Customer Support</a>
+                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Marketing</a>
+                    </div>
+                </div>
+                
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Pricing</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Contact</a>
+                
+                <div class="pt-4 pb-3 border-t border-gray-200">
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-secondary-700 hover:bg-primary-50 hover:text-primary-700">Sign in</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium bg-primary-600 text-white hover:bg-primary-700 mt-2">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script src="{{ asset('js/navbar.js') }}"></script>
+</body>
+</html>
