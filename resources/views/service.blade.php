@@ -13,55 +13,82 @@
     <script src={{ asset('js/palette.js') }}></script>
 </head>
 <style>
-        /* Custom styles for the right sidebar */
+    /* Custom styles for the right sidebar */
+    .right-sidebar {
+        position: fixed;
+        right: 2%;
+        top: 10%;
+        width: 22%;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 10;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
         .right-sidebar {
-            position: fixed;
-            right: 2%;
-            top: 10%;
-            width: 22%;
-            max-height: 80vh;
-            overflow-y: auto;
-            z-index: 10;
+            width: 25%;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 1200px) {
-            .right-sidebar {
-                width: 25%;
-            }
-            main {
-                margin-right: calc(25% + 4%);
-            }
+        main {
+            margin-right: calc(25% + 4%);
+        }
+    }
+
+    @media (max-width: 992px) {
+        .right-sidebar {
+            position: static;
+            width: 50%;
+            max-height: none;
+            margin: 2rem auto;
         }
 
-        @media (max-width: 992px) {
-            .right-sidebar {
-                position: static;
-                width: 50%;
-                max-height: none;
-                margin: 2rem auto;
-            }
-            main {
-                margin-left: calc(18% + 4%);
-                margin-right: 2%;
-            }
+        main {
+            margin-left: calc(18% + 4%);
+            margin-right: 2%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        main {
+            margin-left: 2%;
+            margin-right: 2%;
         }
 
-        @media (max-width: 768px) {
-            main {
-                margin-left: 2%;
-                margin-right: 2%;
-            }
-            .right-sidebar {
-                width: 90%;
-            }
+        .right-sidebar {
+            width: 90%;
         }
-    </style>
+    }
+</style>
 
-@include('header')
+@include('layout/admin')
 
 <body class="bg-primary-20 bg-cover bg-full ">
     <!-- sidebar -->
+    <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <button id="addServiceBtn" type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i class="fas fa-plus mr-2"></i>
+                            Add Service
+                        </button>
+                    </div>
+                    <div class="hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center">
+                        <button type="button" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <span class="sr-only">View notifications</span>
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <div class="ml-3 relative">
+                            <div>
+                                <button type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="sr-only">Open user menu</span>
+                                    <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium overflow-hidden">
+                                        US
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     <aside
         class="bg-white w-[18%] p-2 h-auto flex flex-col rounded-xl top-[10%] left-[2%] fixed shadow-sm border border-gray-200">
         <div class="flex flex-col p-2 justify-center items-center gap-4 mb-4">
