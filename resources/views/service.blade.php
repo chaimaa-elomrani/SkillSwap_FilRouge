@@ -461,7 +461,7 @@
 
 
     <!-- add service modal -->
-    <div id="addServiceModal" class="fixed inset-0 z-50 hidden">
+    <div id="addServiceModal" class=" fixed inset-0 z-50 hidden">
         <div class="modal-overlay absolute inset-0 bg-black bg-opacity-50"></div>
         <div
             class="modal-container bg-white w-11/12 md:max-w-3xl mx-auto rounded-xl shadow-lg z-50 overflow-y-auto max-h-[90vh] relative">
@@ -591,33 +591,7 @@
                             </div>
                         </div>
 
-                        <!-- Service Image -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Service Image</label>
-                            <div
-                                class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                <div class="space-y-1 text-center">
-                                    <div id="imagePreview" class="image-preview hidden mb-3">
-                                        <img id="previewImg" src="#" alt="Preview">
-                                    </div>
-                                    <div id="uploadIcon" class="flex text-sm text-gray-600">
-                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
-                                            viewBox="0 0 48 48" aria-hidden="true">
-                                            <path
-                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <label for="serviceImage"
-                                            class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                                            <span class="block text-center">Upload an image</span>
-                                            <input id="serviceImage" name="serviceImage" type="file" class="sr-only"
-                                                accept="image/*">
-                                        </label>
-                                    </div>
-                                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 5MB</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <!-- Form Actions -->
@@ -637,6 +611,33 @@
     </div>
 
     <script>{{ asset('js/service.js') }}</script>
+
+    <script>
+    const addService = document.getElementById('addPost');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const closeModal = document.getElementById('closeModal');
+    const addServiceModal = document.getElementById('addServiceModal');
+    
+    addService.addEventListener('click', function(){
+        addServiceModal.style.display = 'block';
+    })
+
+    cancelBtn.addEventListener('click', function(){
+        addServiceModal.style.display = 'none';
+    })
+
+    closeModal.addEventListener('click', function(){
+        addServiceModal.style.display = 'none';
+    })
+
+    window.addEventListener('click', function(event) {
+        if (event.target === addServiceModal) {
+            addServiceModal.style.display = 'none';
+        }
+    });
+
+    
+    </script>
 </body>
 
 </html>
