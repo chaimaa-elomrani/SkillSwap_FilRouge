@@ -14,6 +14,10 @@ class ServicesController extends Controller
         return view('service');
     }
 
+    public function postFrom(){
+        return view('users/postService');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
