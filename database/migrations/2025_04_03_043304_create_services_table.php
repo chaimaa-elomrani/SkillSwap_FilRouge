@@ -27,6 +27,17 @@ return new class extends Migration
             $table->text('additional_notes')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('service_matches', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->foreignId('requester_id')->references('id')->on('users')->onDelete('cascade');
+            $table->enum('status', ['pending', 'accepted', 'rejected', 'completed'])->default('pending');
+            $table->integer('match_score')->nullable(); // Store the match percentage/score
+            $table->text('request_message')->nullable();
+            $table->timestamp('completed_at')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
