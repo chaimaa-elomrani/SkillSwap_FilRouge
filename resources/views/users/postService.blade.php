@@ -282,27 +282,6 @@
                             </div>
                         </div>
                         
-                        <!-- Availability -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Availability <span class="text-red-500">*</span></label>
-                            <div class="mt-2 space-y-2">
-                                <div class="flex items-center">
-                                    <input id="availImmediate" name="availability" type="checkbox" value="immediate" 
-                                        class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                    <label for="availImmediate" class="ml-3 block text-sm font-medium text-gray-700">
-                                        Immediate Start
-                                    </label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input id="availScheduled" name="availability" type="checkbox" value="scheduled" 
-                                        class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                    <label for="availScheduled" class="ml-3 block text-sm font-medium text-gray-700">
-                                        Scheduled
-                                    </label>
-                                </div>
-                            </div>
-                            <p class="mt-1 text-xs text-gray-500">Select at least one option</p>
-                        </div>
                         
                         <!-- Additional Notes -->
                         <div>
