@@ -297,9 +297,7 @@
       </form>
     </div>
   </main>
-
-
-
+  <script src="{{ asset('js/signup.js') }}"></script>
 
 </body>
 
