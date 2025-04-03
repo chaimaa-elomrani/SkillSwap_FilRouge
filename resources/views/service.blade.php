@@ -61,17 +61,56 @@
     }
 </style>
 
-@include('layout/admin')
 
 <body class="bg-primary-20 bg-cover bg-full ">
-    <!-- sidebar -->
-    <div class="flex-shrink-0">
-        <button id="addServiceBtn" type="button"
-            class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-            <img src="{{ asset('images/addService.png') }}" alt="">
-            Add Service
+    @include('layout/users')
+    <!-- Right Side Navigation with Icons -->
+    <div class=" md:flex items-center space-x-4 z-50 absolute top-2 right-4">
+        <!-- Add Post Icon -->
+        <a id="addPost"
+            class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-primary-100">
+
+            <img src="{{ asset('images/addService.png') }}" alt="" class="h-6 w-6">
+
+            <span class="sr-only">Add Post</span>
+        </a>
+        <a href="{{ asset('explore') }}"
+            class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-primary-100">
+
+            <img src="{{ asset('images/explore.png') }}" alt="" class="h-6 w-6">
+
+            <span class="sr-only">Add Post</span>
+        </a>
+
+
+        <!-- Notifications Icon -->
+        <button
+            class="text-secondary-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-full hover:bg-gray-100 relative">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+            <span class="sr-only">Notifications</span>
+            <!-- Notification Badge -->
+            <span
+                class="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">3</span>
         </button>
+
+        <!-- Profile Icon -->
+        <button class="flex items-center text-secondary-700 hover:text-primary-600 transition-colors duration-200">
+            <div
+                class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center overflow-hidden border border-primary-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            </div>
+        </button>
+
     </div>
+
     <aside
         class="bg-white w-[18%] p-2 h-auto flex flex-col rounded-xl top-[10%] left-[2%] fixed shadow-sm border border-gray-200">
         <div class="flex flex-col p-2 justify-center items-center gap-4 mb-4">
@@ -421,6 +460,183 @@
     </section>
 
 
+    <!-- add service modal -->
+    <div id="addServiceModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-overlay absolute inset-0 bg-black bg-opacity-50"></div>
+        <div
+            class="modal-container bg-white w-11/12 md:max-w-3xl mx-auto rounded-xl shadow-lg z-50 overflow-y-auto max-h-[90vh] relative">
+            <div class="modal-content py-4 text-left px-6">
+                <!-- Header -->
+                <div class="flex justify-between items-center pb-3 border-b border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-900">Add New Service</h3>
+                    <button id="closeModal" class="modal-close text-gray-400 hover:text-gray-500">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Form -->
+                <form id="serviceForm" class="mt-4">
+                    <div class="space-y-6">
+                        <!-- Service Title -->
+                        <div>
+                            <label for="serviceTitle" class="block text-sm font-medium text-gray-700">Service
+                                Title</label>
+                            <input type="text" id="serviceTitle" name="serviceTitle"
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                placeholder="e.g. Professional Web Development" required>
+                        </div>
+
+                        <!-- Service Description -->
+                        <div>
+                            <label for="serviceDescription"
+                                class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea id="serviceDescription" name="serviceDescription" rows="4"
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                placeholder="Describe your service in detail..." required></textarea>
+                            <p class="mt-1 text-xs text-gray-500">Minimum 100 characters. Be specific about what you
+                                offer.</p>
+                        </div>
+
+                        <!-- Service Category -->
+                        <div>
+                            <label for="serviceCategory"
+                                class="block text-sm font-medium text-gray-700">Category</label>
+                            <div class="custom-select-wrapper mt-1">
+                                <div id="categorySelector" class="relative">
+                                    <button type="button" id="categoryButton"
+                                        class="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                        <span class="block truncate text-gray-500">Select a category</span>
+                                        <span
+                                            class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                    <div id="categoryDropdown"
+                                        class="custom-select-dropdown hidden bg-white border border-gray-300 mt-1">
+                                        <ul class="py-1 max-h-60 overflow-auto text-base">
+                                            <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-blue-50"
+                                                data-value="web-development">Web Development</li>
+                                            <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-blue-50"
+                                                data-value="mobile-development">Mobile Development</li>
+                                            <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-blue-50"
+                                                data-value="ui-ux-design">UI/UX Design</li>
+                                            <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-blue-50"
+                                                data-value="graphic-design">Graphic Design</li>
+                                            <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-blue-50"
+                                                data-value="content-writing">Content Writing</li>
+                                            <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-blue-50"
+                                                data-value="digital-marketing">Digital Marketing</li>
+                                            <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-blue-50"
+                                                data-value="video-editing">Video Editing</li>
+                                            <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-blue-50"
+                                                data-value="data-analysis">Data Analysis</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="selectedCategory" name="category" required>
+                            </div>
+                        </div>
+
+                        <!-- Skills/Tags -->
+                        <div>
+                            <label for="skillsInput" class="block text-sm font-medium text-gray-700">Skills &
+                                Expertise</label>
+                            <div
+                                class="mt-1 border border-gray-300 rounded-md shadow-sm focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+                                <div id="tagsContainer" class="tags-container bg-white rounded-md">
+                                    <div id="tagsDisplay" class="flex flex-wrap gap-2"></div>
+                                    <input type="text" id="skillsInput"
+                                        class="flex-grow min-w-[120px] border-0 p-0 focus:ring-0 sm:text-sm"
+                                        placeholder="Type a skill and press Enter">
+                                </div>
+                            </div>
+                            <p class="mt-1 text-xs text-gray-500">Add up to 10 skills that best describe your service
+                            </p>
+                        </div>
+
+                        <!-- Pricing -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="priceAmount" class="block text-sm font-medium text-gray-700">Price</label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" name="priceAmount" id="priceAmount" min="5" step="0.01"
+                                        class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                                        placeholder="0.00" required>
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <span class="text-gray-500 sm:text-sm">USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="priceType" class="block text-sm font-medium text-gray-700">Price
+                                    Type</label>
+                                <select id="priceType" name="priceType"
+                                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                    <option value="hourly">Per Hour</option>
+                                    <option value="fixed">Fixed Price</option>
+                                    <option value="project">Per Project</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Service Image -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Service Image</label>
+                            <div
+                                class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                <div class="space-y-1 text-center">
+                                    <div id="imagePreview" class="image-preview hidden mb-3">
+                                        <img id="previewImg" src="#" alt="Preview">
+                                    </div>
+                                    <div id="uploadIcon" class="flex text-sm text-gray-600">
+                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
+                                            viewBox="0 0 48 48" aria-hidden="true">
+                                            <path
+                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <label for="serviceImage"
+                                            class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                                            <span class="block text-center">Upload an image</span>
+                                            <input id="serviceImage" name="serviceImage" type="file" class="sr-only"
+                                                accept="image/*">
+                                        </label>
+                                    </div>
+                                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 5MB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="mt-6 flex justify-end space-x-3 border-t border-gray-200 pt-5">
+                        <button type="button" id="cancelBtn"
+                            class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Publish Service
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>{{ asset('js/service.js') }}</script>
 </body>
 
 </html>
