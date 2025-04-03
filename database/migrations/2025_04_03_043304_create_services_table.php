@@ -13,15 +13,19 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique(); 
-      
-            $table->json('skills')->nullable(); // List of skills as JSON
-            $table->enum('experience_level', ['Beginner', 'Intermediate', 'Expert'])->default('Beginner');
-            $table->json('languages')->nullable(); // Preferred languages as JSON
-            $table->integer('credits')->default(0); // Credits for transactions
-            $table->string('location')->nullable(); // Optional location
-            $table->string('portfolio_link')->nullable(); // Optional portfolio
-            $table->boolean('is_premium')->default(false); // Premium status
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('title', 60);
+            $table->text('description');
+            $table->string('category'); // This represents the major/field
+            $table->json('skills_required'); // Store skills as JSON array for flexibility and futur matching systeme 
+            $table->string('experience_level'); // 'beginner', 'intermediate', 'expert'
+            $table->string('target_audience')->nullable();
+            $table->json('languages')->nullable();
+            $table->integer('credit_cost')->default(0);
+            $table->string('completion_time');
+            $table->string('time_unit')->default('hours');
+            $table->text('additional_notes')->nullable();
+            $table->timestamps();
         });
     }
 
