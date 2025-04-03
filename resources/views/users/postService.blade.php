@@ -79,6 +79,8 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
+    <!-- Navbar -->
+
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header -->
         <div class="text-center mb-8 fade-in">
