@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('username')->unique(); 
+      
+            $table->json('skills')->nullable(); // List of skills as JSON
+            $table->enum('experience_level', ['Beginner', 'Intermediate', 'Expert'])->default('Beginner');
+            $table->json('languages')->nullable(); // Preferred languages as JSON
+            $table->integer('credits')->default(0); // Credits for transactions
+            $table->string('location')->nullable(); // Optional location
+            $table->string('portfolio_link')->nullable(); // Optional portfolio
+            $table->boolean('is_premium')->default(false); // Premium status
         });
     }
 

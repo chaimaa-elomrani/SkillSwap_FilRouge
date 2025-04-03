@@ -9,18 +9,54 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function showRegisterForm(){
+    public function showRegisterForm()
+    {
         return view('signup');
     }
 
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         // dd($request->all());
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|max:500|unique:users',
-            'password' => 'required|string|min:6',
+            $rules = [
+                'name' => 'required|string|max:255',
+                'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:255',
+                    'unique:users',
+
+                    // Ajouter un filtre pour éviter les emails temporaires
+                    function ($attribute, $value, $fail) {
+                        $blockedDomains = [
+                            'tempmail.com',
+                            'temp-mail.org',
+                            'guerrillamail.com',
+                            'yopmail.com',
+                            'maildrop.cc',
+                            'mailinator.com'
+                        ];
+
+                        $emailDomain = explode('@', $value)[1] ?? '';
+
+                        if (in_array($emailDomain, $blockedDomains)) {
+                            $fail('Les adresses email temporaires ne sont pas autorisées.');
+                        }
+                    },
+                ],
+                'password' => [
+                    'required',
+                    'string',
+                    'min:8',
+                    'confirmed',
+                ],
+                'terms' => 'required|accepted',
+            ]
         ]);
+
+
 
         User::create([
             'name' => $request->name,
@@ -34,22 +70,24 @@ class AuthController extends Controller
     }
 
 
-    public function showLoginForm(){
+    public function showLoginForm()
+    {
         return view('/login');
     }
 
-    public function login(Request $request){    
-     
+    public function login(Request $request)
+    {
+
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
-        if(Auth::attempt(['email'=>$request->email ,'password'=>$request->password])){
-            return redirect()->route('/signup', ['id'=>Auth::id()]);
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->route('/signup', ['id' => Auth::id()]);
         }
         return view('/signup');
     }
-  
+
 
 }
