@@ -50,7 +50,7 @@ class AuthController extends Controller
     {
         return view('/login');
     }
-    
+
 
     public function login(Request $request)
     {
@@ -61,7 +61,7 @@ class AuthController extends Controller
 
         $result = $this->authService->login($request->email, $request->password);
 
-        if(!$result){
+        if (!$result) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
@@ -71,19 +71,15 @@ class AuthController extends Controller
             'token_type' => $result['token_type'],
             'user' => $result['user']
         ]);
-
-   
     }
-
 
 
     public function logout(Request $request)
     {
-        $user = Auth::user();
-        $user->tokens()->delete();
-
+        $logedOut = $this->authService->logout();
+       
         return response()->json([
-            'message' => 'Logout successful'
+           'message' => $logedOut ? 'Logout successful' : 'Logout failed',
         ]);
     }
 

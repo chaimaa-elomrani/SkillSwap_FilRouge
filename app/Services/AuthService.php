@@ -35,4 +35,15 @@ class AuthService{
         ]);
     }
 
+
+    public function logout(){
+        $user = Auth::user();
+
+        if(!$user){
+            return false ; // User not authenticated
+        }
+
+        $user->tokens()->delete();
+        return true ;
+    }
 }
