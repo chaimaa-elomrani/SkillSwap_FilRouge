@@ -55,9 +55,19 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('/signup', ['id' => Auth::id()]);
+            return response()->json([ 'message' => 'Login successful'], 200);
         }
-        return view('/signup');
+
+        $user = User::where('email', $request->email)->first();
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Login successful',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'user' => $user
+        ]);;
     }
 
 
