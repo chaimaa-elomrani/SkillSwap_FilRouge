@@ -59,23 +59,20 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        $result = $this->authService->login($request->email, $request->password);
+
+        if(!$result){
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        // Auth success → get user
-        $user = User::where('email', $request->email)->first();
-
-        // Create token
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        // Return token + user info
         return response()->json([
             'message' => 'Login successful',
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user
+            'access_token' => $result['access_token'],
+            'token_type' => $result['token_type'],
+            'user' => $result['user']
         ]);
+
+   
     }
 
 

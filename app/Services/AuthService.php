@@ -19,4 +19,20 @@ class AuthService{
     }
 
 
+    public function login ($email, $password){
+        if (!Auth::attempt(['email' => $email, 'password' => $password])) {
+            return false ;
+        }
+
+        $user = User::where('email', $email)->first();
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Login successful',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'user' => $user
+        ]);
+    }
+
 }
