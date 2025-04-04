@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Services\AuthService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
@@ -10,6 +11,14 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    protected $authService;
+
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
+    }
+
+
     public function showRegisterForm()
     {
         return view('signup');
@@ -25,11 +34,7 @@ class AuthController extends Controller
         ]);
 
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-        ]);
+        $user = $this->authService->register($validated);
 
         auth()->login($user);
 
@@ -38,13 +43,14 @@ class AuthController extends Controller
             'user' => $user,
         ], 201);
     }
-   
+
 
 
     public function showLoginForm()
     {
         return view('/login');
     }
+    
 
     public function login(Request $request)
     {
@@ -52,14 +58,14 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-    
+
         if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
-    
+
         // Auth success → get user
         $user = User::where('email', $request->email)->first();
-    
+
         // Create token
         $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -71,7 +77,7 @@ class AuthController extends Controller
             'user' => $user
         ]);
     }
-    
+
 
 
     public function logout(Request $request)
