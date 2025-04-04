@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //authentification
-// Route::post('register',[AuthController::class , 'register']);
 Route::get('login',[AuthController::class , 'showLoginForm']);
-// Route::post('login',[AuthController::class , 'login']);
 Route::get('/signup',[AuthController::class , 'showRegisterForm']);
 
 
