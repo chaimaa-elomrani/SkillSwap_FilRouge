@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use App\Services\PostService;
 use Auth;
 use Illuminate\Http\Request;
@@ -73,7 +74,7 @@ class PostsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Posts::ge
     }
 
     /**

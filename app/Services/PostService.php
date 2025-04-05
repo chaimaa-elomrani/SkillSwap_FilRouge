@@ -15,6 +15,10 @@ class PostService{
     }
 
 
+    public function getAllPosts(){
+        return Posts::all();
+    }
+    
     /**
      * Store a newly created resource in storage.
      */
