@@ -28,6 +28,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        
         Schema::create('service_matches', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
@@ -37,6 +38,7 @@ return new class extends Migration
             $table->text('request_message')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->timestamps();
+         
         });
     }
 

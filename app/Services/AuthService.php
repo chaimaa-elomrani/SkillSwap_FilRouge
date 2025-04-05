@@ -15,7 +15,7 @@ class AuthService{
             'password' => Hash::make($data['password']),
         ]);
 
-        return $user;
+        return $user;   
     }
 
 
@@ -27,12 +27,11 @@ class AuthService{
         $user = User::where('email', $email)->first();
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json([
-            'message' => 'Login successful',
+        return [
             'access_token' => $token,
             'token_type' => 'Bearer',
             'user' => $user
-        ]);
+        ];
     }
 
 
