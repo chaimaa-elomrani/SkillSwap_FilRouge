@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 // use App\Http\Controllers\Controller;
 use Illuminate\Routing\Controller;
 use Validator;
+use function PHPUnit\Framework\isEmpty;
 
 class PostsController extends Controller
 {
@@ -79,6 +80,13 @@ class PostsController extends Controller
 
     public function getpostByCategory($category){
         
+        $post = Posts::getPostByCategory($category);
+
+        if(!$post = isEmpty($category)){
+            return response(['message' => 'no post found'], 404);
+        }
+
+        return response()->json($post);
     }
 
     /**
