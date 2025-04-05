@@ -2,10 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PostService;
+use Auth;
 use Illuminate\Http\Request;
+// use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
+use Validator;
 
 class PostsController extends Controller
 {
+
+    protected $postService;
+
+
+      public function __construct(PostService $postService){
+        $this->postService = $postService; 
+        $this->middleware('auth')->except('view, search');
+        $this->middleware('post.owner')->only([ 'update', 'destroy']);
+      }
+
     /**
      * Display a listing of the resource.
      */
@@ -14,15 +29,42 @@ class PostsController extends Controller
         return view('service');
     }
 
-    public function postFrom(){
-        return view('users/postService');
-    }
+    // public function postFrom(){
+    //     return view('users/postService');
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'title' => 'required|string|max:60',
+            'description' => 'required|string',
+            'category' => 'required|string',
+            'skills_required' => 'required|array',
+            'experience_level' => 'required|string|in:beginner,intermediate,expert',
+            'target_audience' => 'nullable|string',
+            'languages' => 'nullable|array',
+            'credit_cost' => 'integer|min:0',
+            'completion_time' => 'required|string',
+            'time_unit' => 'string|in:minutes,hours,days,weeks',
+            'additional_notes' => 'nullable|string',
+        ]);
+        if($validator->fails()){
+            return response()->json(['message' => $validator->errors()
+            ], 422);
+        }
+
+        $data = $validator->validated();
+        $data['user_id'] = Auth::id();
+        
+        $post = $this->postService->store($data);
+        
+        return response()->json([
+            'message' => 'Post created successfully',
+            'post' => $post
+        ], 201);
        
     }
 
