@@ -21,8 +21,8 @@ Route::get('/search',[SearchController::class , 'index']);
 
 
 // services 
-Route::get('/services',[ServicesController::class , 'index']);
-Route::get('/services/post',[ServicesController::class , 'postFrom']);
+// Route::get('/services',[ServicesController::class , 'index']);
+// Route::get('/services/post',[ServicesController::class , 'postFrom']);
 
 // admin
 Route::get('/dashboard',[DashboardController::class , 'index']);
