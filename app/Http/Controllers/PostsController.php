@@ -74,7 +74,11 @@ class PostsController extends Controller
      */
     public function show(string $id)
     {
-        $post = Posts::ge
+        $post = Posts::getAllPosts();
+    }
+
+    public function getpostByCategory($category){
+        
     }
 
     /**

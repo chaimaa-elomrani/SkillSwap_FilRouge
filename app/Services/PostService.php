@@ -18,7 +18,10 @@ class PostService{
     public function getAllPosts(){
         return Posts::all();
     }
-    
+
+    public function  getPostByCategory($category){
+        return Posts::where('category', $category)->get();
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -37,5 +40,7 @@ class PostService{
 
         return $post->update($data);
     }
+
+    
     
 }
