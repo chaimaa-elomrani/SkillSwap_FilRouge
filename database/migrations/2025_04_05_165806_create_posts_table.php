@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title', 60);
@@ -31,7 +31,7 @@ return new class extends Migration
         
         Schema::create('service_matches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
             $table->foreignId('requester_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('status', ['pending', 'accepted', 'rejected', 'completed'])->default('pending');
             $table->integer('match_score')->nullable(); // Store the match percentage/score
