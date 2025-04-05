@@ -23,5 +23,15 @@ class PostService{
         return Posts::create($data);
        
     }
+
+    public function update(array $data , $id){
+        $post = Posts::find($id);
+
+        if(!$post){
+            return false;
+        }
+
+        return $post->update($data);
+    }
     
 }
