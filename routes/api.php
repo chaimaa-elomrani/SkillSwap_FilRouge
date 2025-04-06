@@ -20,5 +20,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 // services posts 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/posts', [PostsController::class, 'store']);
 });
+
+Route::get('/posts', [PostsController::class, 'index']);
+Route::post('/posts', [PostsController::class, 'store']);
+Route::get('/posts/{id}', [PostsController::class, 'show']);
+Route::put('/posts/{id}', [PostsController::class, 'update']);
+Route::delete('/posts/{id}', [PostsController::class, 'destroy']);
+Route::get('/posts/user/{userId}', [PostsController::class, 'getPostByUser']);
+Route::get('/posts/category/{category}', [PostsController::class, 'getPostByCategory']);
