@@ -31,7 +31,7 @@ class PostService{
        
     }
 
-    public function update(array $data , $id){
+    public function updatePost(array $data , $id){
         $post = Posts::find($id);
 
         if(!$post){

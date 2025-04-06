@@ -79,7 +79,7 @@ class PostsController extends Controller
     }
 
     public function getpostByCategory($category){
-        
+
         $post = Posts::getPostByCategory($category);
 
         if(!$post = isEmpty($category)){
@@ -94,7 +94,32 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'title' => 'required|string|max:60',
+            'description' => 'required|string',
+            'category' => 'required|string',
+            'skills_required' => 'required|array',
+            'experience_level' => 'required|string|in:beginner,intermediate,expert',
+            'target_audience' => 'nullable|string',
+            'languages' => 'nullable|array',
+            'credit_cost' => 'integer|min:0',
+            'completion_time' => 'required|string',
+            'time_unit' => 'string|in:minutes,hours,days,weeks',
+            'additional_notes' => 'nullable|string',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['message' => $validator->errors()],422 );
+        }
+
+        $validatedData = $validator->validated();
+        $post = $this->postService->updatePost($validatedData , $id);
+
+        if(!$post){
+            return response()->json(['message' => 'Post not found'], 404);
+        }
+
+        return response()->json(['message' => 'Post updated successfully', 'post' => $this->postService->getPostById($id)]);
     }
 
     /**
