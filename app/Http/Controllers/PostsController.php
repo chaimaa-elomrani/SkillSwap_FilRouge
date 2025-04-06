@@ -127,6 +127,11 @@ class PostsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleted = $this->postService->deletePost($id);
+        if(!$deleted){
+            return response()->json(['message' => 'Post not found'], 404);
+        }
+
+        return response()->json(['message' => 'Post deleted successfully'], 200);
     }
 }
