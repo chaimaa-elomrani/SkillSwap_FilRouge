@@ -17,7 +17,7 @@ class PostService{
     public function getPostById($id){
         return Posts::find($id);
     }
-    
+
 
     public function getAllPosts(){
         return Posts::all();
@@ -45,6 +45,9 @@ class PostService{
         return $post->update($data);
     }
 
+    public function deletePost($id){
+        return Posts::destroy($id);
+    }
     
     
 }
