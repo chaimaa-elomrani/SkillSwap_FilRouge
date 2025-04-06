@@ -14,6 +14,10 @@ class PostService{
         return Posts::where('user_id', $userId)->get();
     }
 
+    public function getPostById($id){
+        return Posts::find($id);
+    }
+    
 
     public function getAllPosts(){
         return Posts::all();
