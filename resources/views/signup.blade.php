@@ -219,7 +219,8 @@
         <p class="text-gray-600 text-center text-sm ">Explore different services and connect with experts</p>
       </div>
 
-      <form class="flex flex-col gap-5 fade-in-delay-2">
+      <form class="flex flex-col gap-5 fade-in-delay-2" method="POST" action="/register">
+      @csrf
         <div class="px-8 md:px-12">
           <label for="name" class="text-gray-700 text-sm font-medium block mb-2">Full Name</label>
           <div class="relative">
@@ -228,7 +229,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
-            <input id="name" class="input-field w-full py-3 text-black pl-10 pr-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-input" type="text" name="name" placeholder="Enter your name" required>
+            <input id="name" name="name" class="input-field w-full py-3 text-black pl-10 pr-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-input" type="text" name="name" placeholder="Enter your name" required>
           </div>
         </div>
 
@@ -240,7 +241,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <input id="email" class="input-field w-full py-3 pl-10 pr-4 text-black border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-input" type="email" name="email" placeholder="Enter your email" required>
+            <input id="email" name="email" class="input-field w-full py-3 pl-10 pr-4 text-black border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-input" type="email" name="email" placeholder="Enter your email" required>
           </div>
         </div>
 
@@ -252,7 +253,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
-            <input id="password" class="input-field w-full text-black py-3 pl-10 pr-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-input" type="password" name="password" placeholder="Create a password" required minlength="8">
+            <input id="password" name="password" class="input-field w-full text-black py-3 pl-10 pr-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-input" type="password" name="password" placeholder="Create a password" required minlength="8">
             <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
               <button type="button" id="togglePassword" class="text-gray-400 hover:text-gray-600 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -264,6 +265,8 @@
           </div>
           <p class="text-xs text-gray-500 mt-2">Must be at least 8 characters long</p>
         </div>
+
+     
 
         <div class="px-8 md:px-12 mt-2">
           <button type="submit" class="primary-button bg-buttonBlue hover:bg-pink transition-all duration-300 px-6 py-3 w-full text-white font-medium rounded-xl">
