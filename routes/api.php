@@ -23,9 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::get('/posts', [PostsController::class, 'index']);
-Route::post('/posts', [PostsController::class, 'store']);
-Route::get('/posts/{id}', [PostsController::class, 'show']);
-Route::put('/posts/{id}', [PostsController::class, 'update']);
-Route::delete('/posts/{id}', [PostsController::class, 'destroy']);
-Route::get('/posts/user/{userId}', [PostsController::class, 'getPostByUser']);
-Route::get('/posts/category/{category}', [PostsController::class, 'getPostByCategory']);
+Route::post('/storePost', [PostsController::class, 'store'])->middleware('auth:sanctum');
+Route::get('/showPost', [PostsController::class, 'show'])->middleware('auth:sanctum');
+Route::put('/updatePost/{id}', [PostsController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('/deletePost/{id}', [PostsController::class, 'destroy'])->middleware('auth:sanctum');
+Route::get('/posts/user/{userId}', [PostsController::class, 'getPostByUser'])->middleware('auth:sanctum');
+Route::get('/posts/category/{category}', [PostsController::class, 'getPostByCategory'])->middleware('auth:sanctum');

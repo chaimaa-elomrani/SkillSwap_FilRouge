@@ -20,7 +20,9 @@ class PostService{
 
 
     public function getAllPosts(){
+        
         return Posts::all();
+
     }
 
     public function  getPostByCategory($category){

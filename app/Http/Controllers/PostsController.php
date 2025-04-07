@@ -20,7 +20,6 @@ class PostsController extends Controller
       public function __construct(PostService $postService){
         $this->postService = $postService; 
         $this->middleware('auth')->except('view, search');
-        $this->middleware('post.owner')->only([ 'update', 'destroy']);
       }
 
     /**
@@ -70,13 +69,24 @@ class PostsController extends Controller
        
     }
 
+
+    public function getPostByUser($userId){
+        $post = $this->postService->getPostByUser($userId);
+        if(!$post){
+            return response(['message' => 'no post found'], 404);
+        }
+        return response()->json($post);
+    }
+
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        $post = Posts::getAllPosts();
+            $post = $this->postService->getAllPosts();
+            return response()->json($post);
     }
+    
 
     public function getpostByCategory($category){
 
