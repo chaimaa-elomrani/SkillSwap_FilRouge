@@ -90,7 +90,7 @@ class PostsController extends Controller
 
     public function getpostByCategory($category){
 
-        $post = Posts::getPostByCategory($category);
+        $post = Posts::getpostByCategory($category);
 
         if(!$post = isEmpty($category)){
             return response(['message' => 'no post found'], 404);

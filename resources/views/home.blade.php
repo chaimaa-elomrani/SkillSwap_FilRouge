@@ -687,7 +687,7 @@
     </section>
     
     <!-- Footer -->
-    @include('footer')
+ 
 
     <!-- Back to top button -->
     <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary-600 text-white rounded-full p-3 shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">

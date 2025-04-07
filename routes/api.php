@@ -28,4 +28,4 @@ Route::get('/showPost', [PostsController::class, 'show'])->middleware('auth:sanc
 Route::put('/updatePost/{id}', [PostsController::class, 'update'])->middleware('auth:sanctum');
 Route::delete('/deletePost/{id}', [PostsController::class, 'destroy'])->middleware('auth:sanctum');
 Route::get('/posts/user/{userId}', [PostsController::class, 'getPostByUser'])->middleware('auth:sanctum');
-Route::get('/posts/category/{category}', [PostsController::class, 'getPostByCategory'])->middleware('auth:sanctum');
+Route::get('/posts/category/{category}', [PostsController::class, 'getpostByCategory'])->middleware('auth:sanctum');
