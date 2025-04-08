@@ -40,6 +40,11 @@ class RequiredSkillsController extends Controller
         return response()->json(['message' => 'Skill updated successfully']);
     }
 
+    public function destroy(RequiredSkills $skill){
+        $this->skillService->delete($skill);
+        return response()->json(['message' => 'Skill deleted successfully']);
+    }
+
 
 
 }
