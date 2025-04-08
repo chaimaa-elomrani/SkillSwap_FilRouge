@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RequiredSkills;
+use App\Models\Skills;
 use Illuminate\Http\Request;
 
-class RequiredSkillsController extends Controller
+class SkillsController extends Controller
 {
 
     protected $skillService;
+
 
     public function __construct($skillService)
     {
         $this->skillService = $skillService;
     }
 
-    // public function index(){
-    //     return view('requiredSkills');
-    // }
+    public function index()
+    {
+        $skills = $this->service->getAllSkills();
+        return view('skills.index', compact('skills'));
+    }
 
     public function store(Request $request)
     {
@@ -26,11 +29,11 @@ class RequiredSkillsController extends Controller
         ]);
 
         $skill = $this->skillService->create($validated['name']);
-        return response()->json($skill);
+        return redirect()
     }
 
 
-    public function update(Request $request, RequiredSkills $skill)
+    public function update(Request $request, Skills $skill)
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
@@ -40,10 +43,12 @@ class RequiredSkillsController extends Controller
         return response()->json(['message' => 'Skill updated successfully']);
     }
 
-    public function destroy(RequiredSkills $skill){
+    public function destroy(Skills $skill){
         $this->skillService->delete($skill);
         return response()->json(['message' => 'Skill deleted successfully']);
     }
+
+  
 
 
 

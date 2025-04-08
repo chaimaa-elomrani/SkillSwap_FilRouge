@@ -2,38 +2,37 @@
 
 namespace App\Services;
 use App\Models\Posts;
-use App\Models\RequiredSkills;
-use App\Models\skills_required;
+use App\Models\Skills;
 use Illuminate\Database\Eloquent\Collection; 
 
 
-class RequiredSkillService{
+class SkillService{
 
     public function findOrCreate(string $name){
-        return RequiredSkills::firstOrCreate(['name' => trim($name)]);
+        return Skills::firstOrCreate(['name' => trim($name)]);
 
     }
 
 
     public function getAllSkills(){
-        return RequiredSkills::orderBy('name')->get();
+        return Skills::orderBy('name')->get();
     }
 
     public function create(array $data){
-        return RequiredSkills::create($data);
+        return Skills::create($data);
     }
 
-    public function update(RequiredSkills $skill, array $data){
+    public function update(Skills $skill, array $data){
         return $skill->update($data);
     }
 
-    public function delete(RequiredSkills $skill){
+    public function delete(Skills $skill){
         return $skill->delete();
     }
 
     public function searchSkills(string $query): Collection
     {
-        return RequiredSkills::where('name', 'like', "%{$query}%")
+        return Skills::where('name', 'like', "%{$query}%")
             ->orWhere('description', 'like', "%{$query}%")
             ->get();
     }

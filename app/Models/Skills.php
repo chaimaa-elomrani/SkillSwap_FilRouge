@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RequiredSkills extends Model
+class Skills extends Model
 {
     protected $fillable = ['name'];
 
@@ -13,7 +13,7 @@ class RequiredSkills extends Model
         $skillIds = [];
         foreach ($skills as $name) {
             $skill = self::firstOrCreate(
-                ['name' => strtolower(trim($name))], // normalize input
+                ['name' => strtolower(trim($name))],
                 ['name' => ucfirst($name)]
             );
             $skillIds[] = $skill->id;
