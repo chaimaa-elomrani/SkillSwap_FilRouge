@@ -27,11 +27,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('service');
+        return view('posts');
     }
 
     public function postFrom(){
-        return view('users/postService');
+        return view('createPost');
     }
 
     /**
