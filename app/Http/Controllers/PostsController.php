@@ -137,4 +137,11 @@ class PostsController extends Controller
 
         return response()->json(['message' => 'Post deleted successfully'], 200);
     }
+
+
+//     public function create()
+// {
+//     $skills = $this->requiredSkillService->getAllSkills(); // get all existing skills
+//     return view('posts.create', compact('skills'));
+// }
 }

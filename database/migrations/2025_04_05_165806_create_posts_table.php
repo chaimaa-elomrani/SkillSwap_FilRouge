@@ -16,9 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title', 60);
             $table->text('description');
-            $table->string('category'); // This represents the major/field
-            $table->json('skills_required'); // Store skills as JSON array for flexibility and futur matching systeme 
-            $table->string('experience_level'); // 'beginner', 'intermediate', 'expert'
+            $table->string('category'); 
+            $table->string('experience_level'); 
             $table->string('target_audience')->nullable();
             $table->json('languages')->nullable();
             $table->integer('credit_cost')->default(0);
