@@ -35,10 +35,8 @@ class Posts extends Model
         return $this->belongsTo(User::class);
     }
     
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
+    public function domains(){
+        return $this->belongsToMany(Domains::class, 'post_domains');
     }
 
     public function skills(){
@@ -48,6 +46,6 @@ class Posts extends Model
     public function languages(){
         return $this->belongsToMany(languages::class, 'post_languages');
     }
-    
+
 }
 
