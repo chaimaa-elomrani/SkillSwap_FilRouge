@@ -20,4 +20,8 @@ class skills_required extends Model
         }
         return $skillIds;
     }
+
+    public function posts(){
+        return $this->belongsToMany(Posts::class);
+    }
 }
