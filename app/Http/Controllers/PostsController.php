@@ -52,20 +52,13 @@ class PostsController extends Controller
             'time_unit' => 'string|in:minutes,hours,days,weeks',
             'additional_notes' => 'nullable|string',
         ]);
-        if($validator->fails()){
-            return response()->json(['message' => $validator->errors()
-            ], 422);
-        }
 
-        $data = $validator->validated();
-        $data['user_id'] = Auth::id();
-        
-        $post = $this->postService->store($data);
-        
-        return response()->json([
-            'message' => 'Post created successfully',
-            'post' => $post
-        ], 201);
+        $validated['user_id'] = auth()->id();
+
+        $this->postService->store($validated);
+
+        session()->flash('success', 'Post created successfully');
+        return redirect()->route('posts.index');
        
     }
 
