@@ -12,4 +12,9 @@ class RequiredSkillService{
         return RequiredSkills::firstOrCreate(['name' => trim($name)]);
 
     }
+
+
+    public function getAllSkills(){
+        return RequiredSkills::orderBy('name')->get();
+    }
 }
