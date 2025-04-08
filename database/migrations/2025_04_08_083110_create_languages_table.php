@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Posts;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Factories\BelongsToManyRelationship
+
 use App\Models\Post;
 
 return new class extends Migration
@@ -28,7 +31,4 @@ return new class extends Migration
     }
 
 
-    public function posts(){
-        return $this->belongsToMany(Post::class, 'post_language');
-    }
 };
