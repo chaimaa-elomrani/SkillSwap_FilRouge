@@ -3,9 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,9 +21,11 @@ Route::get('/search',[SearchController::class , 'index']);
 
 
 
-// services 
-// Route::get('/services',[ServicesController::class , 'index']);
-// Route::get('/services/post',[ServicesController::class , 'postFrom']);
+// posts pages 
+Route::get('/posts',[PostsController::class , 'index']);
+Route::get('/post/create',[PostsController::class , 'postFrom']);
+Route::post('/post/create',[PostsController::class , 'store']);
+
 
 // admin
 Route::get('/dashboard',[DashboardController::class , 'index']);

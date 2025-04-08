@@ -93,7 +93,7 @@
         
         <!-- Form Container -->
         <div class="bg-white rounded-xl shadow-md overflow-hidden fade-in">
-            <form id="serviceForm" class="p-6">
+            <form id="serviceForm" class="p-6" method="post" action="/post/create">
                 <!-- Section Navigation -->
                 <div class="flex border-b border-gray-200 mb-6">
                     <button type="button" id="navBasic" class="section-nav px-4 py-2 font-medium text-blue-600 border-b-2 border-blue-600">Basic Info</button>
@@ -107,7 +107,7 @@
                         <!-- Service Title -->
                         <div>
                             <label for="serviceTitle" class="block text-sm font-medium text-gray-700">Service Title <span class="text-red-500">*</span></label>
-                            <input type="text" id="serviceTitle" name="serviceTitle" 
+                            <input type="text" id="serviceTitle" name="title" 
                                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                 placeholder="A short, clear name for your service" required>
                             <p class="mt-1 text-xs text-gray-500">Keep it concise and descriptive (max 60 characters)</p>
@@ -116,7 +116,7 @@
                         <!-- Service Description -->
                         <div>
                             <label for="serviceDescription" class="block text-sm font-medium text-gray-700">Description <span class="text-red-500">*</span></label>
-                            <textarea id="serviceDescription" name="serviceDescription" rows="5"
+                            <textarea id="serviceDescription" name="description" rows="5"
                                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                 placeholder="Provide a detailed explanation of what your service includes..." required></textarea>
                             <p class="mt-1 text-xs text-gray-500">Minimum 100 characters. Be specific about what you offer, your process, and expected outcomes.</p>
@@ -140,7 +140,7 @@
                         <!-- Service Category -->
                         <div>
                             <label for="serviceCategory" class="block text-sm font-medium text-gray-700">Category <span class="text-red-500">*</span></label>
-                            <select id="serviceCategory" name="serviceCategory" 
+                            <select id="serviceCategory" name="category" 
                                 class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
                                 <option value="" disabled selected>Choose a relevant category</option>
                                 <option value="development">Development</option>
@@ -160,7 +160,7 @@
                             <div class="mt-1 border border-gray-300 rounded-md shadow-sm focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
                                 <div id="tagsContainer" class="tags-container">
                                     <div id="tagsDisplay" class="flex flex-wrap gap-2"></div>
-                                    <input type="text" id="skillsInput" 
+                                    <input type="text" id="skillsInput" name="skills_required"
                                         class="flex-grow min-w-[120px] border-0 p-0 focus:ring-0 sm:text-sm"
                                         placeholder="Type a skill and press Enter">
                                 </div>
@@ -174,21 +174,21 @@
                             <label class="block text-sm font-medium text-gray-700">Preferred Experience Level <span class="text-red-500">*</span></label>
                             <div class="mt-2 space-y-2">
                                 <div class="flex items-center">
-                                    <input id="expBeginner" name="experienceLevel" type="radio" value="beginner" 
+                                    <input id="expBeginner" name="experience_level" type="radio" value="beginner" 
                                         class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300" required>
                                     <label for="expBeginner" class="ml-3 block text-sm font-medium text-gray-700">
                                         Beginner
                                     </label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input id="expIntermediate" name="experienceLevel" type="radio" value="intermediate" 
+                                    <input id="expIntermediate" name="experience_level" type="radio" value="intermediate" 
                                         class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
                                     <label for="expIntermediate" class="ml-3 block text-sm font-medium text-gray-700">
                                         Intermediate
                                     </label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input id="expExpert" name="experienceLevel" type="radio" value="expert" 
+                                    <input id="expExpert" name="experience_level" type="radio" value="expert" 
                                         class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
                                     <label for="expExpert" class="ml-3 block text-sm font-medium text-gray-700">
                                         Expert
@@ -200,7 +200,7 @@
                         <!-- Target Audience -->
                         <div>
                             <label for="targetAudience" class="block text-sm font-medium text-gray-700">Target Audience <span class="text-red-500">*</span></label>
-                            <select id="targetAudience" name="targetAudience" 
+                            <select id="targetAudience" name="target_audience" 
                                 class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
                                 <option value="" disabled selected>Select target audience</option>
                                 <option value="individuals">Individuals</option>
@@ -252,7 +252,7 @@
                         <div>
                             <label for="creditCost" class="block text-sm font-medium text-gray-700">Credit Cost <span class="text-red-500">*</span></label>
                             <div class="mt-1 relative rounded-md shadow-sm">
-                                <input type="number" name="creditCost" id="creditCost" min="1" step="1"
+                                <input type="number" name="credit_cost" id="creditCost" min="1" step="1"
                                     class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-3 pr-12 sm:text-sm border-gray-300 rounded-md"
                                     placeholder="0" required>
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -267,12 +267,12 @@
                             <label for="estimatedTime" class="block text-sm font-medium text-gray-700">Estimated Time to Complete <span class="text-red-500">*</span></label>
                             <div class="mt-1 grid grid-cols-2 gap-4">
                                 <div>
-                                    <input type="number" name="timeValue" id="timeValue" min="1" step="1"
+                                    <input type="number" name="completion_time" id="timeValue" min="1" step="1"
                                         class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-3 pr-3 sm:text-sm border-gray-300 rounded-md"
                                         placeholder="Duration" required>
                                 </div>
                                 <div>
-                                    <select id="timeUnit" name="timeUnit" 
+                                    <select id="timeUnit" name="time_unit" 
                                         class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
                                         <option value="hours">Hours</option>
                                         <option value="days">Days</option>
@@ -282,32 +282,10 @@
                             </div>
                         </div>
                         
-                        <!-- Availability -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Availability <span class="text-red-500">*</span></label>
-                            <div class="mt-2 space-y-2">
-                                <div class="flex items-center">
-                                    <input id="availImmediate" name="availability" type="checkbox" value="immediate" 
-                                        class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                    <label for="availImmediate" class="ml-3 block text-sm font-medium text-gray-700">
-                                        Immediate Start
-                                    </label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input id="availScheduled" name="availability" type="checkbox" value="scheduled" 
-                                        class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                    <label for="availScheduled" class="ml-3 block text-sm font-medium text-gray-700">
-                                        Scheduled
-                                    </label>
-                                </div>
-                            </div>
-                            <p class="mt-1 text-xs text-gray-500">Select at least one option</p>
-                        </div>
-                        
                         <!-- Additional Notes -->
                         <div>
                             <label for="additionalNotes" class="block text-sm font-medium text-gray-700">Additional Notes</label>
-                            <textarea id="additionalNotes" name="additionalNotes" rows="3"
+                            <textarea id="additionalNotes" name="additional_notes" rows="3"
                                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                 placeholder="Any other details you'd like to share..."></textarea>
                         </div>
@@ -367,6 +345,404 @@
         </div>
     </div>
     
-   <script src="{{ asset('js/createPost.js') }}"></script>
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Run animations
+            runAnimations();
+            
+            // Initialize form navigation
+            initFormNavigation();
+            
+            // Initialize tags input
+            initTagsInput();
+            
+            // Initialize form validation and submission
+            initFormHandling();
+            
+            // Initialize preview card
+            initPreview();
+        });
+        
+        // Run entrance animations
+        function runAnimations() {
+            // Animate fade-in elements
+            gsap.to('.fade-in', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: 'power2.out'
+            });
+            
+            // Animate slide-in elements
+            gsap.to('.slide-in-right', {
+                opacity: 1,
+                x: 0,
+                duration: 0.6,
+                delay: 0.3,
+                ease: 'power2.out'
+            });
+        }
+        
+        // Initialize form navigation
+        function initFormNavigation() {
+            const sections = ['basic', 'skills', 'transaction'];
+            const navButtons = {
+                navBasic: 'basic',
+                navSkills: 'skills',
+                navTransaction: 'transaction'
+            };
+            
+            // Section navigation buttons
+            Object.keys(navButtons).forEach(btnId => {
+                document.getElementById(btnId).addEventListener('click', function() {
+                    showSection(navButtons[btnId]);
+                });
+            });
+            
+            // Next/Previous buttons
+            document.getElementById('basicNextBtn').addEventListener('click', function() {
+                if (validateSection('basic')) {
+                    showSection('skills');
+                }
+            });
+            
+            document.getElementById('skillsPrevBtn').addEventListener('click', function() {
+                showSection('basic');
+            });
+            
+            document.getElementById('skillsNextBtn').addEventListener('click', function() {
+                if (validateSection('skills')) {
+                    showSection('transaction');
+                }
+            });
+            
+            document.getElementById('transactionPrevBtn').addEventListener('click', function() {
+                showSection('skills');
+            });
+            
+            // Function to show a specific section
+            function showSection(sectionName) {
+                // Hide all sections
+                sections.forEach(section => {
+                    document.getElementById(`${section}Section`).classList.add('hidden');
+                    document.getElementById(`nav${section.charAt(0).toUpperCase() + section.slice(1)}`).classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+                    document.getElementById(`nav${section.charAt(0).toUpperCase() + section.slice(1)}`).classList.add('text-gray-500');
+                });
+                
+                // Show the selected section
+                document.getElementById(`${sectionName}Section`).classList.remove('hidden');
+                document.getElementById(`nav${sectionName.charAt(0).toUpperCase() + sectionName.slice(1)}`).classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+                document.getElementById(`nav${sectionName.charAt(0).toUpperCase() + sectionName.slice(1)}`).classList.remove('text-gray-500');
+                
+                // Animate the newly visible section
+                gsap.fromTo(`#${sectionName}Section .slide-in-right`, 
+                    { opacity: 0, x: 30 },
+                    { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' }
+                );
+                
+                // Update progress bar
+                updateProgress(sectionName);
+            }
+            
+            // Update progress bar based on current section
+            function updateProgress(sectionName) {
+                const progressBar = document.getElementById('progressBar');
+                switch(sectionName) {
+                    case 'basic':
+                        progressBar.style.width = '33%';
+                        break;
+                    case 'skills':
+                        progressBar.style.width = '66%';
+                        break;
+                    case 'transaction':
+                        progressBar.style.width = '100%';
+                        break;
+                }
+            }
+        }
+        
+        // Initialize tags input functionality
+        function initTagsInput() {
+            const tagsInput = document.getElementById('skillsInput');
+            const tagsDisplay = document.getElementById('tagsDisplay');
+            const tagsHidden = document.getElementById('skillsHidden');
+            let tags = [];
+            
+            // Add tag when Enter is pressed
+            tagsInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ',') {
+                    e.preventDefault();
+                    
+                    const tag = tagsInput.value.trim();
+                    if (tag && !tags.includes(tag) && tags.length < 10) {
+                        addTag(tag);
+                        tagsInput.value = '';
+                        updateHiddenField();
+                    }
+                }
+            });
+            
+            // Function to add a tag
+            function addTag(tag) {
+                tags.push(tag);
+                
+                const tagElement = document.createElement('div');
+                tagElement.className = 'tag';
+                tagElement.innerHTML = `
+                    ${tag}
+                    <span class="tag-remove ml-1" data-tag="${tag}">&times;</span>
+                `;
+                tagsDisplay.appendChild(tagElement);
+                
+                // Add click event to remove tag
+                tagElement.querySelector('.tag-remove').addEventListener('click', function() {
+                    const tagToRemove = this.getAttribute('data-tag');
+                    removeTag(tagToRemove, tagElement);
+                });
+                
+                // Animate tag entrance
+                gsap.from(tagElement, {
+                    scale: 0.8,
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: 'back.out(1.7)'
+                });
+            }
+            
+            // Function to remove a tag
+            function removeTag(tag, element) {
+                tags = tags.filter(t => t !== tag);
+                
+                // Animate tag removal
+                gsap.to(element, {
+                    scale: 0.8,
+                    opacity: 0,
+                    duration: 0.2,
+                    onComplete: () => {
+                        element.remove();
+                        updateHiddenField();
+                    }
+                });
+            }
+            
+            // Update hidden field with tags
+            function updateHiddenField() {
+                tagsHidden.value = tags.join(',');
+            }
+        }
+        
+        // Initialize form validation and submission
+        function initFormHandling() {
+            const form = document.getElementById('serviceForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate all sections
+                if (validateSection('basic') && validateSection('skills') && validateSection('transaction')) {
+                    // Show preview
+                    updatePreview();
+                    document.getElementById('previewCard').classList.remove('hidden');
+                    
+                    // Scroll to preview
+                    document.getElementById('previewCard').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Animate preview card
+                    gsap.fromTo('#previewCard', 
+                        { opacity: 0, y: 20 },        
+                        { opacity: 0, y: 20 },
+                        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
+                    );
+                    
+                    // In a real application, you would submit the form data to a server here
+                    console.log('Form submitted successfully!');
+                    
+                    // For demo purposes, we'll just show a success message
+                    showSuccessMessage();
+                }
+            });
+            
+            // Show success message
+            function showSuccessMessage() {
+                // Create success message
+                const successMsg = document.createElement('div');
+                successMsg.className = 'fixed top-4 right-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md';
+                successMsg.innerHTML = `
+                    <div class="flex items-center">
+                        <svg class="h-6 w-6 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p>Service posted successfully!</p>
+                    </div>
+                `;
+                document.body.appendChild(successMsg);
+                
+                // Animate success message
+                gsap.fromTo(successMsg, 
+                    { opacity: 0, x: 20 },
+                    { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' }
+                );
+                
+                // Remove after 5 seconds
+                setTimeout(() => {
+                    gsap.to(successMsg, {
+                        opacity: 0,
+                        y: -10,
+                        duration: 0.3,
+                        onComplete: () => successMsg.remove()
+                    });
+                }, 5000);
+            }
+        }
+        
+        // Validate form sections
+        function validateSection(sectionName) {
+            let isValid = true;
+            
+            switch(sectionName) {
+                case 'basic':
+                    // Validate title
+                    const title = document.getElementById('serviceTitle').value.trim();
+                    if (!title) {
+                        highlightError('serviceTitle');
+                        isValid = false;
+                    }
+                    
+                    // Validate description
+                    const description = document.getElementById('serviceDescription').value.trim();
+                    if (!description || description.length < 100) {
+                        highlightError('serviceDescription');
+                        isValid = false;
+                    }
+                    break;
+                    
+                case 'skills':
+                    // Validate category
+                    const category = document.getElementById('serviceCategory').value;
+                    if (!category) {
+                        highlightError('serviceCategory');
+                        isValid = false;
+                    }
+                    
+                    // Validate skills
+                    const skills = document.getElementById('skillsHidden').value;
+                    if (!skills || skills.split(',').length < 3) {
+                        highlightError('tagsContainer');
+                        isValid = false;
+                    }
+                    
+                    // Validate experience level
+                    const expLevel = document.querySelector('input[name="experienceLevel"]:checked');
+                    if (!expLevel) {
+                        document.querySelectorAll('input[name="experienceLevel"]').forEach(el => {
+                            el.parentElement.classList.add('border', 'border-red-500', 'rounded-md', 'p-1');
+                        });
+                        isValid = false;
+                    }
+                    
+                    // Validate target audience
+                    const audience = document.getElementById('targetAudience').value;
+                    if (!audience) {
+                        highlightError('targetAudience');
+                        isValid = false;
+                    }
+                    break;
+                    
+                case 'transaction':
+                    // Validate credit cost
+                    const credits = document.getElementById('creditCost').value;
+                    if (!credits || credits < 1) {
+                        highlightError('creditCost');
+                        isValid = false;
+                    }
+                    
+                    // Validate estimated time
+                    const timeValue = document.getElementById('timeValue').value;
+                    if (!timeValue || timeValue < 1) {
+                        highlightError('timeValue');
+                        isValid = false;
+                    }
+                    
+                    // Validate availability
+                    const availability = document.querySelectorAll('input[name="availability"]:checked');
+                    if (availability.length === 0) {
+                        document.querySelectorAll('input[name="availability"]').forEach(el => {
+                            el.parentElement.classList.add('border', 'border-red-500', 'rounded-md', 'p-1');
+                        });
+                        isValid = false;
+                    }
+                    break;
+            }
+            
+            return isValid;
+        }
+        
+        // Highlight error on input
+        function highlightError(elementId) {
+            const element = document.getElementById(elementId);
+            element.classList.add('border-red-500', 'bg-red-50');
+            
+            // Add shake animation
+            gsap.to(element, {
+                x: [-5, 5, -5, 5, 0],
+                duration: 0.4,
+                ease: 'power2.inOut'
+            });
+            
+            // Remove highlight after 3 seconds
+            setTimeout(() => {
+                element.classList.remove('border-red-500', 'bg-red-50');
+            }, 3000);
+            
+            // Add input event to remove error on change
+            element.addEventListener('input', function() {
+                element.classList.remove('border-red-500', 'bg-red-50');
+            }, { once: true });
+        }
+        
+        // Initialize preview functionality
+        function initPreview() {
+            // Update preview when inputs change
+            const previewInputs = [
+                'serviceTitle', 'serviceDescription', 'skillsHidden', 'creditCost',
+                'timeValue', 'timeUnit'
+            ];
+            
+            previewInputs.forEach(inputId => {
+                document.getElementById(inputId).addEventListener('change', updatePreview);
+                document.getElementById(inputId).addEventListener('input', updatePreview);
+            });
+        }
+        
+        // Update preview card with form data
+        function updatePreview() {
+            const title = document.getElementById('serviceTitle').value || 'Service Title';
+            const description = document.getElementById('serviceDescription').value || 'Service description will appear here...';
+            const credits = document.getElementById('creditCost').value || '0';
+            const timeValue = document.getElementById('timeValue').value || '--';
+            const timeUnit = document.getElementById('timeUnit').value;
+            
+            document.getElementById('previewTitle').textContent = title;
+            document.getElementById('previewDescription').textContent = description;
+            document.getElementById('previewCredits').textContent = credits;
+            document.getElementById('previewTime').textContent = timeValue ? `${timeValue} ${timeUnit}` : '--';
+            
+            // Update tags
+            const tagsContainer = document.getElementById('previewTags');
+            tagsContainer.innerHTML = '';
+            
+            const skills = document.getElementById('skillsHidden').value;
+            if (skills) {
+                skills.split(',').forEach(skill => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800';
+                    tagElement.textContent = skill;
+                    tagsContainer.appendChild(tagElement);
+                });
+            }
+        }
+    </script>
 </body>
 </html>

@@ -58,7 +58,7 @@ class PostsController extends Controller
         $this->postService->store($validated);
 
         session()->flash('success', 'Post created successfully');
-        return redirect()->route('posts.index');
+        return redirect()->route('posts');
        
     }
 
