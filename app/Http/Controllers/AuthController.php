@@ -39,7 +39,7 @@ class AuthController extends Controller
         
         Auth::login($user);
         session()->flash('success', 'User registered successfully!');
-        return redirect()->route('/login');
+        return redirect()->route('home');
     }
 
  
@@ -48,6 +48,7 @@ class AuthController extends Controller
         return view('login');
     }
 
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -55,14 +56,15 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        $result = $this->authService->login($credentials['email'], $credentials['password']);
         
-        if ($result) {
+        $user = $this->authService->login($credentials['email'], $credentials['password']);
+        
+        if ($user) {
             session()->flash('success', 'Login successful!');
             return redirect()->route('home');
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
+        return view('register');
     }
 
 

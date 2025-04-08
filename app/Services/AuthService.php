@@ -25,13 +25,9 @@ class AuthService{
         }
 
         $user = User::where('email', $email)->first();
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return [
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user
-        ];
+      
+        return   $user;
+       
     }
 
 

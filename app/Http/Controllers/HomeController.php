@@ -10,6 +10,6 @@ class HomeController extends Controller
         return view('home');
     }
     public function header(){
-        return view('layout/admin');
+        return view('layout/users');
     }
 }
