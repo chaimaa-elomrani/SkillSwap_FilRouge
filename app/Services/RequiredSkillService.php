@@ -17,4 +17,12 @@ class RequiredSkillService{
     public function getAllSkills(){
         return RequiredSkills::orderBy('name')->get();
     }
+
+    public function create(array $data){
+        return RequiredSkills::create($data);
+    }
+
+    public function update(RequiredSkills $skill, array $data){
+        return $skill->update($data);
+    }
 }
