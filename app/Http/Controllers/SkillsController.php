@@ -18,7 +18,7 @@ class SkillsController extends Controller
 
     public function index()
     {
-        $skills = $this->service->getAllSkills();
+        $skills = $this->skillService->getAllSkills();
         return view('skills.index', compact('skills'));
     }
 
@@ -29,7 +29,7 @@ class SkillsController extends Controller
         ]);
 
         $skill = $this->skillService->create($validated['name']);
-        return redirect()
+        return redirect()->route('skills.index');
     }
 
 
@@ -40,15 +40,15 @@ class SkillsController extends Controller
         ]);
 
         $this->skillService->update($skill, $data);
-        return response()->json(['message' => 'Skill updated successfully']);
+        return redirect()->route('skills.index');
     }
 
     public function destroy(Skills $skill){
         $this->skillService->delete($skill);
-        return response()->json(['message' => 'Skill deleted successfully']);
+        return redirect()->route('skills.index');
     }
 
-  
+   
 
 
 
