@@ -7,4 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class skills_required extends Model
 {
     protected $fillable = ['name'];
+
+    public static function findOrCreate(array $skills){
+        
+        $skillIds = [];
+        foreach ($skills as $name) {
+            $skill = self::firstOrCreate(
+                ['name' => strtolower(trim($name))], // normalize input
+                ['name' => ucfirst($name)]
+            );
+            $skillIds[] = $skill->id;
+        }
+        return $skillIds;
+    }
 }
