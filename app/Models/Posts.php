@@ -40,7 +40,7 @@ class Posts extends Model
     }
 
     public function skills(){
-        return $this->belongsToMany(skills_required::class, 'post_skills');
+        return $this->belongsToMany(RequiredSkills::class, 'post_skills');
     }
 
     public function languages(){
