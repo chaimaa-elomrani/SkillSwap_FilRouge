@@ -48,7 +48,12 @@ class SkillsController extends Controller
         return redirect()->route('skills.index');
     }
 
-   
+    public function search(Request $request){
+        $query = $request->input('query');
+        $skill = $this->skillService->searchSkills($query);
+        return view('skills' , compact($skill , $query));
+    }
+  
 
 
 
