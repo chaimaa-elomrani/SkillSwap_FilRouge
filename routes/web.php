@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SkillsController;
@@ -48,4 +49,8 @@ Route::put('/dashboard/domains/update', [DomainController::class , 'update']);
 Route::delete('/dashboard/domains/delete', [DomainController::class , 'destroy']);
 Route::get('/dashboard/domains/search', [DomainController::class , 'search']);
 
-
+// languages management 
+Route::post('/dashboard/languages/create' , [LanguagesController::class , 'store']);
+Route::put('/dashboard/languages/update' , [LanguagesController::class , 'update']);
+Route::delete('/dashboard/languages/delete' , [LanguagesController::class , 'destroy']);
+Route::get('/dashboard/languages/search' , [LanguagesController::class , 'search']);
