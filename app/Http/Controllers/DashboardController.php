@@ -19,10 +19,10 @@ class DashboardController extends Controller
     }
 
 
-    public function getSkills(){
-        $skills = $this->skillsController->index();
-        return $skills;
-    }
+    // public function getSkills(){
+    //     $skills = $this->skillsController->index();
+    //     return view('skills_domains_languages', compact('skills'));
+    // }
 
     public function getDomains(){
         $domains = $this->domainsController->index();
@@ -33,7 +33,11 @@ class DashboardController extends Controller
         $languages = $this->languagesController->index();
         return $languages;
     }
-
+    /**
+     * Display the admin dashboard.
+     *
+     * @return \Illuminate\View\View
+     */
     
     public function index()
     {

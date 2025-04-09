@@ -54,3 +54,9 @@ Route::post('/dashboard/languages/create' , [LanguagesController::class , 'store
 Route::put('/dashboard/languages/update' , [LanguagesController::class , 'update']);
 Route::delete('/dashboard/languages/delete' , [LanguagesController::class , 'destroy']);
 Route::get('/dashboard/languages/search' , [LanguagesController::class , 'search']);
+
+
+//display skills , domains , languages in the dashboard 
+Route::get('/dashboard/skills',[SkillsController::class , 'index']);
+Route::get('/dashboard/domains',[DashboardController::class , 'getDomains']);
+Route::get('/dashboard/languages',[DashboardController::class , 'getLanguages']);

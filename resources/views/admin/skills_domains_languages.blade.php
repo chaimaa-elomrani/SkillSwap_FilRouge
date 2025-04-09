@@ -343,14 +343,15 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($skills as $skill )
                                 <tr class="border-b hover-effect">
-                                    <td class="py-4 font-medium">Web Development</td>
+                                    <td class="py-4 font-medium">{{ $skill->name }}</td>
                                     <td class="py-4">
                                         <span
-                                            class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Development</span>
+                                            class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">{{ $skill->domain_id }}</span>
                                     </td>
                                    
-                                    <td class="py-4 text-gray-500">Jan 12, 2023</td>
+                                    <td class="py-4 text-gray-500">{{ $skill->created_at }}</td>
                                     <td class="py-4">
                                         <button class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
                                                 class="fas fa-edit"></i></button>
@@ -358,7 +359,7 @@
                                                 class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
-                               
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

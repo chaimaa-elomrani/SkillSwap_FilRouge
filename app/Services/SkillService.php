@@ -15,8 +15,9 @@ class SkillService{
 
 
     public function getAllSkills(){
-        return Skills::orderBy('name')->paginate(10);
+        return Skills::orderBy('name')->get();
     }
+
 
     public function create(array $data){
         return Skills::create(
