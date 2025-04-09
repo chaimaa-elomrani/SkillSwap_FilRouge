@@ -28,14 +28,13 @@ Route::get('/post/create',[PostsController::class , 'postFrom']);
 Route::post('/post/create',[PostsController::class , 'store']);
 
 
+
 // skills page 
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
 Route::post('/skills',[SkillsController::class , 'store'])->name('skills.store');
-// Route::get('/skills/edit/{skill}',[SkillsController::class , 'editSkills'])->name('skills.edit');
 Route::put('/skills/{skill}',[SkillsController::class , 'update'])->name('skills.update');
 Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
-// Route::get('/skills/{skill}',[SkillsController::class , 'showSkills'])->name('skills.show');
 
 
 
