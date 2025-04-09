@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Models\Domains;
 use Illuminate\Database\Eloquent\Collection;
+
+
 class DomainService{
 
     public function getAllDomains(){
