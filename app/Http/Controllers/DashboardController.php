@@ -14,7 +14,7 @@ class DashboardController extends Controller
 
     public function skills_domains_lang()
     {
-        return view('admin/skills_domains_lang');
+        return view('admin/skills_domains_languages');
     }
 
 }

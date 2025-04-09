@@ -338,7 +338,6 @@
                                 <tr class="text-left text-xs text-gray-500 border-b">
                                     <th class="pb-3 font-medium">SKILL <i class="fas fa-sort ml-1"></i></th>
                                     <th class="pb-3 font-medium">DOMAIN <i class="fas fa-sort ml-1"></i></th>
-                                    <th class="pb-3 font-medium">STATUS <i class="fas fa-sort ml-1"></i></th>
                                     <th class="pb-3 font-medium">CREATED <i class="fas fa-sort ml-1"></i></th>
                                     <th class="pb-3 font-medium">ACTIONS</th>
                                 </tr>
@@ -350,10 +349,7 @@
                                         <span
                                             class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Development</span>
                                     </td>
-                                    <td class="py-4">
-                                        <span
-                                            class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Active</span>
-                                    </td>
+                                   
                                     <td class="py-4 text-gray-500">Jan 12, 2023</td>
                                     <td class="py-4">
                                         <button class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
@@ -422,7 +418,6 @@
                                 <tr class="text-left text-xs text-gray-500 border-b">
                                     <th class="pb-3 font-medium">DOMAIN <i class="fas fa-sort ml-1"></i></th>
                                     <th class="pb-3 font-medium">SKILLS COUNT <i class="fas fa-sort ml-1"></i></th>
-                                    <th class="pb-3 font-medium">STATUS <i class="fas fa-sort ml-1"></i></th>
                                     <th class="pb-3 font-medium">CREATED <i class="fas fa-sort ml-1"></i></th>
                                     <th class="pb-3 font-medium">ACTIONS</th>
                                 </tr>
@@ -431,10 +426,6 @@
                                 <tr class="border-b hover-effect">
                                     <td class="py-4 font-medium">Development</td>
                                     <td class="py-4">42</td>
-                                    <td class="py-4">
-                                        <span
-                                            class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Active</span>
-                                    </td>
                                     <td class="py-4 text-gray-500">Jan 05, 2023</td>
                                     <td class="py-4">
                                         <button class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
@@ -494,7 +485,6 @@
                             <thead>
                                 <tr class="text-left text-xs text-gray-500 border-b">
                                     <th class="pb-3 font-medium">LANGUAGE <i class="fas fa-sort ml-1"></i></th>
-                                    <th class="pb-3 font-medium">STATUS <i class="fas fa-sort ml-1"></i></th>
                                     <th class="pb-3 font-medium">CREATED <i class="fas fa-sort ml-1"></i></th>
                                     <th class="pb-3 font-medium">ACTIONS</th>
                                 </tr>
@@ -502,14 +492,7 @@
                             <tbody>
                                 <tr class="border-b hover-effect">
                                     <td class="py-4 font-medium">JavaScript</td>
-                                    <td class="py-4">
-                                        <span
-                                            class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Programming</span>
-                                    </td>
-                                    <td class="py-4">
-                                        <span
-                                            class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Active</span>
-                                    </td>
+                                  
                                     <td class="py-4 text-gray-500">Jan 15, 2023</td>
                                     <td class="py-4">
                                         <button class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
@@ -549,7 +532,7 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <form id="add-skill-form">
+            <form id="add-skill-form" method="POST" action="skills.create">
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Skill Name</label>
                     <input type="text"
@@ -567,22 +550,6 @@
                         <option value="marketing">Marketing</option>
                         <option value="content">Content</option>
                     </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                    <select
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        required>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="pending">Pending</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                    <textarea
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        rows="3"></textarea>
                 </div>
                 <div class="flex justify-end space-x-3">
                     <button type="button"
@@ -611,22 +578,7 @@
                         class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
                         required>
                 </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                    <select
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        required>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="pending">Pending</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                    <textarea
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        rows="3"></textarea>
-                </div>
+                
                 <div class="flex justify-end space-x-3">
                     <button type="button"
                         class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>

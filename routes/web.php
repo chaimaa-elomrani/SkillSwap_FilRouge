@@ -42,6 +42,6 @@ Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.
 
 // admin
 Route::get('/dashboard',[DashboardController::class , 'index']);
-Route::get('/skills_domains_lang',[DashboardController::class , 'skills_domains_lang']);
+Route::get('skills_domains_languages',[DashboardController::class , 'skills_domains_lang']);
 
 
