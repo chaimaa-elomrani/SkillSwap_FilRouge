@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Skills;
+use App\Services\SkillService;
 use Illuminate\Http\Request;
 
 class SkillsController extends Controller
@@ -11,7 +12,7 @@ class SkillsController extends Controller
     protected $skillService;
 
 
-    public function __construct($skillService)
+    public function __construct(SkillService $skillService)
     {
         $this->skillService = $skillService;
     }
@@ -19,7 +20,7 @@ class SkillsController extends Controller
     public function index()
     {
         $skills = $this->skillService->getAllSkills();
-        return view('skills.index', compact($skills));
+        return view('skills.index', compact('skills'));
     }
 
     public function store(Request $request)
@@ -50,8 +51,8 @@ class SkillsController extends Controller
 
     public function search(Request $request){
         $query = $request->input('query');
-        $skill = $this->skillService->searchSkills($query);
-        return view('skills' , compact($skill , $query));
+        $skills = $this->skillService->searchSkills($query);
+        return view('skills.index', compact('skills', 'query'));
     }
   
 

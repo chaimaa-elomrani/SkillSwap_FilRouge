@@ -36,4 +36,4 @@ class SkillService{
             ->orWhere('description', 'like', "%{$query}%")
             ->get();
     }
-}
+} 
