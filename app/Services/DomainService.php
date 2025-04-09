@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Domains;
+use Illuminate\Database\Eloquent\Collection;
 class DomainService{
 
     public function getAllDomains(){
@@ -16,39 +17,17 @@ class DomainService{
     public function update(Domains $domain, array $data){
         return $domain->update($data);
     }
+
+    public function delete(Domains $domain){
+        return $domain->delete();
+    }
+
+    public function searchDomains(string $query): Collection{
+        return Domains::where('name', 'like', "%{$query}%")
+            ->get();
+    }
 }
 
 
 
 
-
-
-
-//     public function findOrCreate(string $name){
-//         return Skills::firstOrCreate(['name' => trim($name)]);
-
-//     }
-
-
-//     public function getAllSkills(){
-//         return Skills::orderBy('name')->paginate(10);
-//     }
-
-//     public function create(array $data){
-//         return Skills::create($data);
-//     }
-
-//     public function update(Skills $skill, array $data){
-//         return $skill->update($data);
-//     }
-
-//     public function delete(Skills $skill){
-//         return $skill->delete();
-//     }
-
-//     public function searchSkills(string $query): Collection
-//     {
-//         return Skills::where('name', 'like', "%{$query}%")
-//             ->get();
-//     }
-// } 
