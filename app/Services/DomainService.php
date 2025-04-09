@@ -13,6 +13,9 @@ class DomainService{
         return Domains::create($data);
     }
     
+    public function update(Domains $domain, array $data){
+        return $domain->update($data);
+    }
 }
 
 
