@@ -15,7 +15,7 @@ class SkillService{
 
 
     public function getAllSkills(){
-        return Skills::orderBy('name')->get();
+        return Skills::orderBy('name')->paginate(10);
     }
 
     public function create(array $data){
@@ -33,7 +33,6 @@ class SkillService{
     public function searchSkills(string $query): Collection
     {
         return Skills::where('name', 'like', "%{$query}%")
-            ->orWhere('description', 'like', "%{$query}%")
             ->get();
     }
 } 

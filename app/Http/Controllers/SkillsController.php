@@ -20,7 +20,7 @@ class SkillsController extends Controller
     public function index()
     {
         $skills = $this->skillService->getAllSkills();
-        return view('skills.index', compact('skills'));
+        return view('testSkills', compact('skills'));
     }
 
     public function store(Request $request)
@@ -29,8 +29,8 @@ class SkillsController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $skill = $this->skillService->create($validated['name']);
-        return redirect()->route('skills.index');
+        $skill = $this->skillService->create(['name' => $validated['name']]);
+        return redirect()->route('skills.store');
     }
 
 
@@ -52,7 +52,7 @@ class SkillsController extends Controller
     public function search(Request $request){
         $query = $request->input('query');
         $skills = $this->skillService->searchSkills($query);
-        return view('skills.index', compact('skills', 'query'));
+        return redirect()->route('skills.index', compact('skills', 'query'));
     }
   
 

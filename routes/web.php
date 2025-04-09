@@ -32,8 +32,8 @@ Route::post('/post/create',[PostsController::class , 'store']);
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
 Route::post('/skills',[SkillsController::class , 'store'])->name('skills.store');
 // Route::get('/skills/edit/{skill}',[SkillsController::class , 'editSkills'])->name('skills.edit');
-Route::post('/skills/edit/{skill}',[SkillsController::class , 'update'])->name('skills.update');
-Route::get('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.delete');
+Route::put('/skills/{skill}',[SkillsController::class , 'update'])->name('skills.update');
+Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
 // Route::get('/skills/{skill}',[SkillsController::class , 'showSkills'])->name('skills.show');
 
