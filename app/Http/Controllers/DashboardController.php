@@ -29,6 +29,11 @@ class DashboardController extends Controller
         return $domains;
     }
 
+    public function getLanguages(){
+        $languages = $this->languagesController->index();
+        return $languages;
+    }
+
     
     public function index()
     {
