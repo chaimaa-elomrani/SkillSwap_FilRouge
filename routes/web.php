@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DomainController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SearchController;
@@ -29,19 +30,22 @@ Route::post('/post/create',[PostsController::class , 'store']);
 
 
 
-// skills page 
-Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
-Route::post('/skills',[SkillsController::class , 'store'])->name('skills.store');
-Route::put('/skills/{skill}',[SkillsController::class , 'update'])->name('skills.update');
-Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
-Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
-
-
-
-
-
 // admin
 Route::get('/dashboard',[DashboardController::class , 'index']);
 Route::get('skills_domains_languages',[DashboardController::class , 'skills_domains_lang']);
+
+
+// skills management 
+Route::post('/dashboard/skills/create',[SkillsController::class , 'store'])->name('skills.create');
+Route::put('/dashboard/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
+Route::delete('/dashboard/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
+Route::get('/dashboard/skills/search',[SkillsController::class , 'search'])->name('skills.search');
+
+
+//domains management 
+Route::post('/dashboard/domains/create', [DomainController::class , 'store']);
+Route::put('/dashboard/domains/update', [DomainController::class , 'update']);
+Route::delete('/dashboard/domains/delete', [DomainController::class , 'destroy']);
+Route::get('/dashboard/domains/search', [DomainController::class , 'search']);
 
 
