@@ -60,6 +60,4 @@ class SkillsController extends Controller
     }
   
 
-
-
 }
