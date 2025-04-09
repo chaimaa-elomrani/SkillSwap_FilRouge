@@ -19,7 +19,12 @@ class SkillService{
     }
 
     public function create(array $data){
-        return Skills::create($data);
+        return Skills::create(
+            [
+                'name' => $data['name'],
+                'domain_id' => $data['domain_id'] ?? null,
+            ]
+        );
     }
 
     public function update(Skills $skill, array $data){
