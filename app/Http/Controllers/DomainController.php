@@ -19,4 +19,12 @@ class DomainController extends Controller
         $domains = $this->domainService->getAllDomains();
         return view('domains.index', compact('domains'));
     }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required|unique:domains,name',
+        ]);
+        $this->domainService->create($request->all());
+        return redirect()->route('domains.index')->with('success', 'Domain created successfully.');
+    }
 }
