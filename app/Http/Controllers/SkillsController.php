@@ -27,9 +27,13 @@ class SkillsController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'domain_id' => 'required|exists:domains,id',
         ]);
 
-        $skill = $this->skillService->create(['name' => $validated['name']]);
+       $this->skillService->create([
+            'name' => $validated['name'],
+            'domain_id' => $validated['domain_id'],
+        ]);
         return redirect()->route('skills.store');
     }
 
