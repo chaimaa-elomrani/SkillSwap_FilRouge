@@ -47,4 +47,10 @@ class DomainController extends Controller
         $domains = $this->domainService->searchDomains($query);
         return redirect()->route('domains.index', compact('domains', 'query'));
     }
+
+    public function findOrCreate(Request $request){
+        $name = $request->input('name');
+        $domain = $this->domainService->findOrCreate($name);
+        return response()->json($domain);
+    }
 }
