@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Domains;
 use App\Services\DomainService;
 use Illuminate\Http\Request;
 
@@ -26,5 +27,13 @@ class DomainController extends Controller
         ]);
         $this->domainService->create($request->all());
         return redirect()->route('domains.index')->with('success', 'Domain created successfully.');
+    }
+
+    public function update(Request $request ,Domains $domains){
+        $request->validate([
+            'name' => 'required|unique:domains,name,' . $domains->id,
+        ]);
+        $this->domainService->update($domains, $request->all());
+        return redirect()->route('domains.index')->with('success', 'Domain updated successfully.');
     }
 }
