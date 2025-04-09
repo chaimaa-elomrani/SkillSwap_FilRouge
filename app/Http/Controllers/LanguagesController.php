@@ -30,6 +30,18 @@ class LanguagesController extends Controller
         return redirect()->route('languages.index');
     }
 
-    
+    public function update(Request $request, Languages $language){
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $this->languagesService->update($language, $data);
+        return redirect()->route('languages.index');
+    }
+
+    public function destroy(Languages $language){
+        $this->languagesService->delete($language);
+        return redirect()->route('languages.index');
+    }
    
 }
