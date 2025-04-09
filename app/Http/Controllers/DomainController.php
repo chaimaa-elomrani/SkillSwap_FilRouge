@@ -41,4 +41,10 @@ class DomainController extends Controller
         $this->domainService->delete($domains);
         return redirect()->route('domains.index')->with('success', 'Domain deleted successfully.');
     }
+
+    public function search(Request $request){
+        $query = $request->input('query');
+        $domains = $this->domainService->searchDomains($query);
+        return redirect()->route('domains.index', compact('domains', 'query'));
+    }
 }
