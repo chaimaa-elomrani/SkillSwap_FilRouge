@@ -26,6 +26,10 @@ class DomainService{
         return Domains::where('name', 'like', "%{$query}%")
             ->get();
     }
+
+    public function findOrCreate(string $name){
+        return Domains::firstOrCreate(['name' => trim($name)]);
+    }
 }
 
 
