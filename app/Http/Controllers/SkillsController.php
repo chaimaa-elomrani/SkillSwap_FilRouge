@@ -59,5 +59,10 @@ class SkillsController extends Controller
         return redirect()->route('skills.index', compact('skills', 'query'));
     }
   
+    public function findOrCreate(Request $request){
+        $skills = $request->input('skills');
+        $skillIds = $this->skillService->findOrCreate($skills);
+        return redirect()->route('skills.index');
+    }
 
 }

@@ -53,4 +53,6 @@ class DomainController extends Controller
         $domain = $this->domainService->findOrCreate($name);
         return response()->json($domain);
     }
+
+    
 }
