@@ -12,4 +12,8 @@ class Domains extends Model
     {
         return $this->belongsToMany(Posts::class);
     }
+
+    public function skills(){
+        return $this->hasMany(Skills::class);
+    }
 }

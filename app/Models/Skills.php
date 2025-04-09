@@ -25,4 +25,8 @@ class Skills extends Model
     public function posts(){
         return $this->belongsToMany(Posts::class);
     }
+
+    public function domain(){
+        return $this->belongsTo(Domains::class);
+    }
 }
