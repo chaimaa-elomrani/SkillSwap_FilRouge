@@ -12,4 +12,9 @@ class DashboardController extends Controller
         return view('admin/dashboard');
     }
 
+    public function skills_domains_lang()
+    {
+        return view('admin/skills_domains_lang');
+    }
+
 }
