@@ -293,8 +293,85 @@
                     <a href="#"
                         class="inline-block px-4 py-2 text-blue-500 font-medium border-b-2 border-blue-500 tab-active tab-transition"
                         data-tab="skills">Domains</a>
-                </li>
+                </li>         
             </ul>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="tab-content">
+            <!-- Domains Tab -->
+            <div id="domains-tab" class="tab-pane hidden">
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex space-x-4">
+                            <div>
+                              
+                            </div>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button id="add-domain-btn"
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center btn-transition">
+                                <i class="fas fa-plus mr-2"></i> Add New Domain
+                            </button>
+                            <button
+                                class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-md flex items-center btn-transition">
+                                <i class="fas fa-file-export mr-2"></i> Export
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <div class="ml-auto text-sm text-gray-500">
+                            <span>8</span> domains total
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="text-left text-xs text-gray-500 border-b">
+                                    <th class="pb-3 font-medium">DOMAIN <i class="fas fa-sort ml-1"></i></th>
+                                    <th class="pb-3 font-medium">SKILLS COUNT <i class="fas fa-sort ml-1"></i></th>
+                                    <th class="pb-3 font-medium">CREATED <i class="fas fa-sort ml-1"></i></th>
+                                    <th class="pb-3 font-medium">ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($domains as $domain)
+                                <tr class="border-b hover-effect">
+                                    <td class="py-4 font-medium">{{ $domain->name }}</td>
+                                    <td class="py-4">{{ $domain->skills_count }}</td>
+                                    <td class="py-4 text-gray-500">{{ $domain->created_at }}</td>
+                                    <td class="py-4">
+                                        <button
+                                            class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
+                                                class="fas fa-edit"></i></button>
+                                        <button
+                                            class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
+                                                class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            @endforeach 
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <div class="text-sm text-gray-500">
+                        <p class="text-muted text-center mt-3">
+                                Page {{ $domains->currentPage() }} sur {{ $domains->lastPage() }} —
+                                Total : {{ $domains->total() }} compétences
+                            </p>
+                        </div>
+                        <div class="d-flex ">
+                            {{ $skills->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+         
         </div>
     </div>
 
