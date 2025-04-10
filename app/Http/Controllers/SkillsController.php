@@ -20,7 +20,7 @@ class SkillsController extends Controller
     public function index()
     {
         $skills = $this->skillService->getAllSkills();
-        return view('admin/skills_domains_languages', compact('skills'));
+        return view('admin/skills', compact('skills'));
     }
 
     public function store(Request $request)

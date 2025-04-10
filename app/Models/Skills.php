@@ -27,6 +27,6 @@ class Skills extends Model
     }
 
     public function domain(){
-        return $this->belongsTo(Domains::class);
+        return $this->belongsTo(Domains::class, 'domain_id');
     }
 }

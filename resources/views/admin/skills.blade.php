@@ -294,14 +294,6 @@
                         class="inline-block px-4 py-2 text-blue-500 font-medium border-b-2 border-blue-500 tab-active tab-transition"
                         data-tab="skills">Skills</a>
                 </li>
-                <li class="mr-1">
-                    <a href="#" class="inline-block px-4 py-2 text-gray-500 hover:text-blue-500 tab-transition"
-                        data-tab="domains">Domains</a>
-                </li>
-                <li class="mr-1">
-                    <a href="#" class="inline-block px-4 py-2 text-gray-500 hover:text-blue-500 tab-transition"
-                        data-tab="languages">Languages</a>
-                </li>
             </ul>
         </div>
 
@@ -312,7 +304,7 @@
                 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex space-x-4">
-                            <div>
+                            <!-- <div>
                                 <label class="block text-sm text-gray-500 mb-1">Domain</label>
                                 <select
                                     class="w-48 border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect">
@@ -323,7 +315,7 @@
                                     @endforeach
                                
                                 </select>
-                            </div>
+                            </div> -->
 
                         </div>
                         <div class="flex space-x-3">
@@ -392,150 +384,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <!-- Domains Tab -->
-            <div id="domains-tab" class="tab-pane hidden">
-                <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="flex space-x-4">
-                            <div>
-                              
-                            </div>
-                        </div>
-                        <div class="flex space-x-3">
-                            <button id="add-domain-btn"
-                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center btn-transition">
-                                <i class="fas fa-plus mr-2"></i> Add New Domain
-                            </button>
-                            <button
-                                class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-md flex items-center btn-transition">
-                                <i class="fas fa-file-export mr-2"></i> Export
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center mb-4">
-                        <div class="ml-auto text-sm text-gray-500">
-                            <span>8</span> domains total
-                        </div>
-                    </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full">
-                            <thead>
-                                <tr class="text-left text-xs text-gray-500 border-b">
-                                    <th class="pb-3 font-medium">DOMAIN <i class="fas fa-sort ml-1"></i></th>
-                                    <th class="pb-3 font-medium">SKILLS COUNT <i class="fas fa-sort ml-1"></i></th>
-                                    <th class="pb-3 font-medium">CREATED <i class="fas fa-sort ml-1"></i></th>
-                                    <th class="pb-3 font-medium">ACTIONS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($domains as $domain)
-                                <tr class="border-b hover-effect">
-                                    <td class="py-4 font-medium">{{ $domain->name }}</td>
-                                    <td class="py-4">{{ $domain->skills_count }}</td>
-                                    <td class="py-4 text-gray-500">{{ $domain->created_at }}</td>
-                                    <td class="py-4">
-                                        <button
-                                            class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-edit"></i></button>
-                                        <button
-                                            class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach 
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="flex justify-between items-center mt-6">
-                        <div class="text-sm text-gray-500">
-                        <p class="text-muted text-center mt-3">
-                                Page {{ $domains->currentPage() }} sur {{ $domains->lastPage() }} —
-                                Total : {{ $domains->total() }} compétences
-                            </p>
-                        </div>
-                        <div class="d-flex ">
-                            {{ $skills->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Languages Tab -->
-            <div id="languages-tab" class="tab-pane hidden">
-                <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="flex space-x-4">
-
-
-                        </div>
-                        <div class="flex space-x-3">
-                            <button id="add-language-btn"
-                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center btn-transition">
-                                <i class="fas fa-plus mr-2"></i> Add New Language
-                            </button>
-                            <button
-                                class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-md flex items-center btn-transition">
-                                <i class="fas fa-file-export mr-2"></i> Export
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center mb-4">
-
-                        <div class="ml-auto text-sm text-gray-500">
-                            <span>32</span> languages total
-                        </div>
-                    </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full">
-                            <thead>
-                                <tr class="text-left text-xs text-gray-500 border-b">
-                                    <th class="pb-3 font-medium">LANGUAGE <i class="fas fa-sort ml-1"></i></th>
-                                    <th class="pb-3 font-medium">CREATED <i class="fas fa-sort ml-1"></i></th>
-                                    <th class="pb-3 font-medium">ACTIONS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b hover-effect">
-                                    <td class="py-4 font-medium">JavaScript</td>
-
-                                    <td class="py-4 text-gray-500">Jan 15, 2023</td>
-                                    <td class="py-4">
-                                        <button
-                                            class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-edit"></i></button>
-                                        <button
-                                            class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="flex justify-between items-center mt-6">
-                        <div class="text-sm text-gray-500">
-                            Showing 1 to 4 of 32 entries
-                        </div>
-                        <div class="flex">
-                            <button class="px-3 py-1 border rounded-l-md bg-gray-100 btn-transition">Previous</button>
-                            <button
-                                class="px-3 py-1 border-t border-b border-r bg-blue-500 text-white btn-transition">1</button>
-                            <button class="px-3 py-1 border-t border-b border-r btn-transition">2</button>
-                            <button class="px-3 py-1 border-t border-b border-r btn-transition">3</button>
-                            <button class="px-3 py-1 border rounded-r-md btn-transition">Next</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -579,89 +427,8 @@
         </div>
     </div>
 
-    <!-- Modal for Add Domain -->
-    <div id="add-domain-modal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg w-full max-w-md p-6 scale-in">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-semibold">Add New Domain</h3>
-                <button
-                    class="text-gray-500 hover:text-gray-700 close-modal transition-colors duration-200 hover:rotate-90 transform">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form id="add-domain-form">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Domain Name</label>
-                    <input type="text"
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        required>
-                </div>
 
-                <div class="flex justify-end space-x-3">
-                    <button type="button"
-                        class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
-                    <button type="submit"
-                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
-                        Domain</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <!-- Modal for Add Language -->
-    <div id="add-language-modal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg w-full max-w-md p-6 scale-in">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-semibold">Add New Language</h3>
-                <button
-                    class="text-gray-500 hover:text-gray-700 close-modal transition-colors duration-200 hover:rotate-90 transform">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form id="add-language-form">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Language Name</label>
-                    <input type="text"
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        required>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
-                    <select
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        required>
-                        <option value="programming">Programming</option>
-                        <option value="spoken">Spoken</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                    <select
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        required>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="pending">Pending</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                    <textarea
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        rows="3"></textarea>
-                </div>
-                <div class="flex justify-end space-x-3">
-                    <button type="button"
-                        class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
-                    <button type="submit"
-                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
-                        Language</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <script>
         // Tab switching functionality
@@ -709,8 +476,7 @@
             const closeModalBtns = document.querySelectorAll('.close-modal');
             const skillModal = document.getElementById('add-skill-modal');
             const domainModal = document.getElementById('add-domain-modal');
-            const languageModal = document.getElementById('add-language-modal');
-            const allModals = [skillModal, domainModal, languageModal];
+        
 
             // Function to show modal with animation
             function showModal(modal) {
@@ -754,18 +520,7 @@
                 setTimeout(() => this.classList.remove('animate-wiggle'), 500);
             });
 
-            addDomainBtn.addEventListener('click', function () {
-                showModal(domainModal);
-                this.classList.add('animate-wiggle');
-                setTimeout(() => this.classList.remove('animate-wiggle'), 500);
-            });
-
-            addLanguageBtn.addEventListener('click', function () {
-                showModal(languageModal);
-                this.classList.add('animate-wiggle');
-                setTimeout(() => this.classList.remove('animate-wiggle'), 500);
-            });
-
+        
             closeModalBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
                     const modal = this.closest('.fixed');

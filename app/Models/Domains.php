@@ -18,6 +18,7 @@ class Domains extends Model
     }
 
     public function skills(){
-        return $this->hasMany(Skills::class);
+        return $this->hasMany(Skills::class, 'domain_id');
     }
+    
 }

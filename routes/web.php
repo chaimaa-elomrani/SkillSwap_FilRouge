@@ -37,13 +37,15 @@ Route::get('skills_domains_languages',[DashboardController::class , 'skills_doma
 
 
 // skills management 
-// Route::post('/dashboard/skills/create',[SkillsController::class , 'store'])->name('skills.create');
-// Route::put('/dashboard/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
-// Route::delete('/dashboard/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
-// Route::get('/dashboard/skills/search',[SkillsController::class , 'search'])->name('skills.search');
+Route::get('/skills',[SkillsController::class , 'index']);
+Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.create');
+Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
+Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
+Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
 
 
 //domains management 
+// Route::get('/dashboard/domains',[DomainController::class , 'index']);
 // Route::post('/dashboard/domains/create', [DomainController::class , 'store']);
 // Route::put('/dashboard/domains/update', [DomainController::class , 'update']);
 // Route::delete('/dashboard/domains/delete', [DomainController::class , 'destroy']);
@@ -58,6 +60,4 @@ Route::get('skills_domains_languages',[DashboardController::class , 'skills_doma
 
 //display skills , domains , languages in the dashboard 
 Route::get('/dashboard/skills',[SkillsController::class , 'index']);
-// Route::get('/dashboard/domains',[DomainController::class , 'index']);
-// Route::get('/dashboard/languages',[DashboardController::class , 'getLanguages']);
 Route::get('/dashboard', [DashboardController::class, 'index']);

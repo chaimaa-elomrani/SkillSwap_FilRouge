@@ -55,5 +55,7 @@ class DomainController extends Controller
         return response()->json($domain);
     }
 
+
+   
     
 }
