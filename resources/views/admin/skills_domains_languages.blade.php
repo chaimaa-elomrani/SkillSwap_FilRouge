@@ -55,86 +55,93 @@
         .fade-in {
             animation: fadeIn 0.5s ease-out forwards;
         }
-        
+
         .slide-in-up {
             animation: slideInUp 0.5s ease-out forwards;
         }
-        
+
         .scale-in {
             animation: scaleIn 0.3s ease-out forwards;
         }
-        
+
         .tab-transition {
             transition: all 0.3s ease;
         }
-        
+
         .btn-transition {
             transition: all 0.2s ease;
             transform: translateY(0);
         }
-        
+
         .btn-transition:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        
+
         .btn-transition:active {
             transform: translateY(0);
         }
-        
+
         /* Modal animations */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        
+
         @keyframes slideInUp {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateY(30px);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes scaleIn {
-            from { 
+            from {
                 opacity: 0;
                 transform: scale(0.95);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: scale(1);
             }
         }
-        
+
         /* Table row hover effect */
         tr.hover-effect {
             transition: background-color 0.2s ease;
         }
-        
+
         tr.hover-effect:hover {
             background-color: rgba(243, 244, 246, 0.7);
         }
-        
+
         /* Input focus animation */
         .input-focus-effect {
             transition: all 0.3s ease;
         }
-        
+
         .input-focus-effect:focus {
             transform: translateY(-1px);
             box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1), 0 2px 4px -1px rgba(79, 70, 229, 0.06);
         }
-        
+
         /* Sidebar link hover effect */
         .sidebar-link {
             transition: all 0.2s ease;
             position: relative;
         }
-        
+
         .sidebar-link::after {
             content: '';
             position: absolute;
@@ -145,10 +152,120 @@
             background-color: #4f46e5;
             transition: width 0.3s ease;
         }
-        
+
         .sidebar-link:hover::after {
             width: 100%;
         }
+
+
+        .pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 4px;
+}
+
+.pagination .page-item {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.pagination .page-item:hover {
+    transform: translateY(-2px);
+}
+
+.pagination .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #4b5563;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.pagination .page-link:hover {
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
+    color: #1f2937;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+    color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.pagination .page-item.active .page-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 2s infinite;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #9ca3af;
+    pointer-events: none;
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+}
+
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+    padding: 0 12px;
+}
+
+/* Previous/Next icons if you're using them */
+.pagination .page-item i {
+    font-size: 12px;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* For mobile responsiveness */
+@media (max-width: 640px) {
+    .pagination .page-link {
+        min-width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+    
+    .pagination {
+        gap: 2px;
+    }
+}
     </style>
 </head>
 
@@ -343,37 +460,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($skills as $skill )
-                                <tr class="border-b hover-effect">
-                                    <td class="py-4 font-medium">{{ $skill->name }}</td>
-                                    <td class="py-4">
-                                        <span
-                                            class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">{{ $skill->domain->name }}</span>
-                                    </td>
-                                   
-                                    <td class="py-4 text-gray-500">{{ $skill->created_at }}</td>
-                                    <td class="py-4">
-                                        <button class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-edit"></i></button>
-                                        <button class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
+                                @foreach ($skills as $skill)
+                                    <tr class="border-b hover-effect">
+                                        <td class="py-4 font-medium">{{ $skill->name }}</td>
+                                        <td class="py-4">
+                                            <span
+                                                class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">{{ $skill->domain->name }}</span>
+                                        </td>
+
+                                        <td class="py-4 text-gray-500">{{ $skill->created_at }}</td>
+                                        <td class="py-4">
+                                            <button
+                                                class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
+                                                    class="fas fa-edit"></i></button>
+                                            <button
+                                                class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
 
                     <div class="flex justify-between items-center mt-6">
-                        <div class="text-sm text-gray-500">
+                        <!-- <div class="text-sm text-gray-500">
                             Showing 1 to 5 of 124 entries
-                        </div>
-                        <div class="flex">
-                            <button class="px-3 py-1 border rounded-l-md bg-gray-100 btn-transition">Previous</button>
-                            <button class="px-3 py-1 border-t border-b border-r bg-blue-500 text-white btn-transition">1</button>
-                            <button class="px-3 py-1 border-t border-b border-r btn-transition">2</button>
-                            <button class="px-3 py-1 border-t border-b border-r btn-transition">3</button>
-                            <button class="px-3 py-1 border rounded-r-md btn-transition">Next</button>
+                        </div> -->
+                        <div class="d-flex justify-content-center">
+                            {!! $skills->links() !!}
                         </div>
                     </div>
                 </div>
@@ -429,13 +544,15 @@
                                     <td class="py-4">42</td>
                                     <td class="py-4 text-gray-500">Jan 05, 2023</td>
                                     <td class="py-4">
-                                        <button class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
+                                        <button
+                                            class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
                                                 class="fas fa-edit"></i></button>
-                                        <button class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
+                                        <button
+                                            class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
                                                 class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
-                              
+
                             </tbody>
                         </table>
                     </div>
@@ -446,7 +563,8 @@
                         </div>
                         <div class="flex">
                             <button class="px-3 py-1 border rounded-l-md bg-gray-100 btn-transition">Previous</button>
-                            <button class="px-3 py-1 border-t border-b border-r bg-blue-500 text-white btn-transition">1</button>
+                            <button
+                                class="px-3 py-1 border-t border-b border-r bg-blue-500 text-white btn-transition">1</button>
                             <button class="px-3 py-1 border-t border-b border-r btn-transition">2</button>
                             <button class="px-3 py-1 border rounded-r-md btn-transition">Next</button>
                         </div>
@@ -459,8 +577,8 @@
                 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex space-x-4">
-                         
-                          
+
+
                         </div>
                         <div class="flex space-x-3">
                             <button id="add-language-btn"
@@ -475,7 +593,7 @@
                     </div>
 
                     <div class="flex items-center mb-4">
-                       
+
                         <div class="ml-auto text-sm text-gray-500">
                             <span>32</span> languages total
                         </div>
@@ -493,16 +611,18 @@
                             <tbody>
                                 <tr class="border-b hover-effect">
                                     <td class="py-4 font-medium">JavaScript</td>
-                                  
+
                                     <td class="py-4 text-gray-500">Jan 15, 2023</td>
                                     <td class="py-4">
-                                        <button class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
+                                        <button
+                                            class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
                                                 class="fas fa-edit"></i></button>
-                                        <button class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
+                                        <button
+                                            class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
                                                 class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
-                               
+
                             </tbody>
                         </table>
                     </div>
@@ -513,7 +633,8 @@
                         </div>
                         <div class="flex">
                             <button class="px-3 py-1 border rounded-l-md bg-gray-100 btn-transition">Previous</button>
-                            <button class="px-3 py-1 border-t border-b border-r bg-blue-500 text-white btn-transition">1</button>
+                            <button
+                                class="px-3 py-1 border-t border-b border-r bg-blue-500 text-white btn-transition">1</button>
                             <button class="px-3 py-1 border-t border-b border-r btn-transition">2</button>
                             <button class="px-3 py-1 border-t border-b border-r btn-transition">3</button>
                             <button class="px-3 py-1 border rounded-r-md btn-transition">Next</button>
@@ -529,7 +650,8 @@
         <div class="bg-white rounded-lg w-full max-w-md p-6 scale-in">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">Add New Skill</h3>
-                <button class="text-gray-500 hover:text-gray-700 close-modal transition-colors duration-200 hover:rotate-90 transform">
+                <button
+                    class="text-gray-500 hover:text-gray-700 close-modal transition-colors duration-200 hover:rotate-90 transform">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -555,7 +677,8 @@
                 <div class="flex justify-end space-x-3">
                     <button type="button"
                         class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
+                    <button type="submit"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
                         Skill</button>
                 </div>
             </form>
@@ -568,7 +691,8 @@
         <div class="bg-white rounded-lg w-full max-w-md p-6 scale-in">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">Add New Domain</h3>
-                <button class="text-gray-500 hover:text-gray-700 close-modal transition-colors duration-200 hover:rotate-90 transform">
+                <button
+                    class="text-gray-500 hover:text-gray-700 close-modal transition-colors duration-200 hover:rotate-90 transform">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -579,11 +703,12 @@
                         class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
                         required>
                 </div>
-                
+
                 <div class="flex justify-end space-x-3">
                     <button type="button"
                         class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
+                    <button type="submit"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
                         Domain</button>
                 </div>
             </form>
@@ -596,7 +721,8 @@
         <div class="bg-white rounded-lg w-full max-w-md p-6 scale-in">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">Add New Language</h3>
-                <button class="text-gray-500 hover:text-gray-700 close-modal transition-colors duration-200 hover:rotate-90 transform">
+                <button
+                    class="text-gray-500 hover:text-gray-700 close-modal transition-colors duration-200 hover:rotate-90 transform">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -635,7 +761,8 @@
                 <div class="flex justify-end space-x-3">
                     <button type="button"
                         class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
+                    <button type="submit"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
                         Language</button>
                 </div>
             </form>
@@ -673,7 +800,7 @@
                     const tabPane = document.getElementById(tabId + '-tab');
                     tabPane.classList.remove('hidden');
                     tabPane.classList.add('active', 'slide-in-up');
-                    
+
                     // Reset animation to allow it to play again
                     tabPane.style.animation = 'none';
                     tabPane.offsetHeight; // Trigger reflow
@@ -695,10 +822,10 @@
             function showModal(modal) {
                 modal.classList.remove('hidden');
                 modal.querySelector('.bg-white').classList.add('scale-in');
-                
+
                 // Add fade-in animation to modal background
                 modal.classList.add('fade-in');
-                
+
                 // Animate the form fields sequentially
                 const formFields = modal.querySelectorAll('input, select, textarea');
                 formFields.forEach((field, index) => {
@@ -718,7 +845,7 @@
                 modalContent.style.transition = 'all 0.3s ease';
                 modalContent.style.transform = 'scale(0.95)';
                 modalContent.style.opacity = '0';
-                
+
                 setTimeout(() => {
                     modal.classList.add('hidden');
                     modalContent.style.transform = '';
@@ -726,34 +853,34 @@
                 }, 300);
             }
 
-            addSkillBtn.addEventListener('click', function() {
+            addSkillBtn.addEventListener('click', function () {
                 showModal(skillModal);
                 // Add wiggle animation to button
                 this.classList.add('animate-wiggle');
                 setTimeout(() => this.classList.remove('animate-wiggle'), 500);
             });
 
-            addDomainBtn.addEventListener('click', function() {
+            addDomainBtn.addEventListener('click', function () {
                 showModal(domainModal);
                 this.classList.add('animate-wiggle');
                 setTimeout(() => this.classList.remove('animate-wiggle'), 500);
             });
 
-            addLanguageBtn.addEventListener('click', function() {
+            addLanguageBtn.addEventListener('click', function () {
                 showModal(languageModal);
                 this.classList.add('animate-wiggle');
                 setTimeout(() => this.classList.remove('animate-wiggle'), 500);
             });
 
             closeModalBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     const modal = this.closest('.fixed');
                     hideModal(modal);
                 });
             });
 
             // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
+            window.addEventListener('click', function (e) {
                 allModals.forEach(modal => {
                     if (e.target === modal) {
                         hideModal(modal);
@@ -764,18 +891,18 @@
             // Form submission (prevent default for demo)
             const forms = document.querySelectorAll('form');
             forms.forEach(form => {
-                form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', function (e) {
                     e.preventDefault();
-                    
+
                     // Add success animation
                     const submitBtn = this.querySelector('button[type="submit"]');
                     submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Saved!';
                     submitBtn.classList.add('bg-green-600');
-                    
+
                     setTimeout(() => {
                         const modal = this.closest('.fixed');
                         hideModal(modal);
-                        
+
                         // Reset button after hiding
                         setTimeout(() => {
                             if (submitBtn.innerHTML.includes('Skill')) {
@@ -796,7 +923,7 @@
             tableRows.forEach(row => {
                 row.classList.add('hover-effect');
             });
-            
+
             // Add initial animations to sidebar items
             const sidebarItems = document.querySelectorAll('.sidebar-link');
             sidebarItems.forEach((item, index) => {
