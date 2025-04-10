@@ -459,7 +459,7 @@
                             </p>
                         </div>
                         <div class="d-flex ">
-                            {{ $skills->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
+                            {{ $domains->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
                         </div>
                         
                     </div>

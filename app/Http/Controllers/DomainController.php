@@ -19,7 +19,7 @@ class DomainController extends Controller
     public function index(){
         $domains = $this->domainService->getAllDomains();
         // dd($domains);
-        return view('admin/skills_domains_languages', compact('domains'));
+        return view('admin/domains', compact('domains'));
     }
 
     public function store(Request $request){

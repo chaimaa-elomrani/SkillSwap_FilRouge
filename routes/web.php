@@ -44,12 +44,12 @@ Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->n
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
 
 
-//domains management 
-// Route::get('/dashboard/domains',[DomainController::class , 'index']);
-// Route::post('/dashboard/domains/create', [DomainController::class , 'store']);
-// Route::put('/dashboard/domains/update', [DomainController::class , 'update']);
-// Route::delete('/dashboard/domains/delete', [DomainController::class , 'destroy']);
-// Route::get('/dashboard/domains/search', [DomainController::class , 'search']);
+// domains management 
+Route::get('/domains',[DomainController::class , 'index']);
+Route::post('/domains/create', [DomainController::class , 'store']);
+Route::put('/domains/update', [DomainController::class , 'update']);
+Route::delete('/domains/delete', [DomainController::class , 'destroy']);
+Route::get('/domains/search', [DomainController::class , 'search']);
 
 // // languages management 
 // Route::post('/dashboard/languages/create' , [LanguagesController::class , 'store']);

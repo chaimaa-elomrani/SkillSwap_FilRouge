@@ -300,7 +300,7 @@
         <!-- Tab Content -->
         <div id="tab-content">
             <!-- Domains Tab -->
-            <div id="domains-tab" class="tab-pane hidden">
+            <div id="domains-tab" class="">
                 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex space-x-4">
@@ -364,7 +364,7 @@
                             </p>
                         </div>
                         <div class="d-flex ">
-                            {{ $skills->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
+                            {{ $domains->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
                         </div>
                         
                     </div>
