@@ -292,23 +292,16 @@
                 <li class="mr-1">
                     <a href="#"
                         class="inline-block px-4 py-2 text-blue-500 font-medium border-b-2 border-blue-500 tab-active tab-transition"
-                        data-tab="skills">Skills</a>
+                        data-tab="skills">Languages</a>
                 </li>
-                <li class="mr-1">
-                    <a href="#" class="inline-block px-4 py-2 text-gray-500 hover:text-blue-500 tab-transition"
-                        data-tab="domains">Domains</a>
-                </li>
-                <li class="mr-1">
-                    <a href="#" class="inline-block px-4 py-2 text-gray-500 hover:text-blue-500 tab-transition"
-                        data-tab="languages">Languages</a>
-                </li>
+                
             </ul>
         </div>
 
         <!-- Tab Content -->
         <div id="tab-content">
             <!-- Languages Tab -->
-            <div id="languages-tab" class="tab-pane hidden">
+            <div id="languages-tab" class="">
                 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex space-x-4">
@@ -330,13 +323,12 @@
                     <div class="flex items-center mb-4">
 
                         <div class="ml-auto text-sm text-gray-500">
-                            <span>{{ $language->total()}}</span> languages total
+                            <span>kdj</span> languages total
                         </div>
                     </div>
 
                     <div class="overflow-x-auto">
                         <table class="min-w-full">
-                            @foreach($languages as $language)
                             <thead>
                                 <tr class="text-left text-xs text-gray-500 border-b">
                                     <th class="pb-3 font-medium">LANGUAGE <i class="fas fa-sort ml-1"></i></th>
@@ -345,10 +337,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($languages as $language)
                                 <tr class="border-b hover-effect">
                                     <td class="py-4 font-medium">{{ $language->name }}</td>
 
-                                    <td class="py-4 text-gray-500">{{$languages->name }}</td>
+                                    <td class="py-4 text-gray-500">{{$language->created_at}}</td>
                                     <td class="py-4">
                                         <button
                                             class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
@@ -358,9 +351,8 @@
                                                 class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
-
+                               @endforeach
                             </tbody>
-                            @endforeach
                         </table>
                     </div>
 
