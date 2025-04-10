@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Domains;
+use App\Models\Skills;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -19,34 +21,12 @@ class DashboardController extends Controller
     }
 
 
-    // public function getSkills(){
-    //     $skills = $this->skillsController->index();
-    //     return view('skills_domains_languages', compact('skills'));
-    // }
+  // app/Http/Controllers/DashboardController.php
+public function index()
+{
+    $domains = Domains::all(); // Or ->paginate() if needed
+    $skills = Skills::with('domain')->paginate(10); // Also make sure you have the relation
 
-    public function getDomains(){
-        $domains = $this->domainsController->index();
-        return $domains;
-    }
-
-    public function getLanguages(){
-        $languages = $this->languagesController->index();
-        return $languages;
-    }
-    /**
-     * Display the admin dashboard.
-     *
-     * @return \Illuminate\View\View
-     */
-    
-    public function index()
-    {
-        return view('admin/dashboard');
-    }
-
-    public function skills_domains_lang()
-    {
-        return view('admin/skills_domains_languages');
-    }
-
+    return view('admin/skills_domains_languages', compact('domains', 'skills'));
 }
+

@@ -317,9 +317,11 @@
                                 <select
                                     class="w-48 border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect">
                                     <option value="">All Domains</option>
-                                    <option value="development">Development</option>
-                                    <option value="design">Design</option>
-                                    <option value="marketing">Marketing</option>
+                                    @foreach ($domains as $domain)
+                                    <option value="{{ $domain->id }}">{{ $domain->name }}</option>
+                                        
+                                    @endforeach
+                               
                                 </select>
                             </div>
 

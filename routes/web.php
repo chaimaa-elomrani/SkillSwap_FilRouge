@@ -32,31 +32,32 @@ Route::post('/post/create',[PostsController::class , 'store']);
 
 
 // admin
-Route::get('/dashboard',[DashboardController::class , 'index']);
+// Route::get('/dashboard',action: [DashboardController::class , 'index']);
 Route::get('skills_domains_languages',[DashboardController::class , 'skills_domains_lang']);
 
 
 // skills management 
-Route::post('/dashboard/skills/create',[SkillsController::class , 'store'])->name('skills.create');
-Route::put('/dashboard/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
-Route::delete('/dashboard/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
-Route::get('/dashboard/skills/search',[SkillsController::class , 'search'])->name('skills.search');
+// Route::post('/dashboard/skills/create',[SkillsController::class , 'store'])->name('skills.create');
+// Route::put('/dashboard/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
+// Route::delete('/dashboard/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
+// Route::get('/dashboard/skills/search',[SkillsController::class , 'search'])->name('skills.search');
 
 
 //domains management 
-Route::post('/dashboard/domains/create', [DomainController::class , 'store']);
-Route::put('/dashboard/domains/update', [DomainController::class , 'update']);
-Route::delete('/dashboard/domains/delete', [DomainController::class , 'destroy']);
-Route::get('/dashboard/domains/search', [DomainController::class , 'search']);
+// Route::post('/dashboard/domains/create', [DomainController::class , 'store']);
+// Route::put('/dashboard/domains/update', [DomainController::class , 'update']);
+// Route::delete('/dashboard/domains/delete', [DomainController::class , 'destroy']);
+// Route::get('/dashboard/domains/search', [DomainController::class , 'search']);
 
-// languages management 
-Route::post('/dashboard/languages/create' , [LanguagesController::class , 'store']);
-Route::put('/dashboard/languages/update' , [LanguagesController::class , 'update']);
-Route::delete('/dashboard/languages/delete' , [LanguagesController::class , 'destroy']);
-Route::get('/dashboard/languages/search' , [LanguagesController::class , 'search']);
+// // languages management 
+// Route::post('/dashboard/languages/create' , [LanguagesController::class , 'store']);
+// Route::put('/dashboard/languages/update' , [LanguagesController::class , 'update']);
+// Route::delete('/dashboard/languages/delete' , [LanguagesController::class , 'destroy']);
+// Route::get('/dashboard/languages/search' , [LanguagesController::class , 'search']);
 
 
 //display skills , domains , languages in the dashboard 
 Route::get('/dashboard/skills',[SkillsController::class , 'index']);
-Route::get('/dashboard/domains',[DashboardController::class , 'getDomains']);
-Route::get('/dashboard/languages',[DashboardController::class , 'getLanguages']);
+// Route::get('/dashboard/domains',[DomainController::class , 'index']);
+// Route::get('/dashboard/languages',[DashboardController::class , 'getLanguages']);
+Route::get('/dashboard', [DashboardController::class, 'index']);

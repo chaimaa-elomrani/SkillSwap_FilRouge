@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 class DomainService{
 
     public function getAllDomains(){
-        return Domains::orderBy('name')->get();
+        return Domains::orderBy('name')->paginate(10);
     }
 
     public function create(array $data){
@@ -21,7 +21,7 @@ class DomainService{
     }
 
     public function delete(Domains $domain){
-        return $domain->delete();
+        return $domain->delete(); 
     }
 
     public function searchDomains(string $query): Collection{
