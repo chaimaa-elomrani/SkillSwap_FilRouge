@@ -304,18 +304,7 @@
                 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex space-x-4">
-                            <!-- <div>
-                                <label class="block text-sm text-gray-500 mb-1">Domain</label>
-                                <select
-                                    class="w-48 border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect">
-                                    <option value="">All Domains</option>
-                                    @foreach ($domains as $domain)
-                                    <option value="{{ $domain->id }}">{{ $domain->name }}</option>
-                                        
-                                    @endforeach
-                               
-                                </select>
-                            </div> -->
+                          
 
                         </div>
                         <div class="flex space-x-3">
