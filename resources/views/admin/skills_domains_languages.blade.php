@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <script>
         tailwind.config = {
             theme: {
@@ -50,6 +51,8 @@
             }
         }
     </script>
+
+
     <style>
         /* Animation classes */
         .fade-in {
@@ -156,116 +159,6 @@
         .sidebar-link:hover::after {
             width: 100%;
         }
-
-
-        .pagination-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    gap: 4px;
-}
-
-.pagination .page-item {
-    transition: all 0.3s ease;
-    transform: translateY(0);
-}
-
-.pagination .page-item:hover {
-    transform: translateY(-2px);
-}
-
-.pagination .page-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 36px;
-    height: 36px;
-    padding: 0 10px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 14px;
-    color: #4b5563;
-    background-color: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.pagination .page-link:hover {
-    background-color: #e5e7eb;
-    border-color: #d1d5db;
-    color: #1f2937;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.pagination .page-item.active .page-link {
-    background-color: #4f46e5;
-    border-color: #4f46e5;
-    color: #fff;
-    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.pagination .page-item.active .page-link::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: shine 2s infinite;
-}
-
-.pagination .page-item.disabled .page-link {
-    color: #9ca3af;
-    pointer-events: none;
-    background-color: #f3f4f6;
-    border-color: #e5e7eb;
-}
-
-.pagination .page-item:first-child .page-link,
-.pagination .page-item:last-child .page-link {
-    padding: 0 12px;
-}
-
-/* Previous/Next icons if you're using them */
-.pagination .page-item i {
-    font-size: 12px;
-}
-
-@keyframes shine {
-    0% {
-        left: -100%;
-    }
-    20% {
-        left: 100%;
-    }
-    100% {
-        left: 100%;
-    }
-}
-
-/* For mobile responsiveness */
-@media (max-width: 640px) {
-    .pagination .page-link {
-        min-width: 32px;
-        height: 32px;
-        font-size: 13px;
-    }
-    
-    .pagination {
-        gap: 2px;
-    }
-}
     </style>
 </head>
 
@@ -484,11 +377,15 @@
                     </div>
 
                     <div class="flex justify-between items-center mt-6">
-                        <!-- <div class="text-sm text-gray-500">
-                            Showing 1 to 5 of 124 entries
-                        </div> -->
-                        <div class="d-flex justify-content-center">
-                            {!! $skills->links() !!}
+                        <div class="text-sm text-gray-500">
+                            <p class="text-muted text-center mt-3">
+                                Page {{ $skills->currentPage() }} sur {{ $skills->lastPage() }} —
+                                Total : {{ $skills->total() }} compétences
+                            </p>
+
+                        </div>
+                        <div class="d-flex ">
+                            {{ $skills->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
                         </div>
                     </div>
                 </div>
