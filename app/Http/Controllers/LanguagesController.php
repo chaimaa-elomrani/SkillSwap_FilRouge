@@ -17,7 +17,7 @@ class LanguagesController extends Controller
 
     public function index(){
         $languages = $this->languagesService->getAllLanguages();
-        return view('languages.index', compact('languages'));
+        return view('admin/languages', compact('languages'));
     }
 
     public function store(Request $request){

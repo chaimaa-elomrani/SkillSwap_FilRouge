@@ -52,10 +52,11 @@ Route::delete('/domains/delete', [DomainController::class , 'destroy']);
 Route::get('/domains/search', [DomainController::class , 'search']);
 
 // // languages management 
-// Route::post('/dashboard/languages/create' , [LanguagesController::class , 'store']);
-// Route::put('/dashboard/languages/update' , [LanguagesController::class , 'update']);
-// Route::delete('/dashboard/languages/delete' , [LanguagesController::class , 'destroy']);
-// Route::get('/dashboard/languages/search' , [LanguagesController::class , 'search']);
+Route::get('/languages',[LanguagesController::class , 'index']);
+Route::post('/languages/create' , [LanguagesController::class , 'store']);
+Route::put('/languages/update' , [LanguagesController::class , 'update']);
+Route::delete('/languages/delete' , [LanguagesController::class , 'destroy']);
+Route::get('/languages/search' , [LanguagesController::class , 'search']);
 
 
 //display skills , domains , languages in the dashboard 
