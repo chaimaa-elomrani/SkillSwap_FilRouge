@@ -357,16 +357,14 @@
                     </div>
 
                     <div class="flex justify-between items-center mt-6">
-                        <div class="text-sm text-gray-500">
-                            Showing 1 to 4 of 32 entries
+                    <div class="text-sm text-gray-500">
+                        <p class="text-muted text-center mt-3">
+                                Page {{ $languages->currentPage() }} sur {{ $languages->lastPage() }} —
+                                Total : {{ $languages->total() }} compétences
+                            </p>
                         </div>
-                        <div class="flex">
-                            <button class="px-3 py-1 border rounded-l-md bg-gray-100 btn-transition">Previous</button>
-                            <button
-                                class="px-3 py-1 border-t border-b border-r bg-blue-500 text-white btn-transition">1</button>
-                            <button class="px-3 py-1 border-t border-b border-r btn-transition">2</button>
-                            <button class="px-3 py-1 border-t border-b border-r btn-transition">3</button>
-                            <button class="px-3 py-1 border rounded-r-md btn-transition">Next</button>
+                        <div class="d-flex ">
+                            {{ $languages->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
                         </div>
                     </div>
                 </div>

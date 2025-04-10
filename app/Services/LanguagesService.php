@@ -5,9 +5,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 class LanguagesService{
     
-    public function getAllLanguages(): Collection
+    public function getAllLanguages()
     {
-        return Languages::all();
+        return Languages::orderBy('name')->paginate(10);
     }
 
     public function create(array $data): Languages
