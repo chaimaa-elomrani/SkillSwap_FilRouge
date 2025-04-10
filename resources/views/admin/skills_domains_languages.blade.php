@@ -348,7 +348,7 @@
                                     <td class="py-4 font-medium">{{ $skill->name }}</td>
                                     <td class="py-4">
                                         <span
-                                            class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">{{ $skill->domain_id }}</span>
+                                            class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">{{ $skill->domain->name }}</span>
                                     </td>
                                    
                                     <td class="py-4 text-gray-500">{{ $skill->created_at }}</td>
