@@ -26,11 +26,8 @@ class DomainController extends Controller
         $request->validate([
             'name' => 'required|unique:domains,name',
         ]);
-        if( $this->domainService->create($request->all())){
-            return redirect()->route('domains.index');
-        }
-        return redirect()->route('languages.index');
-      
+        $this->domainService->create(['name'=> $request['name']]);
+        return redirect()->route('domains.index');
     }
 
     public function update(Request $request ,Domains $domains){
