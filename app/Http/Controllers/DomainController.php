@@ -38,9 +38,9 @@ class DomainController extends Controller
         return redirect()->route('domains.index')->with('success', 'Domain updated successfully.');
     }
 
-    public function destroy(Domains $domains){
-        $this->domainService->delete($domains);
-        return redirect()->route('domains.index')->with('success', 'Domain deleted successfully.');
+    public function destroy(Domains $domain){
+        $this->domainService->delete($domain);
+        return redirect()->route('domains.index');
     }
 
     public function search(Request $request){

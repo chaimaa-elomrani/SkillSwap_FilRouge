@@ -346,9 +346,12 @@
                                         <button
                                             class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
                                                 class="fas fa-edit"></i></button>
-                                        <button
-                                            class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-trash-alt"></i></button>
+                                            <form action="{{ route('domains.destroy', $domain->id) }}" method="POST" style="display: inline">
+                                                @csrf
+                                                @method('DELETE')   
+                                            <button type="submit" 
+                                                class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "><i class="fas fa-trash-alt"></i></button>
+                                            </form>
                                     </td>
                                 </tr>
                             @endforeach 

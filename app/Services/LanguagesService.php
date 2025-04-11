@@ -20,7 +20,7 @@ class LanguagesService{
         return $language->update($data);
     }
 
-    public function delete(Languages $language): bool
+    public function delete(Languages $language)
     {
         return $language->delete();
     }

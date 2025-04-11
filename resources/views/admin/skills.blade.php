@@ -531,8 +531,6 @@
                 });
             });
 
-          
-
             // Add hover effect to table rows
             const tableRows = document.querySelectorAll('tbody tr');
             tableRows.forEach(row => {

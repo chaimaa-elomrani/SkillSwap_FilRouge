@@ -346,9 +346,12 @@
                                         <button
                                             class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
                                                 class="fas fa-edit"></i></button>
-                                        <button
-                                            class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-trash-alt"></i></button>
+                                                <form action="{{ route('languages.destroy', $language->id) }}" method="POST" style="display: inline">
+                                                @csrf
+                                                @method('DELETE')   
+                                            <button type="submit" 
+                                                class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "><i class="fas fa-trash-alt"></i></button>
+                                            </form>
                                     </td>
                                 </tr>
                                @endforeach
@@ -546,35 +549,6 @@
                 });
             });
 
-            // Form submission (prevent default for demo)
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    // Add success animation
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Saved!';
-                    submitBtn.classList.add('bg-green-600');
-
-                    setTimeout(() => {
-                        const modal = this.closest('.fixed');
-                        hideModal(modal);
-
-                        // Reset button after hiding
-                        setTimeout(() => {
-                            if (submitBtn.innerHTML.includes('Skill')) {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Skill';
-                            } else if (submitBtn.innerHTML.includes('Domain')) {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Domain';
-                            } else {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Language';
-                            }
-                            submitBtn.classList.remove('bg-green-600');
-                        }, 300);
-                    }, 1000);
-                });
-            });
 
             // Add hover effect to table rows
             const tableRows = document.querySelectorAll('tbody tr');
