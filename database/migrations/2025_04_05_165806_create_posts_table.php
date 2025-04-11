@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('category'); 
             $table->string('experience_level'); 
             $table->string('target_audience')->nullable();
-            $table->json('languages')->nullable();
+            $table->foreignId('Languages_id')->constrained()->onDelete('cascade');
             $table->integer('credit_cost')->default(0);
             $table->string('completion_time');
             $table->string('time_unit')->default('hours');

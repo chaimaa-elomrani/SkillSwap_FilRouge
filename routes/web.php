@@ -37,7 +37,7 @@ Route::get('skills_domains_languages',[DashboardController::class , 'skills_doma
 
 
 // skills management 
-Route::get('/skills',[SkillsController::class , 'index']);
+Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
 Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.create');
 Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
 Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');

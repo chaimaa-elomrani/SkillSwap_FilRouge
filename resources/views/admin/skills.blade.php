@@ -304,7 +304,7 @@
                 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex space-x-4">
-                          
+
 
                         </div>
                         <div class="flex space-x-3">
@@ -346,13 +346,21 @@
 
                                         <td class="py-4 text-gray-500">{{ $skill->created_at }}</td>
                                         <td class="py-4">
-                                            <button
-                                                class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
-                                                    class="fas fa-edit"></i></button>
-                                            <button
-                                                class="text-red-500 hover:text-red-700 transition-colors duration-200 hover:scale-110 transform"><i
-                                                    class="fas fa-trash-alt"></i></button>
-                                        </td>
+                                            <!-- <form action="{{ route('skills.update', $skill->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')   
+                                                <button type="submit" 
+                                                    class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i class="fas fa-edit"></i>
+                                                </button>
+                                              </form> -->
+
+                                              <form action="{{ route('skills.destroy', $skill->id) }}" method="POST" style="display: inline">
+                                                @csrf
+                                                @method('DELETE')   
+                                            <button type="submit" 
+                                                class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "  novalidate><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                            </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -460,12 +468,9 @@
 
             // Modal functionality with animations
             const addSkillBtn = document.getElementById('add-skill-btn');
-            const addDomainBtn = document.getElementById('add-domain-btn');
-            const addLanguageBtn = document.getElementById('add-language-btn');
             const closeModalBtns = document.querySelectorAll('.close-modal');
             const skillModal = document.getElementById('add-skill-modal');
-            const domainModal = document.getElementById('add-domain-modal');
-        
+
 
             // Function to show modal with animation
             function showModal(modal) {
@@ -509,7 +514,7 @@
                 setTimeout(() => this.classList.remove('animate-wiggle'), 500);
             });
 
-        
+
             closeModalBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
                     const modal = this.closest('.fixed');
@@ -526,35 +531,7 @@
                 });
             });
 
-            // Form submission (prevent default for demo)
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    // Add success animation
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Saved!';
-                    submitBtn.classList.add('bg-green-600');
-
-                    setTimeout(() => {
-                        const modal = this.closest('.fixed');
-                        hideModal(modal);
-
-                        // Reset button after hiding
-                        setTimeout(() => {
-                            if (submitBtn.innerHTML.includes('Skill')) {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Skill';
-                            } else if (submitBtn.innerHTML.includes('Domain')) {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Domain';
-                            } else {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Language';
-                            }
-                            submitBtn.classList.remove('bg-green-600');
-                        }, 300);
-                    }, 1000);
-                });
-            });
+          
 
             // Add hover effect to table rows
             const tableRows = document.querySelectorAll('tbody tr');
