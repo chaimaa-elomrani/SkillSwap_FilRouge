@@ -389,10 +389,11 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <form id="add-domain-form">
+            <form id="add-domain-form" method="POST" action="{{ route('domains.store') }}"> 
+                @csrf
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Domain Name</label>
-                    <input type="text"
+                    <input type="text" name="name"
                         class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
                         required>
                 </div>
@@ -494,25 +495,13 @@
                 }, 300);
             }
 
-            addSkillBtn.addEventListener('click', function () {
-                showModal(skillModal);
-                // Add wiggle animation to button
-                this.classList.add('animate-wiggle');
-                setTimeout(() => this.classList.remove('animate-wiggle'), 500);
-            });
-
             addDomainBtn.addEventListener('click', function () {
                 showModal(domainModal);
                 this.classList.add('animate-wiggle');
                 setTimeout(() => this.classList.remove('animate-wiggle'), 500);
             });
 
-            addLanguageBtn.addEventListener('click', function () {
-                showModal(languageModal);
-                this.classList.add('animate-wiggle');
-                setTimeout(() => this.classList.remove('animate-wiggle'), 500);
-            });
-
+         
             closeModalBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
                     const modal = this.closest('.fixed');
@@ -529,35 +518,7 @@
                 });
             });
 
-            // Form submission (prevent default for demo)
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    // Add success animation
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Saved!';
-                    submitBtn.classList.add('bg-green-600');
-
-                    setTimeout(() => {
-                        const modal = this.closest('.fixed');
-                        hideModal(modal);
-
-                        // Reset button after hiding
-                        setTimeout(() => {
-                            if (submitBtn.innerHTML.includes('Skill')) {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Skill';
-                            } else if (submitBtn.innerHTML.includes('Domain')) {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Domain';
-                            } else {
-                                submitBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Save Language';
-                            }
-                            submitBtn.classList.remove('bg-green-600');
-                        }, 300);
-                    }, 1000);
-                });
-            });
+         
 
             // Add hover effect to table rows
             const tableRows = document.querySelectorAll('tbody tr');
