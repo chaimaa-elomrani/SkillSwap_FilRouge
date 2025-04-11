@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         tailwind.config = {
             theme: {
@@ -413,34 +414,42 @@
 
  <script>
 
-        document.getElementById('domainModal').addEventListener('submit' , function(e){
-            e.preventDefault();
-        })
-
-        const name = documeny.getElementById('domainModal');
-        fetch('/domains',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({name : name})
-        })
-
-        .then(response => {
-            if(response.ok){
-                return response.json();
-            }else{
-                throw new Error('Error adding domain');
-            }
-        })
-
-        .then(date =>{
-            console.log('success', data);
-        })
-        .catch(error => {
-            console.error('Error adding domain:', error);
+       
+document.addEventListener('DOMContentLoaded', function() {
+    // Get references to DOM elements
+    const addDomainBtn = document.getElementById('add-domain-btn');
+    const domainModal = document.getElementById('domainModal');
+    const closeModalBtns = document.querySelectorAll('.close-modal');
+    const addDomainForm = document.getElementById('add-domain-form');
+    
+    // Show modal when "Add New Domain" button is clicked
+    addDomainBtn.addEventListener('click', function() {
+        domainModal.classList.remove('hidden');
+    });
+    
+    // Hide modal when close buttons are clicked
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            domainModal.classList.add('hidden');
         });
+    });
+    
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', function(e) {
+        if (e.target === domainModal) {
+            domainModal.classList.add('hidden');
+        }
+    });
+    
+    // Handle form submission
+    if (addDomainForm) {
+        addDomainForm.addEventListener('submit', function(e) {
+            // Let the form submit naturally - no need to prevent default
+            // The form already has the correct action and method attributes
+            // and will automatically include the CSRF token
+        });
+    }
+});
  </script>
 
 </body>
