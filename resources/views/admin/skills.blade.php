@@ -385,7 +385,7 @@
     </div>
 
     <!-- Modal for Add Skill -->
-    <div id="add-skill-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="skillsModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg w-full max-w-md p-6 scale-in">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">Add New Skill</h3>
@@ -416,7 +416,7 @@
                 <div class="flex justify-end space-x-3">
                     <button type="button"
                         class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
-                    <button type="submit"
+                    <button type="submit" id="skillsModal"
                         class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
                         Skill</button>
                 </div>
@@ -424,132 +424,45 @@
         </div>
     </div>
 
-
-
-
     <script>
-        // Tab switching functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            const tabs = document.querySelectorAll('#tabs a');
-            const tabPanes = document.querySelectorAll('.tab-pane');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Remove active class from all tabs
-                    tabs.forEach(t => {
-                        t.classList.remove('text-blue-500', 'font-medium', 'border-b-2', 'border-blue-500', 'tab-active');
-                        t.classList.add('text-gray-500');
-                    });
-
-                    // Add active class to clicked tab
-                    this.classList.add('text-blue-500', 'font-medium', 'border-b-2', 'border-blue-500', 'tab-active');
-                    this.classList.remove('text-gray-500');
-
-                    // Hide all tab panes
-                    tabPanes.forEach(pane => {
-                        pane.classList.add('hidden');
-                        pane.classList.remove('active');
-                    });
-
-                    // Show the corresponding tab pane with animation
-                    const tabId = this.getAttribute('data-tab');
-                    const tabPane = document.getElementById(tabId + '-tab');
-                    tabPane.classList.remove('hidden');
-                    tabPane.classList.add('active', 'slide-in-up');
-
-                    // Reset animation to allow it to play again
-                    tabPane.style.animation = 'none';
-                    tabPane.offsetHeight; // Trigger reflow
-                    tabPane.style.animation = null;
-                });
-            });
-
-            // Modal functionality with animations
-            const addSkillBtn = document.getElementById('add-skill-btn');
+         document.addEventListener('DOMContentLoaded', function () {
+            // Get references to DOM elements
+            const addskillsBtn = document.getElementById('add-skills-btn');
+            const skillsModal = document.getElementById('skillsModal');
             const closeModalBtns = document.querySelectorAll('.close-modal');
-            const skillModal = document.getElementById('add-skill-modal');
+            const addskillsForm = document.getElementById('add-skills-form');
 
-
-            // Function to show modal with animation
-            function showModal(modal) {
-                modal.classList.remove('hidden');
-                modal.querySelector('.bg-white').classList.add('scale-in');
-
-                // Add fade-in animation to modal background
-                modal.classList.add('fade-in');
-
-                // Animate the form fields sequentially
-                const formFields = modal.querySelectorAll('input, select, textarea');
-                formFields.forEach((field, index) => {
-                    field.style.opacity = '0';
-                    field.style.transform = 'translateY(10px)';
-                    setTimeout(() => {
-                        field.style.transition = 'all 0.3s ease';
-                        field.style.opacity = '1';
-                        field.style.transform = 'translateY(0)';
-                    }, 100 + (index * 50));
-                });
-            }
-
-            // Function to hide modal with animation
-            function hideModal(modal) {
-                const modalContent = modal.querySelector('.bg-white');
-                modalContent.style.transition = 'all 0.3s ease';
-                modalContent.style.transform = 'scale(0.95)';
-                modalContent.style.opacity = '0';
-
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                    modalContent.style.transform = '';
-                    modalContent.style.opacity = '';
-                }, 300);
-            }
-
-            addSkillBtn.addEventListener('click', function () {
-                showModal(skillModal);
-                // Add wiggle animation to button
-                this.classList.add('animate-wiggle');
-                setTimeout(() => this.classList.remove('animate-wiggle'), 500);
+            // Show modal when "Add New skills" button is clicked
+            addskillsBtn.addEventListener('click', function () {
+                skillsModal.classList.remove('hidden');
             });
 
-
+            // Hide modal when close buttons are clicked
             closeModalBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
-                    const modal = this.closest('.fixed');
-                    hideModal(modal);
+                    skillsModal.classList.add('hidden');
                 });
             });
 
-            // Close modal when clicking outside
+            // Close modal when clicking outside the modal content
             window.addEventListener('click', function (e) {
-                allModals.forEach(modal => {
-                    if (e.target === modal) {
-                        hideModal(modal);
-                    }
+                if (e.target === skillsModal) {
+                    skillsModal.classList.add('hidden');
+                }
+            });
+
+            // Handle form submission
+            if (addskillsForm) {
+                addskillsForm.addEventListener('submit', function (e) {
+                    // Let the form submit naturally - no need to prevent default
+                    // The form already has the correct action and method attributes
+                    // and will automatically include the CSRF token
                 });
-            });
-
-            // Add hover effect to table rows
-            const tableRows = document.querySelectorAll('tbody tr');
-            tableRows.forEach(row => {
-                row.classList.add('hover-effect');
-            });
-
-            // Add initial animations to sidebar items
-            const sidebarItems = document.querySelectorAll('.sidebar-link');
-            sidebarItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateX(-10px)';
-                setTimeout(() => {
-                    item.style.transition = 'all 0.3s ease';
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateX(0)';
-                }, 200 + (index * 50));
-            });
+            }
         });
+
     </script>
+
 </body>
 
 </html>

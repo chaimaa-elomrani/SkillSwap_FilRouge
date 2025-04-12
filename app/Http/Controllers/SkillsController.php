@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Skills;
+use App\Services\DomainService;
 use App\Services\SkillService;
 use Illuminate\Http\Request;
 
@@ -10,11 +11,13 @@ class SkillsController extends Controller
 {
 
     protected $skillService;
+    protected $domainService;
 
 
-    public function __construct(SkillService $skillService)
+    public function __construct(SkillService $skillService , DomainService $domainService)
     {
         $this->skillService = $skillService;
+        $this->domainService = $domainService;
     }
 
     public function index()
@@ -63,6 +66,12 @@ class SkillsController extends Controller
         $skills = $request->input('skills');
         $skillIds = $this->skillService->findOrCreate($skills);
         return redirect()->route('skills.index');
+    }
+
+    public function getDomains(){
+
+       $domains = $this->domainService->getAllDomains();
+       return view('admin/skills', compact('domains'));
     }
 
 }
