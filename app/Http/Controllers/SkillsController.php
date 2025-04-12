@@ -23,7 +23,8 @@ class SkillsController extends Controller
     public function index()
     {
         $skills = $this->skillService->getAllSkills();
-        return view('admin/skills', compact('skills'));
+        $domains = $this->domainService->getDomains();
+        return view('admin/skills', compact('skills', 'domains'));
     }
 
     public function store(Request $request)
@@ -68,10 +69,10 @@ class SkillsController extends Controller
         return redirect()->route('skills.index');
     }
 
-    public function getDomains(){
+    // public function getDomains(){
 
-       $domains = $this->domainService->getAllDomains();
-       return view('admin/skills', compact('domains'));
-    }
+    //    $domains = $this->domainService->getDomains();
+    //    return view('admin/skills', compact('domains'));
+    // }
 
 }

@@ -12,6 +12,10 @@ class DomainService{
         return Domains::orderBy('name')->paginate(10);
     }
 
+    public function getDomains(){
+        return Domains::orderBy('name')->get();
+    }
+
     public function create(array $data){
         return Domains::create($data);
        

@@ -38,11 +38,11 @@ Route::get('skills_domains_languages',[DashboardController::class , 'skills_doma
 
 // skills management 
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
+// Route::get('/skills/domains',[SkillsController::class , 'getDomains'])->name('skills.domains');
 Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.create');
 Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
 Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
-
 
 // domains management 
 Route::get('/domains',[DomainController::class , 'index'])->name('domains.index');

@@ -308,7 +308,7 @@
 
                         </div>
                         <div class="flex space-x-3">
-                            <button id="add-skill-btn"
+                            <button  id="add-skills-btn"
                                 class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center btn-transition">
                                 <i class="fas fa-plus mr-2"></i> Add New Skill
                             </button>
@@ -407,16 +407,15 @@
                         class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
                         required>
                         <option value="">Select Domain</option>
-                        <option value="development">Development</option>
-                        <option value="design">Design</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="content">Content</option>
+                        @foreach ($domains as $domain )
+                        <option value="{{ $domain->id }}">{{ $domain->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="flex justify-end space-x-3">
                     <button type="button"
                         class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
-                    <button type="submit" id="skillsModal"
+                    <button type="submit"
                         class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
                         Skill</button>
                 </div>
