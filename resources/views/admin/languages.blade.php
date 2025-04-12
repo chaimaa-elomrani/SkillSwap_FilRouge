@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         tailwind.config = {
             theme: {
@@ -294,7 +295,7 @@
                         class="inline-block px-4 py-2 text-blue-500 font-medium border-b-2 border-blue-500 tab-active tab-transition"
                         data-tab="skills">Languages</a>
                 </li>
-                
+
             </ul>
         </div>
 
@@ -338,30 +339,32 @@
                             </thead>
                             <tbody>
                                 @foreach ($languages as $language)
-                                <tr class="border-b hover-effect">
-                                    <td class="py-4 font-medium">{{ $language->name }}</td>
+                                    <tr class="border-b hover-effect">
+                                        <td class="py-4 font-medium">{{ $language->name }}</td>
 
-                                    <td class="py-4 text-gray-500">{{$language->created_at}}</td>
-                                    <td class="py-4">
-                                        <button
-                                            class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-edit"></i></button>
-                                                <form action="{{ route('languages.destroy', $language->id) }}" method="POST" style="display: inline">
+                                        <td class="py-4 text-gray-500">{{$language->created_at}}</td>
+                                        <td class="py-4">
+                                            <button
+                                                class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
+                                                    class="fas fa-edit"></i></button>
+                                            <form action="{{ route('languages.destroy', $language->id) }}" method="POST"
+                                                style="display: inline">
                                                 @csrf
-                                                @method('DELETE')   
-                                            <button type="submit" 
-                                                class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "><i class="fas fa-trash-alt"></i></button>
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "><i
+                                                        class="fas fa-trash-alt"></i></button>
                                             </form>
-                                    </td>
-                                </tr>
-                               @endforeach
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
 
                     <div class="flex justify-between items-center mt-6">
-                    <div class="text-sm text-gray-500">
-                        <p class="text-muted text-center mt-3">
+                        <div class="text-sm text-gray-500">
+                            <p class="text-muted text-center mt-3">
                                 Page {{ $languages->currentPage() }} sur {{ $languages->lastPage() }} —
                                 Total : {{ $languages->total() }} compétences
                             </p>
@@ -375,10 +378,9 @@
         </div>
     </div>
 
-   
+
     <!-- Modal for Add Language -->
-    <div id="add-language-modal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="languagesModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg w-full max-w-md p-6 scale-in">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">Add New Language</h3>
@@ -387,38 +389,15 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <form id="add-language-form">
+            <form id="add-language-form" method="POST" action="{{ route('languages.create') }}">
+                @csrf
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Language Name</label>
-                    <input type="text"
+                    <input id="log" type="text" name="name"
                         class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
                         required>
                 </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
-                    <select
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        required>
-                        <option value="programming">Programming</option>
-                        <option value="spoken">Spoken</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                    <select
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        required>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="pending">Pending</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                    <textarea
-                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
-                        rows="3"></textarea>
-                </div>
+
                 <div class="flex justify-end space-x-3">
                     <button type="button"
                         class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
@@ -430,10 +409,48 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/languages.js') }}"></script>
 
-     
-        
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get references to DOM elements
+            const addlanguageBtn = document.getElementById('add-language-btn');
+            const languageModal = document.getElementById('languagesModal');
+            const closeModalBtns = document.querySelectorAll('.close-modal');
+            const addlanguageForm = document.getElementById('add-language-form');
+
+            // Show modal when "Add New language" button is clicked
+            addlanguageBtn.addEventListener('click', function () {
+                languageModal.classList.remove('hidden');
+            });
+
+            // Hide modal when close buttons are clicked
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    languageModal.classList.add('hidden');
+                });
+            });
+
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', function (e) {
+                if (e.target === languageModal) {
+                    languageModal.classList.add('hidden');
+                }
+            });
+
+            // Handle form submission
+            if (addlanguageForm) {
+                addlanguageForm.addEventListener('submit', function (e) {
+                    // Let the form submit naturally - no need to prevent default
+                    // The form already has the correct action and method attributes
+                    // and will automatically include the CSRF token
+                });
+            }
+        });
+    </script>
+
+
 </body>
 
 </html>
