@@ -156,3 +156,33 @@
             </div>
         </div>
     </nav>
+        <!-- Hero Section with Parallax -->
+        <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-shadow-lg mb-6 animate-float">
+                Every Skill Imaginable, <span class="text-primary-300">One Marketplace</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                From digital design to home repairs, academic tutoring to legal advice - find experts in every field ready to share their expertise.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#categories" class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Browse Categories
+                </a>
+                <a href="#" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Become an Expert
+                </a>
+            </div>
+        </div>
+        
+        <!-- Animated shapes -->
+        <div class="absolute -bottom-4 left-0 w-full overflow-hidden">
+            <svg class="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50 dark:fill-gray-900"></path>
+            </svg>
+        </div>
+    </section>
