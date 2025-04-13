@@ -1782,6 +1782,147 @@
         </div>
     </footer>
 
+    <script>
+        // Theme toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const mobileThemeText = document.getElementById('mobile-theme-text');
 
+        // Set initial theme based on user preference
+        if (localStorage.getItem('color-theme') === 'dark' || 
+            (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+            mobileThemeText.textContent = 'Toggle Light Mode';
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+            mobileThemeText.textContent = 'Toggle Dark Mode';
+        }
+
+        // Toggle theme on button click
+        function toggleTheme() {
+            // Toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            
+            // Toggle dark class
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                mobileThemeText.textContent = 'Toggle Dark Mode';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                mobileThemeText.textContent = 'Toggle Light Mode';
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search and filter functionality
+        const searchInput = document.getElementById('search-input');
+        const categoryTypeSelect = document.getElementById('category-type');
+        const sortBySelect = document.getElementById('sort-by');
+        const categoryCards = document.querySelectorAll('.category-card');
+
+        function filterCategories() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryType = categoryTypeSelect.value;
+            
+            categoryCards.forEach(card => {
+                const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+                const cardType = card.getAttribute('data-category');
+                
+                let shouldShow = cardTitle.includes(searchTerm);
+                
+                if (categoryType !== 'all' && cardType !== categoryType) {
+                    shouldShow = false;
+                }
+                
+                card.style.display = shouldShow ? 'block' : 'none';
+            });
+        }
+
+        function sortCategories() {
+            const sortBy = sortBySelect.value;
+            const cardsContainer = document.querySelector('.grid');
+            const cardsArray = Array.from(categoryCards);
+            
+            cardsArray.sort((a, b) => {
+                const titleA = a.querySelector('h3').textContent;
+                const titleB = b.querySelector('h3').textContent;
+                const expertsA = parseInt(a.querySelector('p').textContent);
+                const expertsB = parseInt(b.querySelector('p').textContent);
+                
+                if (sortBy === 'az') {
+                    return titleA.localeCompare(titleB);
+                } else if (sortBy === 'za') {
+                    return titleB.localeCompare(titleA);
+                } else if (sortBy === 'experts') {
+                    return expertsB - expertsA;
+                }
+                
+                // Default: popular (already sorted in HTML)
+                return 0;
+            });
+            
+            // Remove all cards
+            categoryCards.forEach(card => {
+                card.remove();
+            });
+            
+            // Append sorted cards
+            cardsArray.forEach(card => {
+                if (card.style.display !== 'none') {
+                    cardsContainer.appendChild(card);
+                }
+            });
+        }
+
+        // Add event listeners
+        searchInput.addEventListener('input', filterCategories);
+        categoryTypeSelect.addEventListener('change', filterCategories);
+        sortBySelect.addEventListener('change', sortCategories);
+
+        // Sticky search bar behavior
+        const searchBar = document.getElementById('search-bar');
+        const searchBarTop = searchBar.offsetTop;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= searchBarTop) {
+                searchBar.classList.add('shadow-lg');
+            } else {
+                searchBar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Smooth scroll animation for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
