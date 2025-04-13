@@ -294,7 +294,7 @@
                     <a href="#"
                         class="inline-block px-4 py-2 text-blue-500 font-medium border-b-2 border-blue-500 tab-active tab-transition"
                         data-tab="skills">Domains</a>
-                </li>         
+                </li>
             </ul>
         </div>
 
@@ -306,7 +306,7 @@
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex space-x-4">
                             <div>
-                              
+
                             </div>
                         </div>
                         <div class="flex space-x-3">
@@ -339,30 +339,32 @@
                             </thead>
                             <tbody>
                                 @foreach($domains as $domain)
-                                <tr class="border-b hover-effect">
-                                    <td class="py-4 font-medium">{{ $domain->name }}</td>
-                                    <td class="py-4">{{ $domain->skills_count }}</td>
-                                    <td class="py-4 text-gray-500">{{ $domain->created_at }}</td>
-                                    <td class="py-4">
-                                        <button
-                                            class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
-                                                class="fas fa-edit"></i></button>
-                                            <form action="{{ route('domains.destroy', $domain->id) }}" method="POST" style="display: inline">
+                                    <tr class="border-b hover-effect">
+                                        <td class="py-4 font-medium">{{ $domain->name }}</td>
+                                        <td class="py-4">{{ $domain->skills_count }}</td>
+                                        <td class="py-4 text-gray-500">{{ $domain->created_at }}</td>
+                                        <td class="py-4">
+                                            <button
+                                                class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i
+                                                    class="fas fa-edit"></i></button>
+                                            <form action="{{ route('domains.destroy', $domain->id) }}" method="POST"
+                                                style="display: inline">
                                                 @csrf
-                                                @method('DELETE')   
-                                            <button type="submit" 
-                                                class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "><i class="fas fa-trash-alt"></i></button>
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "><i
+                                                        class="fas fa-trash-alt"></i></button>
                                             </form>
-                                    </td>
-                                </tr>
-                            @endforeach 
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
 
                     <div class="flex justify-between items-center mt-6">
                         <div class="text-sm text-gray-500">
-                        <p class="text-muted text-center mt-3">
+                            <p class="text-muted text-center mt-3">
                                 Page {{ $domains->currentPage() }} sur {{ $domains->lastPage() }} —
                                 Total : {{ $domains->total() }} compétences
                             </p>
@@ -370,18 +372,17 @@
                         <div class="d-flex ">
                             {{ $domains->onEachSide(0)->links('pagination::simple-bootstrap-5') }}
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
 
-         
+
         </div>
     </div>
 
     <!-- Modal for Add Domain -->
-    <div id="domainModal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="domainModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg w-full max-w-md p-6 scale-in">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">Add New Domain</h3>
@@ -390,7 +391,7 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <form id="add-domain-form" method="POST" action="{{ route('domains.store') }}"> 
+            <form id="add-domain-form" method="POST" action="{{ route('domains.store') }}">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Domain Name</label>
@@ -402,7 +403,7 @@
                 <div class="flex justify-end space-x-3">
                     <button type="button"
                         class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100 close-modal btn-transition">Cancel</button>
-                    <button type="submit" 
+                    <button type="submit"
                         class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-transition">Save
                         Domain</button>
                 </div>
@@ -410,47 +411,148 @@
         </div>
     </div>
 
- <script src="{{ asset('js/domains.js') }}"></script>
+    <script src="{{ asset('js/domains.js') }}"></script>
 
- <script>
+    <script>
 
-       
-document.addEventListener('DOMContentLoaded', function() {
-    // Get references to DOM elements
-    const addDomainBtn = document.getElementById('add-domain-btn');
-    const domainModal = document.getElementById('domainModal');
-    const closeModalBtns = document.querySelectorAll('.close-modal');
-    const addDomainForm = document.getElementById('add-domain-form');
-    
-    // Show modal when "Add New Domain" button is clicked
-    addDomainBtn.addEventListener('click', function() {
-        domainModal.classList.remove('hidden');
-    });
-    
-    // Hide modal when close buttons are clicked
-    closeModalBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            domainModal.classList.add('hidden');
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get references to DOM elements
+            const addDomainBtn = document.getElementById('add-domain-btn');
+            const domainModal = document.getElementById('domainModal');
+            const closeModalBtns = document.querySelectorAll('.close-modal');
+            const addDomainForm = document.getElementById('add-domain-form');
+
+            // Show modal when "Add New Domain" button is clicked
+            addDomainBtn.addEventListener('click', function () {
+                domainModal.classList.remove('hidden');
+            });
+
+            // Hide modal when close buttons are clicked
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    domainModal.classList.add('hidden');
+                });
+            });
+
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', function (e) {
+                if (e.target === domainModal) {
+                    domainModal.classList.add('hidden');
+                }
+            });
+
+            // Handle form submission
+            if (addDomainForm) {
+                addDomainForm.addEventListener('submit', function (e) {
+                    // Let the form submit naturally - no need to prevent default
+                    // The form already has the correct action and method attributes
+                    // and will automatically include the CSRF token
+                });
+            }
         });
-    });
-    
-    // Close modal when clicking outside the modal content
-    window.addEventListener('click', function(e) {
-        if (e.target === domainModal) {
-            domainModal.classList.add('hidden');
-        }
-    });
-    
-    // Handle form submission
-    if (addDomainForm) {
-        addDomainForm.addEventListener('submit', function(e) {
-            // Let the form submit naturally - no need to prevent default
-            // The form already has the correct action and method attributes
-            // and will automatically include the CSRF token
+
+
+
+
+
+        // **********************************SEARCH*****************************************************
+
+        // Wait for the DOM to be fully loaded before executing
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the search input element
+            const searchInput = document.querySelector('input[placeholder="Search..."]');
+
+            // Add event listener for input changes
+            searchInput.addEventListener('input', function (e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                filterSkillsTable(searchTerm);
+
+                // Update the displayed count of skills
+                updateSkillsCount();
+            });
+
+            // Function to filter the skills table based on search term
+            function filterSkillsTable(searchTerm) {
+                // Get all skill rows from the table (excluding header)
+                const skillRows = document.querySelectorAll('tbody tr');
+
+                // Variable to track visible rows
+                let visibleRows = 0;
+
+                // Loop through each row and check if it matches the search term
+                skillRows.forEach(row => {
+                    // Get the skill name from the first cell
+                    const skillName = row.querySelector('td:first-child').textContent.toLowerCase();
+
+                    // Check if the skill name contains the search term
+                    if (searchTerm === '' || skillName.includes(searchTerm)) {
+                        // Show the row if it matches or if search is empty
+                        row.style.display = '';
+                        visibleRows++;
+                    } else {
+                        // Hide the row if it doesn't match
+                        row.style.display = 'none';
+                    }
+                });
+
+                // Display a "no results" message if needed
+                handleNoResults(visibleRows);
+            }
+
+            // Function to update the skills count display
+            function updateSkillsCount() {
+                const skillsCount = document.getElementById('skills-count');
+                const visibleRows = document.querySelectorAll('tbody tr:not([style*="display: none"])').length;
+
+                // Update the count text
+                if (skillsCount) {
+                    skillsCount.textContent = visibleRows;
+                }
+            }
+
+            // Function to handle when there are no search results
+            function handleNoResults(visibleRowsCount) {
+                // Check if we already have a no-results message
+                let noResultsRow = document.getElementById('no-results-row');
+
+                // If there are no visible rows and the message doesn't exist yet
+                if (visibleRowsCount === 0) {
+                    if (!noResultsRow) {
+                        b
+                        // Create a "no results" row if it doesn't exist
+                        const tbody = document.querySelector('tbody');
+                        noResultsRow = document.createElement('tr');
+                        noResultsRow.id = 'no-results-row';
+                        noResultsRow.className = 'border-b slide-in-up';
+
+                        const cell = document.createElement('td');
+                        cell.colSpan = 4; // Span across all columns
+                        cell.className = 'py-4 text-center text-gray-500';
+                        cell.textContent = 'No skills found matching your search.';
+
+                        noResultsRow.appendChild(cell);
+                        tbody.appendChild(noResultsRow);
+                    } else {
+                        // Show the existing message
+                        noResultsRow.style.display = '';
+                    }
+                } else if (noResultsRow) {
+                    // Hide the message if we have results
+                    noResultsRow.style.display = 'none';
+                }
+            }
+
+            // Initialize event handlers for form submission to prevent page refresh
+            const searchForm = document.querySelector('form[action*="skills.search"]');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    // The search is already handled by the input event
+                });
+            }
         });
-    }
-});
- </script>
+    </script>
 
 </body>
 

@@ -453,8 +453,7 @@
 
         
     // **********************************SEARCH*****************************************************
-
-
+    
         // Wait for the DOM to be fully loaded before executing
         document.addEventListener('DOMContentLoaded', function () {
             // Get the search input element
