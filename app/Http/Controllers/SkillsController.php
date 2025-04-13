@@ -33,12 +33,12 @@ class SkillsController extends Controller
             'name' => 'required|string|max:255',
             'domain_id' => 'required|exists:domains,id',
         ]);
-
        $this->skillService->create([
             'name' => $validated['name'],
             'domain_id' => $validated['domain_id'],
         ]);
-        return redirect()->route('skills.store');
+        
+        return redirect()->route('skills.index');
     }
 
 

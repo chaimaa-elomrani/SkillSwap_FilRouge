@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skills extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'domain_id'];
 
     public static function findOrCreate(array $skills){
         

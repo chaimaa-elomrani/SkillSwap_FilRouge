@@ -308,7 +308,7 @@
 
                         </div>
                         <div class="flex space-x-3">
-                            <button  id="add-skills-btn"
+                            <button id="add-skills-btn"
                                 class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center btn-transition">
                                 <i class="fas fa-plus mr-2"></i> Add New Skill
                             </button>
@@ -341,26 +341,29 @@
                                         <td class="py-4 font-medium">{{ $skill->name }}</td>
                                         <td class="py-4">
                                             <span
-                                                class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">{{ $skill->domain->name }}</span>
+                                                class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">{{ $skill->domain->name ?? 'No domain' }}
+                                                </span>
                                         </td>
 
                                         <td class="py-4 text-gray-500">{{ $skill->created_at }}</td>
                                         <td class="py-4">
                                             <!-- <form action="{{ route('skills.update', $skill->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')   
-                                                <button type="submit" 
-                                                    class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i class="fas fa-edit"></i>
-                                                </button>
-                                              </form> -->
+                                                    @csrf
+                                                    @method('PUT')   
+                                                    <button type="submit" 
+                                                        class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i class="fas fa-edit"></i>
+                                                    </button>
+                                                  </form> -->
 
-                                              <form action="{{ route('skills.destroy', $skill->id) }}" method="POST" style="display: inline">
+                                            <form action="{{ route('skills.destroy', $skill->id) }}" method="POST"
+                                                style="display: inline">
                                                 @csrf
-                                                @method('DELETE')   
-                                            <button type="submit" 
-                                                class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "  novalidate><i class="fas fa-trash-alt"></i></button>
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="text-red-500 hover:text-red-700 transition-colors hover:scale-110 "
+                                                    novalidate><i class="fas fa-trash-alt"></i></button>
                                             </form>
-                                            </td>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -394,21 +397,22 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <form id="add-skill-form" method="POST" action="skills.create">
+            <form id="add-skill-form" method="POST" action="{{ route('skills.store') }}">
+                @csrf
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Skill Name</label>
-                    <input type="text"
+                    <input type="text" name="name"
                         class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
                         required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Domain</label>
-                    <select
+                    <select name="domain_id"
                         class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect"
                         required>
                         <option value="">Select Domain</option>
-                        @foreach ($domains as $domain )
-                        <option value="{{ $domain->id }}">{{ $domain->name }}</option>
+                        @foreach ($domains as $domain)
+                            <option value="{{ $domain->id }}">{{ $domain->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -424,7 +428,7 @@
     </div>
 
     <script>
-         document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
             // Get references to DOM elements
             const addskillsBtn = document.getElementById('add-skills-btn');
             const skillsModal = document.getElementById('skillsModal');
