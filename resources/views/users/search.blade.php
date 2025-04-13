@@ -110,7 +110,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300"></body>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     <!-- Navigation -->
     <nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-50 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -156,8 +156,9 @@
             </div>
         </div>
     </nav>
-        <!-- Hero Section with Parallax -->
-        <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+
+    <!-- Hero Section with Parallax -->
+    <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
         </div>
@@ -186,3 +187,1742 @@
             </svg>
         </div>
     </section>
+
+    <!-- Search & Filter Bar (Sticky) -->
+    <div id="search-bar" class="sticky top-16 z-40 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div class="relative flex-grow max-w-2xl w-full">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <input type="text" id="search-input" class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors duration-300" placeholder="Search categories...">
+                </div>
+                
+                <div class="flex flex-wrap gap-3 w-full md:w-auto">
+                    <select id="category-type" class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
+                        <option value="all">All Categories</option>
+                        <option value="digital">Digital</option>
+                        <option value="creative">Creative</option>
+                        <option value="professional">Professional</option>
+                        <option value="lifestyle">Lifestyle</option>
+                        <option value="education">Education</option>
+                        <option value="specialized">Specialized</option>
+                    </select>
+                    
+                    <select id="sort-by" class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
+                        <option value="popular">Most Popular</option>
+                        <option value="az">Alphabetical (A-Z)</option>
+                        <option value="za">Alphabetical (Z-A)</option>
+                        <option value="experts">Most Experts</option>
+                        <option value="trending">Trending Now</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Navigation -->
+    <div class="bg-gray-100 dark:bg-gray-800 py-4 border-y border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto pb-2 scrollbar-hide space-x-4">
+                <a href="#digital-tech" class="flex-shrink-0 px-4 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-colors duration-300">Digital & Tech</a>
+                <a href="#creative" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Creative</a>
+                <a href="#professional" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Professional</a>
+                <a href="#lifestyle" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Lifestyle</a>
+                <a href="#education" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Education</a>
+                <a href="#specialized" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Specialized</a>
+                <a href="#trending" class="flex-shrink-0 px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-full hover:from-pink-600 hover:to-orange-600 transition-colors duration-300">Trending</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Digital & Tech Categories -->
+        <section id="digital-tech" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-laptop-code text-primary-500 dark:text-primary-400 text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Digital & Tech</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Web Development -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Web Development" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Web Development</h3>
+                            <p class="text-sm text-gray-200">1,245 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Build responsive websites and web applications with modern technologies.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">HTML</span>
+                                <span class="badge badge-blue">CSS</span>
+                                <span class="badge badge-blue">JS</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile App Development -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Mobile App Development" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Mobile App Development</h3>
+                            <p class="text-sm text-gray-200">892 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create native and cross-platform mobile applications for iOS and Android.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-orange">Swift</span>
+                                <span class="badge badge-orange">Kotlin</span>
+                                <span class="badge badge-orange">React Native</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI & Machine Learning -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI & Machine Learning" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">AI & Machine Learning</h3>
+                            <p class="text-sm text-gray-200">678 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Develop intelligent systems, neural networks, and predictive models.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-indigo">Python</span>
+                                <span class="badge badge-indigo">TensorFlow</span>
+                                <span class="badge badge-indigo">PyTorch</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blockchain & Cryptocurrency -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Blockchain & Cryptocurrency" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Blockchain & Crypto</h3>
+                            <p class="text-sm text-gray-200">456 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Develop blockchain applications, smart contracts, and decentralized systems.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Solidity</span>
+                                <span class="badge badge-purple">Web3</span>
+                                <span class="badge badge-purple">DeFi</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cybersecurity -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cybersecurity" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Cybersecurity</h3>
+                            <p class="text-sm text-gray-200">543 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Protect systems, networks, and programs from digital attacks and security breaches.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-red">Ethical Hacking</span>
+                                <span class="badge badge-red">Penetration Testing</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Science & Analytics -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Data Science" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Data Science & Analytics</h3>
+                            <p class="text-sm text-gray-200">765 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Extract insights from complex data using statistics and visualization techniques.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-teal">R</span>
+                                <span class="badge badge-teal">Python</span>
+                                <span class="badge badge-teal">Tableau</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cloud Computing -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cloud Computing" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Cloud Computing</h3>
+                            <p class="text-sm text-gray-200">623 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Design, deploy, and manage cloud infrastructure and services.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">AWS</span>
+                                <span class="badge badge-blue">Azure</span>
+                                <span class="badge badge-blue">GCP</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AR/VR Development -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1626379953822-baec19c3accd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AR/VR Development" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">AR/VR Development</h3>
+                            <p class="text-sm text-gray-200">342 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create immersive augmented and virtual reality experiences and applications.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Unity</span>
+                                <span class="badge badge-purple">Unreal</span>
+                                <span class="badge badge-purple">3D</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="#" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
+                    View all Digital & Tech categories
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Creative Categories -->
+        <section id="creative" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-paint-brush text-accent-pink text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Creative</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Graphic Design -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Graphic Design" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Graphic Design</h3>
+                            <p class="text-sm text-gray-200">987 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create stunning visuals, logos, and brand identities with professional design techniques.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Photoshop</span>
+                                <span class="badge badge-purple">Illustrator</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- UX/UI Design -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="UX/UI Design" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">UX/UI Design</h3>
+                            <p class="text-sm text-gray-200">756 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Design intuitive user experiences and beautiful interfaces for digital products.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-pink">Figma</span>
+                                <span class="badge badge-pink">Sketch</span>
+                                <span class="badge badge-pink">Adobe XD</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video Production -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Video Production" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Video Production</h3>
+                            <p class="text-sm text-gray-200">645 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create, edit, and produce professional videos for various platforms and purposes.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-red">Premiere Pro</span>
+                                <span class="badge badge-red">After Effects</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Animation -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1616696058991-0fcbdedea16c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Animation" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Animation</h3>
+                            <p class="text-sm text-gray-200">432 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create 2D and 3D animations for entertainment, advertising, and education.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-orange">Blender</span>
+                                <span class="badge badge-orange">Maya</span>
+                                <span class="badge badge-orange">Cinema 4D</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Voice Acting -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Voice Acting" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Voice Acting</h3>
+                            <p class="text-sm text-gray-200">378 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Provide professional voiceovers for commercials, animations, audiobooks, and more.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-indigo">Commercial</span>
+                                <span class="badge badge-indigo">Character</span>
+                                <span class="badge badge-indigo">Narration</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Music Production -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Music Production" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Music Production</h3>
+                            <p class="text-sm text-gray-200">523 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Compose, record, mix, and master music for various media and purposes.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Composition</span>
+                                <span class="badge badge-purple">Mixing</span>
+                                <span class="badge badge-purple">Mastering</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Writing -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Content Writing" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Content Writing</h3>
+                            <p class="text-sm text-gray-200">876 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create engaging written content for blogs, websites, social media, and more.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">SEO</span>
+                                <span class="badge badge-blue">Copywriting</span>
+                                <span class="badge badge-blue">Blogging</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Photography -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Photography" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Photography</h3>
+                            <p class="text-sm text-gray-200">876 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Capture stunning images with proper composition, lighting, and editing techniques.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-teal">Portrait</span>
+                                <span class="badge badge-teal">Product</span>
+                                <span class="badge badge-teal">Event</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="#" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
+                    View all Creative categories
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Professional Services -->
+        <section id="professional" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-briefcase text-accent-blue text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Professional Services</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Legal Services -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Legal Services" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Legal Services</h3>
+                            <p class="text-sm text-gray-200">432 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get legal advice, document preparation, and consultation from qualified professionals.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Contracts</span>
+                                <span class="badge badge-blue">IP Law</span>
+                                <span class="badge badge-blue">Business</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accounting & Finance -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Accounting & Finance" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Accounting & Finance</h3>
+                            <p class="text-sm text-gray-200">567 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get financial advice, bookkeeping, tax preparation, and financial planning services.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-green">Bookkeeping</span>
+                                <span class="badge badge-green">Tax</span>
+                                <span class="badge badge-green">Financial Planning</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Business Consulting -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Business Consulting" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Business Consulting</h3>
+                            <p class="text-sm text-gray-200">689 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get expert advice on business strategy, operations, and growth from experienced consultants.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-indigo">Strategy</span>
+                                <span class="badge badge-indigo">Operations</span>
+                                <span class="badge badge-indigo">Growth</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Human Resources -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Human Resources" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Human Resources</h3>
+                            <p class="text-sm text-gray-200">421 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get help with recruitment, employee management, and HR policy development.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-pink">Recruitment</span>
+                                <span class="badge badge-pink">Policy</span>
+                                <span class="badge badge-pink">Training</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Marketing & PR -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Marketing & PR" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Marketing & PR</h3>
+                            <p class="text-sm text-gray-200">834 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Develop and execute marketing strategies, campaigns, and public relations initiatives.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-orange">Digital</span>
+                                <span class="badge badge-orange">Social Media</span>
+                                <span class="badge badge-orange">PR</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Translation & Localization -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="Translation & Localization" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Translation & Localization</h3>
+                            <p class="text-sm text-gray-200">576 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Translate content and adapt products for different languages and cultural contexts.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Documents</span>
+                                <span class="badge badge-blue">Websites</span>
+                                <span class="badge badge-blue">Software</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Real Estate Services -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="Real Estate Services" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Real Estate Services</h3>
+                            <p class="text-sm text-gray-200">389 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get assistance with property valuation, market analysis, and real estate consulting.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-green">Valuation</span>
+                                <span class="badge badge-green">Analysis</span>
+                                <span class="badge badge-green">Consulting</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Virtual Assistance -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Virtual Assistance" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Virtual Assistance</h3>
+                            <p class="text-sm text-gray-200">723 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get administrative support, scheduling, email management, and other virtual services.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Admin</span>
+                                <span class="badge badge-purple">Email</span>
+                                <span class="badge badge-purple">Scheduling</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="#" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
+                    View all Professional categories
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Lifestyle Categories -->
+        <section id="lifestyle" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-leaf text-accent-green text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Lifestyle & Wellness</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Fitness Training -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fitness Training" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Fitness Training</h3>
+                            <p class="text-sm text-gray-200">876 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get personalized workout plans, fitness coaching, and exercise guidance.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-green">Strength</span>
+                                <span class="badge badge-green">Cardio</span>
+                                <span class="badge badge-green">HIIT</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nutrition & Diet -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Nutrition & Diet" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Nutrition & Diet</h3>
+                            <p class="text-sm text-gray-200">654 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get personalized meal plans, nutritional advice, and dietary guidance.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-yellow">Meal Plans</span>
+                                <span class="badge badge-yellow">Weight Loss</span>
+                                <span class="badge badge-yellow">Wellness</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mental Health & Counseling -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mental Health & Counseling" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Mental Health</h3>
+                            <p class="text-sm text-gray-200">543 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get support for mental wellbeing, stress management, and personal growth.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Counseling</span>
+                                <span class="badge badge-purple">Therapy</span>
+                                <span class="badge badge-purple">Coaching</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Yoga & Meditation -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Yoga & Meditation" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Yoga & Meditation</h3>
+                            <p class="text-sm text-gray-200">432 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn yoga poses, meditation techniques, and mindfulness practices.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-teal">Hatha</span>
+                                <span class="badge badge-teal">Vinyasa</span>
+                                <span class="badge badge-teal">Mindfulness</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interior Design -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Interior Design" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Interior Design</h3>
+                            <p class="text-sm text-gray-200">378 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Transform your living spaces with professional interior design and decoration advice.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-pink">Residential</span>
+                                <span class="badge badge-pink">Commercial</span>
+                                <span class="badge badge-pink">Staging</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Personal Styling -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Personal Styling" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Personal Styling</h3>
+                            <p class="text-sm text-gray-200">289 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get fashion advice, wardrobe consultation, and personal styling services.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-orange">Fashion</span>
+                                <span class="badge badge-orange">Wardrobe</span>
+                                <span class="badge badge-orange">Shopping</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cooking & Culinary Arts -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cooking & Culinary Arts" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Cooking & Culinary Arts</h3>
+                            <p class="text-sm text-gray-200">765 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn cooking techniques, recipes, and food presentation from professional chefs.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-yellow">Baking</span>
+                                <span class="badge badge-yellow">Cuisine</span>
+                                <span class="badge badge-yellow">Pastry</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gardening & Landscaping -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1599685315640-4a9ba2613f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gardening & Landscaping" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Gardening & Landscaping</h3>
+                            <p class="text-sm text-gray-200">423 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Design and maintain beautiful gardens, landscapes, and outdoor spaces.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-green">Indoor</span>
+                                <span class="badge badge-green">Outdoor</span>
+                                <span class="badge badge-green">Design</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="#" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
+                    View all Lifestyle categories
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Education Categories -->
+        <section id="education" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-graduation-cap text-accent-yellow text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Education & Learning</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Academic Tutoring -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Academic Tutoring" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Academic Tutoring</h3>
+                            <p class="text-sm text-gray-200">987 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get help with math, science, languages, and other academic subjects.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Math</span>
+                                <span class="badge badge-blue">Science</span>
+                                <span class="badge badge-blue">Languages</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Test Preparation -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Test Preparation" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Test Preparation</h3>
+                            <p class="text-sm text-gray-200">765 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Prepare for standardized tests, entrance exams, and professional certifications.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">SAT/ACT</span>
+                                <span class="badge badge-purple">GMAT/GRE</span>
+                                <span class="badge badge-purple">TOEFL</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Language Learning -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Language Learning" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Language Learning</h3>
+                            <p class="text-sm text-gray-200">1,243 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn to speak, read, and write in new languages with native speakers.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-indigo">Spanish</span>
+                                <span class="badge badge-indigo">French</span>
+                                <span class="badge badge-indigo">Mandarin</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Music Lessons -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Music Lessons" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Music Lessons</h3>
+                            <p class="text-sm text-gray-200">876 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn to play instruments, sing, or compose music with professional instructors.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Guitar</span>
+                                <span class="badge badge-purple">Piano</span>
+                                <span class="badge badge-purple">Voice</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Development -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Professional Development" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Professional Development</h3>
+                            <p class="text-sm text-gray-200">654 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Enhance your career skills, leadership abilities, and professional knowledge.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Leadership</span>
+                                <span class="badge badge-blue">Communication</span>
+                                <span class="badge badge-blue">Management</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art & Craft Lessons -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Art & Craft Lessons" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Art & Craft Lessons</h3>
+                            <p class="text-sm text-gray-200">543 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn painting, drawing, sculpture, and other artistic and craft techniques.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-orange">Painting</span>
+                                <span class="badge badge-orange">Drawing</span>
+                                <span class="badge badge-orange">Pottery</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coding & Programming -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Coding & Programming" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Coding & Programming</h3>
+                            <p class="text-sm text-gray-200">1,098 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn programming languages, software development, and coding skills.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-indigo">Python</span>
+                                <span class="badge badge-indigo">JavaScript</span>
+                                <span class="badge badge-indigo">Java</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cooking Classes -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cooking Classes" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Cooking Classes</h3>
+                            <p class="text-sm text-gray-200">432 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn culinary techniques, recipes, and food preparation from professional chefs.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-yellow">Baking</span>
+                                <span class="badge badge-yellow">Cuisine</span>
+                                <span class="badge badge-yellow">Pastry</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="#" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
+                    View all Education categories
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Specialized Services -->
+        <section id="specialized" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-tools text-accent-red text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Specialized Services</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Home Repairs & Maintenance -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Home Repairs" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Home Repairs</h3>
+                            <p class="text-sm text-gray-200">543 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get help with home repairs, maintenance, and improvement projects.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Plumbing</span>
+                                <span class="badge badge-blue">Electrical</span>
+                                <span class="badge badge-blue">Carpentry</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Car Mechanics & Repair -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Car Mechanics" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Car Mechanics & Repair</h3>
+                            <p class="text-sm text-gray-200">378 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get advice on car maintenance, repairs, and troubleshooting from mechanics.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-red">Diagnostics</span>
+                                <span class="badge badge-red">Maintenance</span>
+                                <span class="badge badge-red">Repair</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pet Care & Training -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Pet Care" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Pet Care & Training</h3>
+                            <p class="text-sm text-gray-200">432 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get advice on pet care, training, behavior, and health from animal experts.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-green">Dogs</span>
+                                <span class="badge badge-green">Cats</span>
+                                <span class="badge badge-green">Training</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event Planning -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Event Planning" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Event Planning</h3>
+                            <p class="text-sm text-gray-200">321 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Plan and organize weddings, parties, corporate events, and other special occasions.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-pink">Weddings</span>
+                                <span class="badge badge-pink">Corporate</span>
+                                <span class="badge badge-pink">Parties</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Astrology & Tarot -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1515942661900-94b3d1972591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Astrology & Tarot" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Astrology & Tarot</h3>
+                            <p class="text-sm text-gray-200">289 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get astrological readings, tarot interpretations, and spiritual guidance.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Astrology</span>
+                                <span class="badge badge-purple">Tarot</span>
+                                <span class="badge badge-purple">Readings</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Genealogy & Family History -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1582034986517-30d163aa1da9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Genealogy & Family History" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Genealogy & Family History</h3>
+                            <p class="text-sm text-gray-200">245 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Research your family history, build family trees, and discover your ancestry.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Research</span>
+                                <span class="badge badge-blue">Ancestry</span>
+                                <span class="badge badge-blue">DNA</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Crafts & Handmade Items -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1560421683-6856ea585c78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Crafts & Handmade Items" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Crafts & Handmade Items</h3>
+                            <p class="text-sm text-gray-200">567 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create handmade items, crafts, and DIY projects with expert guidance.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-pink">Knitting</span>
+                                <span class="badge badge-pink">Jewelry</span>
+                                <span class="badge badge-pink">DIY</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Farming & Agriculture -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Farming & Agriculture" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Farming & Agriculture</h3>
+                            <p class="text-sm text-gray-200">198 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get advice on farming, agriculture, livestock, and sustainable practices.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-green">Crops</span>
+                                <span class="badge badge-green">Livestock</span>
+                                <span class="badge badge-green">Organic</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="#" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
+                    View all Specialized categories
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Trending Categories -->
+        <section id="trending" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-orange-500 flex items-center justify-center mr-4">
+                    <i class="fas fa-fire text-white text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Trending Now</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- AI Content Creation -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="trending">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI Content Creation" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">AI Content Creation</h3>
+                            <p class="text-sm text-gray-200">1,245 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create content using AI tools, prompt engineering, and generative models.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">ChatGPT</span>
+                                <span class="badge badge-purple">Midjourney</span>
+                                <span class="badge badge-purple">DALL-E</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sustainable Living -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="trending">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sustainable Living" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Sustainable Living</h3>
+                            <p class="text-sm text-gray-200">876 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Learn eco-friendly practices, zero waste living, and sustainable lifestyle choices.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-green">Zero Waste</span>
+                                <span class="badge badge-green">Eco-Friendly</span>
+                                <span class="badge badge-green">DIY</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cryptocurrency & NFTs -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="trending">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Cryptocurrency & NFTs" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Cryptocurrency & NFTs</h3>
+                            <p class="text-sm text-gray-200">654 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get advice on cryptocurrency investing, NFT creation, and blockchain technology.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Bitcoin</span>
+                                <span class="badge badge-blue">Ethereum</span>
+                                <span class="badge badge-blue">NFTs</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Remote Work Solutions -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="trending">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Remote Work Solutions" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Remote Work Solutions</h3>
+                            <p class="text-sm text-gray-200">789 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Set up efficient remote work environments, tools, and productivity systems.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-indigo">Productivity</span>
+                                <span class="badge badge-indigo">Tools</span>
+                                <span class="badge badge-indigo">Setup</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Call to Action Section -->
+    <section class="bg-gradient-to-r from-primary-600 to-accent-purple py-16 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Can't find what you're looking for?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Let us know what skills or services you need, and we'll help connect you with the right experts.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Request a Skill
+                </button>
+                <button class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Become an Expert
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SkillSwap</h3>
+                    <p class="text-gray-400">Connect with experts and learn new skills in a supportive community.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#digital-tech" class="text-gray-400 hover:text-white transition-colors duration-300">Digital & Tech</a></li>
+                        <li><a href="#creative" class="text-gray-400 hover:text-white transition-colors duration-300">Creative</a></li>
+                        <li><a href="#professional" class="text-gray-400 hover:text-white transition-colors duration-300">Professional Services</a></li>
+                        <li><a href="#lifestyle" class="text-gray-400 hover:text-white transition-colors duration-300">Lifestyle & Wellness</a></li>
+                        <li><a href="#education" class="text-gray-400 hover:text-white transition-colors duration-300">Education & Learning</a></li>
+                        <li><a href="#specialized" class="text-gray-400 hover:text-white transition-colors duration-300">Specialized Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">&copy; 2023 SkillSwap. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <select class="bg-gray-800 text-gray-400 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const mobileThemeText = document.getElementById('mobile-theme-text');
+
+        // Set initial theme based on user preference
+        if (localStorage.getItem('color-theme') === 'dark' || 
+            (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+            mobileThemeText.textContent = 'Toggle Light Mode';
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+            mobileThemeText.textContent = 'Toggle Dark Mode';
+        }
+
+        // Toggle theme on button click
+        function toggleTheme() {
+            // Toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            
+            // Toggle dark class
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                mobileThemeText.textContent = 'Toggle Dark Mode';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                mobileThemeText.textContent = 'Toggle Light Mode';
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search and filter functionality
+        const searchInput = document.getElementById('search-input');
+        const categoryTypeSelect = document.getElementById('category-type');
+        const sortBySelect = document.getElementById('sort-by');
+        const categoryCards = document.querySelectorAll('.category-card');
+
+        function filterCategories() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryType = categoryTypeSelect.value;
+            
+            categoryCards.forEach(card => {
+                const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+                const cardType = card.getAttribute('data-category');
+                
+                let shouldShow = cardTitle.includes(searchTerm);
+                
+                if (categoryType !== 'all' && cardType !== categoryType) {
+                    shouldShow = false;
+                }
+                
+                card.style.display = shouldShow ? 'block' : 'none';
+            });
+        }
+
+        function sortCategories() {
+            const sortBy = sortBySelect.value;
+            const cardsContainer = document.querySelector('.grid');
+            const cardsArray = Array.from(categoryCards);
+            
+            cardsArray.sort((a, b) => {
+                const titleA = a.querySelector('h3').textContent;
+                const titleB = b.querySelector('h3').textContent;
+                const expertsA = parseInt(a.querySelector('p').textContent);
+                const expertsB = parseInt(b.querySelector('p').textContent);
+                
+                if (sortBy === 'az') {
+                    return titleA.localeCompare(titleB);
+                } else if (sortBy === 'za') {
+                    return titleB.localeCompare(titleA);
+                } else if (sortBy === 'experts') {
+                    return expertsB - expertsA;
+                }
+                
+                // Default: popular (already sorted in HTML)
+                return 0;
+            });
+            
+            // Remove all cards
+            categoryCards.forEach(card => {
+                card.remove();
+            });
+            
+            // Append sorted cards
+            cardsArray.forEach(card => {
+                if (card.style.display !== 'none') {
+                    cardsContainer.appendChild(card);
+                }
+            });
+        }
+
+        // Add event listeners
+        searchInput.addEventListener('input', filterCategories);
+        categoryTypeSelect.addEventListener('change', filterCategories);
+        sortBySelect.addEventListener('change', sortCategories);
+
+        // Sticky search bar behavior
+        const searchBar = document.getElementById('search-bar');
+        const searchBarTop = searchBar.offsetTop;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= searchBarTop) {
+                searchBar.classList.add('shadow-lg');
+            } else {
+                searchBar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Smooth scroll animation for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
