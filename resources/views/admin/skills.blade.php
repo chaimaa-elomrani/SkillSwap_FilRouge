@@ -270,9 +270,12 @@
             </div>
             <div class="flex items-center">
                 <div class="relative mr-4">
+                    <form action="{{ route('skills.search') }}" method="GET" value="{{ old('query', $query ?? '') }}">
+                    </form>
                     <input type="text" placeholder="Search..."
                         class="pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 input-focus-effect">
                     <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </form>
                 </div>
                 <div class="relative mr-4">
                     <i class="fas fa-bell text-gray-500 hover:text-gray-700 transition-colors duration-200"></i>
@@ -342,18 +345,18 @@
                                         <td class="py-4">
                                             <span
                                                 class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">{{ $skill->domain->name ?? 'No domain' }}
-                                                </span>
+                                            </span>
                                         </td>
 
                                         <td class="py-4 text-gray-500">{{ $skill->created_at }}</td>
                                         <td class="py-4">
                                             <!-- <form action="{{ route('skills.update', $skill->id) }}" method="post">
-                                                    @csrf
-                                                    @method('PUT')   
-                                                    <button type="submit" 
-                                                        class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i class="fas fa-edit"></i>
-                                                    </button>
-                                                  </form> -->
+                                                        @csrf
+                                                        @method('PUT')   
+                                                        <button type="submit" 
+                                                            class="text-blue-500 hover:text-blue-700 mr-3 transition-colors duration-200 hover:scale-110 transform"><i class="fas fa-edit"></i>
+                                                        </button>
+                                                      </form> -->
 
                                             <form action="{{ route('skills.destroy', $skill->id) }}" method="POST"
                                                 style="display: inline">
