@@ -61,7 +61,7 @@ class AuthController extends Controller
         
         if ($user) {
             session()->flash('success', 'Login successful!');
-            return redirect()->route('home');
+            return redirect()->route('posts.index');
         }
 
         return view('register');
