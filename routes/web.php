@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\HomeController;
@@ -57,3 +58,7 @@ Route::get('/languages/search' , [LanguagesController::class , 'search'])->name(
 
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+
+//categories 
+Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
