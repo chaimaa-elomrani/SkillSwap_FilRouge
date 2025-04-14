@@ -61,4 +61,4 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
 //categories 
-Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
+Route::get('/categories', [CategoriesController::class, 'index']);
