@@ -251,9 +251,6 @@
                     <div class="relative h-48">
                         <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Web Development" class="w-full h-full object-cover">
                         <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute top-2 right-2">
-                            <span class="badge bg-red-500 text-white">Hot</span>
-                        </div>
                         <div class="absolute bottom-0 left-0 p-4 w-full">
                             <h3 class="text-xl font-bold text-white text-shadow">Web Development</h3>
                             <p class="text-sm text-gray-200">1,245 experts available</p>
