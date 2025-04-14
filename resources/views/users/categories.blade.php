@@ -248,16 +248,17 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Web Development -->
                 <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Web Development" class="w-full h-full object-cover">
+                   @foreach ( $categories as $category)                
+                <div class="relative h-48">
+                        <img src="{{ $category->image }}" alt="Web Development" class="w-full h-full object-cover">
                         <div class="absolute inset-0 gradient-overlay"></div>
                         <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">Web Development</h3>
-                            <p class="text-sm text-gray-200">1,245 experts available</p>
+                            <h3 class="text-xl font-bold text-white text-shadow">{{$category->name}}</h3>
+                            <!-- <p class="text-sm text-gray-200">1,245 experts available</p> -->
                         </div>
                     </div>
                     <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Build responsive websites and web applications with modern technologies.</p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $category->description }}.</p>
                         <div class="flex justify-between items-center">
                             <div class="flex flex-wrap gap-1">
                                 <span class="badge badge-blue">HTML</span>
@@ -269,6 +270,7 @@
                             </a>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
             
