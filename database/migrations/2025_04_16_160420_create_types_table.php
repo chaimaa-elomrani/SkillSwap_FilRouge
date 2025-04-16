@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('domains', function (Blueprint $table) {
-            $table->enum('type', ['Digital&Tech', 'non_digital', 'creative', 'professional', 'lifeStyle', 'Education' , 'Specialized'])->nullable();
+        Schema::create('types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');  
+            $table->foreignId('domain_id')->constrained();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('domains', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('types');
     }
 };
