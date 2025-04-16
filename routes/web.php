@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DomainController;
+use App\Http\Controllers\DomainsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguagesController;
 use App\Http\Controllers\PostsController;
@@ -42,12 +41,6 @@ Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name(
 Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
 
-// domains management 
-Route::get('/domains',[DomainController::class , 'index'])->name('domains.index');
-Route::post('/domains/create', [DomainController::class , 'store'])->name('domains.store');
-Route::put('/domains/update/{domain}', [DomainController::class , 'update'])->name('domains.update');
-Route::delete('/domains/delete/{domain}', [DomainController::class , 'destroy'])->name('domains.destroy');
-Route::get('/domains/search', [DomainController::class , 'search'])->name('domains.search');
 
 // // languages management 
 Route::get('/languages',[LanguagesController::class , 'index'])->name('languages.index');
@@ -61,4 +54,4 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
 //categories 
-Route::get('/categories', [CategoriesController::class, 'index']);
+Route::get('/categories', [DomainsController::class, 'index']);
