@@ -31,8 +31,6 @@ Route::post('/post/create',[PostsController::class , 'store']);
 
 
 
-// admin
-
 
 // skills management 
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
