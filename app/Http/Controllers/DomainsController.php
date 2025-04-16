@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Domains;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class DomainsController extends Controller
 {
     
     // public function index(){
@@ -13,7 +13,7 @@ class CategoriesController extends Controller
     // }
 
     public function index(){
-        $categories = Categories::all();
+        $categories = Domains::all();
          return view('users/categories', compact('categories'));
     }
 }

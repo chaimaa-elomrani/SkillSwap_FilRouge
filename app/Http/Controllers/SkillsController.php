@@ -14,11 +14,11 @@ class SkillsController extends Controller
     protected $domainService;
 
 
-    public function __construct(SkillService $skillService , DomainService $domainService)
-    {
-        $this->skillService = $skillService;
-        $this->domainService = $domainService;
-    }
+    // public function __construct(SkillService $skillService , DomainService $domainService)
+    // {
+    //     $this->skillService = $skillService;
+    //     $this->domainService = $domainService;
+    // }
 
     public function index()
     {
