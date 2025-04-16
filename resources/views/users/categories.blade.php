@@ -241,48 +241,52 @@
 
     <!-- Main Content -->
     <main id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Digital & Tech Categories -->
-        <section id="digital-tech" class="mb-16 scroll-mt-32">
-         
-            
+    <section id="digital-tech" class="mb-16 scroll-mt-32">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Web Development -->
-                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
-                   @foreach ( $categories as $category)                
-                <div class="relative h-48">
-                        <img src="{{ $category->image }}" alt="Web Development" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">{{$category->name}}</h3>
-                            <!-- <p class="text-sm text-gray-200">1,245 experts available</p> -->
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $category->description }}.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="badge badge-blue">HTML</span>
-                                <span class="badge badge-blue">CSS</span>
-                                <span class="badge badge-blue">JS</span>
+                @foreach ($categories as $category)
+                    <!-- Individual Category Card -->
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                        data-category="digital">
+                        <div class="relative h-48">
+                            <img src="{{ $category->image }}" alt="{{ $category->name }}"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 gradient-overlay"></div>
+                            <div class="absolute bottom-0 left-0 p-4 w-full">
+                                <h3 class="text-xl font-bold text-white text-shadow" data-category="{{ $category->name }}">
+                                    {{ $category->name }}</h3>
+                                <!-- <p class="text-sm text-gray-200">1,245 experts available</p> -->
                             </div>
-                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                Explore <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $category->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge badge-blue">HTML</span>
+                                    <span class="badge badge-blue">CSS</span>
+                                    <span class="badge badge-blue">JS</span>
+                                </div>
+                                <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
-            
+
             <div class="mt-8 text-center">
-                <a href="#" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
+                <a href="#"
+                    class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
                     View all categories
-                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </a>
             </div>
         </section>
+
         
     </main>
 
