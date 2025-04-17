@@ -241,53 +241,262 @@
 
     <!-- Main Content -->
     <main id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <section id="digital-tech" class="mb-16 scroll-mt-32">
+        <!-- Digital & Tech Categories -->
+        <section id="digital-tech" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-laptop-code text-primary-500 dark:text-primary-400 text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Digital & Tech</h2>
+            </div>
+            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                @foreach ($categories as $category)
-                    <!-- Individual Category Card -->
-                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
-                        data-category="digital">
-                        <div class="relative h-48">
-                            <img src="{{ $category->image }}" alt="{{ $category->name }}"
-                                class="w-full h-full object-cover">
-                            <div class="absolute inset-0 gradient-overlay"></div>
-                            <div class="absolute bottom-0 left-0 p-4 w-full">
-                                <h3 class="text-xl font-bold text-white text-shadow" data-category="{{ $category->name }}">
-                                    {{ $category->name }}</h3>
-                                <!-- <p class="text-sm text-gray-200">1,245 experts available</p> -->
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $category->description }}</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="badge badge-blue">HTML</span>
-                                    <span class="badge badge-blue">CSS</span>
-                                    <span class="badge badge-blue">JS</span>
-                                </div>
-                                <a href="#"
-                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                    Explore <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
+                <!-- Web Development -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Web Development" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Web Development</h3>
+                            <p class="text-sm text-gray-200">1,245 experts available</p>
                         </div>
                     </div>
-                @endforeach
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Build responsive websites and web applications with modern technologies.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">HTML</span>
+                                <span class="badge badge-blue">CSS</span>
+                                <span class="badge badge-blue">JS</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+        </section>
+        
+        <!-- Creative Categories -->
+        <section id="creative" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-paint-brush text-accent-pink text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Creative</h2>
             </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Graphic Design -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Graphic Design" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Graphic Design</h3>
+                            <p class="text-sm text-gray-200">987 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create stunning visuals, logos, and brand identities with professional design techniques.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">Photoshop</span>
+                                <span class="badge badge-purple">Illustrator</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="mt-8 text-center">
-                <a href="#"
-                    class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium">
-                    View all categories
-                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </a>
+        </section>
+        
+        <!-- Professional Services -->
+        <section id="professional" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-briefcase text-accent-blue text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Professional Services</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Legal Services -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Legal Services" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Legal Services</h3>
+                            <p class="text-sm text-gray-200">432 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get legal advice, document preparation, and consultation from qualified professionals.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Contracts</span>
+                                <span class="badge badge-blue">IP Law</span>
+                                <span class="badge badge-blue">Business</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        
+        <!-- Lifestyle Categories -->
+        <section id="lifestyle" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-leaf text-accent-green text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Lifestyle & Wellness</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Fitness Training -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fitness Training" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Fitness Training</h3>
+                            <p class="text-sm text-gray-200">876 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get personalized workout plans, fitness coaching, and exercise guidance.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-green">Strength</span>
+                                <span class="badge badge-green">Cardio</span>
+                                <span class="badge badge-green">HIIT</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        
+        <!-- Education Categories -->
+        <section id="education" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-graduation-cap text-accent-yellow text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Education & Learning</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Academic Tutoring -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Academic Tutoring" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Academic Tutoring</h3>
+                            <p class="text-sm text-gray-200">987 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get help with math, science, languages, and other academic subjects.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Math</span>
+                                <span class="badge badge-blue">Science</span>
+                                <span class="badge badge-blue">Languages</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        
+        <!-- Specialized Services -->
+        <section id="specialized" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-tools text-accent-red text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Specialized Services</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Home Repairs & Maintenance -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Home Repairs" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">Home Repairs</h3>
+                            <p class="text-sm text-gray-200">543 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get help with home repairs, maintenance, and improvement projects.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-blue">Plumbing</span>
+                                <span class="badge badge-blue">Electrical</span>
+                                <span class="badge badge-blue">Carpentry</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        
+        <!-- Trending Categories -->
+        <section id="trending" class="mb-16 scroll-mt-32">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-orange-500 flex items-center justify-center mr-4">
+                    <i class="fas fa-fire text-white text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Others</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- AI Content Creation -->
+                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="trending">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI Content Creation" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute top-2 right-2">
+                            <span class="badge bg-red-500 text-white">Hot</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-4 w-full">
+                            <h3 class="text-xl font-bold text-white text-shadow">AI Content Creation</h3>
+                            <p class="text-sm text-gray-200">1,245 experts available</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create content using AI tools, prompt engineering, and generative models.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap gap-1">
+                                <span class="badge badge-purple">ChatGPT</span>
+                                <span class="badge badge-purple">Midjourney</span>
+                                <span class="badge badge-purple">DALL-E</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                Explore <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-
-        
     </main>
 
     <!-- Call to Action Section -->
