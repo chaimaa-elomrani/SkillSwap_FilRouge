@@ -22,7 +22,9 @@ Route::get('/',[HomeController::class , 'index'])->name('home');
 Route::get('/header',[HomeController::class , 'header']);
 Route::get('/search',[SearchController::class , 'index']);
 
-
+// domains page 
+Route::get('/domains',[DomainsController::class , 'index']);
+Route::get('/domains/getDomainByType',[DomainsController::class , 'getDomainByType']);
 
 // posts pages 
 Route::get('/posts',[PostsController::class , 'index']);

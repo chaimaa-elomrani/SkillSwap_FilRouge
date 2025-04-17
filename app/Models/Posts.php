@@ -43,9 +43,7 @@ class Posts extends Model
         return $this->belongsToMany(Skills::class, 'post_skills');
     }
 
-    public function languages(){
-        return $this->belongsToMany(languages::class, 'post_languages');
-    }
+ 
 
 }
 

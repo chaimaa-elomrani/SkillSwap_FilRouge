@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: {  
+                        primary: {
                             50: '#f0f9ff',
                             100: '#e0f2fe',
                             200: '#bae6fd',
@@ -110,6 +111,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     <!-- Navigation -->
     <nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-50 transition-colors duration-300">
@@ -121,23 +123,35 @@
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
-                    <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
-                        <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                        <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                         </svg>
-                        <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                fill-rule="evenodd" clip-rule="evenodd"></path>
                         </svg>
                     </button>
-                    <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">Home</a>
-                    <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">Explore</a>
-                    <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">About</a>
-                    <a href="#" class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors duration-300">Sign Up</a>
+                    <a href="#"
+                        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">Home</a>
+                    <a href="#"
+                        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">Explore</a>
+                    <a href="#"
+                        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">About</a>
+                    <a href="#"
+                        class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors duration-300">Sign
+                        Up</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="p-2 rounded-md text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                    <button id="mobile-menu-button"
+                        class="p-2 rounded-md text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
@@ -146,12 +160,16 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <button id="mobile-theme-toggle" class="w-full text-left p-2 rounded-md text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                <button id="mobile-theme-toggle"
+                    class="w-full text-left p-2 rounded-md text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
                     <span id="mobile-theme-text">Toggle Dark Mode</span>
                 </button>
-                <a href="#" class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
-                <a href="#" class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Explore</a>
-                <a href="#" class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+                <a href="#"
+                    class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+                <a href="#"
+                    class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Explore</a>
+                <a href="#"
+                    class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
                 <a href="#" class="block p-2 rounded-md bg-primary-500 text-white hover:bg-primary-600">Sign Up</a>
             </div>
         </div>
@@ -159,31 +177,38 @@
 
     <!-- Hero Section with Parallax -->
     <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+        <div class="absolute inset-0 bg-cover bg-center"
+            style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
         </div>
-        
+
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-shadow-lg mb-6 animate-float">
                 Every Skill Imaginable, <span class="text-primary-300">One Marketplace</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-                From digital design to home repairs, academic tutoring to legal advice - find experts in every field ready to share their expertise.
+                From digital design to home repairs, academic tutoring to legal advice - find experts in every field
+                ready to share their expertise.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#categories" class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <a href="#categories"
+                    class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Browse Categories
                 </a>
-                <a href="#" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <a href="#"
+                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Become an Expert
                 </a>
             </div>
         </div>
-        
+
         <!-- Animated shapes -->
         <div class="absolute -bottom-4 left-0 w-full overflow-hidden">
-            <svg class="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50 dark:fill-gray-900"></path>
+            <svg class="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="fill-gray-50 dark:fill-gray-900"></path>
             </svg>
         </div>
     </section>
@@ -194,15 +219,21 @@
             <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div class="relative flex-grow max-w-2xl w-full">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input type="text" id="search-input" class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors duration-300" placeholder="Search categories...">
+                    <input type="text" id="search-input"
+                        class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors duration-300"
+                        placeholder="Search categories...">
                 </div>
-                
+
                 <div class="flex flex-wrap gap-3 w-full md:w-auto">
-                    <select id="category-type" class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
+                    <select id="category-type"
+                        class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
                         <option value="all">All Categories</option>
                         <option value="digital">Digital</option>
                         <option value="creative">Creative</option>
@@ -211,8 +242,9 @@
                         <option value="education">Education</option>
                         <option value="specialized">Specialized</option>
                     </select>
-                    
-                    <select id="sort-by" class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
+
+                    <select id="sort-by"
+                        class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
                         <option value="popular">Most Popular</option>
                         <option value="az">Alphabetical (A-Z)</option>
                         <option value="za">Alphabetical (Z-A)</option>
@@ -228,13 +260,21 @@
     <div class="bg-gray-100 dark:bg-gray-800 py-4 border-y border-gray-200 dark:border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex overflow-x-auto pb-2 scrollbar-hide space-x-4">
-                <a href="#digital-tech" class="flex-shrink-0 px-4 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-colors duration-300">Digital & Tech</a>
-                <a href="#creative" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Creative</a>
-                <a href="#professional" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Professional</a>
-                <a href="#lifestyle" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Lifestyle</a>
-                <a href="#education" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Education</a>
-                <a href="#specialized" class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Specialized</a>
-                <a href="#trending" class="flex-shrink-0 px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-full hover:from-pink-600 hover:to-orange-600 transition-colors duration-300">Trending</a>
+                <a href="#digital-tech"
+                    class="flex-shrink-0 px-4 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-colors duration-300">Digital
+                    & Tech</a>
+                <a href="#creative"
+                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Creative</a>
+                <a href="#professional"
+                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Professional</a>
+                <a href="#lifestyle"
+                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Lifestyle</a>
+                <a href="#education"
+                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Education</a>
+                <a href="#specialized"
+                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Specialized</a>
+                <a href="#trending"
+                    class="flex-shrink-0 px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-full hover:from-pink-600 hover:to-orange-600 transition-colors duration-300">Trending</a>
             </div>
         </div>
     </div>
@@ -249,35 +289,41 @@
                 </div>
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Digital & Tech</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Web Development -->
-                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="digital">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Web Development" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">Web Development</h3>
-                            <p class="text-sm text-gray-200">1,245 experts available</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Build responsive websites and web applications with modern technologies.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="badge badge-blue">HTML</span>
-                                <span class="badge badge-blue">CSS</span>
-                                <span class="badge badge-blue">JS</span>
+                @foreach ($domains['Digital&Tech'] ?? [] as $domain)
+
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                        data-category="digital">
+                        <div class="relative h-48">
+                            <img src="{{ $domain->image }}" alt="Web Development" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 gradient-overlay"></div>
+                            <div class="absolute bottom-0 left-0 p-4 w-full">
+                                <h3 class="text-xl font-bold text-white text-shadow">{{ $domain->name }}</h3>
+                                <p class="text-sm text-gray-200">1,245 experts available</p>
                             </div>
-                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                Explore <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge badge-blue">HTML</span>
+                                    <span class="badge badge-blue">CSS</span>
+                                    <span class="badge badge-blue">JS</span>
+                                </div>
+                                <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-    
+                @endforeach
+
         </section>
-        
+
+
         <!-- Creative Categories -->
         <section id="creative" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
@@ -286,34 +332,37 @@
                 </div>
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Creative</h2>
             </div>
-            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Graphic Design -->
-                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="creative">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Graphic Design" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">Graphic Design</h3>
-                            <p class="text-sm text-gray-200">987 experts available</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create stunning visuals, logos, and brand identities with professional design techniques.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="badge badge-purple">Photoshop</span>
-                                <span class="badge badge-purple">Illustrator</span>
+                @foreach ($domains['Creative'] ?? [] as $domain)
+                    <!-- Graphic Design -->
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                        data-category="creative">
+                        <div class="relative h-48">
+                            <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 gradient-overlay"></div>
+                            <div class="absolute bottom-0 left-0 p-4 w-full">
+                                <h3 class="text-xl font-bold text-white text-shadow">{{ $domain->name }}</h3>
+                                <p class="text-sm text-gray-200">987 experts available</p>
                             </div>
-                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                Explore <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge badge-purple">Photoshop</span>
+                                    <span class="badge badge-purple">Illustrator</span>
+                                </div>
+                                <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                @endforeach
+            </div>
         </section>
-        
+
         <!-- Professional Services -->
         <section id="professional" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
@@ -322,106 +371,120 @@
                 </div>
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Professional Services</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Legal Services -->
-                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="professional">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Legal Services" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">Legal Services</h3>
-                            <p class="text-sm text-gray-200">432 experts available</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get legal advice, document preparation, and consultation from qualified professionals.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="badge badge-blue">Contracts</span>
-                                <span class="badge badge-blue">IP Law</span>
-                                <span class="badge badge-blue">Business</span>
+                @foreach ($domains['Professional Services'] ?? [] as $domain)
+                    <!-- Graphic Design -->
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                        data-category="creative">
+                        <div class="relative h-48">
+                            <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 gradient-overlay"></div>
+                            <div class="absolute bottom-0 left-0 p-4 w-full">
+                                <h3 class="text-xl font-bold text-white text-shadow">{{ $domain->name }}</h3>
+                                <p class="text-sm text-gray-200">987 experts available</p>
                             </div>
-                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                Explore <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge badge-purple">Photoshop</span>
+                                    <span class="badge badge-purple">Illustrator</span>
+                                </div>
+                                <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
+            </div>
         </section>
-        
+
         <!-- Lifestyle Categories -->
         <section id="lifestyle" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
-                <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                <div
+                    class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
                     <i class="fas fa-leaf text-accent-green text-xl"></i>
                 </div>
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Lifestyle & Wellness</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Fitness Training -->
-                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="lifestyle">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fitness Training" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">Fitness Training</h3>
-                            <p class="text-sm text-gray-200">876 experts available</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get personalized workout plans, fitness coaching, and exercise guidance.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="badge badge-green">Strength</span>
-                                <span class="badge badge-green">Cardio</span>
-                                <span class="badge badge-green">HIIT</span>
+                @foreach ($domains['Lifestyle & Wellness'] ?? [] as $domain)
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                        data-category="creative">
+                        <div class="relative h-48">
+                            <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 gradient-overlay"></div>
+                            <div class="absolute bottom-0 left-0 p-4 w-full">
+                                <h3 class="text-xl font-bold text-white text-shadow">{{ $domain->name }}</h3>
+                                <p class="text-sm text-gray-200">987 experts available</p>
                             </div>
-                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                Explore <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge badge-purple">Photoshop</span>
+                                    <span class="badge badge-purple">Illustrator</span>
+                                </div>
+                                <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
+            </div>
         </section>
-        
+
         <!-- Education Categories -->
         <section id="education" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
-                <div class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center mr-4">
+                <div
+                    class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center mr-4">
                     <i class="fas fa-graduation-cap text-accent-yellow text-xl"></i>
                 </div>
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Education & Learning</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Academic Tutoring -->
-                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="education">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Academic Tutoring" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">Academic Tutoring</h3>
-                            <p class="text-sm text-gray-200">987 experts available</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get help with math, science, languages, and other academic subjects.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="badge badge-blue">Math</span>
-                                <span class="badge badge-blue">Science</span>
-                                <span class="badge badge-blue">Languages</span>
+                <!-- Fitness Training -->
+                @foreach ($domains['Education & Learning'] ?? [] as $domain)
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                        data-category="creative">
+                        <div class="relative h-48">
+                            <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 gradient-overlay"></div>
+                            <div class="absolute bottom-0 left-0 p-4 w-full">
+                                <h3 class="text-xl font-bold text-white text-shadow">{{ $domain->name }}</h3>
+                                <p class="text-sm text-gray-200">987 experts available</p>
                             </div>
-                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                Explore <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge badge-purple">Photoshop</span>
+                                    <span class="badge badge-purple">Illustrator</span>
+                                </div>
+                                <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
+            </div>
         </section>
-        
+
         <!-- Specialized Services -->
         <section id="specialized" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
@@ -430,71 +493,76 @@
                 </div>
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Specialized Services</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Home Repairs & Maintenance -->
-                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="specialized">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Home Repairs" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">Home Repairs</h3>
-                            <p class="text-sm text-gray-200">543 experts available</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Get help with home repairs, maintenance, and improvement projects.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="badge badge-blue">Plumbing</span>
-                                <span class="badge badge-blue">Electrical</span>
-                                <span class="badge badge-blue">Carpentry</span>
+                <!-- Fitness Training -->
+                @foreach ($domains['Specialized Services'] ?? [] as $domain)
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                        data-category="creative">
+                        <div class="relative h-48">
+                            <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 gradient-overlay"></div>
+                            <div class="absolute bottom-0 left-0 p-4 w-full">
+                                <h3 class="text-xl font-bold text-white text-shadow">{{ $domain->name }}</h3>
+                                <p class="text-sm text-gray-200">987 experts available</p>
                             </div>
-                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                Explore <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge badge-purple">Photoshop</span>
+                                    <span class="badge badge-purple">Illustrator</span>
+                                </div>
+                                <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
+            </div>
         </section>
-        
+
         <!-- Trending Categories -->
         <section id="trending" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-orange-500 flex items-center justify-center mr-4">
+                <div
+                    class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-orange-500 flex items-center justify-center mr-4">
                     <i class="fas fa-fire text-white text-xl"></i>
                 </div>
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Others</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- AI Content Creation -->
-                <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300" data-category="trending">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI Content Creation" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 gradient-overlay"></div>
-                        <div class="absolute top-2 right-2">
-                            <span class="badge bg-red-500 text-white">Hot</span>
-                        </div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white text-shadow">AI Content Creation</h3>
-                            <p class="text-sm text-gray-200">1,245 experts available</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Create content using AI tools, prompt engineering, and generative models.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex flex-wrap gap-1">
-                                <span class="badge badge-purple">ChatGPT</span>
-                                <span class="badge badge-purple">Midjourney</span>
-                                <span class="badge badge-purple">DALL-E</span>
+                <!-- Fitness Training -->
+                @foreach ($domains['Others'] ?? [] as $domain)
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                        data-category="creative">
+                        <div class="relative h-48">
+                            <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 gradient-overlay"></div>
+                            <div class="absolute bottom-0 left-0 p-4 w-full">
+                                <h3 class="text-xl font-bold text-white text-shadow">{{ $domain->name }}</h3>
+                                <p class="text-sm text-gray-200">987 experts available</p>
                             </div>
-                            <a href="#" class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                Explore <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="badge badge-purple">Photoshop</span>
+                                    <span class="badge badge-purple">Illustrator</span>
+                                </div>
+                                <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </section>
     </main>
@@ -503,12 +571,15 @@
     <section class="bg-gradient-to-r from-primary-600 to-accent-purple py-16 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-4">Can't find what you're looking for?</h2>
-            <p class="text-xl mb-8 max-w-3xl mx-auto">Let us know what skills or services you need, and we'll help connect you with the right experts.</p>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Let us know what skills or services you need, and we'll help
+                connect you with the right experts.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button
+                    class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Request a Skill
                 </button>
-                <button class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button
+                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Become an Expert
                 </button>
             </div>
@@ -523,47 +594,73 @@
                     <h3 class="text-xl font-bold mb-4">SkillSwap</h3>
                     <p class="text-gray-400">Connect with experts and learn new skills in a supportive community.</p>
                     <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i
+                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Categories</h4>
                     <ul class="space-y-2">
-                        <li><a href="#digital-tech" class="text-gray-400 hover:text-white transition-colors duration-300">Digital & Tech</a></li>
-                        <li><a href="#creative" class="text-gray-400 hover:text-white transition-colors duration-300">Creative</a></li>
-                        <li><a href="#professional" class="text-gray-400 hover:text-white transition-colors duration-300">Professional Services</a></li>
-                        <li><a href="#lifestyle" class="text-gray-400 hover:text-white transition-colors duration-300">Lifestyle & Wellness</a></li>
-                        <li><a href="#education" class="text-gray-400 hover:text-white transition-colors duration-300">Education & Learning</a></li>
-                        <li><a href="#specialized" class="text-gray-400 hover:text-white transition-colors duration-300">Specialized Services</a></li>
+                        <li><a href="#digital-tech"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Digital & Tech</a>
+                        </li>
+                        <li><a href="#creative"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Creative</a></li>
+                        <li><a href="#professional"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Professional
+                                Services</a></li>
+                        <li><a href="#lifestyle"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Lifestyle &
+                                Wellness</a></li>
+                        <li><a href="#education"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Education &
+                                Learning</a></li>
+                        <li><a href="#specialized"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Specialized
+                                Services</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Company</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Blog</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Press</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About
+                                Us</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Blog</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Press</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Legal</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cookie Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Accessibility</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of
+                                Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy
+                                Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cookie
+                                Policy</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Accessibility</a>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400">&copy; 2023 SkillSwap. All rights reserved.</p>
                 <div class="mt-4 md:mt-0">
-                    <select class="bg-gray-800 text-gray-400 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500">
+                    <select
+                        class="bg-gray-800 text-gray-400 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500">
                         <option value="en">English</option>
                         <option value="es">Español</option>
                         <option value="fr">Français</option>
@@ -583,7 +680,7 @@
         const mobileThemeText = document.getElementById('mobile-theme-text');
 
         // Set initial theme based on user preference
-        if (localStorage.getItem('color-theme') === 'dark' || 
+        if (localStorage.getItem('color-theme') === 'dark' ||
             (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
             themeToggleLightIcon.classList.remove('hidden');
@@ -599,7 +696,7 @@
             // Toggle icons
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
-            
+
             // Toggle dark class
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
@@ -632,17 +729,17 @@
         function filterCategories() {
             const searchTerm = searchInput.value.toLowerCase();
             const categoryType = categoryTypeSelect.value;
-            
+
             categoryCards.forEach(card => {
                 const cardTitle = card.querySelector('h3').textContent.toLowerCase();
                 const cardType = card.getAttribute('data-category');
-                
+
                 let shouldShow = cardTitle.includes(searchTerm);
-                
+
                 if (categoryType !== 'all' && cardType !== categoryType) {
                     shouldShow = false;
                 }
-                
+
                 card.style.display = shouldShow ? 'block' : 'none';
             });
         }
@@ -651,13 +748,13 @@
             const sortBy = sortBySelect.value;
             const cardsContainer = document.querySelector('.grid');
             const cardsArray = Array.from(categoryCards);
-            
+
             cardsArray.sort((a, b) => {
                 const titleA = a.querySelector('h3').textContent;
                 const titleB = b.querySelector('h3').textContent;
                 const expertsA = parseInt(a.querySelector('p').textContent);
                 const expertsB = parseInt(b.querySelector('p').textContent);
-                
+
                 if (sortBy === 'az') {
                     return titleA.localeCompare(titleB);
                 } else if (sortBy === 'za') {
@@ -665,16 +762,16 @@
                 } else if (sortBy === 'experts') {
                     return expertsB - expertsA;
                 }
-                
+
                 // Default: popular (already sorted in HTML)
                 return 0;
             });
-            
+
             // Remove all cards
             categoryCards.forEach(card => {
                 card.remove();
             });
-            
+
             // Append sorted cards
             cardsArray.forEach(card => {
                 if (card.style.display !== 'none') {
@@ -702,11 +799,11 @@
 
         // Smooth scroll animation for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 100,
@@ -717,4 +814,5 @@
         });
     </script>
 </body>
+
 </html>

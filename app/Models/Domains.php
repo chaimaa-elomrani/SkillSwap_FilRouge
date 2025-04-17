@@ -22,6 +22,10 @@ class Domains extends Model
     // public function skills(){
     //     return $this->hasMany(Skills::class, 'domain_id');
     // }
+
+    public function  type(){
+        return $this->belongsTo(Type::class, 'type_id');
+    }
     
     
 }
