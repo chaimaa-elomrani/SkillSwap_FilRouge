@@ -8,6 +8,7 @@ use App\Http\Controllers\LanguagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SkillsController;
+use App\Http\Controllers\TypesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,11 +26,17 @@ Route::get('/search',[SearchController::class , 'index']);
 // domains page 
 Route::get('/domains',[DomainsController::class , 'index']);
 Route::get('/domains/getDomainByType',[DomainsController::class , 'getDomainByType']);
+Route::get('/domains/{id}/posts',[DomainsController::class , 'showPosts']);
+
+// types 
+Route::get('/domains/types',[DomainsController::class , 'getTypes']);
+
 
 // posts pages 
 Route::get('/posts',[PostsController::class , 'index']);
 Route::get('/post/create',[PostsController::class , 'postFrom']);
 Route::post('/post/create',[PostsController::class , 'store']);
+
 
 
 
@@ -41,13 +48,6 @@ Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name(
 Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
 
-
-// // languages management 
-Route::get('/languages',[LanguagesController::class , 'index'])->name('languages.index');
-Route::post('/languages/create' , [LanguagesController::class , 'store'])->name('languages.create');
-Route::put('/languages/update/{language}' , [LanguagesController::class , 'update'])->name('languages.update');
-Route::delete('/languages/destroy/{language}' , [LanguagesController::class , 'destroy'])->name('languages.destroy');
-Route::get('/languages/search' , [LanguagesController::class , 'search'])->name('languages.search');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index']);

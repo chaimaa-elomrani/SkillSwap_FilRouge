@@ -35,13 +35,17 @@ class Posts extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function domains(){
-        return $this->belongsToMany(Domains::class, 'post_domains');
+    public function domain(){
+        return $this->belongsTo(Domains::class, 'domain_id');
     }
 
     public function skills(){
         return $this->belongsToMany(Skills::class, 'post_skills');
     }
+
+
+
+    
 
  
 

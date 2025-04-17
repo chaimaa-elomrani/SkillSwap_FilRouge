@@ -235,18 +235,15 @@
                     <select id="category-type"
                         class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
                         <option value="all">All Categories</option>
-                        <option value="digital">Digital</option>
-                        <option value="creative">Creative</option>
-                        <option value="professional">Professional</option>
-                        <option value="lifestyle">Lifestyle</option>
-                        <option value="education">Education</option>
-                        <option value="specialized">Specialized</option>
+                        @foreach ($types as $type)
+                        <option>{{ $type->name }}</option>
+                        @endforeach
                     </select>
 
                     <select id="sort-by"
                         class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
                         <option value="popular">Most Popular</option>
-                        <option value="az">Alphabetical (A-Z)</option>
+                        <option value="az">Alphabetical (A-Z)</option>  
                         <option value="za">Alphabetical (Z-A)</option>
                         <option value="experts">Most Experts</option>
                         <option value="trending">Trending Now</option>
