@@ -16,4 +16,9 @@ class DomainsController extends Controller
         $categories = Domains::all();
          return view('users/categories', compact('categories'));
     }
+
+
+    public function getDomainByType(){
+        
+    }
 }
