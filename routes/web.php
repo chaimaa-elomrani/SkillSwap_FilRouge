@@ -26,16 +26,16 @@ Route::get('/search',[SearchController::class , 'index']);
 // domains page 
 Route::get('/domains',[DomainsController::class , 'index']);
 Route::get('/domains/getDomainByType',[DomainsController::class , 'getDomainByType']);
-Route::get('/domains/{id}/posts',[DomainsController::class , 'showPosts']);
+Route::get('/domains/{id}/posts', [DomainsController::class, 'showPosts'])->name('domain.posts');
 
 // types 
 Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 
 
 // posts pages 
-Route::get('/posts',[PostsController::class , 'index']);
-Route::get('/post/create',[PostsController::class , 'postFrom']);
-Route::post('/post/create',[PostsController::class , 'store']);
+// Route::get('/posts',[PostsController::class , 'index']);
+// Route::get('/post/create',[PostsController::class , 'postFrom']);
+// Route::post('/post/create',[PostsController::class , 'store']);
 
 
 

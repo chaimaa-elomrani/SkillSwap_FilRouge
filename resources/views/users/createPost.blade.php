@@ -551,7 +551,6 @@
                     
                     // Animate preview card
                     gsap.fromTo('#previewCard', 
-                        { opacity: 0, y: 20 },        
                         { opacity: 0, y: 20 },
                         { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
                     );
@@ -633,10 +632,10 @@
                         isValid = false;
                     }
                     
-                    // Validate experience level
-                    const expLevel = document.querySelector('input[name="experienceLevel"]:checked');
+                    // Validate experience level - FIX: Changed from experienceLevel to experience_level
+                    const expLevel = document.querySelector('input[name="experience_level"]:checked');
                     if (!expLevel) {
-                        document.querySelectorAll('input[name="experienceLevel"]').forEach(el => {
+                        document.querySelectorAll('input[name="experience_level"]').forEach(el => {
                             el.parentElement.classList.add('border', 'border-red-500', 'rounded-md', 'p-1');
                         });
                         isValid = false;
@@ -648,6 +647,8 @@
                         highlightError('targetAudience');
                         isValid = false;
                     }
+                    
+                    // Remove availability check since it's not in the form
                     break;
                     
                 case 'transaction':
@@ -665,14 +666,7 @@
                         isValid = false;
                     }
                     
-                    // Validate availability
-                    const availability = document.querySelectorAll('input[name="availability"]:checked');
-                    if (availability.length === 0) {
-                        document.querySelectorAll('input[name="availability"]').forEach(el => {
-                            el.parentElement.classList.add('border', 'border-red-500', 'rounded-md', 'p-1');
-                        });
-                        isValid = false;
-                    }
+                    // Remove availability check since it's not in the form
                     break;
             }
             

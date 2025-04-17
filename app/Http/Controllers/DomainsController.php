@@ -30,17 +30,6 @@ class DomainsController extends Controller
         return view('users/posts', compact('domains'));
     }
 
-    // public function getTypes(){
-       
-    //     return view('users/domains', compact('types'));
-    // }
 
 
-
-    // public function getDomainByType(){
-    //     $typesToShow = ['Digital&Tech','Creative','Professional Services','Lifestyle & Wellness','Education & Learning','Specialized Services','Others' ];
-    //     $domains = $this->domainService->getGroupedDomainsByType($typesToShow);
-
-    //     return view('your-view-name', compact('domains'));
-    // }
 }

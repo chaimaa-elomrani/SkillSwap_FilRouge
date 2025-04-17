@@ -246,7 +246,7 @@
                         <option value="az">Alphabetical (A-Z)</option>  
                         <option value="za">Alphabetical (Z-A)</option>
                         <option value="experts">Most Experts</option>
-                        <option value="trending">Trending Now</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
             </div>
@@ -271,7 +271,7 @@
                 <a href="#specialized"
                     class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Specialized</a>
                 <a href="#trending"
-                    class="flex-shrink-0 px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-full hover:from-pink-600 hover:to-orange-600 transition-colors duration-300">Trending</a>
+                    class="flex-shrink-0 px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-full hover:from-pink-600 hover:to-orange-600 transition-colors duration-300">Others</a>
             </div>
         </div>
     </div>
@@ -309,7 +309,7 @@
                                     <span class="badge badge-blue">CSS</span>
                                     <span class="badge badge-blue">JS</span>
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('domain.posts', ['id' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
