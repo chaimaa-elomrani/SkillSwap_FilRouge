@@ -39,8 +39,6 @@ Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 
 
 
-
-
 // skills management 
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
 Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.store');
@@ -52,6 +50,3 @@ Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
-
-//categories 
-Route::get('/categories', [DomainsController::class, 'index']);
