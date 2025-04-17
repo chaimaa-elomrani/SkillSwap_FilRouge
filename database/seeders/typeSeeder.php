@@ -21,7 +21,6 @@ class typeSeeder extends Seeder
         ['name'=>'Lifestyle & Wellness'],
         ['name'=>'Education & Learning'],
         ['name'=>'Specialized Services'],
-        ['name'=>'Specialized Services'],
         ['name'=>'Others'],
        ];
         DB::table('types')->insert($types);
