@@ -305,9 +305,9 @@
                             <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="badge badge-blue">HTML</span>
-                                    <span class="badge badge-blue">CSS</span>
-                                    <span class="badge badge-blue">JS</span>
+                                    @foreach ( $domain->skills as $skill )
+                                    <span class="badge badge-blue">{{ $skill->name }}</span>
+                                    @endforeach
                                 </div>
                                 <a href="{{ route('domain.posts', ['id' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
@@ -346,8 +346,9 @@
                             <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="badge badge-purple">Photoshop</span>
-                                    <span class="badge badge-purple">Illustrator</span>
+                                @foreach ( $domain->skills as $skill )
+                                    <span class="badge badge-purple">{{ $skill->name }}</span>
+                                    @endforeach
                                 </div>
                                 <a href="#"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
@@ -386,8 +387,9 @@
                             <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="badge badge-purple">Photoshop</span>
-                                    <span class="badge badge-purple">Illustrator</span>
+                                @foreach ( $domain->skills as $skill )
+                                    <span class="badge badge-pink">{{ $skill->name }}</span>
+                                    @endforeach
                                 </div>
                                 <a href="#"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
@@ -427,8 +429,9 @@
                             <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="badge badge-purple">Photoshop</span>
-                                    <span class="badge badge-purple">Illustrator</span>
+                                @foreach ( $domain->skills as $skill )
+                                    <span class="badge badge-green">{{ $skill->name }}</span>
+                                @endforeach
                                 </div>
                                 <a href="#"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
@@ -468,8 +471,9 @@
                             <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="badge badge-purple">Photoshop</span>
-                                    <span class="badge badge-purple">Illustrator</span>
+                                @foreach ( $domain->skills as $skill )
+                                    <span class="badge badge-red">{{ $skill->name }}</span>
+                                @endforeach
                                 </div>
                                 <a href="#"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
@@ -508,8 +512,9 @@
                             <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="badge badge-purple">Photoshop</span>
-                                    <span class="badge badge-purple">Illustrator</span>
+                                @foreach ( $domain->skills as $skill )
+                                    <span class="badge badge-orange">{{ $skill->name }}</span>
+                                @endforeach
                                 </div>
                                 <a href="#"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
@@ -549,8 +554,9 @@
                             <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
-                                    <span class="badge badge-purple">Photoshop</span>
-                                    <span class="badge badge-purple">Illustrator</span>
+                                @foreach ( $domain->skills as $skill )
+                                    <span class="badge badge-teal">{{ $skill->name }}</span>
+                                @endforeach
                                 </div>
                                 <a href="#"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">

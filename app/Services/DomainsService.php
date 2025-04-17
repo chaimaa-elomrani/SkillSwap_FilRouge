@@ -8,7 +8,7 @@ class DomainsService
 
     public function getGroupedDomainsByType(array $types)
     {
-        return Domains::with('type')
+        return Domains::with('type', 'skills')
             ->whereHas('type', function ($query) use ($types) {
                 $query->whereIn('name', $types);
             })
