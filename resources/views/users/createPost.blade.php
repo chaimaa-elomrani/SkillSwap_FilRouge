@@ -197,18 +197,6 @@
                             </div>
                         </div>
                         
-                        <!-- Target Audience -->
-                        <div>
-                            <label for="targetAudience" class="block text-sm font-medium text-gray-700">Target Audience <span class="text-red-500">*</span></label>
-                            <select id="targetAudience" name="target_audience" 
-                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
-                                <option value="" disabled selected>Select target audience</option>
-                                <option value="individuals">Individuals</option>
-                                <option value="small-businesses">Small Businesses</option>
-                                <option value="startups">Startups</option>
-                                <option value="enterprises">Enterprises</option>
-                            </select>
-                        </div>
                         
                         <!-- Languages -->
                         <div>
@@ -282,14 +270,6 @@
                             </div>
                         </div>
                         
-                        <!-- Additional Notes -->
-                        <div>
-                            <label for="additionalNotes" class="block text-sm font-medium text-gray-700">Additional Notes</label>
-                            <textarea id="additionalNotes" name="additional_notes" rows="3"
-                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="Any other details you'd like to share..."></textarea>
-                        </div>
-                        
                         <!-- Navigation Buttons -->
                         <div class="flex justify-between">
                             <button type="button" id="transactionPrevBtn" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -308,41 +288,8 @@
                     </div>
                 </div>
             </form>
-        </div>
-        
-        <!-- Preview Card (shows up after form is filled) -->
-        <div id="previewCard" class="mt-8 bg-white rounded-xl shadow-md overflow-hidden hidden fade-in">
-            <div class="p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Service Preview</h2>
-                <div class="border border-gray-200 rounded-lg p-4">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="ml-3">
-                            <h3 class="text-base font-semibold text-gray-900">Your Name</h3>
-                            <p class="text-sm text-gray-500">Just now</p>
-                        </div>
-                    </div>
-                    
-                    <h2 id="previewTitle" class="text-xl font-bold text-gray-900 mb-2">Service Title</h2>
-                    <p id="previewDescription" class="text-gray-700 mb-4">Service description will appear here...</p>
-                    
-                    <div id="previewTags" class="flex flex-wrap gap-2 mb-4">
-                        <!-- Tags will be added here dynamically -->
-                    </div>
-                    
-                    <div class="flex items-center justify-between">
-                        <div class="text-gray-700 font-medium">
-                            <span id="previewCredits" class="text-lg font-bold text-gray-900">0</span> credits
-                        </div>
-                        <div class="text-sm text-gray-500">
-                            Est. time: <span id="previewTime">--</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>        
+
     </div>
     
      <script src="{{ asset('js/posts.js') }}"></script>
