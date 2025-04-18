@@ -17,7 +17,11 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('domain_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->
+            $table->json('languages');
+            $table->string('experience');
+            $table->bigInteger('credits_cost');
+            $table->integer('duration');
+            $table->string('duration_unit');
             $table->timestamps();
         });
     }
