@@ -273,13 +273,13 @@
       </div>
 
       <!-- Posts List -->
-      <div class="container mx-auto px-4 py-4 max-w-4xl">
-        <div id="posts-container" class="grid grid-cols-1 gap-4">
-          <!-- Post 1 -->
+      <div class="container  mx-auto px-4 py-4 max-w-4xl">
           @foreach ($posts as $post)
             @php
               $langs = json_decode($post->languages);
             @endphp
+        <div id="posts-container" class="grid grid-cols-1 gap-4 ">
+          <!-- Post 1 -->
             <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
             <div class="p-4">
               <!-- Author and timestamp -->
@@ -353,8 +353,8 @@
               Send Request
               </button>
             </div>
-    @endforeach
           </div>
+          @endforeach
 
         </div>
       </div>
