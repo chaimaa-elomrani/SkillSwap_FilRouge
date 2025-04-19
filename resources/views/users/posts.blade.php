@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,27 +10,32 @@
   <style>
     /* Custom animations */
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
-    
+
     .post-card {
       transition: all 0.2s ease;
     }
-    
+
     .post-card:hover {
       transform: translateY(-1px);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
-    
+
     .btn-icon {
       transition: all 0.15s ease;
     }
-    
+
     .btn-icon:hover {
       transform: scale(1.1);
     }
-    
+
     /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
@@ -44,17 +50,17 @@
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
     }
-    
+
     .custom-scrollbar::-webkit-scrollbar-track {
       background: #f1f1f1;
       border-radius: 10px;
     }
-    
+
     .custom-scrollbar::-webkit-scrollbar-thumb {
       background: #d1d5db;
       border-radius: 10px;
     }
-    
+
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
       background: #9ca3af;
     }
@@ -71,17 +77,17 @@
       background-color: #dcfce7;
       color: #166534;
     }
-    
+
     .badge-intermediate {
       background-color: #dbeafe;
       color: #1e40af;
     }
-    
+
     .badge-expert {
       background-color: #f3e8ff;
       color: #6b21a8;
     }
-    
+
     /* LinkedIn-style post cards */
     .post-meta-item {
       display: inline-flex;
@@ -90,12 +96,12 @@
       color: #6b7280;
       font-size: 0.8125rem;
     }
-    
+
     .post-meta-item i {
       margin-right: 4px;
       font-size: 0.875rem;
     }
-    
+
     .post-meta-divider {
       display: inline-block;
       width: 4px;
@@ -107,6 +113,7 @@
     }
   </style>
 </head>
+
 <body class="bg-gray-50 min-h-screen">
   <!-- Header -->
   <header class="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
@@ -114,36 +121,37 @@
       <div class="flex items-center justify-between">
         <!-- Left section with logo and toggle -->
         <div class="flex items-center space-x-4">
-          <button id="sidebar-toggle" class="h-9 w-9 flex items-center justify-center rounded-md hover:bg-gray-100 lg:hidden">
+          <button id="sidebar-toggle"
+            class="h-9 w-9 flex items-center justify-center rounded-md hover:bg-gray-100 lg:hidden">
             <i class="fas fa-bars text-gray-600"></i>
           </button>
           <h1 class="text-xl font-semibold text-gray-800">Explore</h1>
         </div>
-        
+
         <!-- Right section with search and profile -->
         <div class="flex items-center space-x-4">
           <div class="relative hidden md:block w-64">
             <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
-            <input 
-              type="text" 
-              id="search-input"
-              placeholder="Search posts..." 
-              class="pl-10 py-2 pr-4 w-full rounded-md bg-gray-100 border-0 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-            >
+            <input type="text" id="search-input" placeholder="Search posts..."
+              class="pl-10 py-2 pr-4 w-full rounded-md bg-gray-100 border-0 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
           </div>
-          
-          <button id="notifications-btn" class="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 relative">
+
+          <button id="notifications-btn"
+            class="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 relative">
             <i class="far fa-bell text-gray-600"></i>
             <span class="absolute top-0 right-0 h-2 w-2 bg-indigo-600 rounded-full"></span>
           </button>
-          
-          <button id="messages-btn" class="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 relative">
+
+          <button id="messages-btn"
+            class="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 relative">
             <i class="far fa-envelope text-gray-600"></i>
             <span class="absolute top-0 right-0 h-2 w-2 bg-indigo-600 rounded-full"></span>
           </button>
-          
-          <div class="h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="h-full w-full rounded-full object-cover">
+
+          <div
+            class="h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"
+              class="h-full w-full rounded-full object-cover">
           </div>
         </div>
       </div>
@@ -154,49 +162,51 @@
   <div class="md:hidden container mx-auto px-4 py-3">
     <div class="relative">
       <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
-      <input 
-        type="text" 
-        id="mobile-search-input"
-        placeholder="Search posts..." 
-        class="pl-10 py-2 pr-4 w-full rounded-md bg-gray-100 border-0 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-      >
+      <input type="text" id="mobile-search-input" placeholder="Search posts..."
+        class="pl-10 py-2 pr-4 w-full rounded-md bg-gray-100 border-0 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
     </div>
   </div>
 
   <!-- Main layout with sidebars -->
   <div class="flex min-h-[calc(100vh-70px)]">
     <!-- Left Sidebar -->
-    <aside id="left-sidebar" class="fixed lg:sticky top-[70px] left-0 h-[calc(100vh-70px)] w-64 bg-white border-r border-gray-200 z-20 transform -translate-x-full lg:translate-x-0 sidebar-transition overflow-y-auto custom-scrollbar">
+    <aside id="left-sidebar"
+      class="fixed lg:sticky top-[70px] left-0 h-[calc(100vh-70px)] w-64 bg-white border-r border-gray-200 z-20 transform -translate-x-full lg:translate-x-0 sidebar-transition overflow-y-auto custom-scrollbar">
       <!-- Navigation -->
       <nav class="p-4">
         <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Navigation</h2>
         <ul class="space-y-1">
           <li>
-            <a href="#" class="nav-item active flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
+            <a href="#"
+              class="nav-item active flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
               <i class="fas fa-home w-5 h-5 mr-3 text-gray-500"></i>
               Home
             </a>
           </li>
           <li>
-            <a href="#" class="nav-item flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
+            <a href="#"
+              class="nav-item flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
               <i class="fas fa-compass w-5 h-5 mr-3 text-gray-500"></i>
               Explore
             </a>
           </li>
           <li>
-            <a href="#" class="nav-item flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
+            <a href="#"
+              class="nav-item flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
               <i class="fas fa-bookmark w-5 h-5 mr-3 text-gray-500"></i>
               Saved
             </a>
           </li>
           <li>
-            <a href="#" class="nav-item flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
+            <a href="#"
+              class="nav-item flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
               <i class="fas fa-user-friends w-5 h-5 mr-3 text-gray-500"></i>
               Network
             </a>
           </li>
           <li>
-            <a href="#" class="nav-item flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
+            <a href="#"
+              class="nav-item flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
               <i class="fas fa-briefcase w-5 h-5 mr-3 text-gray-500"></i>
               Jobs
             </a>
@@ -215,13 +225,16 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
           <div class="flex items-center space-x-2">
             <div class="bg-gray-100 rounded-md p-1 flex">
-              <button class="filter-btn active px-4 py-1.5 rounded-md bg-white text-sm font-medium transition-colors" data-filter="trending">
+              <button class="filter-btn active px-4 py-1.5 rounded-md bg-white text-sm font-medium transition-colors"
+                data-filter="trending">
                 Trending
               </button>
-              <button class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors" data-filter="latest">
+              <button class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
+                data-filter="latest">
                 Latest
               </button>
-              <button class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors" data-filter="following">
+              <button class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
+                data-filter="following">
                 Following
               </button>
             </div>
@@ -229,12 +242,14 @@
 
           <div class="flex items-center space-x-2 w-full sm:w-auto">
             <div class="relative">
-              <button id="filter-dropdown-btn" class="flex items-center px-3 py-2 text-sm font-medium border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
+              <button id="filter-dropdown-btn"
+                class="flex items-center px-3 py-2 text-sm font-medium border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
                 <i class="fas fa-filter mr-2 text-gray-500"></i>
                 Filter
                 <i class="fas fa-chevron-down ml-2 text-gray-500 text-xs"></i>
               </button>
-              <div id="filter-dropdown" class="hidden absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-10">
+              <div id="filter-dropdown"
+                class="hidden absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-10">
                 <div class="py-1">
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">All Posts</a>
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Job Opportunities</a>
@@ -261,210 +276,86 @@
       <div class="container mx-auto px-4 py-4 max-w-4xl">
         <div id="posts-container" class="grid grid-cols-1 gap-4">
           <!-- Post 1 -->
-          <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
+          @foreach ($posts as $post)
+            @php
+              $langs = json_decode($post->languages);
+            @endphp
+            <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
             <div class="p-4">
               <!-- Author and timestamp -->
               <div class="flex items-center mb-3">
-                <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-                  <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Alex Morgan" class="h-full w-full object-cover">
+              <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
+                <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Alex Morgan"
+                class="h-full w-full object-cover">
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center">
+                <h3 class="font-medium text-gray-900 text-sm">Alex Morgan</h3>
+                <i class="fas fa-check-circle ml-1 text-blue-500 text-xs"></i>
                 </div>
-                <div class="flex-1">
-                  <div class="flex items-center">
-                    <h3 class="font-medium text-gray-900 text-sm">Alex Morgan</h3>
-                    <i class="fas fa-check-circle ml-1 text-blue-500 text-xs"></i>
-                  </div>
-                  <div class="flex items-center text-xs text-gray-500 mt-0.5">
-                    <span>Product Designer</span>
-                    <span class="mx-1">•</span>
-                    <span>2h ago</span>
-                  </div>
+                <div class="flex items-center text-xs text-gray-500 mt-0.5">
+                <span>Product Designer</span>
+                <span class="mx-1">•</span>
+                <span>Created at:{{ $post->created_at }}</span>
                 </div>
-                <button class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                  <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                </button>
+              </div>
+              <button
+                class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
+              </button>
               </div>
 
               <!-- Title and content -->
-              <h2 class="text-base font-semibold text-gray-900 mb-2">UX Audit for Fintech Application</h2>
-              <p class="text-gray-700 text-sm mb-3">Just finished a comprehensive UX audit for a fintech client. Identified 37 critical issues that were affecting conversion rates. Key takeaway: simplicity always wins.</p>
-              
+              <h2 class="text-base font-semibold text-gray-900 mb-2">{{ $post->title }}</h2>
+              <p class="text-gray-700 text-sm mb-3">{{ $post->description }}</p>
+
               <!-- Post meta information -->
               <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
-                <!-- Experience Level -->
-                <div class="post-meta-item">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>Expert</span>
-                </div>
-                
-                <span class="post-meta-divider"></span>
-                
-                <!-- Credit Cost -->
-                <div class="post-meta-item">
-                  <i class="fas fa-credit-card"></i>
-                  <span>150 credits</span>
-                </div>
-                
-                <span class="post-meta-divider"></span>
-                
-                <!-- Duration -->
-                <div class="post-meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>3 days</span>
-                </div>
+              <!-- Experience Level -->
+              <div class="post-meta-item">
+                <i class="fas fa-user-graduate"></i>
+                <span>{{$post->experience}}</span>
+              </div>
+
+              <span class="post-meta-divider"></span>
+
+              <!-- Credit Cost -->
+              <div class="post-meta-item">
+                <i class="fas fa-credit-card"></i>
+                <span>{{ $post->credits_cost }} credits</span>
+              </div>
+
+              <span class="post-meta-divider"></span>
+
+              <!-- Duration -->
+              <div class="post-meta-item">
+                <i class="fas fa-clock"></i>
+                <span>{{ $post->duration }} {{ $post->duration_unit }}</span>
+              </div>
               </div>
 
               <!-- Languages/Technologies -->
               <div class="flex flex-wrap gap-1.5 mb-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Figma</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Sketch</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Adobe XD</span>
-                <span class="inline-block badge-expert rounded-full px-2.5 py-0.5 text-xs font-medium">Expert</span>
+              <span
+                class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">{{ implode(', ', $langs) }}</span>
+              <span
+                class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Sketch</span>
+              <span
+                class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Adobe
+                XD</span>
+              <span class="inline-block badge-expert rounded-full px-2.5 py-0.5 text-xs font-medium">Expert</span>
               </div>
 
               <!-- Action button -->
-              <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
-                <i class="fas fa-paper-plane mr-2"></i>
-                Send Request
+              <button
+              class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+              <i class="fas fa-paper-plane mr-2"></i>
+              Send Request
               </button>
             </div>
+    @endforeach
           </div>
-          
-          <!-- Post 2 -->
-          <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4">
-              <!-- Author and timestamp -->
-              <div class="flex items-center mb-3">
-                <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-                  <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Chen" class="h-full w-full object-cover">
-                </div>
-                <div class="flex-1">
-                  <div class="flex items-center">
-                    <h3 class="font-medium text-gray-900 text-sm">Sarah Chen</h3>
-                    <i class="fas fa-check-circle ml-1 text-blue-500 text-xs"></i>
-                  </div>
-                  <div class="flex items-center text-xs text-gray-500 mt-0.5">
-                    <span>Frontend Developer</span>
-                    <span class="mx-1">•</span>
-                    <span>4h ago</span>
-                  </div>
-                </div>
-                <button class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                  <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                </button>
-              </div>
 
-              <!-- Title and content -->
-              <h2 class="text-base font-semibold text-gray-900 mb-2">React Mentorship Sessions</h2>
-              <p class="text-gray-700 text-sm mb-3">I'm offering mentorship sessions for junior developers looking to level up their React skills. Limited spots available for next month.</p>
-              
-              <!-- Post meta information -->
-              <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
-                <!-- Experience Level -->
-                <div class="post-meta-item">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>Intermediate</span>
-                </div>
-                
-                <span class="post-meta-divider"></span>
-                
-                <!-- Credit Cost -->
-                <div class="post-meta-item">
-                  <i class="fas fa-credit-card"></i>
-                  <span>75 credits</span>
-                </div>
-                
-                <span class="post-meta-divider"></span>
-                
-                <!-- Duration -->
-                <div class="post-meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>4 weeks</span>
-                </div>
-              </div>
-
-              <!-- Languages/Technologies -->
-              <div class="flex flex-wrap gap-1.5 mb-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">React</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">JavaScript</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">TypeScript</span>
-                <span class="inline-block badge-intermediate rounded-full px-2.5 py-0.5 text-xs font-medium">Intermediate</span>
-              </div>
-
-              <!-- Action button -->
-              <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
-                <i class="fas fa-paper-plane mr-2"></i>
-                Send Request
-              </button>
-            </div>
-          </div>
-          
-          <!-- Post 3 -->
-          <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4">
-              <!-- Author and timestamp -->
-              <div class="flex items-center mb-3">
-                <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-                  <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Michael Torres" class="h-full w-full object-cover">
-                </div>
-                <div class="flex-1">
-                  <div class="flex items-center">
-                    <h3 class="font-medium text-gray-900 text-sm">Michael Torres</h3>
-                  </div>
-                  <div class="flex items-center text-xs text-gray-500 mt-0.5">
-                    <span>Marketing Strategist</span>
-                    <span class="mx-1">•</span>
-                    <span>6h ago</span>
-                  </div>
-                </div>
-                <button class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                  <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                </button>
-              </div>
-
-              <!-- Title and content -->
-              <h2 class="text-base font-semibold text-gray-900 mb-2">Graphic Designer for Product Launch</h2>
-              <p class="text-gray-700 text-sm mb-3">Looking for a skilled graphic designer to help with our upcoming product launch. Need someone who understands both brand identity and conversion-focused design.</p>
-              
-              <!-- Post meta information -->
-              <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
-                <!-- Experience Level -->
-                <div class="post-meta-item">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>Beginner</span>
-                </div>
-                
-                <span class="post-meta-divider"></span>
-                
-                <!-- Credit Cost -->
-                <div class="post-meta-item">
-                  <i class="fas fa-credit-card"></i>
-                  <span>50 credits</span>
-                </div>
-                
-                <span class="post-meta-divider"></span>
-                
-                <!-- Duration -->
-                <div class="post-meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>2 weeks</span>
-                </div>
-              </div>
-
-              <!-- Languages/Technologies -->
-              <div class="flex flex-wrap gap-1.5 mb-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Photoshop</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Illustrator</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">InDesign</span>
-                <span class="inline-block badge-beginner rounded-full px-2.5 py-0.5 text-xs font-medium">Beginner</span>
-              </div>
-
-              <!-- Action button -->
-              <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
-                <i class="fas fa-paper-plane mr-2"></i>
-                Send Request
-              </button>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -476,12 +367,14 @@
     </main>
 
     <!-- Right Sidebar -->
-    <aside id="right-sidebar" class="hidden xl:block w-80 bg-white border-l border-gray-200 sticky top-[70px] h-[calc(100vh-70px)] overflow-y-auto custom-scrollbar">
+    <aside id="right-sidebar"
+      class="hidden xl:block w-80 bg-white border-l border-gray-200 sticky top-[70px] h-[calc(100vh-70px)] overflow-y-auto custom-scrollbar">
       <!-- User Profile Summary -->
       <div class="p-4 border-b border-gray-200">
         <div class="flex items-center space-x-3">
           <div class="h-12 w-12 rounded-full bg-gray-200 overflow-hidden">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Your Profile" class="h-full w-full object-cover">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Your Profile"
+              class="h-full w-full object-cover">
           </div>
           <div>
             <h3 class="font-medium text-gray-900">John Doe</h3>
@@ -515,37 +408,43 @@
         <div class="space-y-4">
           <div class="flex items-center">
             <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-              <img src="https://randomuser.me/api/portraits/women/76.jpg" alt="Jane Smith" class="h-full w-full object-cover">
+              <img src="https://randomuser.me/api/portraits/women/76.jpg" alt="Jane Smith"
+                class="h-full w-full object-cover">
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="text-sm font-medium text-gray-900 truncate">Jane Smith</h4>
               <p class="text-xs text-gray-500 truncate">UX Designer at Google</p>
             </div>
-            <button class="ml-2 px-3 py-1 text-xs font-medium text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-50 transition-colors">
+            <button
+              class="ml-2 px-3 py-1 text-xs font-medium text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-50 transition-colors">
               Connect
             </button>
           </div>
           <div class="flex items-center">
             <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-              <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Robert Johnson" class="h-full w-full object-cover">
+              <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Robert Johnson"
+                class="h-full w-full object-cover">
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="text-sm font-medium text-gray-900 truncate">Robert Johnson</h4>
               <p class="text-xs text-gray-500 truncate">Frontend Developer at Netflix</p>
             </div>
-            <button class="ml-2 px-3 py-1 text-xs font-medium text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-50 transition-colors">
+            <button
+              class="ml-2 px-3 py-1 text-xs font-medium text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-50 transition-colors">
               Connect
             </button>
           </div>
           <div class="flex items-center">
             <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Lisa Wong" class="h-full w-full object-cover">
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Lisa Wong"
+                class="h-full w-full object-cover">
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="text-sm font-medium text-gray-900 truncate">Lisa Wong</h4>
               <p class="text-xs text-gray-500 truncate">Product Manager at Airbnb</p>
             </div>
-            <button class="ml-2 px-3 py-1 text-xs font-medium text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-50 transition-colors">
+            <button
+              class="ml-2 px-3 py-1 text-xs font-medium text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-50 transition-colors">
               Connect
             </button>
           </div>
@@ -561,7 +460,8 @@
         <div class="space-y-3">
           <div class="flex items-start">
             <div class="h-8 w-8 rounded-full bg-gray-200 overflow-hidden mr-3 mt-1">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Your Profile" class="h-full w-full object-cover">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Your Profile"
+                class="h-full w-full object-cover">
             </div>
             <div>
               <p class="text-sm text-gray-700">You connected with <span class="font-medium">Alex Morgan</span></p>
@@ -570,7 +470,8 @@
           </div>
           <div class="flex items-start">
             <div class="h-8 w-8 rounded-full bg-gray-200 overflow-hidden mr-3 mt-1">
-              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Chen" class="h-full w-full object-cover">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Chen"
+                class="h-full w-full object-cover">
             </div>
             <div>
               <p class="text-sm text-gray-700"><span class="font-medium">Sarah Chen</span> viewed your profile</p>
@@ -579,7 +480,8 @@
           </div>
           <div class="flex items-start">
             <div class="h-8 w-8 rounded-full bg-gray-200 overflow-hidden mr-3 mt-1">
-              <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Michael Torres" class="h-full w-full object-cover">
+              <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Michael Torres"
+                class="h-full w-full object-cover">
             </div>
             <div>
               <p class="text-sm text-gray-700"><span class="font-medium">Michael Torres</span> liked your post</p>
@@ -611,78 +513,78 @@
     const filterBtns = document.querySelectorAll('.filter-btn');
     const likeBtns = document.querySelectorAll('.like-btn');
     const saveBtns = document.querySelectorAll('.save-btn');
-    
+
     // Sidebar elements
     const leftSidebar = document.getElementById('left-sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-    
+
     // Toggle left sidebar on mobile
     sidebarToggle.addEventListener('click', () => {
       leftSidebar.classList.toggle('-translate-x-full');
       sidebarBackdrop.classList.toggle('hidden');
       document.body.classList.toggle('overflow-hidden');
     });
-    
+
     // Close sidebar when clicking on backdrop
     sidebarBackdrop.addEventListener('click', () => {
       leftSidebar.classList.add('-translate-x-full');
       sidebarBackdrop.classList.add('hidden');
       document.body.classList.remove('overflow-hidden');
     });
-    
+
     // Toggle filter dropdown
     filterDropdownBtn.addEventListener('click', () => {
       filterDropdown.classList.toggle('hidden');
     });
-    
+
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
       if (!filterDropdownBtn.contains(e.target) && !filterDropdown.contains(e.target)) {
         filterDropdown.classList.add('hidden');
       }
     });
-    
+
     // Toggle view mode
     gridViewBtn.addEventListener('click', () => {
       postsContainer.classList.remove('grid-cols-1');
       postsContainer.classList.add('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
-      
+
       gridViewBtn.classList.add('active', 'bg-gray-100');
       listViewBtn.classList.remove('active', 'bg-gray-100');
     });
-    
+
     listViewBtn.addEventListener('click', () => {
       postsContainer.classList.remove('md:grid-cols-2', 'lg:grid-cols-3');
       postsContainer.classList.add('grid-cols-1');
-      
+
       listViewBtn.classList.add('active', 'bg-gray-100');
       gridViewBtn.classList.remove('active', 'bg-gray-100');
     });
-    
+
     // Filter buttons
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         // Remove active class from all buttons
         filterBtns.forEach(b => b.classList.remove('active', 'bg-white'));
-        
+
         // Add active class to clicked button
         btn.classList.add('active', 'bg-white');
-        
+
         // Here you would normally filter the posts based on the selected filter
         const filter = btn.dataset.filter;
         console.log(`Filter selected: ${filter}`);
-        
+
         // For demo purposes, we'll just log the filter
       });
     });
-    
+
     // Search functionality
     const handleSearch = (e) => {
       const searchTerm = e.target.value.toLowerCase();
       const posts = document.querySelectorAll('.post-card');
       let visiblePosts = 0;
-      
+
       posts.forEach(post => {
         const postText = post.textContent.toLowerCase();
         if (postText.includes(searchTerm)) {
@@ -692,7 +594,7 @@
           post.style.display = 'none';
         }
       });
-      
+
       // Show/hide no results message
       if (visiblePosts === 0) {
         noResults.classList.remove('hidden');
@@ -702,16 +604,16 @@
         postsContainer.classList.remove('hidden');
       }
     };
-    
+
     // Add search event listeners
     if (searchInput) searchInput.addEventListener('input', handleSearch);
     if (mobileSearchInput) mobileSearchInput.addEventListener('input', handleSearch);
-    
+
     // Add animation to cards
     document.querySelectorAll('.post-card').forEach(card => {
       card.style.animation = 'fadeIn 0.3s ease-in-out';
     });
-    
+
     // Navigation item active state
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
@@ -722,4 +624,5 @@
     });
   </script>
 </body>
+
 </html>
