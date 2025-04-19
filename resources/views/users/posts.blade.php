@@ -259,15 +259,6 @@
                 </div>
               </div>
             </div>
-
-            <div class="hidden sm:flex items-center border rounded-md overflow-hidden">
-              <button id="grid-view-btn" class="view-btn h-9 px-3 transition-colors">
-                <i class="fas fa-th-large text-gray-600"></i>
-              </button>
-              <button id="list-view-btn" class="view-btn active h-9 px-3 bg-gray-100 transition-colors">
-                <i class="fas fa-list text-gray-600"></i>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -508,8 +499,6 @@
     const mobileSearchInput = document.getElementById('mobile-search-input');
     const filterDropdownBtn = document.getElementById('filter-dropdown-btn');
     const filterDropdown = document.getElementById('filter-dropdown');
-    const gridViewBtn = document.getElementById('grid-view-btn');
-    const listViewBtn = document.getElementById('list-view-btn');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const likeBtns = document.querySelectorAll('.like-btn');
     const saveBtns = document.querySelectorAll('.save-btn');
@@ -545,22 +534,6 @@
       }
     });
 
-    // Toggle view mode
-    gridViewBtn.addEventListener('click', () => {
-      postsContainer.classList.remove('grid-cols-1');
-      postsContainer.classList.add('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
-
-      gridViewBtn.classList.add('active', 'bg-gray-100');
-      listViewBtn.classList.remove('active', 'bg-gray-100');
-    });
-
-    listViewBtn.addEventListener('click', () => {
-      postsContainer.classList.remove('md:grid-cols-2', 'lg:grid-cols-3');
-      postsContainer.classList.add('grid-cols-1');
-
-      listViewBtn.classList.add('active', 'bg-gray-100');
-      gridViewBtn.classList.remove('active', 'bg-gray-100');
-    });
 
     // Filter buttons
     filterBtns.forEach(btn => {

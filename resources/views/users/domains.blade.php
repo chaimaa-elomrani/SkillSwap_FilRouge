@@ -311,7 +311,7 @@
                                 </div>
                                 <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                    {{ ucfirst($domain->name) }} <i class="fas fa-arrow-right ml-1"></i>
+                                    Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
                         </div>
@@ -350,7 +350,7 @@
                                     <span class="badge badge-purple">{{ $skill->name }}</span>
                                     @endforeach
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
@@ -391,7 +391,7 @@
                                     <span class="badge badge-pink">{{ $skill->name }}</span>
                                     @endforeach
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
@@ -433,7 +433,7 @@
                                     <span class="badge badge-green">{{ $skill->name }}</span>
                                 @endforeach
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
@@ -475,7 +475,7 @@
                                     <span class="badge badge-red">{{ $skill->name }}</span>
                                 @endforeach
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
@@ -516,7 +516,7 @@
                                     <span class="badge badge-orange">{{ $skill->name }}</span>
                                 @endforeach
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
@@ -558,7 +558,7 @@
                                     <span class="badge badge-teal">{{ $skill->name }}</span>
                                 @endforeach
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>

@@ -1,847 +1,1946 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Credits | Unlock Your Potential</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            900: '#0D0F2F',
-                            800: '#141956',
-                            700: '#1A2380',
-                            600: '#2A34B0',
-                            500: '#3949E3',
-                            400: '#5C6AE8',
-                            300: '#8A94EF',
-                            200: '#B8BEF5',
-                            100: '#E6E8FC',
-                        },
-                        accent: {
-                            gold: '#FFD700',
-                            'gold-light': '#FFF0A3',
-                            'gold-dark': '#B7950B',
-                            neon: '#00F0FF',
-                            'neon-light': '#B3FCFF',
-                            'neon-dark': '#00A3AD',
-                        },
-                        dark: {
-                            900: '#0A0A0F',
-                            800: '#121218',
-                            700: '#1A1A24',
-                            600: '#22222E',
-                            500: '#2A2A38',
-                        }
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'shimmer': 'shimmer 3s linear infinite',
-                        'spin-slow': 'spin 8s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 5px rgba(0, 240, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3)' },
-                            '100%': { boxShadow: '0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.5), 0 0 30px rgba(0, 240, 255, 0.3)' }
-                        },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-1000px 0' },
-                            '100%': { backgroundPosition: '1000px 0' }
-                        }
-                    },
-                    backdropBlur: {
-                        xs: '2px',
-                    },
-                    boxShadow: {
-                        'neon': '0 0 5px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3)',
-                        'neon-lg': '0 0 10px rgba(0, 240, 255, 0.8), 0 0 30px rgba(0, 240, 255, 0.5)',
-                        'gold': '0 0 5px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3)',
-                        'gold-lg': '0 0 10px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.5)',
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - User Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            },
+          }
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .text-shadow-neon {
-                text-shadow: 0 0 5px rgba(0, 240, 255, 0.7), 0 0 10px rgba(0, 240, 255, 0.5);
-            }
-            .text-shadow-gold {
-                text-shadow: 0 0 5px rgba(255, 215, 0, 0.7), 0 0 10px rgba(255, 215, 0, 0.5);
-            }
-            .bg-glass {
-                @apply bg-white/10 backdrop-blur-md;
-            }
-            .bg-glass-dark {
-                @apply bg-dark-800/80 backdrop-blur-md;
-            }
-            .border-glass {
-                @apply border border-white/20;
-            }
-            .shimmer-effect {
-                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-                background-size: 200% 100%;
-                animation: shimmer 3s linear infinite;
-            }
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      
+      .glassmorphism {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      
+      .neumorphism {
+        box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+      }
+    }
+
+    /* Additional custom styles can be added here if needed */
+.datepicker-cell.selected,
+.datepicker-cell.selected:hover {
+  background-color: #14b8a6;
+  color: white;
+}
+
+.datepicker-cell.today {
+  background-color: #e6fffa;
+  color: #14b8a6;
+}
+
+.datepicker-cell:hover {
+  background-color: #f1f5f9;
+}
+
+.datepicker-header .datepicker-controls .button {
+  background-color: white;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.datepicker-header .datepicker-controls .button:hover {
+  background-color: #f1f5f9;
+}
+
+.datepicker-picker {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-animation {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Glassmorphism effect for premium badge */
+.premium-badge {
+  background: rgba(251, 191, 36, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* Neumorphism effect for cards on hover */
+.card-neumorphism:hover {
+  box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+}
+
+  </style>
 </head>
-<body class="bg-dark-900 text-white min-h-screen overflow-x-hidden">
-    <!-- Animated Background Elements -->
-    <div class="fixed inset-0 -z-10 overflow-hidden">
-        <!-- Radial gradient background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-primary-900 to-dark-900 opacity-80"></div>
-        
-        <!-- Animated circles -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary-600/20 blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full bg-accent-neon/10 blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-accent-gold/10 blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
-        
-        <!-- Grid lines -->
-        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent); background-size: 50px 50px;"></div>
-        
-        <!-- Floating particles -->
-        <div id="particles" class="absolute inset-0"></div>
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-7xl">
+    <!-- Profile Header -->
+    <div class="relative overflow-hidden rounded-xl bg-white shadow-md transition-all mb-8">
+      <!-- Banner Image -->
+      <div class="h-48 w-full bg-cover bg-center sm:h-64" style="background-image: url('https://placehold.co/1200x300/00b894/ffffff')">
+        <div class="absolute right-4 top-4 z-10">
+          <button id="edit-profile-btn" class="inline-flex items-center gap-1 px-3 py-2 bg-white/80 backdrop-blur-sm rounded-md text-sm font-medium shadow-sm hover:bg-white/90 transition-colors">
+            <i class="fas fa-pencil text-sm"></i>
+            <span class="hidden sm:inline">Edit Profile</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile Info -->
+      <div class="relative px-6 pb-6 pt-0 sm:px-8">
+        <!-- Avatar -->
+        <div class="absolute -top-16 left-6 sm:left-8">
+          <div class="h-32 w-32 rounded-full border-4 border-white shadow-lg overflow-hidden">
+            <img src="https://placehold.co/150x150/55efc4/ffffff" alt="Alexandra Chen" class="h-full w-full object-cover">
+          </div>
+        </div>
+
+        <!-- User Details -->
+        <div class="ml-0 mt-20 sm:ml-40 sm:mt-0">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+            <div>
+              <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">Alexandra Chen</h1>
+              <p class="text-lg text-gray-600">UX/UI Designer & Frontend Developer</p>
+              <div class="mt-1 flex items-center gap-1 text-sm text-gray-500">
+                <i class="fas fa-map-marker-alt text-sm"></i>
+                <span>San Francisco, USA</span>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex flex-wrap gap-2">
+              <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors" title="Portfolio">
+                <i class="fas fa-link"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="mt-4">
+            <h3 class="mb-2 text-sm font-medium text-gray-500">Skills</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-sm hover:bg-gray-200 cursor-pointer transition-colors">
+                🎨 UI Design
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-sm hover:bg-gray-200 cursor-pointer transition-colors">
+                ⚛️ React
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-sm hover:bg-gray-200 cursor-pointer transition-colors">
+                🖌️ Figma
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-sm hover:bg-gray-200 cursor-pointer transition-colors">
+                🌊 Tailwind CSS
+              </span>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="mt-4">
+            <h3 class="mb-2 text-sm font-medium text-gray-500">Languages</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center gap-1 rounded-md border border-gray-200 px-3 py-1 text-sm hover:bg-gray-50 cursor-pointer transition-colors" title="Native">
+                🇺🇸 English
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-md border border-gray-200 px-3 py-1 text-sm hover:bg-gray-50 cursor-pointer transition-colors" title="Fluent">
+                🇪🇸 Spanish
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-md border border-gray-200 px-3 py-1 text-sm hover:bg-gray-50 cursor-pointer transition-colors" title="Intermediate">
+                🇨🇳 Mandarin
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="relative container mx-auto px-4 py-12 max-w-7xl">
-        <!-- Header Section -->
-        <header class="text-center mb-16">
-            <div class="relative inline-block animate-float">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-accent-gold via-accent-gold-light to-accent-gold">
-                    Unlock the Power Within
-                </h1>
-                <div class="absolute -inset-1 rounded-lg blur-md bg-gradient-to-r from-accent-gold/30 to-accent-neon/30 -z-10"></div>
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <!-- Left Column -->
+      <div class="space-y-6 lg:col-span-2">
+        <!-- Bio Section -->
+        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
+          <div class="flex flex-row items-center justify-between bg-gray-50 px-6 py-4 pb-2">
+            <div>
+              <h2 class="text-xl font-semibold">About Me</h2>
+              <p class="text-sm text-gray-500">Tell others who you are and what you do</p>
             </div>
-            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                Elevate your experience with premium credits. Access exclusive features, boost your visibility, and stand out from the crowd.
-            </p>
-            
-            <!-- Animated credit icon -->
-            <div class="mt-8 relative w-24 h-24 mx-auto">
-                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-accent-gold to-accent-neon opacity-50 blur-md animate-pulse-slow"></div>
-                <div class="relative w-full h-full flex items-center justify-center bg-glass rounded-full border-glass animate-float">
-                    <i class="fas fa-coins text-4xl text-accent-gold"></i>
-                </div>
-                
-                <!-- Orbiting small coins -->
-                <div class="absolute inset-0 animate-spin-slow">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-glass rounded-full border-glass flex items-center justify-center">
-                        <i class="fas fa-coin text-xs text-accent-gold-light"></i>
-                    </div>
-                </div>
-                <div class="absolute inset-0 animate-spin-slow" style="animation-delay: 2s;">
-                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-6 h-6 bg-glass rounded-full border-glass flex items-center justify-center">
-                        <i class="fas fa-coin text-xs text-accent-neon-light"></i>
-                    </div>
-                </div>
-                <div class="absolute inset-0 animate-spin-slow" style="animation-delay: 4s;">
-                    <div class="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-glass rounded-full border-glass flex items-center justify-center">
-                        <i class="fas fa-coin text-xs text-accent-gold-light"></i>
-                    </div>
-                </div>
-                <div class="absolute inset-0 animate-spin-slow" style="animation-delay: 6s;">
-                    <div class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-glass rounded-full border-glass flex items-center justify-center">
-                        <i class="fas fa-coin text-xs text-accent-neon-light"></i>
-                    </div>
-                </div>
+            <button id="edit-bio-btn" class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 transition-colors">
+              <i class="fas fa-pencil"></i>
+            </button>
+          </div>
+          <div class="p-6">
+            <div id="bio-display" class="text-gray-700">
+              I'm a passionate UX/UI designer and frontend developer with 6+ years of experience creating intuitive digital experiences. I specialize in user-centered design processes and building accessible, performant interfaces. I love collaborating on projects that make a positive impact and am always eager to learn new technologies and methodologies.
             </div>
-        </header>
+            <div id="bio-edit" class="hidden space-y-4">
+              <textarea id="bio-textarea" class="w-full min-h-[120px] resize-none rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none" maxlength="500"></textarea>
+              <div class="flex items-center justify-between">
+                <div class="text-xs text-gray-500"><span id="bio-char-count">0</span>/500 characters</div>
+                <div class="flex gap-2">
+                  <button id="bio-cancel-btn" class="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+                    <i class="fas fa-times text-sm"></i>
+                    Cancel
+                  </button>
+                  <button id="bio-save-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+                    <i class="fas fa-check text-sm"></i>
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <!-- Credit Packages Section -->
-        <section class="mb-20">
-            <h2 class="text-3xl font-bold mb-8 text-center">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-accent-neon to-accent-neon-light text-shadow-neon">
-                    Premium Credit Packages
-                </span>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Starter Package -->
-                <div class="credit-package relative group">
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-accent-neon rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
-                    <div class="relative bg-glass-dark rounded-xl p-6 h-full flex flex-col border-glass transition-all duration-500 hover:transform hover:-translate-y-2">
-                        <div class="text-center mb-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">Starter</h3>
-                            <div class="text-5xl font-bold text-accent-neon mb-2">100</div>
-                            <div class="text-sm text-gray-400">Credits</div>
-                        </div>
-                        
-                        <div class="bg-dark-700/50 rounded-lg p-4 mb-6">
-                            <div class="text-3xl font-bold text-white mb-1">$9.99</div>
-                            <div class="text-sm text-gray-400">$0.10 per credit</div>
-                        </div>
-                        
-                        <ul class="mb-6 flex-grow">
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-neon mr-2"></i>
-                                <span>Basic feature access</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-neon mr-2"></i>
-                                <span>Standard visibility</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-neon mr-2"></i>
-                                <span>24-hour support</span>
-                            </li>
-                        </ul>
-                        
-                        <button class="w-full py-3 px-4 bg-primary-600 hover:bg-primary-500 rounded-lg font-bold transition-all duration-300 group-hover:shadow-neon flex items-center justify-center">
-                            <i class="fas fa-shopping-cart mr-2"></i>
-                            Purchase Now
-                        </button>
-                    </div>
+        <!-- Tabs Navigation -->
+        <div class="border-b border-gray-200">
+          <nav class="flex space-x-8" aria-label="Tabs">
+            <button class="tab-button border-b-2 border-primary-500 py-4 px-1 text-sm font-medium text-primary-600" data-tab="skills">Skills</button>
+            <button class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" data-tab="experience">Experience</button>
+            <button class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" data-tab="education">Education</button>
+            <button class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" data-tab="portfolio">Portfolio</button>
+          </nav>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="skills-tab">
+          <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
+            <div class="p-6">
+              <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex flex-wrap items-center gap-2">
+                  <button class="skill-filter-btn rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm" data-filter="all">All</button>
+                  <button class="skill-filter-btn rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors" data-filter="design">Design</button>
+                  <button class="skill-filter-btn rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors" data-filter="development">Development</button>
+                  <button class="skill-filter-btn rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors" data-filter="marketing">Marketing</button>
+                  <button class="skill-filter-btn rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors" data-filter="business">Business</button>
                 </div>
-                
-                <!-- Premium Package - Best Value -->
-                <div class="credit-package relative group z-10 transform scale-105">
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-accent-gold-dark via-accent-gold to-accent-gold-light rounded-xl blur opacity-50 group-hover:opacity-100 transition duration-1000 animate-pulse-slow"></div>
-                    <div class="relative bg-glass-dark rounded-xl p-6 h-full flex flex-col border-glass transition-all duration-500 hover:transform hover:-translate-y-2">
-                        <!-- Best Value Badge -->
-                        <div class="absolute -top-4 -right-4 bg-accent-gold text-dark-900 text-sm font-bold py-1 px-3 rounded-full shadow-gold">
-                            BEST VALUE
-                        </div>
-                        
-                        <div class="text-center mb-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">Premium</h3>
-                            <div class="text-5xl font-bold text-accent-gold mb-2">500</div>
-                            <div class="text-sm text-gray-400">Credits</div>
-                        </div>
-                        
-                        <div class="bg-dark-700/50 rounded-lg p-4 mb-6">
-                            <div class="text-3xl font-bold text-white mb-1">$39.99</div>
-                            <div class="text-sm text-gray-400">$0.08 per credit <span class="text-accent-gold">20% OFF</span></div>
-                        </div>
-                        
-                        <ul class="mb-6 flex-grow">
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-gold mr-2"></i>
-                                <span>Advanced feature access</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-gold mr-2"></i>
-                                <span>Enhanced visibility</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-gold mr-2"></i>
-                                <span>Priority support</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-gold mr-2"></i>
-                                <span>Exclusive monthly bonus</span>
-                            </li>
-                        </ul>
-                        
-                        <button class="w-full py-3 px-4 bg-gradient-to-r from-accent-gold-dark to-accent-gold hover:from-accent-gold hover:to-accent-gold-light text-dark-900 rounded-lg font-bold transition-all duration-300 group-hover:shadow-gold flex items-center justify-center">
-                            <i class="fas fa-crown mr-2"></i>
-                            Purchase Now
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Elite Package -->
-                <div class="credit-package relative group">
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-accent-neon to-primary-500 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
-                    <div class="relative bg-glass-dark rounded-xl p-6 h-full flex flex-col border-glass transition-all duration-500 hover:transform hover:-translate-y-2">
-                        <div class="text-center mb-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">Elite</h3>
-                            <div class="text-5xl font-bold text-accent-neon mb-2">1000</div>
-                            <div class="text-sm text-gray-400">Credits</div>
-                        </div>
-                        
-                        <div class="bg-dark-700/50 rounded-lg p-4 mb-6">
-                            <div class="text-3xl font-bold text-white mb-1">$69.99</div>
-                            <div class="text-sm text-gray-400">$0.07 per credit <span class="text-accent-neon">30% OFF</span></div>
-                        </div>
-                        
-                        <ul class="mb-6 flex-grow">
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-neon mr-2"></i>
-                                <span>Full feature access</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-neon mr-2"></i>
-                                <span>Maximum visibility</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-neon mr-2"></i>
-                                <span>24/7 VIP support</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-neon mr-2"></i>
-                                <span>Exclusive monthly bonus</span>
-                            </li>
-                            <li class="flex items-center mb-3">
-                                <i class="fas fa-check text-accent-neon mr-2"></i>
-                                <span>Early access to new features</span>
-                            </li>
-                        </ul>
-                        
-                        <button class="w-full py-3 px-4 bg-primary-600 hover:bg-primary-500 rounded-lg font-bold transition-all duration-300 group-hover:shadow-neon flex items-center justify-center">
-                            <i class="fas fa-gem mr-2"></i>
-                            Purchase Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Custom Package Slider -->
-        <section class="mb-20">
-            <div class="bg-glass-dark rounded-xl p-8 border-glass relative overflow-hidden">
-                <div class="absolute -inset-1 bg-gradient-to-r from-primary-600/20 to-accent-neon/20 rounded-xl blur-md -z-10"></div>
-                
-                <h2 class="text-3xl font-bold mb-8 text-center">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-neon">
-                        Custom Credit Package
-                    </span>
-                </h2>
-                
-                <div class="mb-8">
-                    <div class="flex justify-between mb-2">
-                        <span class="text-gray-400">100 Credits</span>
-                        <span class="text-gray-400">5000 Credits</span>
-                    </div>
-                    
-                    <div class="relative h-2 bg-dark-600 rounded-full mb-2">
-                        <div id="slider-fill" class="absolute h-full w-1/4 bg-gradient-to-r from-primary-500 to-accent-neon rounded-full"></div>
-                        <div id="slider-handle" class="absolute h-6 w-6 bg-white rounded-full shadow-neon -top-2 left-1/4 transform -translate-x-1/2 cursor-pointer flex items-center justify-center">
-                            <div class="h-3 w-3 bg-accent-neon rounded-full"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <div class="text-2xl font-bold"><span id="credit-amount">100</span> Credits</div>
-                            <div class="text-sm text-gray-400">$<span id="credit-price">9.99</span> ($<span id="per-credit">0.10</span> per credit)</div>
-                        </div>
-                        <button id="custom-purchase" class="py-2 px-4 bg-primary-600 hover:bg-primary-500 rounded-lg font-bold transition-all duration-300 hover:shadow-neon flex items-center justify-center">
-                            <i class="fas fa-shopping-cart mr-2"></i>
-                            Purchase
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Bonus section -->
-                <div class="bg-dark-700/50 rounded-lg p-4">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-gift text-accent-gold mr-2"></i>
-                        <h3 class="text-lg font-bold">Bonus Credits</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="flex-1 min-w-[200px] bg-dark-600/50 rounded p-3 border border-primary-700/30">
-                            <div class="text-sm text-gray-400">Purchase 500+ credits</div>
-                            <div class="text-lg font-bold text-accent-neon">Get 10% Extra</div>
-                        </div>
-                        <div class="flex-1 min-w-[200px] bg-dark-600/50 rounded p-3 border border-primary-700/30">
-                            <div class="text-sm text-gray-400">Purchase 1000+ credits</div>
-                            <div class="text-lg font-bold text-accent-neon">Get 15% Extra</div>
-                        </div>
-                        <div class="flex-1 min-w-[200px] bg-dark-600/50 rounded p-3 border border-primary-700/30">
-                            <div class="text-sm text-gray-400">Purchase 2000+ credits</div>
-                            <div class="text-lg font-bold text-accent-gold">Get 25% Extra</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Payment Section -->
-        <section class="mb-20">
-            <div class="bg-glass-dark rounded-xl p-8 border-glass relative overflow-hidden">
-                <div class="absolute -inset-1 bg-gradient-to-r from-primary-600/20 to-accent-neon/20 rounded-xl blur-md -z-10"></div>
-                
-                <h2 class="text-3xl font-bold mb-8 text-center">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-neon">
-                        Secure Payment
-                    </span>
-                </h2>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Payment Form -->
-                    <div>
-                        <div class="mb-6">
-                            <label class="block text-gray-300 mb-2">Card Information</label>
-                            <div class="relative">
-                                <input type="text" placeholder="Card Number" class="w-full bg-dark-700 border border-dark-500 focus:border-primary-500 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all duration-300">
-                                <div class="absolute right-3 top-1/2 transform -translate-y-1/2 flex space-x-2">
-                                    <i class="fab fa-cc-visa text-gray-400"></i>
-                                    <i class="fab fa-cc-mastercard text-gray-400"></i>
-                                    <i class="fab fa-cc-amex text-gray-400"></i>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div>
-                                <label class="block text-gray-300 mb-2">Expiration Date</label>
-                                <input type="text" placeholder="MM/YY" class="w-full bg-dark-700 border border-dark-500 focus:border-primary-500 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all duration-300">
-                            </div>
-                            <div>
-                                <label class="block text-gray-300 mb-2">Security Code</label>
-                                <input type="text" placeholder="CVC" class="w-full bg-dark-700 border border-dark-500 focus:border-primary-500 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all duration-300">
-                            </div>
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label class="block text-gray-300 mb-2">Name on Card</label>
-                            <input type="text" placeholder="Full Name" class="w-full bg-dark-700 border border-dark-500 focus:border-primary-500 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all duration-300">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label class="block text-gray-300 mb-2">Country</label>
-                            <select class="w-full bg-dark-700 border border-dark-500 focus:border-primary-500 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all duration-300">
-                                <option>United States</option>
-                                <option>Canada</option>
-                                <option>United Kingdom</option>
-                                <option>Australia</option>
-                                <option>Germany</option>
-                                <option>France</option>
-                                <option>Japan</option>
-                            </select>
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label class="flex items-center">
-                                <input type="checkbox" class="form-checkbox h-5 w-5 text-primary-500 rounded focus:ring-primary-500 focus:ring-offset-0 focus:ring-offset-transparent">
-                                <span class="ml-2 text-gray-300">Save card for future purchases</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <!-- Order Summary -->
-                    <div>
-                        <div class="bg-dark-700/50 rounded-lg p-6 mb-6">
-                            <h3 class="text-xl font-bold mb-4">Order Summary</h3>
-                            
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-300">Premium Package</span>
-                                <span>500 Credits</span>
-                            </div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-300">Bonus Credits (20%)</span>
-                                <span class="text-accent-gold">+100 Credits</span>
-                            </div>
-                            <div class="flex justify-between mb-4">
-                                <span class="text-gray-300">Total Credits</span>
-                                <span class="font-bold">600 Credits</span>
-                            </div>
-                            
-                            <div class="border-t border-dark-500 my-4"></div>
-                            
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-300">Subtotal</span>
-                                <span>$39.99</span>
-                            </div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-300">Tax</span>
-                                <span>$3.20</span>
-                            </div>
-                            <div class="flex justify-between mb-4">
-                                <span class="text-xl font-bold">Total</span>
-                                <span class="text-xl font-bold">$43.19</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Alternative Payment Methods -->
-                        <div class="mb-6">
-                            <div class="text-center mb-4">
-                                <span class="text-gray-400">Or pay with</span>
-                            </div>
-                            <div class="grid grid-cols-3 gap-4">
-                                <button class="bg-dark-700 hover:bg-dark-600 border border-dark-500 rounded-lg py-3 px-4 transition-all duration-300 flex items-center justify-center">
-                                    <i class="fab fa-paypal text-blue-400 text-xl"></i>
-                                </button>
-                                <button class="bg-dark-700 hover:bg-dark-600 border border-dark-500 rounded-lg py-3 px-4 transition-all duration-300 flex items-center justify-center">
-                                    <i class="fab fa-apple-pay text-white text-xl"></i>
-                                </button>
-                                <button class="bg-dark-700 hover:bg-dark-600 border border-dark-500 rounded-lg py-3 px-4 transition-all duration-300 flex items-center justify-center">
-                                    <i class="fab fa-bitcoin text-orange-400 text-xl"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Checkout Button -->
-                        <button class="w-full py-4 px-6 bg-gradient-to-r from-accent-gold-dark to-accent-gold hover:from-accent-gold hover:to-accent-gold-light text-dark-900 rounded-lg font-bold text-lg transition-all duration-300 shadow-gold flex items-center justify-center">
-                            <i class="fas fa-lock mr-2"></i>
-                            Complete Secure Purchase
-                        </button>
-                        
-                        <!-- Security Badges -->
-                        <div class="flex items-center justify-center mt-6 space-x-4">
-                            <div class="flex items-center text-gray-400 text-sm">
-                                <i class="fas fa-shield-alt mr-1 text-accent-neon"></i>
-                                <span>Secure Payment</span>
-                            </div>
-                            <div class="flex items-center text-gray-400 text-sm">
-                                <i class="fas fa-lock mr-1 text-accent-neon"></i>
-                                <span>SSL Encrypted</span>
-                            </div>
-                            <div class="flex items-center text-gray-400 text-sm">
-                                <i class="fas fa-undo mr-1 text-accent-neon"></i>
-                                <span>30-Day Refund</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Benefits & Features Section -->
-        <section class="mb-20">
-            <h2 class="text-3xl font-bold mb-8 text-center">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-accent-gold to-accent-neon">
-                    Unlock Premium Features
-                </span>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-glass-dark rounded-xl p-6 border-glass relative overflow-hidden group hover:shadow-neon transition-all duration-500 hover:transform hover:-translate-y-2">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-500/20 to-accent-neon/20 rounded-bl-3xl -z-10"></div>
-                    <div class="mb-4 text-accent-neon">
-                        <i class="fas fa-rocket text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Boosted Visibility</h3>
-                    <p class="text-gray-400">Your profile and content will be highlighted and promoted to a wider audience, increasing your chances of being discovered.</p>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="bg-glass-dark rounded-xl p-6 border-glass relative overflow-hidden group hover:shadow-gold transition-all duration-500 hover:transform hover:-translate-y-2">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-accent-gold/20 to-primary-500/20 rounded-bl-3xl -z-10"></div>
-                    <div class="mb-4 text-accent-gold">
-                        <i class="fas fa-star text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Exclusive Tools</h3>
-                    <p class="text-gray-400">Access premium tools and features that are only available to credit holders, giving you a competitive edge.</p>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="bg-glass-dark rounded-xl p-6 border-glass relative overflow-hidden group hover:shadow-neon transition-all duration-500 hover:transform hover:-translate-y-2">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-500/20 to-accent-neon/20 rounded-bl-3xl -z-10"></div>
-                    <div class="mb-4 text-accent-neon">
-                        <i class="fas fa-bolt text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Priority Support</h3>
-                    <p class="text-gray-400">Get faster responses and dedicated support from our team whenever you need assistance.</p>
-                </div>
-                
-                <!-- Feature 4 -->
-                <div class="bg-glass-dark rounded-xl p-6 border-glass relative overflow-hidden group hover:shadow-gold transition-all duration-500 hover:transform hover:-translate-y-2">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-accent-gold/20 to-primary-500/20 rounded-bl-3xl -z-10"></div>
-                    <div class="mb-4 text-accent-gold">
-                        <i class="fas fa-medal text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Premium Badge</h3>
-                    <p class="text-gray-400">Display a premium badge on your profile that shows others your commitment and professional status.</p>
-                </div>
-                
-                <!-- Feature 5 -->
-                <div class="bg-glass-dark rounded-xl p-6 border-glass relative overflow-hidden group hover:shadow-neon transition-all duration-500 hover:transform hover:-translate-y-2">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-500/20 to-accent-neon/20 rounded-bl-3xl -z-10"></div>
-                    <div class="mb-4 text-accent-neon">
-                        <i class="fas fa-chart-line text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Advanced Analytics</h3>
-                    <p class="text-gray-400">Gain insights with detailed analytics about your performance, audience, and engagement metrics.</p>
-                </div>
-                
-                <!-- Feature 6 -->
-                <div class="bg-glass-dark rounded-xl p-6 border-glass relative overflow-hidden group hover:shadow-gold transition-all duration-500 hover:transform hover:-translate-y-2">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-accent-gold/20 to-primary-500/20 rounded-bl-3xl -z-10"></div>
-                    <div class="mb-4 text-accent-gold">
-                        <i class="fas fa-unlock-alt text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Early Access</h3>
-                    <p class="text-gray-400">Be the first to try new features and updates before they're released to the general public.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Testimonials Section -->
-        <section class="mb-20">
-            <h2 class="text-3xl font-bold mb-8 text-center">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-neon">
-                    What Our Users Say
-                </span>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-glass-dark rounded-xl p-6 border-glass relative overflow-hidden">
-                    <div class="absolute -top-6 -right-6 text-8xl text-primary-500/10 pointer-events-none">
-                        <i class="fas fa-quote-right"></i>
-                    </div>
-                    <div class="relative">
-                        <p class="text-gray-300 mb-4">The premium credits completely transformed my experience. The boosted visibility helped me connect with clients I never would have reached otherwise. Worth every penny!</p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full bg-primary-700 flex items-center justify-center mr-3">
-                                <span class="text-lg font-bold text-white">JD</span>
-                            </div>
-                            <div>
-                                <div class="font-bold">John Doe</div>
-                                <div class="text-sm text-gray-400">Graphic Designer</div>
-                            </div>
-                            <div class="ml-auto text-accent-gold">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-glass-dark rounded-xl p-6 border-glass relative overflow-hidden">
-                    <div class="absolute -top-6 -right-6 text-8xl text-primary-500/10 pointer-events-none">
-                        <i class="fas fa-quote-right"></i>
-                    </div>
-                    <div class="relative">
-                        <p class="text-gray-300 mb-4">I was skeptical at first, but the premium features gave me an edge over competitors. The analytics alone helped me optimize my profile and increase engagement by 200%!</p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full bg-primary-700 flex items-center justify-center mr-3">
-                                <span class="text-lg font-bold text-white">JS</span>
-                            </div>
-                            <div>
-                                <div class="font-bold">Jane Smith</div>
-                                <div class="text-sm text-gray-400">Marketing Consultant</div>
-                            </div>
-                            <div class="ml-auto text-accent-gold">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- FAQ Section -->
-        <section class="mb-20">
-            <h2 class="text-3xl font-bold mb-8 text-center">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-accent-gold to-accent-neon">
-                    Frequently Asked Questions
-                </span>
-            </h2>
-            
-            <div class="space-y-4">
-                <!-- FAQ Item 1 -->
-                <div class="bg-glass-dark rounded-xl border-glass overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none flex justify-between items-center">
-                        <span class="font-bold text-lg">How long do credits last?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-300">Credits never expire! Once purchased, they remain in your account until you use them. This gives you the flexibility to use them whenever you need without worrying about time limits.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 2 -->
-                <div class="bg-glass-dark rounded-xl border-glass overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none flex justify-between items-center">
-                        <span class="font-bold text-lg">Can I get a refund if I don't use my credits?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-300">We offer a 30-day refund policy for unused credits. If you change your mind within 30 days of purchase, you can request a refund for any credits that haven't been used.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 3 -->
-                <div class="bg-glass-dark rounded-xl border-glass overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none flex justify-between items-center">
-                        <span class="font-bold text-lg">What payment methods do you accept?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-300">We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and cryptocurrency (Bitcoin, Ethereum). All transactions are secure and encrypted.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 4 -->
-                <div class="bg-glass-dark rounded-xl border-glass overflow-hidden">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none flex justify-between items-center">
-                        <span class="font-bold text-lg">How do I use my credits?</span>
-                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-300">Credits can be used throughout the platform for various premium features. When you access a premium feature, you'll see the credit cost and can confirm before spending. Your credit balance is always visible in your account dashboard.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- CTA Section -->
-        <section>
-            <div class="bg-glass-dark rounded-xl p-8 border-glass relative overflow-hidden text-center">
-                <div class="absolute -inset-1 bg-gradient-to-r from-accent-gold/20 via-primary-600/20 to-accent-neon/20 rounded-xl blur-md -z-10"></div>
-                
-                <h2 class="text-4xl font-bold mb-4">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-accent-gold to-accent-neon">
-                        Ready to Elevate Your Experience?
-                    </span>
-                </h2>
-                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                    Join thousands of users who have unlocked their full potential with premium credits. Start your journey today!
-                </p>
-                
-                <button class="py-4 px-8 bg-gradient-to-r from-accent-gold-dark to-accent-gold hover:from-accent-gold hover:to-accent-gold-light text-dark-900 rounded-lg font-bold text-lg transition-all duration-300 shadow-gold inline-flex items-center">
-                    <i class="fas fa-crown mr-2"></i>
-                    Get Premium Credits Now
+                <button id="add-skill-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+                  <i class="fas fa-plus text-sm"></i>
+                  Add Skill
                 </button>
+              </div>
+
+              <div id="add-skill-form" class="mb-6 hidden rounded-lg border bg-gray-50 p-4">
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div class="space-y-2">
+                    <label for="skill-name" class="block text-sm font-medium text-gray-700">Skill Name</label>
+                    <input type="text" id="skill-name" placeholder="e.g., JavaScript" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+                  </div>
+                  <div class="space-y-2">
+                    <label for="skill-icon" class="block text-sm font-medium text-gray-700">Icon (emoji)</label>
+                    <input type="text" id="skill-icon" placeholder="e.g., 📱" maxlength="2" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+                  </div>
+                  <div class="space-y-2">
+                    <label for="skill-category" class="block text-sm font-medium text-gray-700">Category</label>
+                    <select id="skill-category" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+                      <option value="design">Design</option>
+                      <option value="development">Development</option>
+                      <option value="marketing">Marketing</option>
+                      <option value="business">Business</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="space-y-2">
+                    <label for="skill-level" class="block text-sm font-medium text-gray-700">Proficiency Level: <span id="skill-level-display">3</span>/5</label>
+                    <input type="range" id="skill-level" min="1" max="5" step="1" value="3" class="w-full">
+                  </div>
+                </div>
+                <div class="mt-4 flex justify-end gap-2">
+                  <button id="cancel-skill-btn" class="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+                    Cancel
+                  </button>
+                  <button id="save-skill-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+                    Add Skill
+                  </button>
+                </div>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3" id="skills-container">
+                <!-- Skills will be dynamically added here -->
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+
+        <div class="tab-content hidden" id="experience-tab">
+          <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
+            <div class="p-6">
+              <div class="mb-6 flex items-center justify-between">
+                <h3 class="text-xl font-semibold">Work Experience</h3>
+                <button id="add-experience-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+                  <i class="fas fa-plus text-sm"></i>
+                  Add Experience
+                </button>
+              </div>
+
+              <div class="space-y-6" id="experience-container">
+                <!-- Experience items will be dynamically added here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content hidden" id="education-tab">
+          <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
+            <div class="p-6">
+              <div class="mb-6 flex items-center justify-between">
+                <h3 class="text-xl font-semibold">Education</h3>
+                <button id="add-education-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+                  <i class="fas fa-plus text-sm"></i>
+                  Add Education
+                </button>
+              </div>
+
+              <div class="space-y-6" id="education-container">
+                <!-- Education items will be dynamically added here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content hidden" id="portfolio-tab">
+          <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
+            <div class="p-6">
+              <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                  <button class="portfolio-filter-btn rounded-l-md bg-primary-600 px-4 py-2 text-sm font-medium text-white" data-filter="all">All</button>
+                  <button class="portfolio-filter-btn border-y border-r border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" data-filter="image">Images</button>
+                  <button class="portfolio-filter-btn border-y border-r border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" data-filter="document">Documents</button>
+                  <button class="portfolio-filter-btn rounded-r-md border-y border-r border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" data-filter="video">Videos</button>
+                </div>
+
+                <button id="add-portfolio-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+                  <i class="fas fa-plus text-sm"></i>
+                  Add Portfolio Item
+                </button>
+              </div>
+
+              <div class="grid gap-6 sm:grid-cols-2" id="portfolio-container">
+                <!-- Portfolio items will be dynamically added here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="space-y-6">
+        <!-- Availability Section -->
+        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
+          <div class="bg-gray-50 px-6 py-4 pb-3">
+            <h2 class="text-xl font-semibold">Availability</h2>
+          </div>
+          <div class="p-6">
+            <div class="space-y-6">
+              <div class="flex flex-col gap-4">
+                <div class="flex cursor-pointer items-center justify-between rounded-lg border border-emerald-500 bg-emerald-50 p-4 transition-colors" data-availability="available">
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                      <span class="text-lg">✓</span>
+                    </div>
+                    <div>
+                      <h3 class="font-medium">Available</h3>
+                      <p class="text-sm text-gray-500">Open to new skill exchanges</p>
+                    </div>
+                  </div>
+                  <div class="flex h-5 w-5 items-center justify-center rounded-full border">
+                    <div class="h-3 w-3 rounded-full bg-emerald-500"></div>
+                  </div>
+                </div>
+
+                <div class="flex cursor-pointer items-center justify-between rounded-lg border p-4 transition-colors hover:border-gray-300" data-availability="busy">
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
+                      <span class="text-lg">⏱</span>
+                    </div>
+                    <div>
+                      <h3 class="font-medium">Busy</h3>
+                      <p class="text-sm text-gray-500">Currently not taking new exchanges</p>
+                    </div>
+                  </div>
+                  <div class="flex h-5 w-5 items-center justify-center rounded-full border">
+                    <div class="h-3 w-3 rounded-full bg-orange-500 hidden"></div>
+                  </div>
+                </div>
+
+                <div class="flex cursor-pointer items-center justify-between rounded-lg border p-4 transition-colors hover:border-gray-300" data-availability="flexible">
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
+                      <span class="text-lg">🗓️</span>
+                    </div>
+                    <div>
+                      <h3 class="font-medium">Flexible</h3>
+                      <p class="text-sm text-gray-500">Limited availability, check calendar</p>
+                    </div>
+                  </div>
+                  <div class="flex h-5 w-5 items-center justify-center rounded-full border">
+                    <div class="h-3 w-3 rounded-full bg-blue-500 hidden"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <button id="calendar-btn" class="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+                  <i class="fas fa-calendar text-sm"></i>
+                  <span id="selected-date">Pick a date</span>
+                </button>
+
+                <div class="flex items-center space-x-2">
+                  <label class="relative inline-flex cursor-pointer items-center">
+                    <input type="checkbox" value="" class="peer sr-only" checked>
+                    <div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300"></div>
+                    <span class="ml-3 text-sm font-medium text-gray-700">Sync Calendar</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credits Section -->
+        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
+          <div class="bg-gray-50 px-6 py-4 pb-3">
+            <h2 class="text-xl font-semibold">Credits & Activity</h2>
+          </div>
+          <div class="p-6">
+            <div class="space-y-6">
+              <!-- Credit Summary -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="rounded-lg border bg-white p-4">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-medium text-gray-500">Credits Earned</h3>
+                    <i class="fas fa-arrow-up text-emerald-500"></i>
+                  </div>
+                  <p class="mt-2 text-2xl font-bold">450</p>
+                </div>
+                <div class="rounded-lg border bg-white p-4">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-medium text-gray-500">Credits Spent</h3>
+                    <i class="fas fa-arrow-down text-orange-500"></i>
+                  </div>
+                  <p class="mt-2 text-2xl font-bold">320</p>
+                </div>
+              </div>
+
+              <!-- Balance -->
+              <div class="rounded-lg border bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-sm font-medium text-gray-500">Current Balance</h3>
+                </div>
+                <p class="mt-2 text-3xl font-bold text-emerald-600">130</p>
+                <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                  <div class="h-full rounded-full bg-emerald-500" style="width: 26%"></div>
+                </div>
+                <p class="mt-1 text-xs text-gray-500">130 of 500 credits (Tier 2)</p>
+              </div>
+
+              <!-- Activity Stats -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-2">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
+                      <i class="fas fa-users text-gray-600"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium">Exchanges</p>
+                      <p class="text-xl font-bold">24</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
+                      <i class="fas fa-clock text-gray-600"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium">Pending</p>
+                      <p class="text-xl font-bold">28</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-center gap-2">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
+                      <i class="fas fa-chart-line text-gray-600"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium">Offered</p>
+                      <p class="text-xl font-bold">32</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
+                      <i class="fas fa-star text-gray-600"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium">Rating</p>
+                      <p class="text-xl font-bold">4.8/5</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity Chart -->
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-medium">Activity History</h3>
+                  <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button class="period-btn rounded-l-md border border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50" data-period="month">Month</button>
+                    <button class="period-btn border-y border-r border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50" data-period="quarter">Quarter</button>
+                    <button class="period-btn rounded-r-md border-y border-r border-gray-300 bg-primary-600 px-3 py-1 text-xs font-medium text-white" data-period="year">Year</button>
+                  </div>
+                </div>
+
+                <div class="h-[200px] w-full bg-white p-4 rounded-lg border border-gray-200">
+                  <canvas id="activity-chart"></canvas>
+                </div>
+              </div>
+
+              <button class="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+                View Detailed History
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium Features -->
+        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md" id="premium-card">
+          <div class="bg-gray-50 px-6 py-4 pb-3">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold">Upgrade to Premium</h2>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="space-y-6">
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-medium">Profile Highlighting</h3>
+                    <p class="text-sm text-gray-500">Appear at the top of search results</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
+                    <i class="fas fa-chart-bar"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-medium">Analytics Dashboard</h3>
+                    <p class="text-sm text-gray-500">Get detailed insights and statistics</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
+                    <i class="fas fa-bolt"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-medium">Priority Requests</h3>
+                    <p class="text-sm text-gray-500">Get faster responses to your requests</p>
+                  </div>
+                </div>
+              </div>
+
+              <button id="upgrade-btn" class="w-full rounded-md bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:from-amber-600 hover:to-amber-700 transition-colors">
+                <i class="fas fa-crown mr-2"></i>
+                Upgrade to Premium
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <script>
-        // Floating particles animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                createParticle(particlesContainer);
-            }
-            
-            // FAQ toggles
-            const faqToggles = document.querySelectorAll('.faq-toggle');
-            faqToggles.forEach(toggle => {
-                toggle.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const icon = this.querySelector('i');
-                    
-                    if (content.classList.contains('hidden')) {
-                        content.classList.remove('hidden');
-                        icon.classList.add('transform', 'rotate-180');
-                    } else {
-                        content.classList.add('hidden');
-                        icon.classList.remove('transform', 'rotate-180');
-                    }
-                });
-            });
-            
-            // Custom slider functionality
-            const sliderHandle = document.getElementById('slider-handle');
-            const sliderFill = document.getElementById('slider-fill');
-            const creditAmount = document.getElementById('credit-amount');
-            const creditPrice = document.getElementById('credit-price');
-            const perCredit = document.getElementById('per-credit');
-            const slider = document.querySelector('.relative.h-2.bg-dark-600');
-            
-            let isDragging = false;
-            
-            sliderHandle.addEventListener('mousedown', function(e) {
-                isDragging = true;
-                document.addEventListener('mousemove', moveSlider);
-                document.addEventListener('mouseup', stopDragging);
-            });
-            
-            slider.addEventListener('click', function(e) {
-                updateSliderPosition(e);
-            });
-            
-            function moveSlider(e) {
-                if (isDragging) {
-                    updateSliderPosition(e);
-                }
-            }
-            
-            function stopDragging() {
-                isDragging = false;
-                document.removeEventListener('mousemove', moveSlider);
-                document.removeEventListener('mouseup', stopDragging);
-            }
-            
-            function updateSliderPosition(e) {
-                const sliderRect = slider.getBoundingClientRect();
-                let position = (e.clientX - sliderRect.left) / sliderRect.width;
-                
-                // Clamp position between 0 and 1
-                position = Math.max(0, Math.min(1, position));
-                
-                // Update slider position
-                sliderHandle.style.left = `${position * 100}%`;
-                sliderFill.style.width = `${position * 100}%`;
-                
-                // Calculate credit amount (100 to 5000)
-                const credits = Math.round(100 + position * 4900);
-                creditAmount.textContent = credits;
-                
-                // Calculate price based on volume discount
-                let pricePerCredit;
-                if (credits < 500) {
-                    pricePerCredit = 0.10;
-                } else if (credits < 1000) {
-                    pricePerCredit = 0.08;
-                } else if (credits < 2000) {
-                    pricePerCredit = 0.07;
-                } else {
-                    pricePerCredit = 0.06;
-                }
-                
-                const totalPrice = (credits * pricePerCredit).toFixed(2);
-                creditPrice.textContent = totalPrice;
-                perCredit.textContent = pricePerCredit.toFixed(2);
-            }
-        });
-        
-        function createParticle(container) {
-            const particle = document.createElement('div');
-            
-            // Random size between 2px and 6px
-            const size = Math.random() * 4 + 2;
-            
-            // Random position
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-            
-            // Random color (gold or neon blue)
-            const colors = [
-                'rgba(255, 215, 0, 0.6)', // Gold
-                'rgba(0, 240, 255, 0.6)',  // Neon blue
-                'rgba(57, 73, 227, 0.6)'   // Primary blue
-            ];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            // Random animation duration between 20s and 40s
-            const duration = Math.random() * 20 + 20;
-            
-            // Set particle styles
-            particle.style.position = 'absolute';
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.borderRadius = '50%';
-            particle.style.backgroundColor = color;
-            particle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
-            particle.style.left = `${posX}%`;
-            particle.style.top = `${posY}%`;
-            particle.style.opacity = Math.random() * 0.5 + 0.3;
-            
-            // Set animation
-            particle.style.animation = `float ${duration}s ease-in-out infinite`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-            
-            container.appendChild(particle);
+  </div>
+
+  <!-- Modal Templates -->
+  <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 flex items-center justify-center">
+    <!-- Experience Modal -->
+    <div id="experience-modal" class="hidden bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 z-50">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h3 class="text-lg font-semibold" id="experience-modal-title">Add New Experience</h3>
+      </div>
+      <div class="p-6">
+        <form id="experience-form" class="space-y-4">
+          <input type="hidden" id="experience-id">
+          <div class="grid gap-2">
+            <label for="experience-role" class="block text-sm font-medium text-gray-700">Job Title</label>
+            <input type="text" id="experience-role" placeholder="e.g., Senior UX Designer" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="grid gap-2">
+              <label for="experience-company" class="block text-sm font-medium text-gray-700">Company</label>
+              <input type="text" id="experience-company" placeholder="e.g., Design Studio Inc." class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+            </div>
+            <div class="grid gap-2">
+              <label for="experience-location" class="block text-sm font-medium text-gray-700">Location</label>
+              <input type="text" id="experience-location" placeholder="e.g., San Francisco, CA" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="grid gap-2">
+              <label for="experience-start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
+              <input type="text" id="experience-start-date" placeholder="e.g., Jan 2020" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+            </div>
+            <div class="grid gap-2">
+              <label for="experience-end-date" class="block text-sm font-medium text-gray-700">End Date</label>
+              <input type="text" id="experience-end-date" placeholder="e.g., Present" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+            </div>
+          </div>
+          <div class="grid gap-2">
+            <label for="experience-logo" class="block text-sm font-medium text-gray-700">Company Logo URL</label>
+            <input type="text" id="experience-logo" placeholder="Upload or enter logo URL" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid gap-2">
+            <label for="experience-description" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea id="experience-description" placeholder="Describe your responsibilities and achievements" class="w-full min-h-[100px] rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none"></textarea>
+          </div>
+          <div class="flex justify-end gap-2 pt-4">
+            <button type="button" class="experience-cancel-btn inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+              Cancel
+            </button>
+            <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+              <span id="experience-submit-text">Add</span> Experience
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Education Modal -->
+    <div id="education-modal" class="hidden bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 z-50">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h3 class="text-lg font-semibold" id="education-modal-title">Add New Education</h3>
+      </div>
+      <div class="p-6">
+        <form id="education-form" class="space-y-4">
+          <input type="hidden" id="education-id">
+          <div class="grid gap-2">
+            <label for="education-institution" class="block text-sm font-medium text-gray-700">Institution</label>
+            <input type="text" id="education-institution" placeholder="e.g., Stanford University" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid gap-2">
+            <label for="education-degree" class="block text-sm font-medium text-gray-700">Degree</label>
+            <input type="text" id="education-degree" placeholder="e.g., Master of Fine Arts, Design" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="grid gap-2">
+              <label for="education-start-year" class="block text-sm font-medium text-gray-700">Start Year</label>
+              <input type="text" id="education-start-year" placeholder="e.g., 2018" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+            </div>
+            <div class="grid gap-2">
+              <label for="education-end-year" class="block text-sm font-medium text-gray-700">End Year</label>
+              <input type="text" id="education-end-year" placeholder="e.g., 2022" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+            </div>
+          </div>
+          <div class="grid gap-2">
+            <label for="education-location" class="block text-sm font-medium text-gray-700">Location</label>
+            <input type="text" id="education-location" placeholder="e.g., Stanford, CA" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid gap-2">
+            <label for="education-logo" class="block text-sm font-medium text-gray-700">Institution Logo URL</label>
+            <input type="text" id="education-logo" placeholder="Upload or enter logo URL" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid gap-2">
+            <label for="education-description" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea id="education-description" placeholder="Describe your studies, achievements, etc." class="w-full min-h-[100px] rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none"></textarea>
+          </div>
+          <div class="flex justify-end gap-2 pt-4">
+            <button type="button" class="education-cancel-btn inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+              Cancel
+            </button>
+            <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+              <span id="education-submit-text">Add</span> Education
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="hidden bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 z-50">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h3 class="text-lg font-semibold">Add Portfolio Item</h3>
+      </div>
+      <div class="p-6">
+        <form id="portfolio-form" class="space-y-4">
+          <input type="hidden" id="portfolio-id">
+          <div class="grid gap-2">
+            <label for="portfolio-title" class="block text-sm font-medium text-gray-700">Title</label>
+            <input type="text" id="portfolio-title" placeholder="e.g., E-commerce Redesign" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid gap-2">
+            <label for="portfolio-description" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea id="portfolio-description" placeholder="Describe your project" class="w-full min-h-[100px] rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none"></textarea>
+          </div>
+          <div class="grid gap-2">
+            <label for="portfolio-thumbnail" class="block text-sm font-medium text-gray-700">Thumbnail URL</label>
+            <input type="text" id="portfolio-thumbnail" placeholder="Enter image URL or upload" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid gap-2">
+            <label for="portfolio-type" class="block text-sm font-medium text-gray-700">Type</label>
+            <select id="portfolio-type" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+              <option value="image">Image</option>
+              <option value="document">Document</option>
+              <option value="video">Video</option>
+            </select>
+          </div>
+          <div class="grid gap-2">
+            <label for="portfolio-url" class="block text-sm font-medium text-gray-700">Project URL</label>
+            <input type="text" id="portfolio-url" placeholder="e.g., https://example.com/project" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+          </div>
+          <div class="grid gap-2">
+            <label class="block text-sm font-medium text-gray-700">Tags</label>
+            <div class="flex flex-wrap gap-2" id="portfolio-tags-container">
+              <!-- Tags will be added here -->
+            </div>
+            <div class="flex gap-2">
+              <input type="text" id="portfolio-tag-input" placeholder="Add a tag" class="flex-1 rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
+              <button type="button" id="add-tag-btn" class="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+                Add
+              </button>
+            </div>
+          </div>
+          <div class="flex justify-end gap-2 pt-4">
+            <button type="button" class="portfolio-cancel-btn inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+              Cancel
+            </button>
+            <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+              Add to Portfolio
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Premium Modal -->
+    <div id="premium-modal" class="hidden bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 z-50">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h3 class="text-lg font-semibold">Upgrade to Premium</h3>
+        <p class="text-sm text-gray-500">Unlock all premium features and take your skill exchanges to the next level.</p>
+      </div>
+      <div class="p-6">
+        <div class="space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-emerald-500"></i>
+              <p>Profile highlighting in search results</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-emerald-500"></i>
+              <p>Detailed analytics and engagement insights</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-emerald-500"></i>
+              <p>Priority matching for skill requests</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-emerald-500"></i>
+              <p>Unlimited portfolio items</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-emerald-500"></i>
+              <p>Premium badge on your profile</p>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-gray-50 p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-medium">Monthly Plan</p>
+                <p class="text-2xl font-bold">
+                  $9.99<span class="text-sm font-normal text-gray-500">/month</span>
+                </p>
+              </div>
+              <button id="subscribe-monthly-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+                Subscribe
+              </button>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-amber-50 p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-2">
+                  <p class="font-medium">Annual Plan</p>
+                  <span class="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700">
+                    Save 20%
+                  </span>
+                </div>
+                <p class="text-2xl font-bold">
+                  $95.88<span class="text-sm font-normal text-gray-500">/year</span>
+                </p>
+              </div>
+              <button id="subscribe-annual-btn" class="inline-flex items-center gap-1 rounded-md bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:from-amber-600 hover:to-amber-700 transition-colors">
+                Subscribe
+              </button>
+            </div>
+          </div>
+
+          <button class="premium-cancel-btn w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar Modal -->
+    <div id="calendar-modal" class="hidden bg-white rounded-lg shadow-xl max-w-md w-full mx-4 z-50">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h3 class="text-lg font-semibold">Select Date</h3>
+      </div>
+      <div class="p-6">
+        <div id="calendar-container" class="mb-4"></div>
+        <div class="flex justify-end gap-2">
+          <button class="calendar-cancel-btn inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
+            Cancel
+          </button>
+          <button id="calendar-select-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
+            Select Date
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mock data
+      const skillsData = [
+        { id: 1, name: "UI Design", icon: "🎨", level: 5, category: "design" },
+        { id: 2, name: "React", icon: "⚛️", level: 4, category: "development" },
+        { id: 3, name: "Figma", icon: "🖌️", level: 5, category: "design" },
+        { id: 4, name: "Tailwind CSS", icon: "🌊", level: 4, category: "development" },
+        { id: 5, name: "User Research", icon: "🔍", level: 3, category: "design" },
+        { id: 6, name: "JavaScript", icon: "📜", level: 4, category: "development" },
+        { id: 7, name: "Responsive Design", icon: "📱", level: 5, category: "design" },
+        { id: 8, name: "TypeScript", icon: "🔷", level: 3, category: "development" },
+      ];
+
+      const experienceData = [
+        {
+          id: 1,
+          role: "Senior UX/UI Designer",
+          company: "DesignHub",
+          logo: "https://placehold.co/40x40/00b894/ffffff",
+          location: "San Francisco, CA",
+          startDate: "Jan 2021",
+          endDate: "Present",
+          description: "Lead the design team in creating user-centered digital experiences. Collaborate with product managers and developers to implement design systems and ensure consistent user experiences across platforms."
+        },
+        {
+          id: 2,
+          role: "Frontend Developer",
+          company: "TechCorp",
+          logo: "https://placehold.co/40x40/0984e3/ffffff",
+          location: "New York, NY",
+          startDate: "Mar 2018",
+          endDate: "Dec 2020",
+          description: "Developed responsive web applications using React and TypeScript. Implemented design systems and component libraries to ensure consistent UI across products."
+        },
+        {
+          id: 3,
+          role: "UI Designer",
+          company: "CreativeAgency",
+          logo: "https://placehold.co/40x40/fdcb6e/ffffff",
+          location: "Chicago, IL",
+          startDate: "Jun 2016",
+          endDate: "Feb 2018",
+          description: "Created user interfaces for web and mobile applications. Collaborated with clients to understand requirements and deliver designs that met their needs."
         }
-    </script>
+      ];
+
+      const educationData = [
+        {
+          id: 1,
+          institution: "Stanford University",
+          degree: "Master of Fine Arts, Design",
+          logo: "https://placehold.co/40x40/00b894/ffffff",
+          location: "Stanford, CA",
+          startYear: "2014",
+          endYear: "2016",
+          description: "Focused on interaction design and user experience. Thesis project on designing accessible interfaces for elderly users."
+        },
+        {
+          id: 2,
+          institution: "University of California, Berkeley",
+          degree: "Bachelor of Science, Computer Science",
+          logo: "https://placehold.co/40x40/0984e3/ffffff",
+          location: "Berkeley, CA",
+          startYear: "2010",
+          endYear: "2014",
+          description: "Specialized in human-computer interaction and web development. Participated in various hackathons and design competitions."
+        }
+      ];
+
+      const portfolioData = [
+        {
+          id: 1,
+          title: "E-commerce Redesign",
+          description: "Complete redesign of an e-commerce platform focusing on improving the user experience and conversion rates.",
+          thumbnail: "https://placehold.co/400x300/00b894/ffffff",
+          type: "image",
+          tags: ["UI Design", "UX Research", "Figma"],
+          url: "https://example.com/project1"
+        },
+        {
+          id: 2,
+          title: "Mobile Banking App",
+          description: "Designed and developed a mobile banking application with a focus on security and ease of use.",
+          thumbnail: "https://placehold.co/400x300/0984e3/ffffff",
+          type: "image",
+          tags: ["Mobile Design", "React Native", "Prototyping"],
+          url: "https://example.com/project2"
+        },
+        {
+          id: 3,
+          title: "Design System Documentation",
+          description: "Created comprehensive documentation for a design system used across multiple products.",
+          thumbnail: "https://placehold.co/400x300/fdcb6e/ffffff",
+          type: "document",
+          tags: ["Documentation", "Design Systems", "Technical Writing"],
+          url: "https://example.com/project3"
+        },
+        {
+          id: 4,
+          title: "Product Explainer Video",
+          description: "Created a short explainer video for a SaaS product launch.",
+          thumbnail: "https://placehold.co/400x300/e84393/ffffff",
+          type: "video",
+          tags: ["Motion Graphics", "Storytelling", "After Effects"],
+          url: "https://example.com/project4"
+        }
+      ];
+
+      // Initialize tabs
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tabName = button.getAttribute('data-tab');
+          
+          // Update active tab button
+          tabButtons.forEach(btn => {
+            if (btn.getAttribute('data-tab') === tabName) {
+              btn.classList.add('border-primary-500', 'text-primary-600');
+              btn.classList.remove('border-transparent', 'text-gray-500');
+            } else {
+              btn.classList.remove('border-primary-500', 'text-primary-600');
+              btn.classList.add('border-transparent', 'text-gray-500');
+            }
+          });
+          
+          // Show active tab content
+          tabContents.forEach(content => {
+            if (content.id === `${tabName}-tab`) {
+              content.classList.remove('hidden');
+            } else {
+              content.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // Bio section
+      const bioDisplay = document.getElementById('bio-display');
+      const bioEdit = document.getElementById('bio-edit');
+      const bioTextarea = document.getElementById('bio-textarea');
+      const bioCharCount = document.getElementById('bio-char-count');
+      const bioEditBtn = document.getElementById('edit-bio-btn');
+      const bioSaveBtn = document.getElementById('bio-save-btn');
+      const bioCancelBtn = document.getElementById('bio-cancel-btn');
+
+      bioEditBtn.addEventListener('click', () => {
+        bioDisplay.classList.add('hidden');
+        bioEdit.classList.remove('hidden');
+        bioTextarea.value = bioDisplay.textContent.trim();
+        bioCharCount.textContent = bioTextarea.value.length;
+      });
+
+      bioTextarea.addEventListener('input', () => {
+        bioCharCount.textContent = bioTextarea.value.length;
+      });
+
+      bioSaveBtn.addEventListener('click', () => {
+        bioDisplay.textContent = bioTextarea.value;
+        bioDisplay.classList.remove('hidden');
+        bioEdit.classList.add('hidden');
+      });
+
+      bioCancelBtn.addEventListener('click', () => {
+        bioDisplay.classList.remove('hidden');
+        bioEdit.classList.add('hidden');
+      });
+
+      // Skills section
+      const skillsContainer = document.getElementById('skills-container');
+      const addSkillBtn = document.getElementById('add-skill-btn');
+      const addSkillForm = document.getElementById('add-skill-form');
+      const cancelSkillBtn = document.getElementById('cancel-skill-btn');
+      const saveSkillBtn = document.getElementById('save-skill-btn');
+      const skillNameInput = document.getElementById('skill-name');
+      const skillIconInput = document.getElementById('skill-icon');
+      const skillCategorySelect = document.getElementById('skill-category');
+      const skillLevelInput = document.getElementById('skill-level');
+      const skillLevelDisplay = document.getElementById('skill-level-display');
+      const skillFilterBtns = document.querySelectorAll('.skill-filter-btn');
+      
+      let currentSkillFilter = 'all';
+      let currentSkillId = 0;
+      let skills = [...skillsData];
+
+      // Initialize skills
+      renderSkills();
+
+      // Skill level slider
+      skillLevelInput.addEventListener('input', () => {
+        skillLevelDisplay.textContent = skillLevelInput.value;
+      });
+
+      // Add skill button
+      addSkillBtn.addEventListener('click', () => {
+        addSkillForm.classList.toggle('hidden');
+        skillNameInput.value = '';
+        skillIconInput.value = '';
+        skillCategorySelect.value = 'design';
+        skillLevelInput.value = 3;
+        skillLevelDisplay.textContent = '3';
+        currentSkillId = 0;
+      });
+
+      // Cancel skill button
+      cancelSkillBtn.addEventListener('click', () => {
+        addSkillForm.classList.add('hidden');
+      });
+
+      // Save skill button
+      saveSkillBtn.addEventListener('click', () => {
+        if (skillNameInput.value.trim()) {
+          const newSkill = {
+            id: currentSkillId || Date.now(),
+            name: skillNameInput.value.trim(),
+            icon: skillIconInput.value.trim() || '💡',
+            level: parseInt(skillLevelInput.value),
+            category: skillCategorySelect.value
+          };
+
+          if (currentSkillId) {
+            // Update existing skill
+            skills = skills.map(skill => skill.id === currentSkillId ? newSkill : skill);
+          } else {
+            // Add new skill
+            skills.push(newSkill);
+          }
+
+          renderSkills();
+          addSkillForm.classList.add('hidden');
+        }
+      });
+
+      // Skill filter buttons
+      skillFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          currentSkillFilter = filter;
+          
+          // Update active filter button
+          skillFilterBtns.forEach(filterBtn => {
+            if (filterBtn.getAttribute('data-filter') === filter) {
+              filterBtn.classList.add('bg-primary-600', 'text-white');
+              filterBtn.classList.remove('border', 'border-gray-300', 'bg-white', 'text-gray-700');
+            } else {
+              filterBtn.classList.remove('bg-primary-600', 'text-white');
+              filterBtn.classList.add('border', 'border-gray-300', 'bg-white', 'text-gray-700');
+            }
+          });
+          
+          renderSkills();
+        });
+      });
+
+      function renderSkills() {
+        skillsContainer.innerHTML = '';
+        
+        const filteredSkills = currentSkillFilter === 'all' 
+          ? skills 
+          : skills.filter(skill => skill.category === currentSkillFilter);
+        
+        filteredSkills.forEach(skill => {
+          const skillElement = document.createElement('div');
+          skillElement.className = 'group relative flex items-center gap-3 rounded-lg border bg-white p-3 shadow-sm transition-all hover:shadow-md';
+          skillElement.innerHTML = `
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-xl">
+              ${skill.icon}
+            </div>
+            <div class="flex-1">
+              <h4 class="font-medium text-gray-900">${skill.name}</h4>
+              <div class="mt-1 flex gap-1">
+                ${Array.from({ length: 5 }).map((_, i) => 
+                  `<div class="h-1.5 w-6 rounded-full ${i < skill.level ? 'bg-emerald-500' : 'bg-gray-200'}"></div>`
+                ).join('')}
+              </div>
+            </div>
+            <button class="absolute right-1 top-1 h-6 w-6 rounded-full p-1 text-gray-400 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-gray-100 hover:text-gray-600" data-action="delete-skill" data-id="${skill.id}">
+              <i class="fas fa-times"></i>
+            </button>
+            <div class="absolute left-1 top-1 cursor-grab opacity-0 transition-opacity group-hover:opacity-100">
+              <i class="fas fa-grip-lines text-gray-400"></i>
+            </div>
+          `;
+          
+          skillsContainer.appendChild(skillElement);
+          
+          // Add event listener for delete button
+          const deleteBtn = skillElement.querySelector('[data-action="delete-skill"]');
+          deleteBtn.addEventListener('click', () => {
+            const skillId = parseInt(deleteBtn.getAttribute('data-id'));
+            skills = skills.filter(s => s.id !== skillId);
+            renderSkills();
+          });
+          
+          // Add event listener for edit (click on the skill)
+          skillElement.addEventListener('click', (e) => {
+            // Don't trigger edit if clicking on delete button
+            if (e.target.closest('[data-action="delete-skill"]')) return;
+            
+            const skillId = parseInt(deleteBtn.getAttribute('data-id'));
+            const skillToEdit = skills.find(s => s.id === skillId);
+            
+            if (skillToEdit) {
+              currentSkillId = skillId;
+              skillNameInput.value = skillToEdit.name;
+              skillIconInput.value = skillToEdit.icon;
+              skillCategorySelect.value = skillToEdit.category;
+              skillLevelInput.value = skillToEdit.level;
+              skillLevelDisplay.textContent = skillToEdit.level;
+              addSkillForm.classList.remove('hidden');
+              saveSkillBtn.textContent = 'Update Skill';
+            }
+          });
+        });
+      }
+
+      // Experience section
+      const experienceContainer = document.getElementById('experience-container');
+      const addExperienceBtn = document.getElementById('add-experience-btn');
+      const experienceModal = document.getElementById('experience-modal');
+      const experienceForm = document.getElementById('experience-form');
+      const experienceCancelBtns = document.querySelectorAll('.experience-cancel-btn');
+      const modalBackdrop = document.getElementById('modal-backdrop');
+      const experienceModalTitle = document.getElementById('experience-modal-title');
+      const experienceSubmitText = document.getElementById('experience-submit-text');
+      
+      let experiences = [...experienceData];
+      
+      // Initialize experiences
+      renderExperiences();
+      
+      // Add experience button
+      addExperienceBtn.addEventListener('click', () => {
+        experienceForm.reset();
+        document.getElementById('experience-id').value = '';
+        experienceModalTitle.textContent = 'Add New Experience';
+        experienceSubmitText.textContent = 'Add';
+        modalBackdrop.classList.remove('hidden');
+        experienceModal.classList.remove('hidden');
+      });
+      
+      // Cancel experience buttons
+      experienceCancelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modalBackdrop.classList.add('hidden');
+          experienceModal.classList.add('hidden');
+        });
+      });
+      
+      // Experience form submit
+      experienceForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const experienceId = document.getElementById('experience-id').value;
+        const newExperience = {
+          id: experienceId ? parseInt(experienceId) : Date.now(),
+          role: document.getElementById('experience-role').value,
+          company: document.getElementById('experience-company').value,
+          logo: document.getElementById('experience-logo').value || 'https://placehold.co/40x40/00b894/ffffff',
+          location: document.getElementById('experience-location').value,
+          startDate: document.getElementById('experience-start-date').value,
+          endDate: document.getElementById('experience-end-date').value,
+          description: document.getElementById('experience-description').value
+        };
+        
+        if (experienceId) {
+          // Update existing experience
+          experiences = experiences.map(exp => exp.id === parseInt(experienceId) ? newExperience : exp);
+        } else {
+          // Add new experience
+          experiences.push(newExperience);
+        }
+        
+        renderExperiences();
+        modalBackdrop.classList.add('hidden');
+        experienceModal.classList.add('hidden');
+      });
+      
+      function renderExperiences() {
+        experienceContainer.innerHTML = '';
+        
+        experiences.forEach((experience, index) => {
+          const experienceElement = document.createElement('div');
+          experienceElement.className = 'relative rounded-lg border bg-white p-4 shadow-sm transition-all hover:shadow-md';
+          experienceElement.innerHTML = `
+            <div class="absolute right-3 top-3 flex gap-1">
+              <button class="h-8 w-8 rounded-md p-1 text-gray-500 hover:bg-gray-100" data-action="edit-experience" data-id="${experience.id}">
+                <i class="fas fa-pencil"></i>
+              </button>
+              <button class="h-8 w-8 rounded-md p-1 text-red-500 hover:bg-gray-100" data-action="delete-experience" data-id="${experience.id}">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+
+            <div class="flex flex-col gap-4 sm:flex-row">
+              <div class="h-12 w-12 rounded-md overflow-hidden">
+                <img src="${experience.logo}" alt="${experience.company}" class="h-full w-full object-cover">
+              </div>
+
+              <div class="flex-1">
+                <h4 class="text-lg font-semibold text-gray-900">${experience.role}</h4>
+                <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-600">
+                  <div class="flex items-center gap-1">
+                    <i class="fas fa-building text-sm"></i>
+                    <span>${experience.company}</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <i class="fas fa-calendar text-sm"></i>
+                    <span>${experience.startDate} - ${experience.endDate}</span>
+                  </div>
+                </div>
+
+                <p class="mt-3 text-sm text-gray-600">${experience.description}</p>
+              </div>
+            </div>
+
+            ${index < experiences.length - 1 ? '<div class="absolute bottom-0 left-6 right-6 h-px bg-gray-100"></div>' : ''}
+          `;
+          
+          experienceContainer.appendChild(experienceElement);
+          
+          // Add event listeners for edit and delete buttons
+          const editBtn = experienceElement.querySelector('[data-action="edit-experience"]');
+          const deleteBtn = experienceElement.querySelector('[data-action="delete-experience"]');
+          
+          editBtn.addEventListener('click', () => {
+            const expId = parseInt(editBtn.getAttribute('data-id'));
+            const expToEdit = experiences.find(exp => exp.id === expId);
+            
+            if (expToEdit) {
+              document.getElementById('experience-id').value = expId;
+              document.getElementById('experience-role').value = expToEdit.role;
+              document.getElementById('experience-company').value = expToEdit.company;
+              document.getElementById('experience-logo').value = expToEdit.logo;
+              document.getElementById('experience-location').value = expToEdit.location;
+              document.getElementById('experience-start-date').value = expToEdit.startDate;
+              document.getElementById('experience-end-date').value = expToEdit.endDate;
+              document.getElementById('experience-description').value = expToEdit.description;
+              
+              experienceModalTitle.textContent = 'Edit Experience';
+              experienceSubmitText.textContent = 'Update';
+              modalBackdrop.classList.remove('hidden');
+              experienceModal.classList.remove('hidden');
+            }
+          });
+          
+          deleteBtn.addEventListener('click', () => {
+            const expId = parseInt(deleteBtn.getAttribute('data-id'));
+            experiences = experiences.filter(exp => exp.id !== expId);
+            renderExperiences();
+          });
+        });
+      }
+
+      // Education section
+      const educationContainer = document.getElementById('education-container');
+      const addEducationBtn = document.getElementById('add-education-btn');
+      const educationModal = document.getElementById('education-modal');
+      const educationForm = document.getElementById('education-form');
+      const educationCancelBtns = document.querySelectorAll('.education-cancel-btn');
+      const educationModalTitle = document.getElementById('education-modal-title');
+      const educationSubmitText = document.getElementById('education-submit-text');
+      
+      let educations = [...educationData];
+      
+      // Initialize educations
+      renderEducations();
+      
+      // Add education button
+      addEducationBtn.addEventListener('click', () => {
+        educationForm.reset();
+        document.getElementById('education-id').value = '';
+        educationModalTitle.textContent = 'Add New Education';
+        educationSubmitText.textContent = 'Add';
+        modalBackdrop.classList.remove('hidden');
+        educationModal.classList.remove('hidden');
+      });
+      
+      // Cancel education buttons
+      educationCancelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modalBackdrop.classList.add('hidden');
+          educationModal.classList.add('hidden');
+        });
+      });
+      
+      // Education form submit
+      educationForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const educationId = document.getElementById('education-id').value;
+        const newEducation = {
+          id: educationId ? parseInt(educationId) : Date.now(),
+          institution: document.getElementById('education-institution').value,
+          degree: document.getElementById('education-degree').value,
+          logo: document.getElementById('education-logo').value || 'https://placehold.co/40x40/00b894/ffffff',
+          location: document.getElementById('education-location').value,
+          startYear: document.getElementById('education-start-year').value,
+          endYear: document.getElementById('education-end-year').value,
+          description: document.getElementById('education-description').value
+        };
+        
+        if (educationId) {
+          // Update existing education
+          educations = educations.map(edu => edu.id === parseInt(educationId) ? newEducation : edu);
+        } else {
+          // Add new education
+          educations.push(newEducation);
+        }
+        
+        renderEducations();
+        modalBackdrop.classList.add('hidden');
+        educationModal.classList.add('hidden');
+      });
+      
+      function renderEducations() {
+        educationContainer.innerHTML = '';
+        
+        educations.forEach((education, index) => {
+          const educationElement = document.createElement('div');
+          educationElement.className = 'relative rounded-lg border bg-white p-4 shadow-sm transition-all hover:shadow-md';
+          educationElement.innerHTML = `
+            <div class="absolute right-3 top-3 flex gap-1">
+              <button class="h-8 w-8 rounded-md p-1 text-gray-500 hover:bg-gray-100" data-action="edit-education" data-id="${education.id}">
+                <i class="fas fa-pencil"></i>
+              </button>
+              <button class="h-8 w-8 rounded-md p-1 text-red-500 hover:bg-gray-100" data-action="delete-education" data-id="${education.id}">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+
+            <div class="flex flex-col gap-4 sm:flex-row">
+              <div class="h-12 w-12 rounded-md overflow-hidden">
+                <img src="${education.logo}" alt="${education.institution}" class="h-full w-full object-cover">
+              </div>
+
+              <div class="flex-1">
+                <h4 class="text-lg font-semibold text-gray-900">${education.degree}</h4>
+                <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-600">
+                  <div class="flex items-center gap-1">
+                    <i class="fas fa-graduation-cap text-sm"></i>
+                    <span>${education.institution}</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <i class="fas fa-calendar text-sm"></i>
+                    <span>${education.startYear} - ${education.endYear}</span>
+                  </div>
+                </div>
+
+                <p class="mt-3 text-sm text-gray-600">${education.description}</p>
+              </div>
+            </div>
+
+            ${index < educations.length - 1 ? '<div class="absolute bottom-0 left-6 right-6 h-px bg-gray-100"></div>' : ''}
+          `;
+          
+          educationContainer.appendChild(educationElement);
+          
+          // Add event listeners for edit and delete buttons
+          const editBtn = educationElement.querySelector('[data-action="edit-education"]');
+          const deleteBtn = educationElement.querySelector('[data-action="delete-education"]');
+          
+          editBtn.addEventListener('click', () => {
+            const eduId = parseInt(editBtn.getAttribute('data-id'));
+            const eduToEdit = educations.find(edu => edu.id === eduId);
+            
+            if (eduToEdit) {
+              document.getElementById('education-id').value = eduId;
+              document.getElementById('education-institution').value = eduToEdit.institution;
+              document.getElementById('education-degree').value = eduToEdit.degree;
+              document.getElementById('education-logo').value = eduToEdit.logo;
+              document.getElementById('education-location').value = eduToEdit.location;
+              document.getElementById('education-start-year').value = eduToEdit.startYear;
+              document.getElementById('education-end-year').value = eduToEdit.endYear;
+              document.getElementById('education-description').value = eduToEdit.description;
+              
+              educationModalTitle.textContent = 'Edit Education';
+              educationSubmitText.textContent = 'Update';
+              modalBackdrop.classList.remove('hidden');
+              educationModal.classList.remove('hidden');
+            }
+          });
+          
+          deleteBtn.addEventListener('click', () => {
+            const eduId = parseInt(deleteBtn.getAttribute('data-id'));
+            educations = educations.filter(edu => edu.id !== eduId);
+            renderEducations();
+          });
+        });
+      }
+
+      // Portfolio section
+      const portfolioContainer = document.getElementById('portfolio-container');
+      const addPortfolioBtn = document.getElementById('add-portfolio-btn');
+      const portfolioModal = document.getElementById('portfolio-modal');
+      const portfolioForm = document.getElementById('portfolio-form');
+      const portfolioCancelBtns = document.querySelectorAll('.portfolio-cancel-btn');
+      const portfolioFilterBtns = document.querySelectorAll('.portfolio-filter-btn');
+      const portfolioTagsContainer = document.getElementById('portfolio-tags-container');
+      const portfolioTagInput = document.getElementById('portfolio-tag-input');
+      const addTagBtn = document.getElementById('add-tag-btn');
+      
+      let portfolios = [...portfolioData];
+      let currentPortfolioFilter = 'all';
+      let currentPortfolioTags = [];
+      
+      // Initialize portfolios
+      renderPortfolios();
+      
+      // Add portfolio button
+      addPortfolioBtn.addEventListener('click', () => {
+        portfolioForm.reset();
+        document.getElementById('portfolio-id').value = '';
+        currentPortfolioTags = [];
+        renderPortfolioTags();
+        modalBackdrop.classList.remove('hidden');
+        portfolioModal.classList.remove('hidden');
+      });
+      
+      // Cancel portfolio buttons
+      portfolioCancelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modalBackdrop.classList.add('hidden');
+          portfolioModal.classList.add('hidden');
+        });
+      });
+      
+      // Portfolio filter buttons
+      portfolioFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          currentPortfolioFilter = filter;
+          
+          // Update active filter button
+          portfolioFilterBtns.forEach(filterBtn => {
+            if (filterBtn.getAttribute('data-filter') === filter) {
+              filterBtn.classList.add('bg-primary-600', 'text-white');
+              filterBtn.classList.remove('bg-white', 'text-gray-700');
+            } else {
+              filterBtn.classList.remove('bg-primary-600', 'text-white');
+              filterBtn.classList.add('bg-white', 'text-gray-700');
+            }
+          });
+          
+          renderPortfolios();
+        });
+      });
+      
+      // Add tag button
+      addTagBtn.addEventListener('click', () => {
+        addPortfolioTag();
+      });
+      
+      // Tag input keydown
+      portfolioTagInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addPortfolioTag();
+        }
+      });
+      
+      function addPortfolioTag() {
+        const tag = portfolioTagInput.value.trim();
+        if (tag && !currentPortfolioTags.includes(tag)) {
+          currentPortfolioTags.push(tag);
+          renderPortfolioTags();
+          portfolioTagInput.value = '';
+        }
+      }
+      
+      function renderPortfolioTags() {
+        portfolioTagsContainer.innerHTML = '';
+        
+        currentPortfolioTags.forEach(tag => {
+          const tagElement = document.createElement('div');
+          tagElement.className = 'flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-sm';
+          tagElement.innerHTML = `
+            <span>${tag}</span>
+            <button type="button" class="ml-1 rounded-full p-0.5 hover:bg-gray-200" data-tag="${tag}">
+              <i class="fas fa-times text-xs"></i>
+            </button>
+          `;
+          
+          portfolioTagsContainer.appendChild(tagElement);
+          
+          // Add event listener for remove tag button
+          const removeBtn = tagElement.querySelector('button');
+          removeBtn.addEventListener('click', () => {
+            const tagToRemove = removeBtn.getAttribute('data-tag');
+            currentPortfolioTags = currentPortfolioTags.filter(t => t !== tagToRemove);
+            renderPortfolioTags();
+          });
+        });
+      }
+      
+      // Portfolio form submit
+      portfolioForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const portfolioId = document.getElementById('portfolio-id').value;
+        const newPortfolio = {
+          id: portfolioId ? parseInt(portfolioId) : Date.now(),
+          title: document.getElementById('portfolio-title').value,
+          description: document.getElementById('portfolio-description').value,
+          thumbnail: document.getElementById('portfolio-thumbnail').value || 'https://placehold.co/400x300/00b894/ffffff',
+          type: document.getElementById('portfolio-type').value,
+          tags: [...currentPortfolioTags],
+          url: document.getElementById('portfolio-url').value
+        };
+        
+        if (portfolioId) {
+          // Update existing portfolio
+          portfolios = portfolios.map(port => port.id === parseInt(portfolioId) ? newPortfolio : port);
+        } else {
+          // Add new portfolio
+          portfolios.push(newPortfolio);
+        }
+        
+        renderPortfolios();
+        modalBackdrop.classList.add('hidden');
+        portfolioModal.classList.add('hidden');
+      });
+      
+      function renderPortfolios() {
+        portfolioContainer.innerHTML = '';
+        
+        const filteredPortfolios = currentPortfolioFilter === 'all' 
+          ? portfolios 
+          : portfolios.filter(port => port.type === currentPortfolioFilter);
+        
+        filteredPortfolios.forEach(portfolio => {
+          const portfolioElement = document.createElement('div');
+          portfolioElement.className = 'group relative overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md';
+          portfolioElement.innerHTML = `
+            <div class="relative aspect-video overflow-hidden">
+              <img src="${portfolio.thumbnail}" alt="${portfolio.title}" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+              <div class="absolute bottom-0 left-0 right-0 flex justify-between p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div class="flex gap-1 text-white">
+                  <i class="fas fa-${portfolio.type === 'image' ? 'image' : portfolio.type === 'document' ? 'file-alt' : 'video'}"></i>
+                </div>
+                <a href="${portfolio.url}" target="_blank" rel="noopener noreferrer" class="h-8 w-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold text-gray-900">${portfolio.title}</h4>
+              <p class="mt-1 line-clamp-2 text-sm text-gray-600">${portfolio.description}</p>
+              <div class="mt-3 flex flex-wrap gap-1">
+                ${portfolio.tags.map(tag => 
+                  `<span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700">${tag}</span>`
+                ).join('')}
+              </div>
+            </div>
+            <button class="absolute right-2 top-2 h-7 w-7 rounded-full bg-white/80 text-red-500 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:bg-white" data-action="delete-portfolio" data-id="${portfolio.id}">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+          
+          portfolioContainer.appendChild(portfolioElement);
+          
+          // Add event listener for delete button
+          const deleteBtn = portfolioElement.querySelector('[data-action="delete-portfolio"]');
+          deleteBtn.addEventListener('click', () => {
+            const portId = parseInt(deleteBtn.getAttribute('data-id'));
+            portfolios = portfolios.filter(port => port.id !== portId);
+            renderPortfolios();
+          });
+          
+          // Add event listener for edit (click on the portfolio)
+          portfolioElement.addEventListener('click', (e) => {
+            // Don't trigger edit if clicking on delete button or external link
+            if (e.target.closest('[data-action="delete-portfolio"]') || e.target.closest('a')) return;
+            
+            const portId = parseInt(deleteBtn.getAttribute('data-id'));
+            const portToEdit = portfolios.find(port => port.id === portId);
+            
+            if (portToEdit) {
+              document.getElementById('portfolio-id').value = portId;
+              document.getElementById('portfolio-title').value = portToEdit.title;
+              document.getElementById('portfolio-description').value = portToEdit.description;
+              document.getElementById('portfolio-thumbnail').value = portToEdit.thumbnail;
+              document.getElementById('portfolio-type').value = portToEdit.type;
+              document.getElementById('portfolio-url').value = portToEdit.url;
+              
+              currentPortfolioTags = [...portToEdit.tags];
+              renderPortfolioTags();
+              
+              modalBackdrop.classList.remove('hidden');
+              portfolioModal.classList.remove('hidden');
+            }
+          });
+        });
+      }
+
+      // Availability section
+      const availabilityOptions = document.querySelectorAll('[data-availability]');
+      const calendarBtn = document.getElementById('calendar-btn');
+      const calendarModal = document.getElementById('calendar-modal');
+      const calendarContainer = document.getElementById('calendar-container');
+      const calendarCancelBtns = document.querySelectorAll('.calendar-cancel-btn');
+      const calendarSelectBtn = document.getElementById('calendar-select-btn');
+      const selectedDateDisplay = document.getElementById('selected-date');
+      
+      let currentAvailability = 'available';
+      let selectedDate = null;
+      
+      // Initialize datepicker
+      const datepicker = new Datepicker(calendarContainer, {
+        autohide: true,
+        format: 'mm/dd/yyyy',
+        todayBtn: true,
+        todayHighlight: true
+      });
+      
+      // Availability options
+      availabilityOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const availability = option.getAttribute('data-availability');
+          currentAvailability = availability;
+          
+          // Update active option
+          availabilityOptions.forEach(opt => {
+            const radio = opt.querySelector('.h-3');
+            if (opt.getAttribute('data-availability') === availability) {
+              opt.classList.add('border-emerald-500', 'bg-emerald-50');
+              opt.classList.remove('hover:border-gray-300');
+              if (radio) radio.classList.remove('hidden');
+              
+              // Update colors based on availability type
+              if (availability === 'available') {
+                opt.classList.add('border-emerald-500', 'bg-emerald-50');
+                opt.querySelector('.h-10').classList.add('bg-emerald-100', 'text-emerald-600');
+                opt.querySelector('.h-10').classList.remove('bg-gray-100', 'text-gray-500');
+                radio.classList.add('bg-emerald-500');
+              } else if (availability === 'busy') {
+                opt.classList.add('border-orange-500', 'bg-orange-50');
+                opt.querySelector('.h-10').classList.add('bg-orange-100', 'text-orange-600');
+                opt.querySelector('.h-10').classList.remove('bg-gray-100', 'text-gray-500');
+                radio.classList.add('bg-orange-500');
+              } else if (availability === 'flexible') {
+                opt.classList.add('border-blue-500', 'bg-blue-50');
+                opt.querySelector('.h-10').classList.add('bg-blue-100', 'text-blue-600');
+                opt.querySelector('.h-10').classList.remove('bg-gray-100', 'text-gray-500');
+                radio.classList.add('bg-blue-500');
+              }
+            } else {
+              opt.classList.remove('border-emerald-500', 'bg-emerald-50', 'border-orange-500', 'bg-orange-50', 'border-blue-500', 'bg-blue-50');
+              opt.classList.add('hover:border-gray-300');
+              opt.querySelector('.h-10').classList.remove('bg-emerald-100', 'text-emerald-600', 'bg-orange-100', 'text-orange-600', 'bg-blue-100', 'text-blue-600');
+              opt.querySelector('.h-10').classList.add('bg-gray-100', 'text-gray-500');
+              if (radio) radio.classList.add('hidden');
+            }
+          });
+        });
+      });
+      
+      // Calendar button
+      calendarBtn.addEventListener('click', () => {
+        modalBackdrop.classList.remove('hidden');
+        calendarModal.classList.remove('hidden');
+      });
+      
+      // Calendar cancel buttons
+      calendarCancelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modalBackdrop.classList.add('hidden');
+          calendarModal.classList.add('hidden');
+        });
+      });
+      
+      // Calendar select button
+      calendarSelectBtn.addEventListener('click', () => {
+        selectedDate = datepicker.getDate();
+        if (selectedDate) {
+          const formattedDate = selectedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          selectedDateDisplay.textContent = formattedDate;
+        }
+        modalBackdrop.classList.add('hidden');
+        calendarModal.classList.add('hidden');
+      });
+
+      // Activity Chart
+      const ctx = document.getElementById('activity-chart').getContext('2d');
+      const activityData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Credits',
+          data: [30, 45, 35, 60, 40, 70, 65, 80, 75, 90, 85, 100],
+          fill: true,
+          backgroundColor: 'rgba(16, 185, 129, 0.2)',
+          borderColor: 'rgba(16, 185, 129, 1)',
+          tension: 0.4
+        }]
+      };
+      
+      const activityChart = new Chart(ctx, {
+        type: 'line',
+        data: activityData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              titleColor: '#1f2937',
+              bodyColor: '#4b5563',
+              borderColor: '#e5e7eb',
+              borderWidth: 1,
+              padding: 10,
+              displayColors: false
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false
+              }
+            },
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: '#f1f5f9'
+              }
+            }
+          }
+        }
+      });
+      
+      // Period buttons
+      const periodBtns = document.querySelectorAll('.period-btn');
+      periodBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const period = btn.getAttribute('data-period');
+          
+          // Update active period button
+          periodBtns.forEach(periodBtn => {
+            if (periodBtn.getAttribute('data-period') === period) {
+              periodBtn.classList.add('bg-primary-600', 'text-white');
+              periodBtn.classList.remove('bg-white', 'text-gray-700');
+            } else {
+              periodBtn.classList.remove('bg-primary-600', 'text-white');
+              periodBtn.classList.add('bg-white', 'text-gray-700');
+            }
+          });
+          
+          // Update chart data based on period
+          if (period === 'month') {
+            activityChart.data.labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+            activityChart.data.datasets[0].data = [20, 35, 25, 40];
+          } else if (period === 'quarter') {
+            activityChart.data.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+            activityChart.data.datasets[0].data = [30, 45, 35, 60, 40, 70];
+          } else {
+            activityChart.data.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            activityChart.data.datasets[0].data = [30, 45, 35, 60, 40, 70, 65, 80, 75, 90, 85, 100];
+          }
+          
+          activityChart.update();
+        });
+      });
+
+      // Premium features
+      const upgradeBtn = document.getElementById('upgrade-btn');
+      const premiumModal = document.getElementById('premium-modal');
+      const premiumCancelBtns = document.querySelectorAll('.premium-cancel-btn');
+      const subscribeMonthlyBtn = document.getElementById('subscribe-monthly-btn');
+      const subscribeAnnualBtn = document.getElementById('subscribe-annual-btn');
+      const premiumCard = document.getElementById('premium-card');
+      
+      // Upgrade button
+      upgradeBtn.addEventListener('click', () => {
+        modalBackdrop.classList.remove('hidden');
+        premiumModal.classList.remove('hidden');
+      });
+      
+      // Premium cancel buttons
+      premiumCancelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modalBackdrop.classList.add('hidden');
+          premiumModal.classList.add('hidden');
+        });
+      });
+      
+      // Subscribe buttons
+      [subscribeMonthlyBtn, subscribeAnnualBtn].forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update premium card
+          premiumCard.innerHTML = `
+            <div class="bg-gradient-to-r from-amber-50 to-amber-100 px-6 py-4 pb-3">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl font-semibold">Premium Features</h2>
+                <span class="inline-flex items-center rounded-full border border-amber-500 bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">
+                  <i class="fas fa-crown mr-1"></i> Premium
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="space-y-6">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                      <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-medium">Profile Highlighting</h3>
+                      <p class="text-sm text-gray-500">Your profile appears at the top of search results</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                      <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-medium">Analytics Dashboard</h3>
+                      <p class="text-sm text-gray-500">Detailed insights on profile views and engagement</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                      <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-medium">Priority Requests</h3>
+                      <p class="text-sm text-gray-500">Your skill requests are prioritized in the queue</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rounded-lg border border-amber-200 bg-amber-50 p-4">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="font-medium text-amber-800">Premium until</h3>
+                      <p class="text-sm text-amber-700">December 15, 2025</p>
+                    </div>
+                    <button class="inline-flex items-center rounded-md border border-amber-500 bg-white px-3 py-1.5 text-sm font-medium text-amber-600 shadow-sm hover:bg-amber-50 transition-colors">
+                      Manage
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          
+          modalBackdrop.classList.add('hidden');
+          premiumModal.classList.add('hidden');
+        });
+      });
+
+      // Close modals when clicking outside
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) {
+          modalBackdrop.classList.add('hidden');
+          experienceModal.classList.add('hidden');
+          educationModal.classList.add('hidden');
+          portfolioModal.classList.add('hidden');
+          premiumModal.classList.add('hidden');
+          calendarModal.classList.add('hidden');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
