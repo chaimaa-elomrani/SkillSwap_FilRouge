@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use App\Models\Domains;
+use App\Models\Posts;
 
 class DomainsService
 {
@@ -18,5 +19,15 @@ class DomainsService
             })
             ->get() 
             ->groupBy(fn($domains) => $domains->type->name);
+    }
+
+
+    public function getPostByDomain($domains){
+        $domains = Domains::findOr($domains);
+        $posts = Posts::where('domain_id', $domains->id)->get();
+        return [
+            'domains' => $domains,
+            'posts' => $posts,
+        ];
     }
 }

@@ -33,9 +33,8 @@ class DomainsController extends Controller
 
  
     public function showByDomain($domains){
-        $domains = Domains::findOr($domains);
-        $posts = Posts::where('domain_id', $domains->id)->get();
-        return view('users.posts', compact('domains', 'posts'));
+        $data = $this->domainService->getPostByDomain($domains);
+        return view('users.posts',['domains' => $data['domains'], 'posts' => $data['posts']]);
 
     }
     
