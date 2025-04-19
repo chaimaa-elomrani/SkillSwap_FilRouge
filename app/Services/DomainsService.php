@@ -6,6 +6,10 @@ use App\Models\Domains;
 class DomainsService
 {
 
+    public function getDomains(){
+        return Domains::all();
+    }
+
     public function getGroupedDomainsByType(array $types)
     {
         return Domains::with('type', 'skills')

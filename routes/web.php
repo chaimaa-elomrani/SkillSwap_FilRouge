@@ -33,8 +33,8 @@ Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 
 
 // posts pages 
-// Route::get('/posts',[PostsController::class , 'index']);
-Route::get('/post/create',[PostsController::class , 'index']);
+Route::get('/posts',[PostsController::class , 'index']);
+Route::get('/post/create',[PostsController::class , 'createPost']);
 // Route::post('/post/create',[PostsController::class , 'store']);
 
 

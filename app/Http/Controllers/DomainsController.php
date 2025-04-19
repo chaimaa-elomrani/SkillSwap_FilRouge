@@ -15,6 +15,11 @@ class DomainsController extends Controller
         $this->domainService = $domainService;
         $this->typeService = $typeService;
     }
+
+    public function getDomains(){
+        $domains =$this->domainService->getDomains();
+        return $domains;
+    }
     
 
     public function index(){
