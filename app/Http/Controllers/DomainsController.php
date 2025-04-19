@@ -31,17 +31,12 @@ class DomainsController extends Controller
         return view('users.domains', compact('domains', 'types'));
     }
 
-    public function showPosts($id){
-        $domains = Domains::with('posts')->findOrFail($id);
-        return view('users/posts', compact('domains'));
-    }
-
-    public function showByDomain($domainName)
-    {
-        $domains = Domains::where('name', $domainName)->firstOrFail();
+ 
+    public function showByDomain($domains){
+        $domains = Domains::findOr($domains);
         $posts = Posts::where('domain_id', $domains->id)->get();
-    
-        return redirect()->route('domains.show', compact('posts', 'domains'));
+        return view('users.posts', compact('domains', 'posts'));
+
     }
     
 

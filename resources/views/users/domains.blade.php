@@ -309,7 +309,7 @@
                                     <span class="badge badge-blue">{{ $skill->name }}</span>
                                     @endforeach
                                 </div>
-                                <a href="{{ route('domains.show', ['domains' => $domain->name]) }}"
+                                <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
                                     {{ ucfirst($domain->name) }} <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
