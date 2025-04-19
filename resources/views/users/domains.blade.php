@@ -309,9 +309,9 @@
                                     <span class="badge badge-blue">{{ $skill->name }}</span>
                                     @endforeach
                                 </div>
-                                <a href="{{ route('domain.posts', ['id' => $domain->id]) }}"
+                                <a href="{{ route('domains.show', ['domains' => $domain->name]) }}"
                                     class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
-                                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                                    {{ ucfirst($domain->name) }} <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
                         </div>

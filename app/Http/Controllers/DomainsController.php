@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Posts;
 use App\Services\DomainsService;
 use App\Models\Domains;
 use App\Services\TypeService;
@@ -31,10 +32,17 @@ class DomainsController extends Controller
     }
 
     public function showPosts($id){
-        $domain = Domains::with('posts')->findOrFail($id);
+        $domains = Domains::with('posts')->findOrFail($id);
         return view('users/posts', compact('domains'));
     }
 
-
+    public function showByDomain($domainName)
+    {
+        $domains = Domains::where('name', $domainName)->firstOrFail();
+        $posts = Posts::where('domain_id', $domains->id)->get();
+    
+        return redirect()->route('domains.show', compact('posts', 'domains'));
+    }
+    
 
 }

@@ -26,7 +26,7 @@ Route::get('/search',[SearchController::class , 'index']);
 // domains page 
 Route::get('/domains',[DomainsController::class , 'index']);
 Route::get('/domains/getDomainByType',[DomainsController::class , 'getDomainByType']);
-Route::get('/domains/{id}/posts', [DomainsController::class, 'showPosts'])->name('domain.posts');
+// Route::get('/domains/posts', [DomainsController::class, 'showPosts'])->name('domain.posts');
 
 // types 
 Route::get('/domains/types',[DomainsController::class , 'getTypes']);
@@ -35,7 +35,9 @@ Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 // posts pages 
 Route::get('/posts',[PostsController::class , 'index']);
 Route::get('/post/create',[PostsController::class , 'createPost']);
-Route::get('posts', [PostsController::class, 'show']);  
+// Route::get('posts', [PostsController::class, 'show']);  
+Route::get('/domains/{domains}', [DomainsController::class, 'showByDomain'])->name('domains.show');
+
 // Route::post('/post/create',[PostsController::class , 'store']);
 
 
