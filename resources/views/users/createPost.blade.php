@@ -139,18 +139,13 @@
                     <div class="space-y-6 slide-in-right">
                         <!-- Service Category -->
                         <div>
-                            <label for="serviceCategory" class="block text-sm font-medium text-gray-700">Category <span class="text-red-500">*</span></label>
+                            <label for="serviceCategory" class="block text-sm font-medium text-gray-700">Domain <span class="text-red-500">*</span></label>
                             <select id="serviceCategory" name="category" 
                                 class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
-                                <option value="" disabled selected>Choose a relevant category</option>
-                                <option value="development">Development</option>
-                                <option value="design">Design</option>
-                                <option value="writing">Writing</option>
-                                <option value="marketing">Marketing</option>
-                                <option value="video">Video & Animation</option>
-                                <option value="audio">Audio & Music</option>
-                                <option value="business">Business</option>
-                                <option value="lifestyle">Lifestyle</option>
+                                <option value="" disabled selected>Choose a relevant Domain</option>
+                                @foreach ($domains as $domain)
+                                <option value="{{ $domain->id }}">{{ $domain->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         
@@ -201,7 +196,7 @@
                         <!-- Languages -->
                         <div>
                             <label for="languages" class="block text-sm font-medium text-gray-700">Language(s) Preferred</label>
-                            <select id="languages" name="languages" multiple 
+                            <select id="languages" name="languages[]" multiple 
                                 class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
                                 <option value="english">English</option>
                                 <option value="spanish">Spanish</option>

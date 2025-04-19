@@ -187,67 +187,144 @@
     }
     
     // Initialize form validation and submission
-    function initFormHandling() {
-        const form = document.getElementById('serviceForm');
+   // Initialize form validation and submission
+function initFormHandling() {
+    const form = document.getElementById('serviceForm');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Validate all sections
+        if (validateSection('basic') && validateSection('skills') && validateSection('transaction')) {
+            // Create a FormData object
+            const formData = new FormData(form);
             
-            // Validate all sections
-            if (validateSection('basic') && validateSection('skills') && validateSection('transaction')) {
-                // Show preview
-                updatePreview();
-                document.getElementById('previewCard').classList.remove('hidden');
-                
-                // Scroll to preview
-                document.getElementById('previewCard').scrollIntoView({ behavior: 'smooth' });
-                
-                // Animate preview card
-                gsap.fromTo('#previewCard', 
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
-                );
-                
-                // In a real application, you would submit the form data to a server here
-                console.log('Form submitted successfully!');
-                
-                // For demo purposes, we'll just show a success message
-                showSuccessMessage();
-            }
-        });
-        
-        // Show success message
-        function showSuccessMessage() {
-            // Create success message
-            const successMsg = document.createElement('div');
-            successMsg.className = 'fixed top-4 right-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md';
-            successMsg.innerHTML = `
-                <div class="flex items-center">
-                    <svg class="h-6 w-6 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <p>Service posted successfully!</p>
-                </div>
-            `;
-            document.body.appendChild(successMsg);
+            // Show loading state
+            showLoadingState();
             
-            // Animate success message
-            gsap.fromTo(successMsg, 
-                { opacity: 0, x: 20 },
-                { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' }
-            );
-            
-            // Remove after 5 seconds
-            setTimeout(() => {
-                gsap.to(successMsg, {
-                    opacity: 0,
-                    y: -10,
-                    duration: 0.3,
-                    onComplete: () => successMsg.remove()
-                });
-            }, 5000);
+            // Send data to server using fetch API
+            fetch('/post/create', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Hide loading state
+                hideLoadingState();
+                
+                // Show success message
+                showSuccessMessage(data.message || 'Service posted successfully!');
+                
+                // Optionally redirect to the service page
+                if (data.redirect) {
+                    setTimeout(() => {
+                        window.location.href = data.redirect;
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                // Hide loading state
+                hideLoadingState();
+                
+                // Show error message
+                showErrorMessage('Failed to post service. Please try again.');
+                console.error('Error:', error);
+            });
+        }
+    });
+    
+    // Helper functions for loading state and messages
+    function showLoadingState() {
+        // Create and show loading overlay
+        const loadingOverlay = document.createElement('div');
+        loadingOverlay.id = 'loadingOverlay';
+        loadingOverlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        loadingOverlay.innerHTML = `
+            <div class="bg-white p-5 rounded-lg shadow-lg flex flex-col items-center">
+                <div class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500 mb-3"></div>
+                <p class="text-gray-700">Submitting your service...</p>
+            </div>
+        `;
+        document.body.appendChild(loadingOverlay);
+    }
+    
+    function hideLoadingState() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.remove();
         }
     }
+    
+    function showSuccessMessage(message) {
+        // Create success message
+        const successMsg = document.createElement('div');
+        successMsg.className = 'fixed top-4 right-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md z-50';
+        successMsg.innerHTML = `
+            <div class="flex items-center">
+                <svg class="h-6 w-6 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <p>${message}</p>
+            </div>
+        `;
+        document.body.appendChild(successMsg);
+        
+        // Animate success message
+        gsap.fromTo(successMsg, 
+            { opacity: 0, x: 20 },
+            { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' }
+        );
+        
+        // Remove after 5 seconds
+        setTimeout(() => {
+            gsap.to(successMsg, {
+                opacity: 0,
+                y: -10,
+                duration: 0.3,
+                onComplete: () => successMsg.remove()
+            });
+        }, 5000);
+    }
+    
+    function showErrorMessage(message) {
+        // Create error message
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'fixed top-4 right-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-md z-50';
+        errorMsg.innerHTML = `
+            <div class="flex items-center">
+                <svg class="h-6 w-6 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <p>${message}</p>
+            </div>
+        `;
+        document.body.appendChild(errorMsg);
+        
+        // Animate error message
+        gsap.fromTo(errorMsg, 
+            { opacity: 0, x: 20 },
+            { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' }
+        );
+        
+        // Remove after 5 seconds
+        setTimeout(() => {
+            gsap.to(errorMsg, {
+                opacity: 0,
+                y: -10,
+                duration: 0.3,
+                onComplete: () => errorMsg.remove()
+            });
+        }, 5000);
+    }
+}
     
     // Validate form sections
     function validateSection(sectionName) {
