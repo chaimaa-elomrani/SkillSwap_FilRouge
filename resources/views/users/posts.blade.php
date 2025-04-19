@@ -18,20 +18,8 @@
     }
     
     .post-card:hover {
-      transform: translateY(-2px);
-    }
-    
-    .like-btn.active i, 
-    .save-btn.active i {
-      transform: scale(1.1);
-    }
-    
-    .like-btn.active {
-      color: #ef4444;
-    }
-    
-    .save-btn.active {
-      color: #3b82f6;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
     
     .btn-icon {
@@ -76,6 +64,46 @@
       background-color: rgba(79, 70, 229, 0.1);
       color: #4f46e5;
       border-left: 3px solid #4f46e5;
+    }
+
+    /* Experience level badges */
+    .badge-beginner {
+      background-color: #dcfce7;
+      color: #166534;
+    }
+    
+    .badge-intermediate {
+      background-color: #dbeafe;
+      color: #1e40af;
+    }
+    
+    .badge-expert {
+      background-color: #f3e8ff;
+      color: #6b21a8;
+    }
+    
+    /* LinkedIn-style post cards */
+    .post-meta-item {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 12px;
+      color: #6b7280;
+      font-size: 0.8125rem;
+    }
+    
+    .post-meta-item i {
+      margin-right: 4px;
+      font-size: 0.875rem;
+    }
+    
+    .post-meta-divider {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #d1d5db;
+      margin: 0 8px;
+      vertical-align: middle;
     }
   </style>
 </head>
@@ -178,14 +206,12 @@
 
       <!-- Divider -->
       <div class="border-t border-gray-200 my-4"></div>
-
-   
     </aside>
 
     <!-- Main Content -->
     <main class="flex-1 min-w-0 bg-gray-50">
       <!-- Filters and View Options -->
-      <div class="container mx-auto px-4 py-4">
+      <div class="container mx-auto px-4 py-4 max-w-4xl">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
           <div class="flex items-center space-x-2">
             <div class="bg-gray-100 rounded-md p-1 flex">
@@ -220,10 +246,10 @@
             </div>
 
             <div class="hidden sm:flex items-center border rounded-md overflow-hidden">
-              <button id="grid-view-btn" class="view-btn active h-9 px-3 bg-gray-100 transition-colors">
+              <button id="grid-view-btn" class="view-btn h-9 px-3 transition-colors">
                 <i class="fas fa-th-large text-gray-600"></i>
               </button>
-              <button id="list-view-btn" class="view-btn h-9 px-3 transition-colors">
+              <button id="list-view-btn" class="view-btn active h-9 px-3 bg-gray-100 transition-colors">
                 <i class="fas fa-list text-gray-600"></i>
               </button>
             </div>
@@ -231,280 +257,219 @@
         </div>
       </div>
 
-      <!-- Posts Grid -->
-      <div class="container mx-auto px-24 py-6">
-        <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-1 gap-6">
+      <!-- Posts List -->
+      <div class="container mx-auto px-4 py-4 max-w-4xl">
+        <div id="posts-container" class="grid grid-cols-1 gap-4">
           <!-- Post 1 -->
           <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4 pb-0">
-              <div class="flex justify-between items-start">
-                <div class="flex items-center space-x-3">
-                  <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Alex Morgan" class="h-full w-full object-cover">
-                  </div>
-                  <div>
-                    <div class="flex items-center">
-                      <h3 class="font-medium text-gray-900">Alex Morgan</h3>
-                      <i class="fas fa-check-circle ml-1 text-blue-500 text-sm"></i>
-                    </div>
-                    <p class="text-sm text-gray-500">Product Designer</p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <span class="text-xs text-gray-500">2h ago</span>
-                  <button class="h-8 w-8 ml-1 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
             <div class="p-4">
-              <p class="text-gray-800 mb-3">Just finished a comprehensive UX audit for a fintech client. Identified 37 critical issues that were affecting conversion rates. Key takeaway: simplicity always wins.</p>
-
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">UX Design</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Fintech</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Case Study</span>
-              </div>
-            </div>
-
-            <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-              <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-                <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center">
-                  <i class="fas fa-paper-plane mr-2"></i>
-                  Send Request
+              <!-- Author and timestamp -->
+              <div class="flex items-center mb-3">
+                <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
+                  <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Alex Morgan" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center">
+                    <h3 class="font-medium text-gray-900 text-sm">Alex Morgan</h3>
+                    <i class="fas fa-check-circle ml-1 text-blue-500 text-xs"></i>
+                  </div>
+                  <div class="flex items-center text-xs text-gray-500 mt-0.5">
+                    <span>Product Designer</span>
+                    <span class="mx-1">•</span>
+                    <span>2h ago</span>
+                  </div>
+                </div>
+                <button class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                  <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
                 </button>
               </div>
+
+              <!-- Title and content -->
+              <h2 class="text-base font-semibold text-gray-900 mb-2">UX Audit for Fintech Application</h2>
+              <p class="text-gray-700 text-sm mb-3">Just finished a comprehensive UX audit for a fintech client. Identified 37 critical issues that were affecting conversion rates. Key takeaway: simplicity always wins.</p>
+              
+              <!-- Post meta information -->
+              <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
+                <!-- Experience Level -->
+                <div class="post-meta-item">
+                  <i class="fas fa-user-graduate"></i>
+                  <span>Expert</span>
+                </div>
+                
+                <span class="post-meta-divider"></span>
+                
+                <!-- Credit Cost -->
+                <div class="post-meta-item">
+                  <i class="fas fa-credit-card"></i>
+                  <span>150 credits</span>
+                </div>
+                
+                <span class="post-meta-divider"></span>
+                
+                <!-- Duration -->
+                <div class="post-meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>3 days</span>
+                </div>
+              </div>
+
+              <!-- Languages/Technologies -->
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Figma</span>
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Sketch</span>
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Adobe XD</span>
+                <span class="inline-block badge-expert rounded-full px-2.5 py-0.5 text-xs font-medium">Expert</span>
+              </div>
+
+              <!-- Action button -->
+              <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+                <i class="fas fa-paper-plane mr-2"></i>
+                Send Request
+              </button>
             </div>
           </div>
           
           <!-- Post 2 -->
           <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4 pb-0">
-              <div class="flex justify-between items-start">
-                <div class="flex items-center space-x-3">
-                  <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Chen" class="h-full w-full object-cover">
-                  </div>
-                  <div>
-                    <div class="flex items-center">
-                      <h3 class="font-medium text-gray-900">Sarah Chen</h3>
-                      <i class="fas fa-check-circle ml-1 text-blue-500 text-sm"></i>
-                    </div>
-                    <p class="text-sm text-gray-500">Frontend Developer</p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <span class="text-xs text-gray-500">4h ago</span>
-                  <button class="h-8 w-8 ml-1 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
             <div class="p-4">
-              <p class="text-gray-800 mb-3">I'm offering mentorship sessions for junior developers looking to level up their React skills. Limited spots available for next month.</p>
-              
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Mentorship</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">React</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Frontend</span>
-              </div>
-            </div>
-
-            <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-              <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-                <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center">
-                  <i class="fas fa-paper-plane mr-2"></i>
-                  Send Request
+              <!-- Author and timestamp -->
+              <div class="flex items-center mb-3">
+                <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
+                  <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Chen" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center">
+                    <h3 class="font-medium text-gray-900 text-sm">Sarah Chen</h3>
+                    <i class="fas fa-check-circle ml-1 text-blue-500 text-xs"></i>
+                  </div>
+                  <div class="flex items-center text-xs text-gray-500 mt-0.5">
+                    <span>Frontend Developer</span>
+                    <span class="mx-1">•</span>
+                    <span>4h ago</span>
+                  </div>
+                </div>
+                <button class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                  <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
                 </button>
               </div>
+
+              <!-- Title and content -->
+              <h2 class="text-base font-semibold text-gray-900 mb-2">React Mentorship Sessions</h2>
+              <p class="text-gray-700 text-sm mb-3">I'm offering mentorship sessions for junior developers looking to level up their React skills. Limited spots available for next month.</p>
+              
+              <!-- Post meta information -->
+              <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
+                <!-- Experience Level -->
+                <div class="post-meta-item">
+                  <i class="fas fa-user-graduate"></i>
+                  <span>Intermediate</span>
+                </div>
+                
+                <span class="post-meta-divider"></span>
+                
+                <!-- Credit Cost -->
+                <div class="post-meta-item">
+                  <i class="fas fa-credit-card"></i>
+                  <span>75 credits</span>
+                </div>
+                
+                <span class="post-meta-divider"></span>
+                
+                <!-- Duration -->
+                <div class="post-meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>4 weeks</span>
+                </div>
+              </div>
+
+              <!-- Languages/Technologies -->
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">React</span>
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">JavaScript</span>
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">TypeScript</span>
+                <span class="inline-block badge-intermediate rounded-full px-2.5 py-0.5 text-xs font-medium">Intermediate</span>
+              </div>
+
+              <!-- Action button -->
+              <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+                <i class="fas fa-paper-plane mr-2"></i>
+                Send Request
+              </button>
             </div>
           </div>
           
           <!-- Post 3 -->
           <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4 pb-0">
-              <div class="flex justify-between items-start">
-                <div class="flex items-center space-x-3">
-                  <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Michael Torres" class="h-full w-full object-cover">
-                  </div>
-                  <div>
-                    <div class="flex items-center">
-                      <h3 class="font-medium text-gray-900">Michael Torres</h3>
-                    </div>
-                    <p class="text-sm text-gray-500">Marketing Strategist</p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <span class="text-xs text-gray-500">6h ago</span>
-                  <button class="h-8 w-8 ml-1 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
             <div class="p-4">
-              <p class="text-gray-800 mb-3">Looking for a skilled graphic designer to help with our upcoming product launch. Need someone who understands both brand identity and conversion-focused design.</p>
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Job Opportunity</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Graphic Design</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Marketing</span>
-              </div>
-            </div>
-
-            <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-              <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-                <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center">
-                  <i class="fas fa-paper-plane mr-2"></i>
-                  Send Request
+              <!-- Author and timestamp -->
+              <div class="flex items-center mb-3">
+                <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
+                  <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Michael Torres" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center">
+                    <h3 class="font-medium text-gray-900 text-sm">Michael Torres</h3>
+                  </div>
+                  <div class="flex items-center text-xs text-gray-500 mt-0.5">
+                    <span>Marketing Strategist</span>
+                    <span class="mx-1">•</span>
+                    <span>6h ago</span>
+                  </div>
+                </div>
+                <button class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                  <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
                 </button>
               </div>
-            </div>
-          </div>
-          
-          <!-- Post 4 -->
-          <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4 pb-0">
-              <div class="flex justify-between items-start">
-                <div class="flex items-center space-x-3">
-                  <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Emily Johnson" class="h-full w-full object-cover">
-                  </div>
-                  <div>
-                    <div class="flex items-center">
-                      <h3 class="font-medium text-gray-900">Emily Johnson</h3>
-                      <i class="fas fa-check-circle ml-1 text-blue-500 text-sm"></i>
-                    </div>
-                    <p class="text-sm text-gray-500">Data Scientist</p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <span class="text-xs text-gray-500">1d ago</span>
-                  <button class="h-8 w-8 ml-1 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
 
-            <div class="p-4">
-              <p class="text-gray-800 mb-3">Just published my research on predictive analytics in e-commerce. We were able to increase purchase prediction accuracy by 27% using a hybrid model approach.</p>
+              <!-- Title and content -->
+              <h2 class="text-base font-semibold text-gray-900 mb-2">Graphic Designer for Product Launch</h2>
+              <p class="text-gray-700 text-sm mb-3">Looking for a skilled graphic designer to help with our upcoming product launch. Need someone who understands both brand identity and conversion-focused design.</p>
               
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Data Science</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Research</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">E-commerce</span>
-              </div>
-            </div>
-
-            <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-              <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-                <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center">
-                  <i class="fas fa-paper-plane mr-2"></i>
-                  Send Request
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Post 5 -->
-          <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4 pb-0">
-              <div class="flex justify-between items-start">
-                <div class="flex items-center space-x-3">
-                  <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="David Kim" class="h-full w-full object-cover">
-                  </div>
-                  <div>
-                    <div class="flex items-center">
-                      <h3 class="font-medium text-gray-900">David Kim</h3>
-                      <i class="fas fa-check-circle ml-1 text-blue-500 text-sm"></i>
-                    </div>
-                    <p class="text-sm text-gray-500">Product Manager</p>
-                  </div>
+              <!-- Post meta information -->
+              <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
+                <!-- Experience Level -->
+                <div class="post-meta-item">
+                  <i class="fas fa-user-graduate"></i>
+                  <span>Beginner</span>
                 </div>
-                <div class="flex items-center">
-                  <span class="text-xs text-gray-500">1d ago</span>
-                  <button class="h-8 w-8 ml-1 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                  </button>
+                
+                <span class="post-meta-divider"></span>
+                
+                <!-- Credit Cost -->
+                <div class="post-meta-item">
+                  <i class="fas fa-credit-card"></i>
+                  <span>50 credits</span>
+                </div>
+                
+                <span class="post-meta-divider"></span>
+                
+                <!-- Duration -->
+                <div class="post-meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>2 weeks</span>
                 </div>
               </div>
-            </div>
 
-            <div class="p-4">
-              <p class="text-gray-800 mb-3">We're looking for beta testers for our new productivity tool. If you manage remote teams and want early access, comment below or DM me.</p>
+              <!-- Languages/Technologies -->
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Photoshop</span>
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Illustrator</span>
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">InDesign</span>
+                <span class="inline-block badge-beginner rounded-full px-2.5 py-0.5 text-xs font-medium">Beginner</span>
+              </div>
 
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Product Launch</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Beta Testing</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Productivity</span>
-              </div>
-            </div>
-
-            <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-              <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-                <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center">
-                  <i class="fas fa-paper-plane mr-2"></i>
-                  Send Request
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Post 6 -->
-          <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4 pb-0">
-              <div class="flex justify-between items-start">
-                <div class="flex items-center space-x-3">
-                  <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/women/62.jpg" alt="Priya Patel" class="h-full w-full object-cover">
-                  </div>
-                  <div>
-                    <div class="flex items-center">
-                      <h3 class="font-medium text-gray-900">Priya Patel</h3>
-                    </div>
-                    <p class="text-sm text-gray-500">UX Researcher</p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <span class="text-xs text-gray-500">2d ago</span>
-                  <button class="h-8 w-8 ml-1 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-4">
-              <p class="text-gray-800 mb-3">Just wrapped up a fascinating user research study on how professionals use collaboration tools. Some surprising insights about notification fatigue and context switching.</p>
-              
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">UX Research</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Productivity</span>
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">Remote Work</span>
-              </div>
-            </div>
-
-            <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-              <div class="p-4 pt-0 border-t border-gray-100 mt-4">
-                <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center">
-                  <i class="fas fa-paper-plane mr-2"></i>
-                  Send Request
-                </button>
-              </div>
+              <!-- Action button -->
+              <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+                <i class="fas fa-paper-plane mr-2"></i>
+                Send Request
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       <!-- No results message (hidden by default) -->
-      <div id="no-results" class="hidden container mx-auto px-4 py-12 text-center">
+      <div id="no-results" class="hidden container mx-auto px-4 py-12 text-center max-w-4xl">
         <h3 class="text-lg font-medium text-gray-700">No posts found</h3>
         <p class="text-gray-500 mt-2">Try adjusting your search or filters</p>
       </div>
@@ -681,14 +646,14 @@
     // Toggle view mode
     gridViewBtn.addEventListener('click', () => {
       postsContainer.classList.remove('grid-cols-1');
-      postsContainer.classList.add('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-1', 'xl:grid-cols-2');
+      postsContainer.classList.add('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
       
       gridViewBtn.classList.add('active', 'bg-gray-100');
       listViewBtn.classList.remove('active', 'bg-gray-100');
     });
     
     listViewBtn.addEventListener('click', () => {
-      postsContainer.classList.remove('md:grid-cols-2', 'lg:grid-cols-1', 'xl:grid-cols-2');
+      postsContainer.classList.remove('md:grid-cols-2', 'lg:grid-cols-3');
       postsContainer.classList.add('grid-cols-1');
       
       listViewBtn.classList.add('active', 'bg-gray-100');
@@ -742,48 +707,6 @@
     if (searchInput) searchInput.addEventListener('input', handleSearch);
     if (mobileSearchInput) mobileSearchInput.addEventListener('input', handleSearch);
     
-    // Like button functionality
-    likeBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.toggle('active');
-        
-        const icon = btn.querySelector('i');
-        const countSpan = btn.querySelector('span');
-        const currentCount = parseInt(countSpan.textContent);
-        
-        if (btn.classList.contains('active')) {
-          icon.classList.remove('far');
-          icon.classList.add('fas');
-          btn.classList.add('text-red-500');
-          countSpan.textContent = currentCount + 1;
-        } else {
-          icon.classList.remove('fas');
-          icon.classList.add('far');
-          btn.classList.remove('text-red-500');
-          countSpan.textContent = currentCount - 1;
-        }
-      });
-    });
-    
-    // Save button functionality
-    saveBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.toggle('active');
-        
-        const icon = btn.querySelector('i');
-        
-        if (btn.classList.contains('active')) {
-          icon.classList.remove('far');
-          icon.classList.add('fas');
-          btn.classList.add('text-blue-500');
-        } else {
-          icon.classList.remove('fas');
-          icon.classList.add('far');
-          btn.classList.remove('text-blue-500');
-        }
-      });
-    });
-    
     // Add animation to cards
     document.querySelectorAll('.post-card').forEach(card => {
       card.style.animation = 'fadeIn 0.3s ease-in-out';
@@ -799,4 +722,4 @@
     });
   </script>
 </body>
-</html> 
+</html>
