@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('title');
+            $table->string('bio');
+            $table->string('location');
+            $table->string('phone_number');
+            $table->string('image')->nullable();
+            $table->enum('status', ['available', 'Limited Availability', 'unavailable'])->default('active');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
+            $table->foreignId('domain_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
