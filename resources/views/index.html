@@ -1,1946 +1,854 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillSwap - User Profile</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              200: '#99f6e4',
-              300: '#5eead4',
-              400: '#2dd4bf',
-              500: '#14b8a6',
-              600: '#0d9488',
-              700: '#0f766e',
-              800: '#115e59',
-              900: '#134e4a',
-              950: '#042f2e',
-            },
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | FreeLancer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .text-shadow {
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      
-      .glassmorphism {
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-      }
-      
-      .neumorphism {
-        box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
-      }
-    }
-
-    /* Additional custom styles can be added here if needed */
-.datepicker-cell.selected,
-.datepicker-cell.selected:hover {
-  background-color: #14b8a6;
-  color: white;
-}
-
-.datepicker-cell.today {
-  background-color: #e6fffa;
-  color: #14b8a6;
-}
-
-.datepicker-cell:hover {
-  background-color: #f1f5f9;
-}
-
-.datepicker-header .datepicker-controls .button {
-  background-color: white;
-  color: #334155;
-  border: 1px solid #e2e8f0;
-}
-
-.datepicker-header .datepicker-controls .button:hover {
-  background-color: #f1f5f9;
-}
-
-.datepicker-picker {
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.modal-animation {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* Glassmorphism effect for premium badge */
-.premium-badge {
-  background: rgba(251, 191, 36, 0.2);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-}
-
-/* Neumorphism effect for cards on hover */
-.card-neumorphism:hover {
-  box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
-}
-
-  </style>
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .tab-active {
+                @apply text-primary-600 border-primary-600 ;
+            }
+            .skill-badge {
+                @apply px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800  transition-all hover:bg-primary-200;
+            }
+            .stat-card {
+                @apply flex flex-col items-center p-4 bg-white  rounded-lg shadow-md transition-all hover:shadow-lg;
+            }
+            .project-card {
+                @apply bg-white  rounded-lg shadow-md overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1;
+            }
+            .review-card {
+                @apply bg-white  rounded-lg shadow-md p-6 transition-all hover:shadow-lg;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen">
-  <div class="container mx-auto px-4 py-8 max-w-7xl">
-    <!-- Profile Header -->
-    <div class="relative overflow-hidden rounded-xl bg-white shadow-md transition-all mb-8">
-      <!-- Banner Image -->
-      <div class="h-48 w-full bg-cover bg-center sm:h-64" style="background-image: url('https://placehold.co/1200x300/00b894/ffffff')">
-        <div class="absolute right-4 top-4 z-10">
-          <button id="edit-profile-btn" class="inline-flex items-center gap-1 px-3 py-2 bg-white/80 backdrop-blur-sm rounded-md text-sm font-medium shadow-sm hover:bg-white/90 transition-colors">
-            <i class="fas fa-pencil text-sm"></i>
-            <span class="hidden sm:inline">Edit Profile</span>
-          </button>
-        </div>
-      </div>
 
-      <!-- Profile Info -->
-      <div class="relative px-6 pb-6 pt-0 sm:px-8">
-        <!-- Avatar -->
-        <div class="absolute -top-16 left-6 sm:left-8">
-          <div class="h-32 w-32 rounded-full border-4 border-white shadow-lg overflow-hidden">
-            <img src="https://placehold.co/150x150/55efc4/ffffff" alt="Alexandra Chen" class="h-full w-full object-cover">
-          </div>
-        </div>
-
-        <!-- User Details -->
-        <div class="ml-0 mt-20 sm:ml-40 sm:mt-0">
-          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-            <div>
-              <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">Alexandra Chen</h1>
-              <p class="text-lg text-gray-600">UX/UI Designer & Frontend Developer</p>
-              <div class="mt-1 flex items-center gap-1 text-sm text-gray-500">
-                <i class="fas fa-map-marker-alt text-sm"></i>
-                <span>San Francisco, USA</span>
-              </div>
+<body class="bg-gray-50  transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white  shadow-sm sticky top-0 z-50 transition-colors duration-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class=" flex items-center space-x-2">
+                <i class="fas fa-laptop-code text-primary-600 text-2xl"></i>
+                <h1 class="text-xl font-bold text-secondary-800 ">FreeLancer</h1>
             </div>
-
-            <!-- Social Links -->
-            <div class="flex flex-wrap gap-2">
-              <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors" title="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors" title="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors" title="Instagram">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors" title="Portfolio">
-                <i class="fas fa-link"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Skills -->
-          <div class="mt-4">
-            <h3 class="mb-2 text-sm font-medium text-gray-500">Skills</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-sm hover:bg-gray-200 cursor-pointer transition-colors">
-                🎨 UI Design
-              </span>
-              <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-sm hover:bg-gray-200 cursor-pointer transition-colors">
-                ⚛️ React
-              </span>
-              <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-sm hover:bg-gray-200 cursor-pointer transition-colors">
-                🖌️ Figma
-              </span>
-              <span class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-sm hover:bg-gray-200 cursor-pointer transition-colors">
-                🌊 Tailwind CSS
-              </span>
-            </div>
-          </div>
-
-          <!-- Languages -->
-          <div class="mt-4">
-            <h3 class="mb-2 text-sm font-medium text-gray-500">Languages</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center gap-1 rounded-md border border-gray-200 px-3 py-1 text-sm hover:bg-gray-50 cursor-pointer transition-colors" title="Native">
-                🇺🇸 English
-              </span>
-              <span class="inline-flex items-center gap-1 rounded-md border border-gray-200 px-3 py-1 text-sm hover:bg-gray-50 cursor-pointer transition-colors" title="Fluent">
-                🇪🇸 Spanish
-              </span>
-              <span class="inline-flex items-center gap-1 rounded-md border border-gray-200 px-3 py-1 text-sm hover:bg-gray-50 cursor-pointer transition-colors" title="Intermediate">
-                🇨🇳 Mandarin
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-      <!-- Left Column -->
-      <div class="space-y-6 lg:col-span-2">
-        <!-- Bio Section -->
-        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
-          <div class="flex flex-row items-center justify-between bg-gray-50 px-6 py-4 pb-2">
-            <div>
-              <h2 class="text-xl font-semibold">About Me</h2>
-              <p class="text-sm text-gray-500">Tell others who you are and what you do</p>
-            </div>
-            <button id="edit-bio-btn" class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 transition-colors">
-              <i class="fas fa-pencil"></i>
+            <nav class="hidden md:block">
+                <ul class="flex items-center space-x-6">
+                    <li><a href="index.html" class="text-secondary-600  hover:text-primary-600  transition-colors">Find
+                            Jobs</a></li>
+                    <li><a href="profile.html" class="text-primary-600 font-medium">My Profile</a></li>
+                    <li>
+                        <a href="#"
+                            class="text-secondary-600  hover:text-primary-600  transition-colors flex items-center">
+                            <span>Messages</span>
+                            <span
+                                class="ml-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Post
+                            a Job</a></li>
+                    <li>
+                        <button
+                            class="w-10 h-6 rounded-full bg-secondary-200  flex items-center transition duration-300 focus:outline-none shadow">
+                            <div id="toggle-dot"
+                                class="w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 translate-x-0  flex justify-center items-center">
+                                <i class="fas fa-sun text-yellow-500  text-xs"></i>
+                                <i class="fas fa-moon text-blue-800 hidden  text-xs"></i>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-secondary-800 " id="mobile-menu-button">
+                <i class="fas fa-bars text-xl"></i>
             </button>
-          </div>
-          <div class="p-6">
-            <div id="bio-display" class="text-gray-700">
-              I'm a passionate UX/UI designer and frontend developer with 6+ years of experience creating intuitive digital experiences. I specialize in user-centered design processes and building accessible, performant interfaces. I love collaborating on projects that make a positive impact and am always eager to learn new technologies and methodologies.
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white  shadow-md hidden transition-all duration-300 absolute w-full">
+            <ul class="px-4 py-2 space-y-3">
+                <li><a href="index.html"
+                        class="block py-2 text-secondary-600 hover:text-primary-600 transition-colors">Find Jobs</a>
+                </li>
+                <li><a href="profile.html" class="block py-2 text-primary-600 font-medium">My Profile</a></li>
+                <li>
+                    <a href="#"
+                        class="block py-2 text-secondary-600  hover:text-primary-600  transition-colors flex items-center">
+                        <span>Messages</span>
+                        <span
+                            class="ml-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </a>
+                </li>
+                <li><a href="#"
+                        class="block py-2 bg-primary-600 hover:bg-primary-700 text-white px-4 rounded-md transition-colors text-center mt-2">Post
+                        a Job</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6">
+        <!-- Profile Header -->
+        <section class="relative mb-8">
+            <!-- Cover Image -->
+            <div class="h-48 md:h-64 lg:h-80 rounded-xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                    alt="Profile Cover" class="w-full h-full object-cover">
             </div>
-            <div id="bio-edit" class="hidden space-y-4">
-              <textarea id="bio-textarea" class="w-full min-h-[120px] resize-none rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none" maxlength="500"></textarea>
-              <div class="flex items-center justify-between">
-                <div class="text-xs text-gray-500"><span id="bio-char-count">0</span>/500 characters</div>
-                <div class="flex gap-2">
-                  <button id="bio-cancel-btn" class="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-                    <i class="fas fa-times text-sm"></i>
-                    Cancel
-                  </button>
-                  <button id="bio-save-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-                    <i class="fas fa-check text-sm"></i>
-                    Save
-                  </button>
+
+            <!-- Profile Info -->
+            <div
+                class="bg-white rounded-xl shadow-lg pr-6 pb-4 pl-4 md:p-8 -mt-20 md:-mt-24 ml-4 md:ml-8 mr-4 md:mr-8 relative z-10 transition-colors duration-200">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Avatar -->
+                    <div class="flex-shrink-0 -mt-16 md:-mt-20 mb-4 md:mb-0 md:mr-6">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Picture"
+                                class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white  object-cover shadow-md">
+                        </div>
+                    </div>
+
+                    <!-- Profile Details -->
+                    <div class="flex-grow">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                            <div>
+                                <div class="flex items-center">
+                                    <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">Alex Johnson</h1>
+        
+                                </div>
+                                <h2 class="text-lg text-secondary-600  mt-1">Senior Full Stack Developer</h2>
+                                <div class="flex items-start mt-2 text-sm text-secondary-500 flex-col gap-2 ">
+                                    <div class="flex items-center mr-4">
+                                        <i class="fas fa-map-marker-alt mr-1"></i>
+                                        <span>San Francisco, CA</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div>
+                                <div class=" absolute top-5 right-12">
+                                     <!-- Social Links -->
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#"
+                                            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors"
+                                            title="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="#"
+                                            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors"
+                                            title="LinkedIn">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="#"
+                                            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors"
+                                            title="Instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                        <a href="#"
+                                            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors"
+                                            title="Portfolio">
+                                            <i class="fas fa-link"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="mt-4 md:mt-4 flex flex-wrap gap-2 ">
+
+                                    <div
+                                        class="flex items-center bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full">
+                                        <i class="fas fa-coins mr-2"></i>
+                                        <span class="font-medium">750</span>
+                                        <span class="text-primary-500 ml-1">credits</span>
+                                    </div>
+                                    <button class="">
+                                        <a href="#"
+                                            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Post
+                                            a Job</a>
+
+                                    </button>
+
+                                    <div class="relative">
+                                        <button
+                                            class="border border-secondary-300 hover:bg-secondary-100 text-secondary-800  p-2 rounded-md transition-colors">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Sidebar -->
+            <div class="lg:w-1/3">
+                <div class="bg-white  rounded-xl shadow-md p-6 mb-6 transition-colors duration-200">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-info-circle text-primary-600  mr-2"></i>
+                        Availability
+                    </h3>
+                    <div class="space-y-4">
+
+                        <div class="flex items-center justify-between">
+                            <span class="text-secondary-600 ">Email</span>
+                            <span class="text-secondary-900 font-medium">chaima@gmail.com</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-secondary-600 ">Phone number</span>
+                            <span class="text-secondary-900  font-medium">+1 (123) 456-7890</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-secondary-600 ">Languages</span>
+                            <span class="text-secondary-900  font-medium">English (Fluent), Spanish
+                                (Conversational)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Skills Section -->
+                    <section
+                        class="bg-white rounded-xl shadow-soft shadow-md p-6 mb-6 transition-colors duration-200 md:p-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-semibold text-secondary-900">Skills</h2>
+                            <button class="text-primary-600 hover:text-primary-700 transition-colors flex items-center"
+                                id="addSkillBtn">
+                                <i class="fas fa-plus mr-2"></i>
+                                <span>Add Skill</span>
+                            </button>
+                        </div>
+
+                        <!-- Technical Skills -->
+                        <div class="mb-6">
+                            <h3 class="text-sm font-medium text-secondary-500 uppercase tracking-wider mb-3">Technical
+                                Skills</h3>
+                            <div class="flex flex-wrap gap-2" id="technicalSkillsContainer">
+                                <div
+                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>UI/UX Design</span>
+                                    <button
+                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>HTML/CSS</span>
+                                    <button
+                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>JavaScript</span>
+                                    <button
+                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>React</span>
+                                    <button
+                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>Figma</span>
+                                    <button
+                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>Responsive Design</span>
+                                    <button
+                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>Design Systems</span>
+                                    <button
+                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>Tailwind CSS</span>
+                                    <button
+                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Soft Skills -->
+                        <div>
+                            <h3 class="text-sm font-medium text-secondary-500 uppercase tracking-wider mb-3">Soft Skills
+                            </h3>
+                            <div class="flex flex-wrap gap-2" id="softSkillsContainer">
+                                <div
+                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>Communication</span>
+                                    <button
+                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>Problem Solving</span>
+                                    <button
+                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>Collaboration</span>
+                                    <button
+                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div
+                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>Time Management</span>
+                                    <button
+                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="lg:w-2/3">
+                <!-- Tabs -->
+                <div class="bg-white  rounded-xl shadow-md mb-6 transition-colors duration-200">
+                    <div class="border-b border-secondary-200 ">
+                        <nav class="flex overflow-x-auto" aria-label="Tabs">
+                            <button
+                                class="tab-button tab-active whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent"
+                                data-tab="overview">
+                                <i class="fas fa-user mr-2"></i>Overview
+                            </button>
+
+                            <button
+                                class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
+                                data-tab="reviews">
+                                <i class="fas fa-star mr-2"></i>Reviews
+                            </button>
+                            <button
+                                class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
+                                data-tab="history">
+                                <i class="fas fa-history mr-2"></i>Work History
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="overview">
+                    <!-- Bio Section -->
+                    <section
+                        class="bg-white rounded-xl shadow-soft shadow-md p-6 mb-6 transition-colors duration-200 md:p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl font-semibold text-secondary-900">About</h2>
+                            <button class="text-secondary-400 hover:text-primary-600 transition-colors" id="editBioBtn">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                        </div>
+                        <div class="prose max-w-none text-secondary-700" id="userBio">
+                            <p>I'm a UX/UI Designer and Frontend Developer with over 8 years of experience creating
+                                intuitive digital experiences. My approach combines user-centered design principles with
+                                clean, efficient code to build products that are both beautiful and functional.</p>
+                            <p>I specialize in design systems, responsive web applications, and bridging the gap between
+                                design and development. I'm passionate about accessibility and creating inclusive
+                                experiences that work for everyone.</p>
+                        </div>
+                    </section>
+
+                    <div class="bg-white  rounded-xl shadow-md p-6 mb-6 transition-colors duration-200">
+                        <h3 class="text-lg font-semibold mb-4">Services I Offer</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
+                                <div
+                                    class="flex-shrink-0 h-12 w-12 rounded-md bg-primary-100  flex items-center justify-center">
+                                    <i class="fas fa-laptop-code text-primary-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-md font-medium text-secondary-900 ">Full Stack Development</h4>
+                                    <p class="mt-1 text-sm text-secondary-500 ">End-to-end web application development
+                                        with modern JavaScript frameworks</p>
+                                </div>
+                            </div>
+                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
+                                <div
+                                    class="flex-shrink-0 h-12 w-12 rounded-md bg-primary-100 flex items-center justify-center">
+                                    <i class="fas fa-mobile-alt text-primary-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-md font-medium text-secondary-900 ">Responsive Web Design</h4>
+                                    <p class="mt-1 text-sm text-secondary-500 ">Mobile-first, responsive websites that
+                                        work on all devices</p>
+                                </div>
+                            </div>
+                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
+                                <div
+                                    class="flex-shrink-0 h-12 w-12 rounded-md bg-primary-100  flex items-center justify-center">
+                                    <i class="fas fa-cloud text-primary-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-md font-medium text-secondary-900 ">Cloud Architecture</h4>
+                                    <p class="mt-1 text-sm text-secondary-500 ">AWS infrastructure setup, deployment,
+                                        and optimization</p>
+                                </div>
+                            </div>
+                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
+                                <div
+                                    class="flex-shrink-0 h-12 w-12 rounded-md bg-primary-100  flex items-center justify-center">
+                                    <i class="fas fa-code-branch text-primary-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-md font-medium text-secondary-900 ">API Development</h4>
+                                    <p class="mt-1 text-sm text-secondary-500 ">RESTful and GraphQL API design and
+                                        implementation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tab-content hidden" id="reviews">
+                    <div class="bg-white  rounded-xl shadow-md p-6 mb-6 transition-colors duration-200">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold">Client Reviews</h3>
+                            <div class="flex items-center">
+                                <div class="flex items-center mr-2">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                                <span class="text-lg font-bold text-secondary-900 ">4.9</span>
+                                <span class="text-sm text-secondary-500  ml-1">(48 reviews)</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="review-card">
+                                <div class="flex items-start">
+                                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Client"
+                                        class="w-12 h-12 rounded-full object-cover">
+                                    <div class="ml-4 flex-grow">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-medium text-secondary-900 ">Sarah Johnson</h4>
+                                            <span class="text-sm text-secondary-500 ">2 weeks ago</span>
+                                        </div>
+                                        <div class="flex items-center mt-1">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                        <p class="mt-2 text-secondary-600 ">
+                                            Alex is an exceptional developer who delivered our e-commerce platform ahead
+                                            of schedule.
+                                            His communication was clear throughout the project, and he was quick to
+                                            implement changes
+                                            when needed. Highly recommended!
+                                        </p>
+                                        <div class="mt-3 text-sm text-secondary-500 ">
+                                            <span class="font-medium">Project:</span> E-commerce Platform
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="flex items-start">
+                                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Client"
+                                        class="w-12 h-12 rounded-full object-cover">
+                                    <div class="ml-4 flex-grow">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-medium text-secondary-900 ">Michael Chen</h4>
+                                            <span class="text-sm text-secondary-500 ">1 month ago</span>
+                                        </div>
+                                        <div class="flex items-center mt-1">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                        <p class="mt-2 text-secondary-600 ">
+                                            Working with Alex was a pleasure. He built our analytics dashboard with
+                                            attention to detail
+                                            and made sure it was optimized for performance. The real-time features work
+                                            flawlessly,
+                                            and our team loves using it daily.
+                                        </p>
+                                        <div class="mt-3 text-sm text-secondary-500 ">
+                                            <span class="font-medium">Project:</span> Analytics Dashboard
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="flex items-start">
+                                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Client"
+                                        class="w-12 h-12 rounded-full object-cover">
+                                    <div class="ml-4 flex-grow">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-medium text-secondary-900 ">Emily Rodriguez</h4>
+                                            <span class="text-sm text-secondary-500 ">2 months ago</span>
+                                        </div>
+                                        <div class="flex items-center mt-1">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="far fa-star text-yellow-400"></i>
+                                        </div>
+                                        <p class="mt-2 text-secondary-600 ">
+                                            Alex developed our mobile app with great skill. The app is intuitive and
+                                            performs well
+                                            on both iOS and Android. There were a few minor issues after launch, but
+                                            Alex was quick
+                                            to fix them. Overall, a great experience.
+                                        </p>
+                                        <div class="mt-3 text-sm text-secondary-500 ">
+                                            <span class="font-medium">Project:</span> Fitness Tracker App
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex justify-center">
+                            <button
+                                class="px-4 py-2 border border-secondary-300 rounded-md text-secondary-700 hover:bg-secondary-50  transition-colors">
+                                Load More Reviews
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Services Offered -->
+                <section
+                    class="bg-white rounded-xl shadow-md p-6 transition-colors duration-200 md:p-8 tab-content hidden"
+                    id="history">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-secondary-900">My Services</h2>
+                        <button class="text-primary-600 hover:text-primary-700 transition-colors flex items-center"
+                            id="addServiceBtn">
+                            <i class="fas fa-plus mr-2"></i>
+                            <span>Add Service</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-6" id="servicesContainer">
+                        <!-- Service Item 1 -->
+                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
+                            data-service-id="1">
+                            <div class="flex justify-between">
+                                <h3 class="text-lg font-medium text-secondary-900">UX/UI Design</h3>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    <button
+                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="mt-2 text-secondary-600">Complete UX/UI design for web and mobile applications,
+                                including user research, wireframing, prototyping, and design systems.</p>
+                            <div class="mt-3 flex items-center">
+                                <span class="text-secondary-500">Estimated:</span>
+                                <span
+                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">150-300
+                                    credits</span>
+                            </div>
+                        </div>
+
+                        <!-- Service Item 2 -->
+                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
+                            data-service-id="2">
+                            <div class="flex justify-between">
+                                <h3 class="text-lg font-medium text-secondary-900">Frontend Development</h3>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    <button
+                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="mt-2 text-secondary-600">Responsive web development using HTML, CSS, and
+                                JavaScript. Specializing in React, Vue, and modern frontend frameworks.</p>
+                            <div class="mt-3 flex items-center">
+                                <span class="text-secondary-500">Estimated:</span>
+                                <span
+                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">200-400
+                                    credits</span>
+                            </div>
+                        </div>
+
+                        <!-- Service Item 3 -->
+                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
+                            data-service-id="3">
+                            <div class="flex justify-between">
+                                <h3 class="text-lg font-medium text-secondary-900">Design System Creation</h3>
+                                <div class="flex space-x-2">
+                                    <button
+                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    <button
+                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="mt-2 text-secondary-600">Development of comprehensive design systems including
+                                component libraries, style guides, and documentation for consistent product design.</p>
+                            <div class="mt-3 flex items-center">
+                                <span class="text-secondary-500">Estimated:</span>
+                                <span
+                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">300-500
+                                    credits</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
         </div>
 
-        <!-- Tabs Navigation -->
-        <div class="border-b border-gray-200">
-          <nav class="flex space-x-8" aria-label="Tabs">
-            <button class="tab-button border-b-2 border-primary-500 py-4 px-1 text-sm font-medium text-primary-600" data-tab="skills">Skills</button>
-            <button class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" data-tab="experience">Experience</button>
-            <button class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" data-tab="education">Education</button>
-            <button class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" data-tab="portfolio">Portfolio</button>
-          </nav>
+        <!-- Edit Bio Modal -->
+        <div id="editBioModal" class="fixed inset-0 z-50 hidden">
+            <div class="modal-backdrop absolute inset-0"></div>
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 animate-fade-in">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-secondary-900">Edit Bio</h3>
+                        <button class="text-secondary-500 hover:text-secondary-700 transition-colors modal-close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="editBioForm">
+                        <div class="mb-4">
+                            <label for="bioInput" class="block text-sm font-medium text-secondary-700 mb-1">About
+                                You</label>
+                            <textarea id="bioInput" rows="6"
+                                class="w-full px-3 py-2 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">I'm a UX/UI Designer and Frontend Developer with over 8 years of experience creating intuitive digital experiences. My approach combines user-centered design principles with clean, efficient code to build products that are both beautiful and functional.
+
+I specialize in design systems, responsive web applications, and bridging the gap between design and development. I'm passionate about accessibility and creating inclusive experiences that work for everyone.</textarea>
+                            <div class="mt-1 text-sm text-secondary-500 flex justify-between">
+                                <span>Use markdown for formatting</span>
+                                <span id="bioCharCount">250/500</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-end space-x-3">
+                            <button type="button"
+                                class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
+                                Cancel
+                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Add Skill Modal -->
+        <div id="skillModal" class="fixed inset-0 z-50 hidden">
+            <div class="modal-backdrop absolute inset-0"></div>
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 animate-fade-in">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-secondary-900">Add Skill</h3>
+                        <button class="text-secondary-500 hover:text-secondary-700 transition-colors modal-close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="skillForm">
+                        <div class="mb-4">
+                            <label for="skillInput" class="block text-sm font-medium text-secondary-700 mb-1">Skill
+                                Name</label>
+                            <input type="text" id="skillInput"
+                                class="w-full px-3 py-2 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                                placeholder="e.g., JavaScript">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-secondary-700 mb-1">Skill Type</label>
+                            <div class="flex space-x-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="skillType" value="technical"
+                                        class="text-primary-600 focus:ring-primary-500" checked>
+                                    <span class="ml-2 text-secondary-700">Technical Skill</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="skillType" value="soft"
+                                        class="text-primary-600 focus:ring-primary-500">
+                                    <span class="ml-2 text-secondary-700">Soft Skill</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex justify-end space-x-3">
+                            <button type="button"
+                                class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
+                                Cancel
+                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                                Add Skill
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <!-- Tab Content -->
-        <div class="tab-content" id="skills-tab">
-          <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
-            <div class="p-6">
-              <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
-                <div class="flex flex-wrap items-center gap-2">
-                  <button class="skill-filter-btn rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm" data-filter="all">All</button>
-                  <button class="skill-filter-btn rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors" data-filter="design">Design</button>
-                  <button class="skill-filter-btn rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors" data-filter="development">Development</button>
-                  <button class="skill-filter-btn rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors" data-filter="marketing">Marketing</button>
-                  <button class="skill-filter-btn rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors" data-filter="business">Business</button>
-                </div>
-                <button id="add-skill-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-                  <i class="fas fa-plus text-sm"></i>
-                  Add Skill
-                </button>
-              </div>
+    </main>
 
-              <div id="add-skill-form" class="mb-6 hidden rounded-lg border bg-gray-50 p-4">
-                <div class="grid gap-4 sm:grid-cols-2">
-                  <div class="space-y-2">
-                    <label for="skill-name" class="block text-sm font-medium text-gray-700">Skill Name</label>
-                    <input type="text" id="skill-name" placeholder="e.g., JavaScript" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-                  </div>
-                  <div class="space-y-2">
-                    <label for="skill-icon" class="block text-sm font-medium text-gray-700">Icon (emoji)</label>
-                    <input type="text" id="skill-icon" placeholder="e.g., 📱" maxlength="2" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-                  </div>
-                  <div class="space-y-2">
-                    <label for="skill-category" class="block text-sm font-medium text-gray-700">Category</label>
-                    <select id="skill-category" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-                      <option value="design">Design</option>
-                      <option value="development">Development</option>
-                      <option value="marketing">Marketing</option>
-                      <option value="business">Business</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div class="space-y-2">
-                    <label for="skill-level" class="block text-sm font-medium text-gray-700">Proficiency Level: <span id="skill-level-display">3</span>/5</label>
-                    <input type="range" id="skill-level" min="1" max="5" step="1" value="3" class="w-full">
-                  </div>
-                </div>
-                <div class="mt-4 flex justify-end gap-2">
-                  <button id="cancel-skill-btn" class="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-                    Cancel
-                  </button>
-                  <button id="save-skill-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-                    Add Skill
-                  </button>
-                </div>
-              </div>
 
-              <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3" id="skills-container">
-                <!-- Skills will be dynamically added here -->
-              </div>
-            </div>
-          </div>
-        </div>
+    <script>
 
-        <div class="tab-content hidden" id="experience-tab">
-          <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
-            <div class="p-6">
-              <div class="mb-6 flex items-center justify-between">
-                <h3 class="text-xl font-semibold">Work Experience</h3>
-                <button id="add-experience-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-                  <i class="fas fa-plus text-sm"></i>
-                  Add Experience
-                </button>
-              </div>
 
-              <div class="space-y-6" id="experience-container">
-                <!-- Experience items will be dynamically added here -->
-              </div>
-            </div>
-          </div>
-        </div>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        <div class="tab-content hidden" id="education-tab">
-          <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
-            <div class="p-6">
-              <div class="mb-6 flex items-center justify-between">
-                <h3 class="text-xl font-semibold">Education</h3>
-                <button id="add-education-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-                  <i class="fas fa-plus text-sm"></i>
-                  Add Education
-                </button>
-              </div>
-
-              <div class="space-y-6" id="education-container">
-                <!-- Education items will be dynamically added here -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-content hidden" id="portfolio-tab">
-          <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
-            <div class="p-6">
-              <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
-                <div class="inline-flex rounded-md shadow-sm" role="group">
-                  <button class="portfolio-filter-btn rounded-l-md bg-primary-600 px-4 py-2 text-sm font-medium text-white" data-filter="all">All</button>
-                  <button class="portfolio-filter-btn border-y border-r border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" data-filter="image">Images</button>
-                  <button class="portfolio-filter-btn border-y border-r border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" data-filter="document">Documents</button>
-                  <button class="portfolio-filter-btn rounded-r-md border-y border-r border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" data-filter="video">Videos</button>
-                </div>
-
-                <button id="add-portfolio-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-                  <i class="fas fa-plus text-sm"></i>
-                  Add Portfolio Item
-                </button>
-              </div>
-
-              <div class="grid gap-6 sm:grid-cols-2" id="portfolio-container">
-                <!-- Portfolio items will be dynamically added here -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Column -->
-      <div class="space-y-6">
-        <!-- Availability Section -->
-        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
-          <div class="bg-gray-50 px-6 py-4 pb-3">
-            <h2 class="text-xl font-semibold">Availability</h2>
-          </div>
-          <div class="p-6">
-            <div class="space-y-6">
-              <div class="flex flex-col gap-4">
-                <div class="flex cursor-pointer items-center justify-between rounded-lg border border-emerald-500 bg-emerald-50 p-4 transition-colors" data-availability="available">
-                  <div class="flex items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                      <span class="text-lg">✓</span>
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Available</h3>
-                      <p class="text-sm text-gray-500">Open to new skill exchanges</p>
-                    </div>
-                  </div>
-                  <div class="flex h-5 w-5 items-center justify-center rounded-full border">
-                    <div class="h-3 w-3 rounded-full bg-emerald-500"></div>
-                  </div>
-                </div>
-
-                <div class="flex cursor-pointer items-center justify-between rounded-lg border p-4 transition-colors hover:border-gray-300" data-availability="busy">
-                  <div class="flex items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
-                      <span class="text-lg">⏱</span>
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Busy</h3>
-                      <p class="text-sm text-gray-500">Currently not taking new exchanges</p>
-                    </div>
-                  </div>
-                  <div class="flex h-5 w-5 items-center justify-center rounded-full border">
-                    <div class="h-3 w-3 rounded-full bg-orange-500 hidden"></div>
-                  </div>
-                </div>
-
-                <div class="flex cursor-pointer items-center justify-between rounded-lg border p-4 transition-colors hover:border-gray-300" data-availability="flexible">
-                  <div class="flex items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
-                      <span class="text-lg">🗓️</span>
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Flexible</h3>
-                      <p class="text-sm text-gray-500">Limited availability, check calendar</p>
-                    </div>
-                  </div>
-                  <div class="flex h-5 w-5 items-center justify-center rounded-full border">
-                    <div class="h-3 w-3 rounded-full bg-blue-500 hidden"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flex items-center justify-between">
-                <button id="calendar-btn" class="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-                  <i class="fas fa-calendar text-sm"></i>
-                  <span id="selected-date">Pick a date</span>
-                </button>
-
-                <div class="flex items-center space-x-2">
-                  <label class="relative inline-flex cursor-pointer items-center">
-                    <input type="checkbox" value="" class="peer sr-only" checked>
-                    <div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300"></div>
-                    <span class="ml-3 text-sm font-medium text-gray-700">Sync Calendar</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Credits Section -->
-        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
-          <div class="bg-gray-50 px-6 py-4 pb-3">
-            <h2 class="text-xl font-semibold">Credits & Activity</h2>
-          </div>
-          <div class="p-6">
-            <div class="space-y-6">
-              <!-- Credit Summary -->
-              <div class="grid grid-cols-2 gap-4">
-                <div class="rounded-lg border bg-white p-4">
-                  <div class="flex items-center justify-between">
-                    <h3 class="text-sm font-medium text-gray-500">Credits Earned</h3>
-                    <i class="fas fa-arrow-up text-emerald-500"></i>
-                  </div>
-                  <p class="mt-2 text-2xl font-bold">450</p>
-                </div>
-                <div class="rounded-lg border bg-white p-4">
-                  <div class="flex items-center justify-between">
-                    <h3 class="text-sm font-medium text-gray-500">Credits Spent</h3>
-                    <i class="fas fa-arrow-down text-orange-500"></i>
-                  </div>
-                  <p class="mt-2 text-2xl font-bold">320</p>
-                </div>
-              </div>
-
-              <!-- Balance -->
-              <div class="rounded-lg border bg-white p-4">
-                <div class="flex items-center justify-between">
-                  <h3 class="text-sm font-medium text-gray-500">Current Balance</h3>
-                </div>
-                <p class="mt-2 text-3xl font-bold text-emerald-600">130</p>
-                <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-200">
-                  <div class="h-full rounded-full bg-emerald-500" style="width: 26%"></div>
-                </div>
-                <p class="mt-1 text-xs text-gray-500">130 of 500 credits (Tier 2)</p>
-              </div>
-
-              <!-- Activity Stats -->
-              <div class="grid grid-cols-2 gap-4">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2">
-                    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
-                      <i class="fas fa-users text-gray-600"></i>
-                    </div>
-                    <div>
-                      <p class="text-sm font-medium">Exchanges</p>
-                      <p class="text-xl font-bold">24</p>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
-                      <i class="fas fa-clock text-gray-600"></i>
-                    </div>
-                    <div>
-                      <p class="text-sm font-medium">Pending</p>
-                      <p class="text-xl font-bold">28</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2">
-                    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
-                      <i class="fas fa-chart-line text-gray-600"></i>
-                    </div>
-                    <div>
-                      <p class="text-sm font-medium">Offered</p>
-                      <p class="text-xl font-bold">32</p>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
-                      <i class="fas fa-star text-gray-600"></i>
-                    </div>
-                    <div>
-                      <p class="text-sm font-medium">Rating</p>
-                      <p class="text-xl font-bold">4.8/5</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Activity Chart -->
-              <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                  <h3 class="font-medium">Activity History</h3>
-                  <div class="inline-flex rounded-md shadow-sm" role="group">
-                    <button class="period-btn rounded-l-md border border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50" data-period="month">Month</button>
-                    <button class="period-btn border-y border-r border-gray-300 bg-white px-3 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50" data-period="quarter">Quarter</button>
-                    <button class="period-btn rounded-r-md border-y border-r border-gray-300 bg-primary-600 px-3 py-1 text-xs font-medium text-white" data-period="year">Year</button>
-                  </div>
-                </div>
-
-                <div class="h-[200px] w-full bg-white p-4 rounded-lg border border-gray-200">
-                  <canvas id="activity-chart"></canvas>
-                </div>
-              </div>
-
-              <button class="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-                View Detailed History
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Premium Features -->
-        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md" id="premium-card">
-          <div class="bg-gray-50 px-6 py-4 pb-3">
-            <div class="flex items-center justify-between">
-              <h2 class="text-xl font-semibold">Upgrade to Premium</h2>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="space-y-6">
-              <div class="space-y-4">
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
-                    <i class="fas fa-chart-line"></i>
-                  </div>
-                  <div>
-                    <h3 class="font-medium">Profile Highlighting</h3>
-                    <p class="text-sm text-gray-500">Appear at the top of search results</p>
-                  </div>
-                </div>
-
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
-                    <i class="fas fa-chart-bar"></i>
-                  </div>
-                  <div>
-                    <h3 class="font-medium">Analytics Dashboard</h3>
-                    <p class="text-sm text-gray-500">Get detailed insights and statistics</p>
-                  </div>
-                </div>
-
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
-                    <i class="fas fa-bolt"></i>
-                  </div>
-                  <div>
-                    <h3 class="font-medium">Priority Requests</h3>
-                    <p class="text-sm text-gray-500">Get faster responses to your requests</p>
-                  </div>
-                </div>
-              </div>
-
-              <button id="upgrade-btn" class="w-full rounded-md bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:from-amber-600 hover:to-amber-700 transition-colors">
-                <i class="fas fa-crown mr-2"></i>
-                Upgrade to Premium
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Templates -->
-  <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 flex items-center justify-center">
-    <!-- Experience Modal -->
-    <div id="experience-modal" class="hidden bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 z-50">
-      <div class="px-6 py-4 border-b border-gray-200">
-        <h3 class="text-lg font-semibold" id="experience-modal-title">Add New Experience</h3>
-      </div>
-      <div class="p-6">
-        <form id="experience-form" class="space-y-4">
-          <input type="hidden" id="experience-id">
-          <div class="grid gap-2">
-            <label for="experience-role" class="block text-sm font-medium text-gray-700">Job Title</label>
-            <input type="text" id="experience-role" placeholder="e.g., Senior UX Designer" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="grid gap-2">
-              <label for="experience-company" class="block text-sm font-medium text-gray-700">Company</label>
-              <input type="text" id="experience-company" placeholder="e.g., Design Studio Inc." class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-            </div>
-            <div class="grid gap-2">
-              <label for="experience-location" class="block text-sm font-medium text-gray-700">Location</label>
-              <input type="text" id="experience-location" placeholder="e.g., San Francisco, CA" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="grid gap-2">
-              <label for="experience-start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
-              <input type="text" id="experience-start-date" placeholder="e.g., Jan 2020" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-            </div>
-            <div class="grid gap-2">
-              <label for="experience-end-date" class="block text-sm font-medium text-gray-700">End Date</label>
-              <input type="text" id="experience-end-date" placeholder="e.g., Present" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-            </div>
-          </div>
-          <div class="grid gap-2">
-            <label for="experience-logo" class="block text-sm font-medium text-gray-700">Company Logo URL</label>
-            <input type="text" id="experience-logo" placeholder="Upload or enter logo URL" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid gap-2">
-            <label for="experience-description" class="block text-sm font-medium text-gray-700">Description</label>
-            <textarea id="experience-description" placeholder="Describe your responsibilities and achievements" class="w-full min-h-[100px] rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none"></textarea>
-          </div>
-          <div class="flex justify-end gap-2 pt-4">
-            <button type="button" class="experience-cancel-btn inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-              Cancel
-            </button>
-            <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-              <span id="experience-submit-text">Add</span> Experience
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Education Modal -->
-    <div id="education-modal" class="hidden bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 z-50">
-      <div class="px-6 py-4 border-b border-gray-200">
-        <h3 class="text-lg font-semibold" id="education-modal-title">Add New Education</h3>
-      </div>
-      <div class="p-6">
-        <form id="education-form" class="space-y-4">
-          <input type="hidden" id="education-id">
-          <div class="grid gap-2">
-            <label for="education-institution" class="block text-sm font-medium text-gray-700">Institution</label>
-            <input type="text" id="education-institution" placeholder="e.g., Stanford University" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid gap-2">
-            <label for="education-degree" class="block text-sm font-medium text-gray-700">Degree</label>
-            <input type="text" id="education-degree" placeholder="e.g., Master of Fine Arts, Design" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="grid gap-2">
-              <label for="education-start-year" class="block text-sm font-medium text-gray-700">Start Year</label>
-              <input type="text" id="education-start-year" placeholder="e.g., 2018" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-            </div>
-            <div class="grid gap-2">
-              <label for="education-end-year" class="block text-sm font-medium text-gray-700">End Year</label>
-              <input type="text" id="education-end-year" placeholder="e.g., 2022" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-            </div>
-          </div>
-          <div class="grid gap-2">
-            <label for="education-location" class="block text-sm font-medium text-gray-700">Location</label>
-            <input type="text" id="education-location" placeholder="e.g., Stanford, CA" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid gap-2">
-            <label for="education-logo" class="block text-sm font-medium text-gray-700">Institution Logo URL</label>
-            <input type="text" id="education-logo" placeholder="Upload or enter logo URL" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid gap-2">
-            <label for="education-description" class="block text-sm font-medium text-gray-700">Description</label>
-            <textarea id="education-description" placeholder="Describe your studies, achievements, etc." class="w-full min-h-[100px] rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none"></textarea>
-          </div>
-          <div class="flex justify-end gap-2 pt-4">
-            <button type="button" class="education-cancel-btn inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-              Cancel
-            </button>
-            <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-              <span id="education-submit-text">Add</span> Education
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Portfolio Modal -->
-    <div id="portfolio-modal" class="hidden bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 z-50">
-      <div class="px-6 py-4 border-b border-gray-200">
-        <h3 class="text-lg font-semibold">Add Portfolio Item</h3>
-      </div>
-      <div class="p-6">
-        <form id="portfolio-form" class="space-y-4">
-          <input type="hidden" id="portfolio-id">
-          <div class="grid gap-2">
-            <label for="portfolio-title" class="block text-sm font-medium text-gray-700">Title</label>
-            <input type="text" id="portfolio-title" placeholder="e.g., E-commerce Redesign" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid gap-2">
-            <label for="portfolio-description" class="block text-sm font-medium text-gray-700">Description</label>
-            <textarea id="portfolio-description" placeholder="Describe your project" class="w-full min-h-[100px] rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none"></textarea>
-          </div>
-          <div class="grid gap-2">
-            <label for="portfolio-thumbnail" class="block text-sm font-medium text-gray-700">Thumbnail URL</label>
-            <input type="text" id="portfolio-thumbnail" placeholder="Enter image URL or upload" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid gap-2">
-            <label for="portfolio-type" class="block text-sm font-medium text-gray-700">Type</label>
-            <select id="portfolio-type" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-              <option value="image">Image</option>
-              <option value="document">Document</option>
-              <option value="video">Video</option>
-            </select>
-          </div>
-          <div class="grid gap-2">
-            <label for="portfolio-url" class="block text-sm font-medium text-gray-700">Project URL</label>
-            <input type="text" id="portfolio-url" placeholder="e.g., https://example.com/project" class="w-full rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-          </div>
-          <div class="grid gap-2">
-            <label class="block text-sm font-medium text-gray-700">Tags</label>
-            <div class="flex flex-wrap gap-2" id="portfolio-tags-container">
-              <!-- Tags will be added here -->
-            </div>
-            <div class="flex gap-2">
-              <input type="text" id="portfolio-tag-input" placeholder="Add a tag" class="flex-1 rounded-md border border-gray-300 p-2 text-gray-700 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none">
-              <button type="button" id="add-tag-btn" class="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-                Add
-              </button>
-            </div>
-          </div>
-          <div class="flex justify-end gap-2 pt-4">
-            <button type="button" class="portfolio-cancel-btn inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-              Cancel
-            </button>
-            <button type="submit" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-              Add to Portfolio
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Premium Modal -->
-    <div id="premium-modal" class="hidden bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 z-50">
-      <div class="px-6 py-4 border-b border-gray-200">
-        <h3 class="text-lg font-semibold">Upgrade to Premium</h3>
-        <p class="text-sm text-gray-500">Unlock all premium features and take your skill exchanges to the next level.</p>
-      </div>
-      <div class="p-6">
-        <div class="space-y-6">
-          <div class="space-y-4">
-            <div class="flex items-center gap-2">
-              <i class="fas fa-check-circle text-emerald-500"></i>
-              <p>Profile highlighting in search results</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fas fa-check-circle text-emerald-500"></i>
-              <p>Detailed analytics and engagement insights</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fas fa-check-circle text-emerald-500"></i>
-              <p>Priority matching for skill requests</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fas fa-check-circle text-emerald-500"></i>
-              <p>Unlimited portfolio items</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fas fa-check-circle text-emerald-500"></i>
-              <p>Premium badge on your profile</p>
-            </div>
-          </div>
-
-          <div class="rounded-lg border bg-gray-50 p-4">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="font-medium">Monthly Plan</p>
-                <p class="text-2xl font-bold">
-                  $9.99<span class="text-sm font-normal text-gray-500">/month</span>
-                </p>
-              </div>
-              <button id="subscribe-monthly-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-
-          <div class="rounded-lg border bg-amber-50 p-4">
-            <div class="flex items-center justify-between">
-              <div>
-                <div class="flex items-center gap-2">
-                  <p class="font-medium">Annual Plan</p>
-                  <span class="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700">
-                    Save 20%
-                  </span>
-                </div>
-                <p class="text-2xl font-bold">
-                  $95.88<span class="text-sm font-normal text-gray-500">/year</span>
-                </p>
-              </div>
-              <button id="subscribe-annual-btn" class="inline-flex items-center gap-1 rounded-md bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:from-amber-600 hover:to-amber-700 transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-
-          <button class="premium-cancel-btn w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-            Cancel
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Calendar Modal -->
-    <div id="calendar-modal" class="hidden bg-white rounded-lg shadow-xl max-w-md w-full mx-4 z-50">
-      <div class="px-6 py-4 border-b border-gray-200">
-        <h3 class="text-lg font-semibold">Select Date</h3>
-      </div>
-      <div class="p-6">
-        <div id="calendar-container" class="mb-4"></div>
-        <div class="flex justify-end gap-2">
-          <button class="calendar-cancel-btn inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">
-            Cancel
-          </button>
-          <button id="calendar-select-btn" class="inline-flex items-center gap-1 rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 transition-colors">
-            Select Date
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Mock data
-      const skillsData = [
-        { id: 1, name: "UI Design", icon: "🎨", level: 5, category: "design" },
-        { id: 2, name: "React", icon: "⚛️", level: 4, category: "development" },
-        { id: 3, name: "Figma", icon: "🖌️", level: 5, category: "design" },
-        { id: 4, name: "Tailwind CSS", icon: "🌊", level: 4, category: "development" },
-        { id: 5, name: "User Research", icon: "🔍", level: 3, category: "design" },
-        { id: 6, name: "JavaScript", icon: "📜", level: 4, category: "development" },
-        { id: 7, name: "Responsive Design", icon: "📱", level: 5, category: "design" },
-        { id: 8, name: "TypeScript", icon: "🔷", level: 3, category: "development" },
-      ];
-
-      const experienceData = [
-        {
-          id: 1,
-          role: "Senior UX/UI Designer",
-          company: "DesignHub",
-          logo: "https://placehold.co/40x40/00b894/ffffff",
-          location: "San Francisco, CA",
-          startDate: "Jan 2021",
-          endDate: "Present",
-          description: "Lead the design team in creating user-centered digital experiences. Collaborate with product managers and developers to implement design systems and ensure consistent user experiences across platforms."
-        },
-        {
-          id: 2,
-          role: "Frontend Developer",
-          company: "TechCorp",
-          logo: "https://placehold.co/40x40/0984e3/ffffff",
-          location: "New York, NY",
-          startDate: "Mar 2018",
-          endDate: "Dec 2020",
-          description: "Developed responsive web applications using React and TypeScript. Implemented design systems and component libraries to ensure consistent UI across products."
-        },
-        {
-          id: 3,
-          role: "UI Designer",
-          company: "CreativeAgency",
-          logo: "https://placehold.co/40x40/fdcb6e/ffffff",
-          location: "Chicago, IL",
-          startDate: "Jun 2016",
-          endDate: "Feb 2018",
-          description: "Created user interfaces for web and mobile applications. Collaborated with clients to understand requirements and deliver designs that met their needs."
-        }
-      ];
-
-      const educationData = [
-        {
-          id: 1,
-          institution: "Stanford University",
-          degree: "Master of Fine Arts, Design",
-          logo: "https://placehold.co/40x40/00b894/ffffff",
-          location: "Stanford, CA",
-          startYear: "2014",
-          endYear: "2016",
-          description: "Focused on interaction design and user experience. Thesis project on designing accessible interfaces for elderly users."
-        },
-        {
-          id: 2,
-          institution: "University of California, Berkeley",
-          degree: "Bachelor of Science, Computer Science",
-          logo: "https://placehold.co/40x40/0984e3/ffffff",
-          location: "Berkeley, CA",
-          startYear: "2010",
-          endYear: "2014",
-          description: "Specialized in human-computer interaction and web development. Participated in various hackathons and design competitions."
-        }
-      ];
-
-      const portfolioData = [
-        {
-          id: 1,
-          title: "E-commerce Redesign",
-          description: "Complete redesign of an e-commerce platform focusing on improving the user experience and conversion rates.",
-          thumbnail: "https://placehold.co/400x300/00b894/ffffff",
-          type: "image",
-          tags: ["UI Design", "UX Research", "Figma"],
-          url: "https://example.com/project1"
-        },
-        {
-          id: 2,
-          title: "Mobile Banking App",
-          description: "Designed and developed a mobile banking application with a focus on security and ease of use.",
-          thumbnail: "https://placehold.co/400x300/0984e3/ffffff",
-          type: "image",
-          tags: ["Mobile Design", "React Native", "Prototyping"],
-          url: "https://example.com/project2"
-        },
-        {
-          id: 3,
-          title: "Design System Documentation",
-          description: "Created comprehensive documentation for a design system used across multiple products.",
-          thumbnail: "https://placehold.co/400x300/fdcb6e/ffffff",
-          type: "document",
-          tags: ["Documentation", "Design Systems", "Technical Writing"],
-          url: "https://example.com/project3"
-        },
-        {
-          id: 4,
-          title: "Product Explainer Video",
-          description: "Created a short explainer video for a SaaS product launch.",
-          thumbnail: "https://placehold.co/400x300/e84393/ffffff",
-          type: "video",
-          tags: ["Motion Graphics", "Storytelling", "After Effects"],
-          url: "https://example.com/project4"
-        }
-      ];
-
-      // Initialize tabs
-      const tabButtons = document.querySelectorAll('.tab-button');
-      const tabContents = document.querySelectorAll('.tab-content');
-
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const tabName = button.getAttribute('data-tab');
-          
-          // Update active tab button
-          tabButtons.forEach(btn => {
-            if (btn.getAttribute('data-tab') === tabName) {
-              btn.classList.add('border-primary-500', 'text-primary-600');
-              btn.classList.remove('border-transparent', 'text-gray-500');
-            } else {
-              btn.classList.remove('border-primary-500', 'text-primary-600');
-              btn.classList.add('border-transparent', 'text-gray-500');
-            }
-          });
-          
-          // Show active tab content
-          tabContents.forEach(content => {
-            if (content.id === `${tabName}-tab`) {
-              content.classList.remove('hidden');
-            } else {
-              content.classList.add('hidden');
-            }
-          });
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-      });
 
-      // Bio section
-      const bioDisplay = document.getElementById('bio-display');
-      const bioEdit = document.getElementById('bio-edit');
-      const bioTextarea = document.getElementById('bio-textarea');
-      const bioCharCount = document.getElementById('bio-char-count');
-      const bioEditBtn = document.getElementById('edit-bio-btn');
-      const bioSaveBtn = document.getElementById('bio-save-btn');
-      const bioCancelBtn = document.getElementById('bio-cancel-btn');
+        // Tab switching
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
 
-      bioEditBtn.addEventListener('click', () => {
-        bioDisplay.classList.add('hidden');
-        bioEdit.classList.remove('hidden');
-        bioTextarea.value = bioDisplay.textContent.trim();
-        bioCharCount.textContent = bioTextarea.value.length;
-      });
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('tab-active');
+                });
 
-      bioTextarea.addEventListener('input', () => {
-        bioCharCount.textContent = bioTextarea.value.length;
-      });
+                // Add active class to clicked button
+                button.classList.add('tab-active');
 
-      bioSaveBtn.addEventListener('click', () => {
-        bioDisplay.textContent = bioTextarea.value;
-        bioDisplay.classList.remove('hidden');
-        bioEdit.classList.add('hidden');
-      });
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
 
-      bioCancelBtn.addEventListener('click', () => {
-        bioDisplay.classList.remove('hidden');
-        bioEdit.classList.add('hidden');
-      });
-
-      // Skills section
-      const skillsContainer = document.getElementById('skills-container');
-      const addSkillBtn = document.getElementById('add-skill-btn');
-      const addSkillForm = document.getElementById('add-skill-form');
-      const cancelSkillBtn = document.getElementById('cancel-skill-btn');
-      const saveSkillBtn = document.getElementById('save-skill-btn');
-      const skillNameInput = document.getElementById('skill-name');
-      const skillIconInput = document.getElementById('skill-icon');
-      const skillCategorySelect = document.getElementById('skill-category');
-      const skillLevelInput = document.getElementById('skill-level');
-      const skillLevelDisplay = document.getElementById('skill-level-display');
-      const skillFilterBtns = document.querySelectorAll('.skill-filter-btn');
-      
-      let currentSkillFilter = 'all';
-      let currentSkillId = 0;
-      let skills = [...skillsData];
-
-      // Initialize skills
-      renderSkills();
-
-      // Skill level slider
-      skillLevelInput.addEventListener('input', () => {
-        skillLevelDisplay.textContent = skillLevelInput.value;
-      });
-
-      // Add skill button
-      addSkillBtn.addEventListener('click', () => {
-        addSkillForm.classList.toggle('hidden');
-        skillNameInput.value = '';
-        skillIconInput.value = '';
-        skillCategorySelect.value = 'design';
-        skillLevelInput.value = 3;
-        skillLevelDisplay.textContent = '3';
-        currentSkillId = 0;
-      });
-
-      // Cancel skill button
-      cancelSkillBtn.addEventListener('click', () => {
-        addSkillForm.classList.add('hidden');
-      });
-
-      // Save skill button
-      saveSkillBtn.addEventListener('click', () => {
-        if (skillNameInput.value.trim()) {
-          const newSkill = {
-            id: currentSkillId || Date.now(),
-            name: skillNameInput.value.trim(),
-            icon: skillIconInput.value.trim() || '💡',
-            level: parseInt(skillLevelInput.value),
-            category: skillCategorySelect.value
-          };
-
-          if (currentSkillId) {
-            // Update existing skill
-            skills = skills.map(skill => skill.id === currentSkillId ? newSkill : skill);
-          } else {
-            // Add new skill
-            skills.push(newSkill);
-          }
-
-          renderSkills();
-          addSkillForm.classList.add('hidden');
-        }
-      });
-
-      // Skill filter buttons
-      skillFilterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.getAttribute('data-filter');
-          currentSkillFilter = filter;
-          
-          // Update active filter button
-          skillFilterBtns.forEach(filterBtn => {
-            if (filterBtn.getAttribute('data-filter') === filter) {
-              filterBtn.classList.add('bg-primary-600', 'text-white');
-              filterBtn.classList.remove('border', 'border-gray-300', 'bg-white', 'text-gray-700');
-            } else {
-              filterBtn.classList.remove('bg-primary-600', 'text-white');
-              filterBtn.classList.add('border', 'border-gray-300', 'bg-white', 'text-gray-700');
-            }
-          });
-          
-          renderSkills();
+                // Show the corresponding tab content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.remove('hidden');
+            });
         });
-      });
 
-      function renderSkills() {
-        skillsContainer.innerHTML = '';
-        
-        const filteredSkills = currentSkillFilter === 'all' 
-          ? skills 
-          : skills.filter(skill => skill.category === currentSkillFilter);
-        
-        filteredSkills.forEach(skill => {
-          const skillElement = document.createElement('div');
-          skillElement.className = 'group relative flex items-center gap-3 rounded-lg border bg-white p-3 shadow-sm transition-all hover:shadow-md';
-          skillElement.innerHTML = `
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-xl">
-              ${skill.icon}
-            </div>
-            <div class="flex-1">
-              <h4 class="font-medium text-gray-900">${skill.name}</h4>
-              <div class="mt-1 flex gap-1">
-                ${Array.from({ length: 5 }).map((_, i) => 
-                  `<div class="h-1.5 w-6 rounded-full ${i < skill.level ? 'bg-emerald-500' : 'bg-gray-200'}"></div>`
-                ).join('')}
-              </div>
-            </div>
-            <button class="absolute right-1 top-1 h-6 w-6 rounded-full p-1 text-gray-400 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-gray-100 hover:text-gray-600" data-action="delete-skill" data-id="${skill.id}">
-              <i class="fas fa-times"></i>
-            </button>
-            <div class="absolute left-1 top-1 cursor-grab opacity-0 transition-opacity group-hover:opacity-100">
-              <i class="fas fa-grip-lines text-gray-400"></i>
-            </div>
-          `;
-          
-          skillsContainer.appendChild(skillElement);
-          
-          // Add event listener for delete button
-          const deleteBtn = skillElement.querySelector('[data-action="delete-skill"]');
-          deleteBtn.addEventListener('click', () => {
-            const skillId = parseInt(deleteBtn.getAttribute('data-id'));
-            skills = skills.filter(s => s.id !== skillId);
-            renderSkills();
-          });
-          
-          // Add event listener for edit (click on the skill)
-          skillElement.addEventListener('click', (e) => {
-            // Don't trigger edit if clicking on delete button
-            if (e.target.closest('[data-action="delete-skill"]')) return;
-            
-            const skillId = parseInt(deleteBtn.getAttribute('data-id'));
-            const skillToEdit = skills.find(s => s.id === skillId);
-            
-            if (skillToEdit) {
-              currentSkillId = skillId;
-              skillNameInput.value = skillToEdit.name;
-              skillIconInput.value = skillToEdit.icon;
-              skillCategorySelect.value = skillToEdit.category;
-              skillLevelInput.value = skillToEdit.level;
-              skillLevelDisplay.textContent = skillToEdit.level;
-              addSkillForm.classList.remove('hidden');
-              saveSkillBtn.textContent = 'Update Skill';
-            }
-          });
+        // Tab triggers from other elements
+        const tabTriggers = document.querySelectorAll('[data-tab-trigger]');
+
+        tabTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabId = trigger.getAttribute('data-tab-trigger');
+                const tabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                tabButton.click();
+            });
         });
-      }
 
-      // Experience section
-      const experienceContainer = document.getElementById('experience-container');
-      const addExperienceBtn = document.getElementById('add-experience-btn');
-      const experienceModal = document.getElementById('experience-modal');
-      const experienceForm = document.getElementById('experience-form');
-      const experienceCancelBtns = document.querySelectorAll('.experience-cancel-btn');
-      const modalBackdrop = document.getElementById('modal-backdrop');
-      const experienceModalTitle = document.getElementById('experience-modal-title');
-      const experienceSubmitText = document.getElementById('experience-submit-text');
-      
-      let experiences = [...experienceData];
-      
-      // Initialize experiences
-      renderExperiences();
-      
-      // Add experience button
-      addExperienceBtn.addEventListener('click', () => {
-        experienceForm.reset();
-        document.getElementById('experience-id').value = '';
-        experienceModalTitle.textContent = 'Add New Experience';
-        experienceSubmitText.textContent = 'Add';
-        modalBackdrop.classList.remove('hidden');
-        experienceModal.classList.remove('hidden');
-      });
-      
-      // Cancel experience buttons
-      experienceCancelBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          modalBackdrop.classList.add('hidden');
-          experienceModal.classList.add('hidden');
+
+        //bio form 
+        const editBioModal = document.getElementById('editBioModal');
+        const editBioBtn = document.getElementById('editBioBtn');
+
+        editBioBtn.addEventListener('click', () => {
+            document.getElementById('bioInput').value = userBio.innerText;
+            updateBioCharCount();
+            openModal(editBioModal);
         });
-      });
-      
-      // Experience form submit
-      experienceForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const experienceId = document.getElementById('experience-id').value;
-        const newExperience = {
-          id: experienceId ? parseInt(experienceId) : Date.now(),
-          role: document.getElementById('experience-role').value,
-          company: document.getElementById('experience-company').value,
-          logo: document.getElementById('experience-logo').value || 'https://placehold.co/40x40/00b894/ffffff',
-          location: document.getElementById('experience-location').value,
-          startDate: document.getElementById('experience-start-date').value,
-          endDate: document.getElementById('experience-end-date').value,
-          description: document.getElementById('experience-description').value
-        };
-        
-        if (experienceId) {
-          // Update existing experience
-          experiences = experiences.map(exp => exp.id === parseInt(experienceId) ? newExperience : exp);
-        } else {
-          // Add new experience
-          experiences.push(newExperience);
-        }
-        
-        renderExperiences();
-        modalBackdrop.classList.add('hidden');
-        experienceModal.classList.add('hidden');
-      });
-      
-      function renderExperiences() {
-        experienceContainer.innerHTML = '';
-        
-        experiences.forEach((experience, index) => {
-          const experienceElement = document.createElement('div');
-          experienceElement.className = 'relative rounded-lg border bg-white p-4 shadow-sm transition-all hover:shadow-md';
-          experienceElement.innerHTML = `
-            <div class="absolute right-3 top-3 flex gap-1">
-              <button class="h-8 w-8 rounded-md p-1 text-gray-500 hover:bg-gray-100" data-action="edit-experience" data-id="${experience.id}">
-                <i class="fas fa-pencil"></i>
-              </button>
-              <button class="h-8 w-8 rounded-md p-1 text-red-500 hover:bg-gray-100" data-action="delete-experience" data-id="${experience.id}">
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
 
-            <div class="flex flex-col gap-4 sm:flex-row">
-              <div class="h-12 w-12 rounded-md overflow-hidden">
-                <img src="${experience.logo}" alt="${experience.company}" class="h-full w-full object-cover">
-              </div>
-
-              <div class="flex-1">
-                <h4 class="text-lg font-semibold text-gray-900">${experience.role}</h4>
-                <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-600">
-                  <div class="flex items-center gap-1">
-                    <i class="fas fa-building text-sm"></i>
-                    <span>${experience.company}</span>
-                  </div>
-                  <div class="flex items-center gap-1">
-                    <i class="fas fa-calendar text-sm"></i>
-                    <span>${experience.startDate} - ${experience.endDate}</span>
-                  </div>
-                </div>
-
-                <p class="mt-3 text-sm text-gray-600">${experience.description}</p>
-              </div>
-            </div>
-
-            ${index < experiences.length - 1 ? '<div class="absolute bottom-0 left-6 right-6 h-px bg-gray-100"></div>' : ''}
-          `;
-          
-          experienceContainer.appendChild(experienceElement);
-          
-          // Add event listeners for edit and delete buttons
-          const editBtn = experienceElement.querySelector('[data-action="edit-experience"]');
-          const deleteBtn = experienceElement.querySelector('[data-action="delete-experience"]');
-          
-          editBtn.addEventListener('click', () => {
-            const expId = parseInt(editBtn.getAttribute('data-id'));
-            const expToEdit = experiences.find(exp => exp.id === expId);
-            
-            if (expToEdit) {
-              document.getElementById('experience-id').value = expId;
-              document.getElementById('experience-role').value = expToEdit.role;
-              document.getElementById('experience-company').value = expToEdit.company;
-              document.getElementById('experience-logo').value = expToEdit.logo;
-              document.getElementById('experience-location').value = expToEdit.location;
-              document.getElementById('experience-start-date').value = expToEdit.startDate;
-              document.getElementById('experience-end-date').value = expToEdit.endDate;
-              document.getElementById('experience-description').value = expToEdit.description;
-              
-              experienceModalTitle.textContent = 'Edit Experience';
-              experienceSubmitText.textContent = 'Update';
-              modalBackdrop.classList.remove('hidden');
-              experienceModal.classList.remove('hidden');
-            }
-          });
-          
-          deleteBtn.addEventListener('click', () => {
-            const expId = parseInt(deleteBtn.getAttribute('data-id'));
-            experiences = experiences.filter(exp => exp.id !== expId);
-            renderExperiences();
-          });
+        editBioBtn.addEventListener('click', () => {
+            document.getElementById('bioInput').value = userBio.innerText;
+            updateBioCharCount();
+            openModal(editBioModal);
         });
-      }
 
-      // Education section
-      const educationContainer = document.getElementById('education-container');
-      const addEducationBtn = document.getElementById('add-education-btn');
-      const educationModal = document.getElementById('education-modal');
-      const educationForm = document.getElementById('education-form');
-      const educationCancelBtns = document.querySelectorAll('.education-cancel-btn');
-      const educationModalTitle = document.getElementById('education-modal-title');
-      const educationSubmitText = document.getElementById('education-submit-text');
-      
-      let educations = [...educationData];
-      
-      // Initialize educations
-      renderEducations();
-      
-      // Add education button
-      addEducationBtn.addEventListener('click', () => {
-        educationForm.reset();
-        document.getElementById('education-id').value = '';
-        educationModalTitle.textContent = 'Add New Education';
-        educationSubmitText.textContent = 'Add';
-        modalBackdrop.classList.remove('hidden');
-        educationModal.classList.remove('hidden');
-      });
-      
-      // Cancel education buttons
-      educationCancelBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          modalBackdrop.classList.add('hidden');
-          educationModal.classList.add('hidden');
-        });
-      });
-      
-      // Education form submit
-      educationForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const educationId = document.getElementById('education-id').value;
-        const newEducation = {
-          id: educationId ? parseInt(educationId) : Date.now(),
-          institution: document.getElementById('education-institution').value,
-          degree: document.getElementById('education-degree').value,
-          logo: document.getElementById('education-logo').value || 'https://placehold.co/40x40/00b894/ffffff',
-          location: document.getElementById('education-location').value,
-          startYear: document.getElementById('education-start-year').value,
-          endYear: document.getElementById('education-end-year').value,
-          description: document.getElementById('education-description').value
-        };
-        
-        if (educationId) {
-          // Update existing education
-          educations = educations.map(edu => edu.id === parseInt(educationId) ? newEducation : edu);
-        } else {
-          // Add new education
-          educations.push(newEducation);
-        }
-        
-        renderEducations();
-        modalBackdrop.classList.add('hidden');
-        educationModal.classList.add('hidden');
-      });
-      
-      function renderEducations() {
-        educationContainer.innerHTML = '';
-        
-        educations.forEach((education, index) => {
-          const educationElement = document.createElement('div');
-          educationElement.className = 'relative rounded-lg border bg-white p-4 shadow-sm transition-all hover:shadow-md';
-          educationElement.innerHTML = `
-            <div class="absolute right-3 top-3 flex gap-1">
-              <button class="h-8 w-8 rounded-md p-1 text-gray-500 hover:bg-gray-100" data-action="edit-education" data-id="${education.id}">
-                <i class="fas fa-pencil"></i>
-              </button>
-              <button class="h-8 w-8 rounded-md p-1 text-red-500 hover:bg-gray-100" data-action="delete-education" data-id="${education.id}">
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
-
-            <div class="flex flex-col gap-4 sm:flex-row">
-              <div class="h-12 w-12 rounded-md overflow-hidden">
-                <img src="${education.logo}" alt="${education.institution}" class="h-full w-full object-cover">
-              </div>
-
-              <div class="flex-1">
-                <h4 class="text-lg font-semibold text-gray-900">${education.degree}</h4>
-                <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-600">
-                  <div class="flex items-center gap-1">
-                    <i class="fas fa-graduation-cap text-sm"></i>
-                    <span>${education.institution}</span>
-                  </div>
-                  <div class="flex items-center gap-1">
-                    <i class="fas fa-calendar text-sm"></i>
-                    <span>${education.startYear} - ${education.endYear}</span>
-                  </div>
-                </div>
-
-                <p class="mt-3 text-sm text-gray-600">${education.description}</p>
-              </div>
-            </div>
-
-            ${index < educations.length - 1 ? '<div class="absolute bottom-0 left-6 right-6 h-px bg-gray-100"></div>' : ''}
-          `;
-          
-          educationContainer.appendChild(educationElement);
-          
-          // Add event listeners for edit and delete buttons
-          const editBtn = educationElement.querySelector('[data-action="edit-education"]');
-          const deleteBtn = educationElement.querySelector('[data-action="delete-education"]');
-          
-          editBtn.addEventListener('click', () => {
-            const eduId = parseInt(editBtn.getAttribute('data-id'));
-            const eduToEdit = educations.find(edu => edu.id === eduId);
-            
-            if (eduToEdit) {
-              document.getElementById('education-id').value = eduId;
-              document.getElementById('education-institution').value = eduToEdit.institution;
-              document.getElementById('education-degree').value = eduToEdit.degree;
-              document.getElementById('education-logo').value = eduToEdit.logo;
-              document.getElementById('education-location').value = eduToEdit.location;
-              document.getElementById('education-start-year').value = eduToEdit.startYear;
-              document.getElementById('education-end-year').value = eduToEdit.endYear;
-              document.getElementById('education-description').value = eduToEdit.description;
-              
-              educationModalTitle.textContent = 'Edit Education';
-              educationSubmitText.textContent = 'Update';
-              modalBackdrop.classList.remove('hidden');
-              educationModal.classList.remove('hidden');
-            }
-          });
-          
-          deleteBtn.addEventListener('click', () => {
-            const eduId = parseInt(deleteBtn.getAttribute('data-id'));
-            educations = educations.filter(edu => edu.id !== eduId);
-            renderEducations();
-          });
-        });
-      }
-
-      // Portfolio section
-      const portfolioContainer = document.getElementById('portfolio-container');
-      const addPortfolioBtn = document.getElementById('add-portfolio-btn');
-      const portfolioModal = document.getElementById('portfolio-modal');
-      const portfolioForm = document.getElementById('portfolio-form');
-      const portfolioCancelBtns = document.querySelectorAll('.portfolio-cancel-btn');
-      const portfolioFilterBtns = document.querySelectorAll('.portfolio-filter-btn');
-      const portfolioTagsContainer = document.getElementById('portfolio-tags-container');
-      const portfolioTagInput = document.getElementById('portfolio-tag-input');
-      const addTagBtn = document.getElementById('add-tag-btn');
-      
-      let portfolios = [...portfolioData];
-      let currentPortfolioFilter = 'all';
-      let currentPortfolioTags = [];
-      
-      // Initialize portfolios
-      renderPortfolios();
-      
-      // Add portfolio button
-      addPortfolioBtn.addEventListener('click', () => {
-        portfolioForm.reset();
-        document.getElementById('portfolio-id').value = '';
-        currentPortfolioTags = [];
-        renderPortfolioTags();
-        modalBackdrop.classList.remove('hidden');
-        portfolioModal.classList.remove('hidden');
-      });
-      
-      // Cancel portfolio buttons
-      portfolioCancelBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          modalBackdrop.classList.add('hidden');
-          portfolioModal.classList.add('hidden');
-        });
-      });
-      
-      // Portfolio filter buttons
-      portfolioFilterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.getAttribute('data-filter');
-          currentPortfolioFilter = filter;
-          
-          // Update active filter button
-          portfolioFilterBtns.forEach(filterBtn => {
-            if (filterBtn.getAttribute('data-filter') === filter) {
-              filterBtn.classList.add('bg-primary-600', 'text-white');
-              filterBtn.classList.remove('bg-white', 'text-gray-700');
-            } else {
-              filterBtn.classList.remove('bg-primary-600', 'text-white');
-              filterBtn.classList.add('bg-white', 'text-gray-700');
-            }
-          });
-          
-          renderPortfolios();
-        });
-      });
-      
-      // Add tag button
-      addTagBtn.addEventListener('click', () => {
-        addPortfolioTag();
-      });
-      
-      // Tag input keydown
-      portfolioTagInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          addPortfolioTag();
-        }
-      });
-      
-      function addPortfolioTag() {
-        const tag = portfolioTagInput.value.trim();
-        if (tag && !currentPortfolioTags.includes(tag)) {
-          currentPortfolioTags.push(tag);
-          renderPortfolioTags();
-          portfolioTagInput.value = '';
-        }
-      }
-      
-      function renderPortfolioTags() {
-        portfolioTagsContainer.innerHTML = '';
-        
-        currentPortfolioTags.forEach(tag => {
-          const tagElement = document.createElement('div');
-          tagElement.className = 'flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-sm';
-          tagElement.innerHTML = `
-            <span>${tag}</span>
-            <button type="button" class="ml-1 rounded-full p-0.5 hover:bg-gray-200" data-tag="${tag}">
-              <i class="fas fa-times text-xs"></i>
-            </button>
-          `;
-          
-          portfolioTagsContainer.appendChild(tagElement);
-          
-          // Add event listener for remove tag button
-          const removeBtn = tagElement.querySelector('button');
-          removeBtn.addEventListener('click', () => {
-            const tagToRemove = removeBtn.getAttribute('data-tag');
-            currentPortfolioTags = currentPortfolioTags.filter(t => t !== tagToRemove);
-            renderPortfolioTags();
-          });
-        });
-      }
-      
-      // Portfolio form submit
-      portfolioForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const portfolioId = document.getElementById('portfolio-id').value;
-        const newPortfolio = {
-          id: portfolioId ? parseInt(portfolioId) : Date.now(),
-          title: document.getElementById('portfolio-title').value,
-          description: document.getElementById('portfolio-description').value,
-          thumbnail: document.getElementById('portfolio-thumbnail').value || 'https://placehold.co/400x300/00b894/ffffff',
-          type: document.getElementById('portfolio-type').value,
-          tags: [...currentPortfolioTags],
-          url: document.getElementById('portfolio-url').value
-        };
-        
-        if (portfolioId) {
-          // Update existing portfolio
-          portfolios = portfolios.map(port => port.id === parseInt(portfolioId) ? newPortfolio : port);
-        } else {
-          // Add new portfolio
-          portfolios.push(newPortfolio);
-        }
-        
-        renderPortfolios();
-        modalBackdrop.classList.add('hidden');
-        portfolioModal.classList.add('hidden');
-      });
-      
-      function renderPortfolios() {
-        portfolioContainer.innerHTML = '';
-        
-        const filteredPortfolios = currentPortfolioFilter === 'all' 
-          ? portfolios 
-          : portfolios.filter(port => port.type === currentPortfolioFilter);
-        
-        filteredPortfolios.forEach(portfolio => {
-          const portfolioElement = document.createElement('div');
-          portfolioElement.className = 'group relative overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md';
-          portfolioElement.innerHTML = `
-            <div class="relative aspect-video overflow-hidden">
-              <img src="${portfolio.thumbnail}" alt="${portfolio.title}" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-              <div class="absolute bottom-0 left-0 right-0 flex justify-between p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div class="flex gap-1 text-white">
-                  <i class="fas fa-${portfolio.type === 'image' ? 'image' : portfolio.type === 'document' ? 'file-alt' : 'video'}"></i>
-                </div>
-                <a href="${portfolio.url}" target="_blank" rel="noopener noreferrer" class="h-8 w-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white">
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
-            </div>
-            <div class="p-4">
-              <h4 class="font-semibold text-gray-900">${portfolio.title}</h4>
-              <p class="mt-1 line-clamp-2 text-sm text-gray-600">${portfolio.description}</p>
-              <div class="mt-3 flex flex-wrap gap-1">
-                ${portfolio.tags.map(tag => 
-                  `<span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700">${tag}</span>`
-                ).join('')}
-              </div>
-            </div>
-            <button class="absolute right-2 top-2 h-7 w-7 rounded-full bg-white/80 text-red-500 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:bg-white" data-action="delete-portfolio" data-id="${portfolio.id}">
-              <i class="fas fa-times"></i>
-            </button>
-          `;
-          
-          portfolioContainer.appendChild(portfolioElement);
-          
-          // Add event listener for delete button
-          const deleteBtn = portfolioElement.querySelector('[data-action="delete-portfolio"]');
-          deleteBtn.addEventListener('click', () => {
-            const portId = parseInt(deleteBtn.getAttribute('data-id'));
-            portfolios = portfolios.filter(port => port.id !== portId);
-            renderPortfolios();
-          });
-          
-          // Add event listener for edit (click on the portfolio)
-          portfolioElement.addEventListener('click', (e) => {
-            // Don't trigger edit if clicking on delete button or external link
-            if (e.target.closest('[data-action="delete-portfolio"]') || e.target.closest('a')) return;
-            
-            const portId = parseInt(deleteBtn.getAttribute('data-id'));
-            const portToEdit = portfolios.find(port => port.id === portId);
-            
-            if (portToEdit) {
-              document.getElementById('portfolio-id').value = portId;
-              document.getElementById('portfolio-title').value = portToEdit.title;
-              document.getElementById('portfolio-description').value = portToEdit.description;
-              document.getElementById('portfolio-thumbnail').value = portToEdit.thumbnail;
-              document.getElementById('portfolio-type').value = portToEdit.type;
-              document.getElementById('portfolio-url').value = portToEdit.url;
-              
-              currentPortfolioTags = [...portToEdit.tags];
-              renderPortfolioTags();
-              
-              modalBackdrop.classList.remove('hidden');
-              portfolioModal.classList.remove('hidden');
-            }
-          });
-        });
-      }
-
-      // Availability section
-      const availabilityOptions = document.querySelectorAll('[data-availability]');
-      const calendarBtn = document.getElementById('calendar-btn');
-      const calendarModal = document.getElementById('calendar-modal');
-      const calendarContainer = document.getElementById('calendar-container');
-      const calendarCancelBtns = document.querySelectorAll('.calendar-cancel-btn');
-      const calendarSelectBtn = document.getElementById('calendar-select-btn');
-      const selectedDateDisplay = document.getElementById('selected-date');
-      
-      let currentAvailability = 'available';
-      let selectedDate = null;
-      
-      // Initialize datepicker
-      const datepicker = new Datepicker(calendarContainer, {
-        autohide: true,
-        format: 'mm/dd/yyyy',
-        todayBtn: true,
-        todayHighlight: true
-      });
-      
-      // Availability options
-      availabilityOptions.forEach(option => {
-        option.addEventListener('click', () => {
-          const availability = option.getAttribute('data-availability');
-          currentAvailability = availability;
-          
-          // Update active option
-          availabilityOptions.forEach(opt => {
-            const radio = opt.querySelector('.h-3');
-            if (opt.getAttribute('data-availability') === availability) {
-              opt.classList.add('border-emerald-500', 'bg-emerald-50');
-              opt.classList.remove('hover:border-gray-300');
-              if (radio) radio.classList.remove('hidden');
-              
-              // Update colors based on availability type
-              if (availability === 'available') {
-                opt.classList.add('border-emerald-500', 'bg-emerald-50');
-                opt.querySelector('.h-10').classList.add('bg-emerald-100', 'text-emerald-600');
-                opt.querySelector('.h-10').classList.remove('bg-gray-100', 'text-gray-500');
-                radio.classList.add('bg-emerald-500');
-              } else if (availability === 'busy') {
-                opt.classList.add('border-orange-500', 'bg-orange-50');
-                opt.querySelector('.h-10').classList.add('bg-orange-100', 'text-orange-600');
-                opt.querySelector('.h-10').classList.remove('bg-gray-100', 'text-gray-500');
-                radio.classList.add('bg-orange-500');
-              } else if (availability === 'flexible') {
-                opt.classList.add('border-blue-500', 'bg-blue-50');
-                opt.querySelector('.h-10').classList.add('bg-blue-100', 'text-blue-600');
-                opt.querySelector('.h-10').classList.remove('bg-gray-100', 'text-gray-500');
-                radio.classList.add('bg-blue-500');
-              }
-            } else {
-              opt.classList.remove('border-emerald-500', 'bg-emerald-50', 'border-orange-500', 'bg-orange-50', 'border-blue-500', 'bg-blue-50');
-              opt.classList.add('hover:border-gray-300');
-              opt.querySelector('.h-10').classList.remove('bg-emerald-100', 'text-emerald-600', 'bg-orange-100', 'text-orange-600', 'bg-blue-100', 'text-blue-600');
-              opt.querySelector('.h-10').classList.add('bg-gray-100', 'text-gray-500');
-              if (radio) radio.classList.add('hidden');
-            }
-          });
-        });
-      });
-      
-      // Calendar button
-      calendarBtn.addEventListener('click', () => {
-        modalBackdrop.classList.remove('hidden');
-        calendarModal.classList.remove('hidden');
-      });
-      
-      // Calendar cancel buttons
-      calendarCancelBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          modalBackdrop.classList.add('hidden');
-          calendarModal.classList.add('hidden');
-        });
-      });
-      
-      // Calendar select button
-      calendarSelectBtn.addEventListener('click', () => {
-        selectedDate = datepicker.getDate();
-        if (selectedDate) {
-          const formattedDate = selectedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-          selectedDateDisplay.textContent = formattedDate;
-        }
-        modalBackdrop.classList.add('hidden');
-        calendarModal.classList.add('hidden');
-      });
-
-      // Activity Chart
-      const ctx = document.getElementById('activity-chart').getContext('2d');
-      const activityData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Credits',
-          data: [30, 45, 35, 60, 40, 70, 65, 80, 75, 90, 85, 100],
-          fill: true,
-          backgroundColor: 'rgba(16, 185, 129, 0.2)',
-          borderColor: 'rgba(16, 185, 129, 1)',
-          tension: 0.4
-        }]
-      };
-      
-      const activityChart = new Chart(ctx, {
-        type: 'line',
-        data: activityData,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              mode: 'index',
-              intersect: false,
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              titleColor: '#1f2937',
-              bodyColor: '#4b5563',
-              borderColor: '#e5e7eb',
-              borderWidth: 1,
-              padding: 10,
-              displayColors: false
-            }
-          },
-          scales: {
-            x: {
-              grid: {
-                display: false
-              }
-            },
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: '#f1f5f9'
-              }
-            }
-          }
-        }
-      });
-      
-      // Period buttons
-      const periodBtns = document.querySelectorAll('.period-btn');
-      periodBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const period = btn.getAttribute('data-period');
-          
-          // Update active period button
-          periodBtns.forEach(periodBtn => {
-            if (periodBtn.getAttribute('data-period') === period) {
-              periodBtn.classList.add('bg-primary-600', 'text-white');
-              periodBtn.classList.remove('bg-white', 'text-gray-700');
-            } else {
-              periodBtn.classList.remove('bg-primary-600', 'text-white');
-              periodBtn.classList.add('bg-white', 'text-gray-700');
-            }
-          });
-          
-          // Update chart data based on period
-          if (period === 'month') {
-            activityChart.data.labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
-            activityChart.data.datasets[0].data = [20, 35, 25, 40];
-          } else if (period === 'quarter') {
-            activityChart.data.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-            activityChart.data.datasets[0].data = [30, 45, 35, 60, 40, 70];
-          } else {
-            activityChart.data.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            activityChart.data.datasets[0].data = [30, 45, 35, 60, 40, 70, 65, 80, 75, 90, 85, 100];
-          }
-          
-          activityChart.update();
-        });
-      });
-
-      // Premium features
-      const upgradeBtn = document.getElementById('upgrade-btn');
-      const premiumModal = document.getElementById('premium-modal');
-      const premiumCancelBtns = document.querySelectorAll('.premium-cancel-btn');
-      const subscribeMonthlyBtn = document.getElementById('subscribe-monthly-btn');
-      const subscribeAnnualBtn = document.getElementById('subscribe-annual-btn');
-      const premiumCard = document.getElementById('premium-card');
-      
-      // Upgrade button
-      upgradeBtn.addEventListener('click', () => {
-        modalBackdrop.classList.remove('hidden');
-        premiumModal.classList.remove('hidden');
-      });
-      
-      // Premium cancel buttons
-      premiumCancelBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          modalBackdrop.classList.add('hidden');
-          premiumModal.classList.add('hidden');
-        });
-      });
-      
-      // Subscribe buttons
-      [subscribeMonthlyBtn, subscribeAnnualBtn].forEach(btn => {
-        btn.addEventListener('click', () => {
-          // Update premium card
-          premiumCard.innerHTML = `
-            <div class="bg-gradient-to-r from-amber-50 to-amber-100 px-6 py-4 pb-3">
-              <div class="flex items-center justify-between">
-                <h2 class="text-xl font-semibold">Premium Features</h2>
-                <span class="inline-flex items-center rounded-full border border-amber-500 bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">
-                  <i class="fas fa-crown mr-1"></i> Premium
-                </span>
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="space-y-6">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
-                      <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Profile Highlighting</h3>
-                      <p class="text-sm text-gray-500">Your profile appears at the top of search results</p>
-                    </div>
-                  </div>
-
-                  <div class="flex items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
-                      <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Analytics Dashboard</h3>
-                      <p class="text-sm text-gray-500">Detailed insights on profile views and engagement</p>
-                    </div>
-                  </div>
-
-                  <div class="flex items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
-                      <i class="fas fa-bolt"></i>
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Priority Requests</h3>
-                      <p class="text-sm text-gray-500">Your skill requests are prioritized in the queue</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="rounded-lg border border-amber-200 bg-amber-50 p-4">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <h3 class="font-medium text-amber-800">Premium until</h3>
-                      <p class="text-sm text-amber-700">December 15, 2025</p>
-                    </div>
-                    <button class="inline-flex items-center rounded-md border border-amber-500 bg-white px-3 py-1.5 text-sm font-medium text-amber-600 shadow-sm hover:bg-amber-50 transition-colors">
-                      Manage
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          `;
-          
-          modalBackdrop.classList.add('hidden');
-          premiumModal.classList.add('hidden');
-        });
-      });
-
-      // Close modals when clicking outside
-      modalBackdrop.addEventListener('click', (e) => {
-        if (e.target === modalBackdrop) {
-          modalBackdrop.classList.add('hidden');
-          experienceModal.classList.add('hidden');
-          educationModal.classList.add('hidden');
-          portfolioModal.classList.add('hidden');
-          premiumModal.classList.add('hidden');
-          calendarModal.classList.add('hidden');
-        }
-      });
-    });
-  </script>
+    </script>
 </body>
+
 </html>
