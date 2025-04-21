@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile | SkillSwap</title>
+    <title>User Profile | FreeLancer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -45,29 +45,6 @@
             }
         }
     </script>
-    <style>
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .animate-fade-in {
-            animation: fade-in 0.3s ease-out;
-        }
-
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        body.overflow-hidden {
-            overflow: hidden;
-        }
-    </style>
     <style type="text/tailwindcss">
         @layer components {
             .tab-active {
@@ -85,6 +62,16 @@
             .review-card {
                 @apply bg-white  rounded-lg shadow-md p-6 transition-all hover:shadow-lg;
             }
+            .modal-backdrop {
+                @apply bg-black bg-opacity-50;
+            }
+            .animate-fade-in {
+                animation: fadeIn 0.3s ease-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
         }
     </style>
 </head>
@@ -92,9 +79,9 @@
 <body class="bg-gray-50  transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white  shadow-sm sticky top-0 z-50 transition-colors duration-200">
-
+  
         <!-- Mobile Menu -->
-
+ 
     </header>
 
     <main class="container mx-auto px-4 py-6">
@@ -124,7 +111,7 @@
                             <div>
                                 <div class="flex items-center">
                                     <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">Alex Johnson</h1>
-
+        
                                 </div>
                                 <h2 class="text-lg text-secondary-600  mt-1">Senior Full Stack Developer</h2>
                                 <div class="flex items-start mt-2 text-sm text-secondary-500 flex-col gap-2 ">
@@ -137,7 +124,7 @@
                             </div>
                             <div>
                                 <div class=" absolute top-5 right-12">
-                                    <!-- Social Links -->
+                                     <!-- Social Links -->
                                     <div class="flex flex-wrap gap-2">
                                         <a href="#"
                                             class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors"
@@ -753,70 +740,161 @@ I specialize in design systems, responsive web applications, and bridging the ga
 
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
+            // Tab switching
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('tab-active');
+                    });
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+                    // Add active class to clicked button
+                    button.classList.add('tab-active');
 
-        // Tab switching
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('tab-active');
+                    // Show the corresponding tab content
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.remove('hidden');
                 });
-
-                // Add active class to clicked button
-                button.classList.add('tab-active');
-
-                // Hide all tab contents
-                tabContents.forEach(content => {
-                    content.classList.add('hidden');
-                });
-
-                // Show the corresponding tab content
-                const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.remove('hidden');
             });
-        });
 
-        // Tab triggers from other elements
-        const tabTriggers = document.querySelectorAll('[data-tab-trigger]');
+            // Tab triggers from other elements
+            const tabTriggers = document.querySelectorAll('[data-tab-trigger]');
 
-        tabTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
+            tabTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = trigger.getAttribute('data-tab-trigger');
+                    const tabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                    tabButton.click();
+                });
+            });
+
+            // Modal functionality
+            function openModal(modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal(modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            // Close modals when clicking on backdrop or close button
+            document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+                backdrop.addEventListener('click', (e) => {
+                    if (e.target === backdrop) {
+                        const modal = backdrop.closest('.fixed');
+                        closeModal(modal);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.modal-close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', () => {
+                    const modal = closeBtn.closest('.fixed');
+                    closeModal(modal);
+                });
+            });
+
+            // Bio editing functionality
+            const editBioModal = document.getElementById('editBioModal');
+            const editBioBtn = document.getElementById('editBioBtn');
+            const editBioForm = document.getElementById('editBioForm');
+            const bioInput = document.getElementById('bioInput');
+            const bioCharCount = document.getElementById('bioCharCount');
+            const userBio = document.getElementById('userBio');
+
+            editBioBtn.addEventListener('click', () => {
+                bioInput.value = userBio.innerText.trim();
+                updateBioCharCount();
+                openModal(editBioModal);
+            });
+
+            function updateBioCharCount() {
+                const length = bioInput.value.length;
+                bioCharCount.textContent = `${length}/500`;
+            }
+
+            bioInput.addEventListener('input', updateBioCharCount);
+
+            editBioForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const tabId = trigger.getAttribute('data-tab-trigger');
-                const tabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
-                tabButton.click();
+                userBio.innerHTML = bioInput.value.replace(/\n/g, '<br>');
+                closeModal(editBioModal);
+            });
+
+            // Skills functionality
+            const skillModal = document.getElementById('skillModal');
+            const addSkillBtn = document.getElementById('addSkillBtn');
+            const skillForm = document.getElementById('skillForm');
+            const skillInput = document.getElementById('skillInput');
+            const technicalSkillsContainer = document.getElementById('technicalSkillsContainer');
+            const softSkillsContainer = document.getElementById('softSkillsContainer');
+
+            addSkillBtn.addEventListener('click', () => {
+                skillInput.value = '';
+                document.querySelector('input[name="skillType"][value="technical"]').checked = true;
+                openModal(skillModal);
+            });
+
+            skillForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const skillName = skillInput.value.trim();
+                const skillType = document.querySelector('input[name="skillType"]:checked').value;
+                
+                if (skillName) {
+                    const skillElement = document.createElement('div');
+                    skillElement.className = skillType === 'technical' 
+                        ? 'bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group'
+                        : 'bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group';
+                    
+                    skillElement.innerHTML = `
+                        <span>${skillName}</span>
+                        <button class="ml-2 text-${skillType === 'technical' ? 'secondary' : 'primary'}-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    const container = skillType === 'technical' ? technicalSkillsContainer : softSkillsContainer;
+                    container.appendChild(skillElement);
+                    
+                    // Add event listener to remove button
+                    const removeBtn = skillElement.querySelector('button');
+                    removeBtn.addEventListener('click', () => {
+                        skillElement.remove();
+                    });
+                    
+                    closeModal(skillModal);
+                }
+            });
+
+            // Initialize existing skill remove buttons
+            document.querySelectorAll('#technicalSkillsContainer button, #softSkillsContainer button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.closest('div').remove();
+                });
+            });
+
+            // ESC key to close modals
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.fixed:not(.hidden)').forEach(modal => {
+                        closeModal(modal);
+                    });
+                }
             });
         });
-
-
-        //bio form 
-        const editBioModal = document.getElementById('editBioModal');
-        const editBioBtn = document.getElementById('editBioBtn');
-
-        editBioBtn.addEventListener('click', () => {
-            document.getElementById('bioInput').value = userBio.innerText;
-            updateBioCharCount();
-            openModal(editBioModal);
-        });
-
-        editBioBtn.addEventListener('click', () => {
-            document.getElementById('bioInput').value = userBio.innerText;
-            updateBioCharCount();
-            openModal(editBioModal);
-        });
-
     </script>
 </body>
 
