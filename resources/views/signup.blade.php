@@ -173,7 +173,7 @@
   </style>
 </head>
 
-<body class="bg-[url('./images/Group%2072.png')] bg-cover bg-center bg-no-repeat h-screen font-sans overflow-x-hidden">
+<body class="bg-[url('./images/Group2072.png')] bg-cover bg-center bg-no-repeat h-screen font-sans overflow-x-hidden">
   <div class="absolute inset-0 bg-overlay"></div>
 
   <!-- Decorative elements -->

@@ -13,4 +13,7 @@ class ProfileController extends Controller
     public function show(){
         return view('users/profileForm');
     }
+
+
+    
 }

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->enum('status', ['available', 'Limited Availability', 'unavailable'])->default('active');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('users_id')->constrained()->onDelete('cascade');
             $table->foreignId('domain_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
