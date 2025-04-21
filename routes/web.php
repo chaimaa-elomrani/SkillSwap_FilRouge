@@ -35,7 +35,7 @@ Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 
 // posts pages 
 Route::get('/posts',[PostsController::class , 'index']);
-Route::get('/post/create',[PostsController::class , 'createPost']);
+Route::get('/post/create',[PostsController::class , 'createPost'])->name('posts.create');
 // Route::post('/post/create',[PostsController::class , 'store']);
 
 
@@ -54,4 +54,5 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // profile
 Route::get('/profile',[ProfileController::class , 'index']);
-Route::get('/profile/form' , [ProfileController::class, 'show']);
+Route::get('/profile/form' , [ProfileController::class, 'show'])->name('profile.create');
+Route::post('/profile/form', [ProfileController::class, 'store'])->name('profile.store');

@@ -31,16 +31,19 @@ class PostsController extends Controller
 
 
 
+    // public function createPost(Request $request){
 
+    //     return view('users/createPost');
 
-
-
-
-    // public function createPost(DomainsService $domainService){
-    //     $domains = $domainService->getDomains();
-    //     return view('users/createPost', compact('domains'));
-       
     // }
+
+
+
+    public function createPost(DomainsService $domainService){
+        $domains = $domainService->getDomains();
+        return view('users/createPost', compact('domains'));
+       
+    }
 
 
 

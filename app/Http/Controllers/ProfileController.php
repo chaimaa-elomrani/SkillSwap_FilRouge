@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ProfileService;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    protected $profileService;
+    public function __construct(ProfileService $profileService){
+        $this->profileService = $profileService;
+    }
+
+
+    
     public function index(){
         return view('users/profile');
     }
@@ -15,5 +23,19 @@ class ProfileController extends Controller
     }
 
 
+    public function store(Request $request)
+    {
+        try {
+            $this->profileService->create($request);
+            return redirect()->back()->with('success', 'Profile created successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Something went wrong.');
+        }
+    }
     
+
 }
+
+
+    
+

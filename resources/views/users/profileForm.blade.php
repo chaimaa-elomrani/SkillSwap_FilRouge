@@ -88,7 +88,7 @@
 
         <!-- Form Container -->
         <div class="bg-white rounded-xl shadow-sm border border-secondary-200 max-w-3xl mx-auto overflow-hidden">
-            <form id="onboarding-form" class="relative">
+            <form id="onboarding-form" class="relative" method="POST" action="{{ route('profile.store') }}">
                 <!-- Step 1: Basic Information -->
                 <div class="form-step active p-8" id="step-1" data-step="1">
                     <h3 class="text-xl font-semibold mb-6">Basic Information</h3>
@@ -97,7 +97,7 @@
                     <div class="mb-6">
                         <label for="full-name" class="block text-sm font-medium text-secondary-700 mb-1">Full Name
                             <span class="text-red-500">*</span></label>
-                        <input type="text" id="full-name" name="full-name"
+                        <input type="text" id="full-name" name="name"
                             class="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                             placeholder="Your full name" required>
                         <div class="hidden mt-1 text-sm text-red-500" id="full-name-error"></div>
@@ -131,7 +131,7 @@
                                     <button type="button" id="profile-photo-btn"
                                         class="text-sm font-medium text-primary-600 hover:text-primary-700">Browse
                                         files</button>
-                                    <input type="file" id="profile-photo-input" name="profile-photo" class="hidden"
+                                    <input type="file" id="profile-photo-input" name="image" class="hidden"
                                         accept="image/*" required>
                                     <p class="text-xs text-secondary-400 mt-2">JPG, PNG or GIF, max 5MB</p>
                                 </div>
@@ -145,7 +145,7 @@
                         <label for="professional-title"
                             class="block text-sm font-medium text-secondary-700 mb-1">Professional Title <span
                                 class="text-red-500">*</span></label>
-                        <input type="text" id="professional-title" name="professional-title"
+                        <input type="text" id="professional-title" name="title"
                             class="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                             placeholder="e.g., UX Designer, Software Engineer, Marketing Consultant" required>
                         <div class="hidden mt-1 text-sm text-red-500" id="professional-title-error"></div>
@@ -178,23 +178,16 @@
                     <h3 class="text-xl font-semibold mb-6">Location & Contact Information</h3>
 
                     <!-- Location -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-6">
                         <div>
                             <label for="city" class="block text-sm font-medium text-secondary-700 mb-1">City <span
                                     class="text-red-500">*</span></label>
-                            <input type="text" id="city" name="city"
+                            <input type="text" id="city" name="location"
                                 class="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                                placeholder="Your city" required>
+                                placeholder="Your city and country" required>
                             <div class="hidden mt-1 text-sm text-red-500" id="city-error"></div>
                         </div>
-                        <div>
-                            <label for="country" class="block text-sm font-medium text-secondary-700 mb-1">Country
-                                <span class="text-red-500">*</span></label>
-                            <input type="text" id="country" name="country"
-                                class="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                                placeholder="Your country" required>
-                            <div class="hidden mt-1 text-sm text-red-500" id="country-error"></div>
-                        </div>
+                 
                     </div>
 
                     <!-- Optional Contact Fields -->
@@ -230,7 +223,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <input type="tel" id="phone" name="phone"
+                            <input type="tel" id="phone" name="phone_number"
                                 class="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                                 placeholder="Your phone number">
                         </div>
