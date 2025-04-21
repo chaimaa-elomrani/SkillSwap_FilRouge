@@ -363,46 +363,14 @@
                         <div class="grid md:grid-cols-2 gap-4">
                             <div class="flex p-4 rounded-lg border border-secondary-200 ">
                                 <div
-                                    class="flex-shrink-0 h-12 w-12 rounded-md bg-primary-100  flex items-center justify-center">
-                                    <i class="fas fa-laptop-code text-primary-600 text-xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-md font-medium text-secondary-900 ">Full Stack Development</h4>
-                                    <p class="mt-1 text-sm text-secondary-500 ">End-to-end web application development
-                                        with modern JavaScript frameworks</p>
-                                </div>
-                            </div>
-                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
-                                <div
-                                    class="flex-shrink-0 h-12 w-12 rounded-md bg-primary-100 flex items-center justify-center">
-                                    <i class="fas fa-mobile-alt text-primary-600 text-xl"></i>
+                                    class="flex-shrink-0 h-10 w-10 rounded-md bg-secondary-100 flex items-center justify-center">
+                                    <img src="./images/servicesLogo.png" alt="">
+
                                 </div>
                                 <div class="ml-4">
                                     <h4 class="text-md font-medium text-secondary-900 ">Responsive Web Design</h4>
                                     <p class="mt-1 text-sm text-secondary-500 ">Mobile-first, responsive websites that
                                         work on all devices</p>
-                                </div>
-                            </div>
-                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
-                                <div
-                                    class="flex-shrink-0 h-12 w-12 rounded-md bg-primary-100  flex items-center justify-center">
-                                    <i class="fas fa-cloud text-primary-600 text-xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-md font-medium text-secondary-900 ">Cloud Architecture</h4>
-                                    <p class="mt-1 text-sm text-secondary-500 ">AWS infrastructure setup, deployment,
-                                        and optimization</p>
-                                </div>
-                            </div>
-                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
-                                <div
-                                    class="flex-shrink-0 h-12 w-12 rounded-md bg-primary-100  flex items-center justify-center">
-                                    <i class="fas fa-code-branch text-primary-600 text-xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-md font-medium text-secondary-900 ">API Development</h4>
-                                    <p class="mt-1 text-sm text-secondary-500 ">RESTful and GraphQL API design and
-                                        implementation</p>
                                 </div>
                             </div>
                         </div>

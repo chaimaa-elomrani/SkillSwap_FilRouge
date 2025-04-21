@@ -6,6 +6,7 @@ use App\Http\Controllers\DomainsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguagesController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\TypesController;
@@ -26,7 +27,7 @@ Route::get('/search',[SearchController::class , 'index']);
 // domains page 
 Route::get('/domains',[DomainsController::class , 'index']);
 Route::get('/domains/getDomainByType',[DomainsController::class , 'getDomainByType']);
-// Route::get('/domains/posts', [DomainsController::class, 'showPosts'])->name('domain.posts');
+Route::get('/domains/{domains}', [DomainsController::class, 'showByDomain'])->name('domains.show');
 
 // types 
 Route::get('/domains/types',[DomainsController::class , 'getTypes']);
@@ -35,9 +36,6 @@ Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 // posts pages 
 Route::get('/posts',[PostsController::class , 'index']);
 Route::get('/post/create',[PostsController::class , 'createPost']);
-// Route::get('posts', [PostsController::class, 'show']);  
-Route::get('/domains/{domains}', [DomainsController::class, 'showByDomain'])->name('domains.show');
-
 // Route::post('/post/create',[PostsController::class , 'store']);
 
 
@@ -53,3 +51,7 @@ Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
+
+// profile
+Route::get('/profile',[ProfileController::class , 'index']);
+Route::get('/profile/form' , [ProfileController::class, 'show']);

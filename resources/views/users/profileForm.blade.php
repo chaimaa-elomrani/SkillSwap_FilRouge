@@ -75,21 +75,11 @@
     </style>
 </head>
 
-<body class="bg-gray-50 min-h-screen font-sans text-secondary-800">
+<body class="bg-secondary-200 min-h-screen font-sans text-secondary-800">
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header -->
         <header class="text-center mb-8">
-            <div class="flex justify-center mb-4">
-                <div class="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" viewBox="0 0 20 20"
-                        fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M10 2a1 1 0 00-1 1v1.323l-3.954 1.582a1 1 0 00-.646.934v4.286a1 1 0 00.648.937l3.952 1.566V15a1 1 0 002 0v-1.372l3.954-1.566a1 1 0 00.646-.937V6.839a1 1 0 00-.648-.937L11 3.323V3a1 1 0 00-1-1zm0 8.54l-3-1.2V7.66l3 1.2v1.68zm5-1.2l-3 1.2V7.66l3-1.2v1.68z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <h1 class="text-2xl font-bold text-secondary-900">SkillSwap</h1>
-                </div>
-            </div>
+
             <h2 class="text-3xl font-bold text-secondary-900 mb-2">Complete Your Profile</h2>
             <p class="text-secondary-600 max-w-xl mx-auto">Let's set up your professional profile so others can
                 discover your skills and services. This information helps match you with the right opportunities.</p>
