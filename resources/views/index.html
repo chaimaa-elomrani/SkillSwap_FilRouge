@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile | FreeLancer</title>
+    <title>User Profile | SkillSwap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -45,6 +45,29 @@
             }
         }
     </script>
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.3s ease-out;
+        }
+
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+    </style>
     <style type="text/tailwindcss">
         @layer components {
             .tab-active {
@@ -69,63 +92,9 @@
 <body class="bg-gray-50  transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white  shadow-sm sticky top-0 z-50 transition-colors duration-200">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class=" flex items-center space-x-2">
-                <i class="fas fa-laptop-code text-primary-600 text-2xl"></i>
-                <h1 class="text-xl font-bold text-secondary-800 ">FreeLancer</h1>
-            </div>
-            <nav class="hidden md:block">
-                <ul class="flex items-center space-x-6">
-                    <li><a href="index.html" class="text-secondary-600  hover:text-primary-600  transition-colors">Find
-                            Jobs</a></li>
-                    <li><a href="profile.html" class="text-primary-600 font-medium">My Profile</a></li>
-                    <li>
-                        <a href="#"
-                            class="text-secondary-600  hover:text-primary-600  transition-colors flex items-center">
-                            <span>Messages</span>
-                            <span
-                                class="ml-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
-                        </a>
-                    </li>
-                    <li><a href="#"
-                            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Post
-                            a Job</a></li>
-                    <li>
-                        <button
-                            class="w-10 h-6 rounded-full bg-secondary-200  flex items-center transition duration-300 focus:outline-none shadow">
-                            <div id="toggle-dot"
-                                class="w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 translate-x-0  flex justify-center items-center">
-                                <i class="fas fa-sun text-yellow-500  text-xs"></i>
-                                <i class="fas fa-moon text-blue-800 hidden  text-xs"></i>
-                            </div>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-            <button class="md:hidden text-secondary-800 " id="mobile-menu-button">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </div>
+
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden bg-white  shadow-md hidden transition-all duration-300 absolute w-full">
-            <ul class="px-4 py-2 space-y-3">
-                <li><a href="index.html"
-                        class="block py-2 text-secondary-600 hover:text-primary-600 transition-colors">Find Jobs</a>
-                </li>
-                <li><a href="profile.html" class="block py-2 text-primary-600 font-medium">My Profile</a></li>
-                <li>
-                    <a href="#"
-                        class="block py-2 text-secondary-600  hover:text-primary-600  transition-colors flex items-center">
-                        <span>Messages</span>
-                        <span
-                            class="ml-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
-                    </a>
-                </li>
-                <li><a href="#"
-                        class="block py-2 bg-primary-600 hover:bg-primary-700 text-white px-4 rounded-md transition-colors text-center mt-2">Post
-                        a Job</a></li>
-            </ul>
-        </div>
+
     </header>
 
     <main class="container mx-auto px-4 py-6">
@@ -155,7 +124,7 @@
                             <div>
                                 <div class="flex items-center">
                                     <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">Alex Johnson</h1>
-        
+
                                 </div>
                                 <h2 class="text-lg text-secondary-600  mt-1">Senior Full Stack Developer</h2>
                                 <div class="flex items-start mt-2 text-sm text-secondary-500 flex-col gap-2 ">
@@ -168,7 +137,7 @@
                             </div>
                             <div>
                                 <div class=" absolute top-5 right-12">
-                                     <!-- Social Links -->
+                                    <!-- Social Links -->
                                     <div class="flex flex-wrap gap-2">
                                         <a href="#"
                                             class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition-colors"
