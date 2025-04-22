@@ -121,9 +121,8 @@
                             <div class="flex-grow">
                                 <div id="profile-photo-dropzone"
                                     class="border-2 border-dashed border-secondary-300 rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-secondary-50">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="h-10 w-10 text-secondary-400 mb-2" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-secondary-400 mb-2"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
@@ -187,7 +186,7 @@
                                 placeholder="Your city and country" required>
                             <div class="hidden mt-1 text-sm text-red-500" id="city-error"></div>
                         </div>
-                 
+
                     </div>
 
                     <!-- Optional Contact Fields -->
@@ -266,6 +265,8 @@
                 <div class="form-step p-8" id="step-3" data-step="3">
                     <h3 class="text-xl font-semibold mb-6">Skills & Expertise</h3>
 
+
+                    <!-- *************************************************************************************************************************************************** -->
                     <!-- Skills -->
                     <div class="mb-8">
                         <div class="flex items-center justify-between mb-1">
@@ -286,7 +287,7 @@
                         </div>
                         <div class="flex items-center space-x-2 mb-2">
                             <div class="relative flex-grow">
-                                <input type="text" id="skills-input"
+                                <input type="text" id="skills-input" name="skills[]" multiple
                                     class="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                                     placeholder="Type a skill and press Enter (e.g., JavaScript, Project Management)">
                             </div>
@@ -302,6 +303,9 @@
                         <div class="hidden mt-1 text-sm text-red-500" id="skills-error"></div>
                         <input type="hidden" name="skills" id="skills-hidden">
                     </div>
+
+                    <!-- *************************************************************************************************************************************************** -->
+
 
                     <!-- Services Offered -->
                     <div class="mb-6">
@@ -379,8 +383,10 @@
                             <div class="relative">
                                 <div class="h-32 bg-primary-100"></div>
                                 <div class="absolute top-16 left-8">
-                                    <div id="review-photo-container" class="w-24 h-24 rounded-full border-4 border-white bg-white overflow-hidden">
-                                        <div id="review-photo" class="w-full h-full bg-secondary-100 flex items-center justify-center">
+                                    <div id="review-photo-container"
+                                        class="w-24 h-24 rounded-full border-4 border-white bg-white overflow-hidden">
+                                        <div id="review-photo"
+                                            class="w-full h-full bg-secondary-100 flex items-center justify-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-secondary-400"
                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -393,9 +399,12 @@
                                     <h2 id="review-name" class="text-xl font-bold text-secondary-900 mt-2"></h2>
                                     <p id="review-title" class="text-secondary-600"></p>
                                     <div class="flex items-center mt-2 text-sm text-secondary-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
                                         <span id="review-location"></span>
                                     </div>
@@ -425,11 +434,11 @@
                                 <h3 class="text-lg font-semibold mb-2">Contact Information</h3>
                                 <div class="space-y-2">
                                     <p class="text-secondary-600" id="review-email-container">
-                                        <span class="font-medium">Email:</span> 
+                                        <span class="font-medium">Email:</span>
                                         <span id="review-email">Not provided</span>
                                     </p>
                                     <p class="text-secondary-600" id="review-phone-container">
-                                        <span class="font-medium">Phone:</span> 
+                                        <span class="font-medium">Phone:</span>
                                         <span id="review-phone">Not provided</span>
                                     </p>
                                 </div>
@@ -440,8 +449,8 @@
                     <!-- Privacy Notice -->
                     <div class="bg-secondary-50 border border-secondary-200 rounded-lg p-4 mb-6">
                         <h4 class="font-medium text-secondary-800 mb-2 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary-500 mr-2"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary-500 mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -469,7 +478,8 @@
                                 class="rounded text-primary-600 focus:ring-primary-500 h-4 w-4 mt-1" required>
                             <span class="ml-2 text-secondary-700 text-sm">
                                 I agree to SkillSwap's <a href="#" class="text-primary-600 hover:text-primary-700">Terms
-                                    of Service</a> and <a href="#" class="text-primary-600 hover:text-primary-700">Privacy
+                                    of Service</a> and <a href="#"
+                                    class="text-primary-600 hover:text-primary-700">Privacy
                                     Policy</a>. I confirm that all information provided is accurate.
                             </span>
                         </label>
@@ -481,6 +491,7 @@
                             class="prev-step px-6 py-2 border border-secondary-300 text-secondary-700 rounded-lg hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                             Back
                         </button>
+                        <div id="skills-hidden-inputs"></div>
                         <button type="submit" id="submit-button"
                             class="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                             Complete Profile
@@ -525,6 +536,7 @@
             const nextButtons = document.querySelectorAll('.next-step');
             const prevButtons = document.querySelectorAll('.prev-step');
             const submitButton = document.getElementById('submit-button');
+
 
             // Current step tracking
             let currentStep = 1;
@@ -584,7 +596,6 @@
                 // Step 2 validation
                 else if (stepNumber === 2) {
                     const city = document.getElementById('city');
-                    const country = document.getElementById('country');
 
                     if (!city.value.trim()) {
                         document.getElementById('city-error').textContent = 'Please enter your city';
@@ -592,11 +603,7 @@
                         isValid = false;
                     }
 
-                    if (!country.value.trim()) {
-                        document.getElementById('country-error').textContent = 'Please enter your country';
-                        document.getElementById('country-error').classList.remove('hidden');
-                        isValid = false;
-                    }
+
                 }
 
                 // Step 3 validation
@@ -660,7 +667,6 @@
                 document.getElementById('review-name').textContent = document.getElementById('full-name').value;
                 document.getElementById('review-title').textContent = document.getElementById('professional-title').value;
                 document.getElementById('review-bio').textContent = document.getElementById('bio').value;
-                document.getElementById('review-location').textContent = `${document.getElementById('city').value}, ${document.getElementById('country').value}`;
 
                 // Profile photo
                 const photoPreview = document.getElementById('review-photo');
@@ -728,19 +734,63 @@
                     return;
                 }
 
-                // Show success message
-                steps.forEach(step => {
-                    step.classList.remove('active');
+                // Create form data to send
+                const formData = new FormData(form);
+
+                // Get all skills
+                const skillTags = skillsContainer.querySelectorAll('.skill-tag');
+
+                // Remove any existing skills inputs from form data
+                formData.delete('skills[]');
+
+                // Add each skill to form data
+                skillTags.forEach(tag => {
+                    const skillName = tag.querySelector('span').textContent;
+                    formData.append('skills[]', skillName);
                 });
-                document.getElementById('success-step').classList.add('active');
 
-                // Hide progress bar
-                document.querySelector('.mb-8.max-w-xl.mx-auto').style.display = 'none';
+                // Set the CSRF token
+                formData.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
-                // In a real application, you would submit the form data to the server here
-                console.log('Form submitted successfully!');
+                // Submit the form via AJAX
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(errors => {
+                                throw errors;
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Show success message
+                        steps.forEach(step => {
+                            step.classList.remove('active');
+                        });
+                        document.getElementById('success-step').classList.add('active');
+
+                        // Hide progress bar
+                        document.querySelector('.mb-8.max-w-xl.mx-auto').style.display = 'none';
+                    })
+                    .catch(errors => {
+                        // Display validation errors
+                        if (errors.errors) {
+                            Object.keys(errors.errors).forEach(field => {
+                                const errorElement = document.getElementById(`${field.replace(/\.|\[|\]/g, '-')}-error`);
+                                if (errorElement) {
+                                    errorElement.textContent = errors.errors[field][0];
+                                    errorElement.classList.remove('hidden');
+                                }
+                            });
+                        }
+                    });
             });
-
             // Bio character counter
             const bioTextarea = document.getElementById('bio');
             const bioCounter = document.getElementById('bio-counter');
@@ -778,25 +828,25 @@
             });
 
             // Drag and drop for photo upload
-            photoDropzone.addEventListener('dragover', function(e) {
+            photoDropzone.addEventListener('dragover', function (e) {
                 e.preventDefault();
                 this.classList.add('drag-over');
             });
 
-            photoDropzone.addEventListener('dragleave', function(e) {
+            photoDropzone.addEventListener('dragleave', function (e) {
                 e.preventDefault();
                 this.classList.remove('drag-over');
             });
 
-            photoDropzone.addEventListener('drop', function(e) {
+            photoDropzone.addEventListener('drop', function (e) {
                 e.preventDefault();
                 this.classList.remove('drag-over');
-                
+
                 if (e.dataTransfer.files && e.dataTransfer.files[0]) {
                     photoInput.files = e.dataTransfer.files;
-                    
+
                     const reader = new FileReader();
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         photoPreview.innerHTML = '';
                         const img = document.createElement('img');
                         img.src = e.target.result;
@@ -812,6 +862,8 @@
             const addSkillBtn = document.getElementById('add-skill-btn');
             const skillsContainer = document.getElementById('skills-container');
 
+            const skillsHiddenInputs = document.getElementById('skills-hidden-inputs');
+
             function addSkill(skillName) {
                 if (!skillName.trim()) return;
 
@@ -826,15 +878,22 @@
                 const skillTag = document.createElement('div');
                 skillTag.className = 'skill-tag inline-flex items-center bg-primary-100 text-primary-700 rounded-full px-3 py-1 text-sm';
                 skillTag.innerHTML = `
-                    <span>${skillName}</span>
-                    <button type="button" class="ml-1 text-primary-500 hover:text-primary-700 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                `;  
+        <span>${skillName}</span>
+        <button type="button" class="ml-1 text-primary-500 hover:text-primary-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    `;
 
-                // Add remove event listener
+                // Create hidden input
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'skills[]';
+                hiddenInput.value = skillName;
+                skillTag.appendChild(hiddenInput);
+
+                // Add remove logic
                 skillTag.querySelector('button').addEventListener('click', function () {
                     skillTag.remove();
                 });
@@ -842,6 +901,7 @@
                 skillsContainer.appendChild(skillTag);
                 skillsInput.value = '';
             }
+
 
             addSkillBtn.addEventListener('click', function () {
                 addSkill(skillsInput.value);
@@ -891,7 +951,7 @@
                 // Add remove event listener
                 serviceItem.querySelector('.remove-service').addEventListener('click', function () {
                     serviceItem.remove();
-                    
+
                     // Hide remove button if only one service item remains
                     if (servicesContainer.querySelectorAll('.service-item').length === 1) {
                         servicesContainer.querySelector('.remove-service').classList.add('hidden');

@@ -3,6 +3,9 @@
 namespace App\Services;
 use App\Models\Profile;
 // use Dotenv\Validator;
+use App\Models\Skills;
+use App\Models\User;
+use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -28,7 +31,18 @@ class ProfileService{
             $validated['image'] = $request->file('image')->store('profiles', 'public');
         }
     
-        Profile::create($validated);
+        $skillIds = [];
+        foreach ($validated['skills'] as $skillName) {
+            $skill = Skills::firstOrCreate(['name' => $skillName]);
+            $skillIds[] = $skill->id;
+        }
+
+        // Step 4: Attach skills to the user
+        $user = User::find($validated['user_id']);
+        $user->skills()->sync($skillIds); // assuming you have relation set up
+
+        DB::commit();
+   
     }
 
 }

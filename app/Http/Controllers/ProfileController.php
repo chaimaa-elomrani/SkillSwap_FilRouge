@@ -27,11 +27,12 @@ class ProfileController extends Controller
     {
         try {
             $this->profileService->create($request);
-            return redirect()->back()->with('success', 'Profile created successfully!');
+            return redirect()->back()->with('success', 'Profile created!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Something went wrong.');
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
+    
     
 
 }
