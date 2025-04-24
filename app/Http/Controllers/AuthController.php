@@ -61,7 +61,7 @@ class AuthController extends Controller
         
         if ($user) {
             session()->flash('success', 'Login successful!');
-            return view('users/categories');
+            return view('users/profileForm');
         }
 
         return view('register');

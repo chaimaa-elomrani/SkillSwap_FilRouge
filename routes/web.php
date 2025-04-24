@@ -52,7 +52,10 @@ Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
-// profile
-Route::get('/profile',[ProfileController::class , 'index']);
-Route::get('/profile/form' , [ProfileController::class, 'show'])->name('profile.create');
-Route::post('/profile/form', [ProfileController::class, 'store'])->name('profile.store');
+// routes/web.php
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile/create', [ProfileController::class, 'show'])->name('profile.create');
+    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+    // Route::get('/profile/{profile}', [ProfileController::class, 'show'])->name('profile.show');
+});

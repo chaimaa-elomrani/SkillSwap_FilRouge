@@ -23,15 +23,17 @@ class ProfileController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
-        try {
-            $this->profileService->create($request);
-            return redirect()->back()->with('success', 'Profile created!');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
-        }
-    }
+    // public function store(Request $request)
+    // {
+    //     try {
+    //         $this->profileService->create($request);
+    //         return redirect()->back()->with('success', 'Profile created!');
+    //     } catch (\Exception $e) {
+    //         return redirect()->back()->with('error', $e->getMessage());
+    //     }
+    // }
+
+    // public funct
     
     
 
