@@ -27,6 +27,7 @@ class SkillsController extends Controller
         return view('admin/skills', compact('skills', 'domains'));
     }
 
+
     public function store(Request $request)
     {
         $validated = $request->validate([

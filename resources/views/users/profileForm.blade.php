@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SkillSwap | Complete Your Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -44,9 +45,10 @@
 
         <!-- Form Container -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 max-w-3xl mx-auto overflow-hidden">
-            <form id="onboarding-form" class="relative">
+            <form id="onboarding-form" action="{{ route('profile.store') }}" method='POST' class="relative">
+                @csrf
                 <!-- Step 1: Basic Information -->
-                <div class="form-step active p-8" id="step-1" data-step="1">
+                <div class="form-step active p-8 " id="step-1" data-step="1">
                     <h3 class="text-xl font-semibold mb-6">Basic Information</h3>
 
                     <!-- Full Name -->
@@ -129,7 +131,7 @@
                 </div>
 
                 <!-- Step 2: Location and Contact -->
-                <div class="form-step p-8" id="step-2" data-step="2">
+                <div class="form-step p-8 hidden" id="step-2" data-step="2">
                     <h3 class="text-xl font-semibold mb-6">Location & Contact Information</h3>
 
                     <!-- Location -->
@@ -141,6 +143,37 @@
                             placeholder="Your city and country" required>
                         <div class="hidden mt-1 text-sm text-red-500" id="city-error"></div>
                     </div>
+                    
+                    <!-- status  -->
+                    <div class="mb-6">
+                        <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status <span
+                                class="text-red-500">*</span></label>
+                        <select id="status" name="status"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required>
+                            <option value="">Select your status</option>
+                            <option value="available">Available</option>
+                            <option value="limited_availability">Limited Availability</option>
+                            <option value="unvailable">unavailable</option>
+                        </select>
+                    </div>
+
+
+                    <!--  domain -->
+                    <div class="mb-6">
+                        <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Domain <span
+                                class="text-red-500">*</span></label>
+                        <select id="status" name="status"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required>
+                            <option value="">Select your Domain</option>
+                            @foreach ( $domains as $domain )
+                            <option value="{{ $domain->name }}">{{ $domain->name }}</option>
+                            @endforeach
+                          
+                        </select>
+                    </div>
+
 
                     <!-- Optional Contact Fields -->
                     <div class="mb-6">
@@ -259,11 +292,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            function getCsrfToken() {
+                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            }
             // Form elements
             const form = document.getElementById('onboarding-form');
             const steps = document.querySelectorAll('.form-step');
-            const nextButtons = document.querySelectorAll('.next-step');
-            const prevButtons = document.querySelectorAll('.prev-step');
+            const nextButton = document.querySelector('.next-step');
+            const prevButton = document.querySelector('.prev-step');
             const submitButton = document.getElementById('submit-button');
             const progressBar = document.getElementById('progress-bar');
             const stepIndicator = document.getElementById('step-indicator');
@@ -298,7 +334,6 @@
             // Validation function
             function validateStep(stepNumber) {
                 let isValid = true;
-
                 // Reset all error messages
                 const errorElements = document.querySelectorAll(`#step-${stepNumber} [id$="-error"]`);
                 errorElements.forEach(el => el.classList.add('hidden'));
@@ -349,131 +384,102 @@
                 return isValid;
             }
 
-            // Next button event
-            nextButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    if (validateStep(currentStep)) {
-                        showStep(currentStep + 1);
-                    }
-                });
-            });
 
-            // Previous button event
-            prevButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    showStep(currentStep - 1);
-                });
-            });
+
+            nextButton.addEventListener('click', () => {
+                console.log('clicckkkkkk');
+                if (validateStep(currentStep)) {
+                    showStep(currentStep + 1);
+                    document.getElementById('step-1').style.display = 'none';
+                    document.getElementById('step-2').style.display = 'block';
+                }
+            })
+
+            prevButton.addEventListener('click', () => {
+                document.getElementById('step-2').style.display = 'none';
+                document.getElementById('step-1').style.display = 'block';
+            })
+
 
             // Form submission
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
 
-                // Validate terms checkbox
-                const termsCheckbox = document.getElementById('terms');
-                if (!termsCheckbox.checked) {
-                    document.getElementById('terms-error').textContent = 'You must agree to the terms to continue';
-                    document.getElementById('terms-error').classList.remove('hidden');
-                    return;
-                }
+            // form.addEventListener('submit', function (e) {
+            //     e.preventDefault();
 
-                const formData = new FormData(form);
-                fetch('users/profile', {
-                    method: 'POST',
-                    body: formData
-                })
+            //     const termsCheckbox = document.getElementById('terms');
+            //     if (!termsCheckbox.checked) {
+            //         document.getElementById('terms-error').textContent = 'You must agree to the terms to continue';
+            //         document.getElementById('terms-error').classList.remove('hidden');
+            //         return;
+            //     }
 
-                    .then(response => {
-                    .then(response => {
-                        if (!response.ok) {
-                            return response.json().then(errorData => {
-                                throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message || 'Something went wrong'}`);
-                            });
-                        }
-                        return response.json();
-                    })
-                            .then(data => {
-                                console.log('Success:', data);
-                                // Optionally, update the UI to show a success message
-                                steps.forEach(step => step.classList.remove('active'));
-                                document.getElementById('success-step').classList.add('active');
-                                document.querySelector('.max-w-3xl.mx-auto.mb-8').style.display = 'none';
-                            })
-                            .catch(error => {
-                                console.error('Error submitting form:', error);
-                                // Optionally display error messages to the user
-                            });
-                    });
+            //     const formData = new FormData(form);
 
-                // Bio character counter
-                const bioTextarea = document.getElementById('bio');
-                const bioCounter = document.getElementById('bio-counter');
+            //     fetch('/profile', { // Use the Laravel route URI                    
+            //         method: 'POST',
+            //         headers: {
+            //             'X-CSRF-TOKEN': getCsrfToken(), // Include the CSRF token
+            //         },
+            //         body: formData,
+            //     })
+            //         .then(response => {
+            //             if (!response.ok) {
+            //                 console.log('status : ', response.status);
+            //                 return response.json().then(errorData => {
+            //                     throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message || 'Something went wrong'}`);
+            //                 });
+            //             }
+            //             return response.json();
+            //         })
+            //         .then(data => {
+            //             console.log('Success:', data);
+            //             steps.forEach(step => step.classList.remove('active'));
+            //             document.getElementById('success-step').classList.add('active');
+            //             document.querySelector('.max-w-3xl.mx-auto.mb-8').style.display = 'none';
+            //         })
+            //         .catch(error => {
+            //             console.error('Error submitting form:', error);
+            //             // Optionally display error messages to the user
+            //         });
+            // });
 
-                bioTextarea.addEventListener('input', function () {
-                    const currentLength = this.value.length;
-                    const maxLength = this.getAttribute('maxlength');
-                    bioCounter.textContent = `${currentLength}/${maxLength}`;
-                });
+            // Bio character counter
+            const bioTextarea = document.getElementById('bio');
+            const bioCounter = document.getElementById('bio-counter');
 
-                // Profile photo upload
-                const photoInput = document.getElementById('profile-photo-input');
-                const photoBtn = document.getElementById('profile-photo-btn');
-                const photoDropzone = document.getElementById('profile-photo-dropzone');
-                const photoPreview = document.getElementById('profile-photo-preview');
-
-                photoBtn.addEventListener('click', function () {
-                    photoInput.click();
-                });
-
-                photoInput.addEventListener('change', function () {
-                    if (this.files && this.files[0]) {
-                        const reader = new FileReader();
-
-                        reader.onload = function (e) {
-                            photoPreview.innerHTML = '';
-                            const img = document.createElement('img');
-                            img.src = e.target.result;
-                            img.className = 'w-full h-full object-cover';
-                            photoPreview.appendChild(img);
-                        };
-
-                        reader.readAsDataURL(this.files[0]);
-                    }
-                });
-
-                // Drag and drop for photo upload
-                photoDropzone.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                    this.classList.add('drag-over');
-                });
-
-                photoDropzone.addEventListener('dragleave', function (e) {
-                    e.preventDefault();
-                    this.classList.remove('drag-over');
-                });
-
-                photoDropzone.addEventListener('drop', function (e) {
-                    e.preventDefault();
-                    this.classList.remove('drag-over');
-
-                    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                        photoInput.files = e.dataTransfer.files;
-
-                        const reader = new FileReader();
-                        reader.onload = function (e) {
-                            photoPreview.innerHTML = '';
-                            const img = document.createElement('img');
-                            img.src = e.target.result;
-                            img.className = 'w-full h-full object-cover';
-                            photoPreview.appendChild(img);
-                        };
-                        reader.readAsDataURL(e.dataTransfer.files[0]);
-                    }
-                });
-
-                // Initialize the form
-                showStep(1);
+            bioTextarea.addEventListener('input', function () {
+                const currentLength = this.value.length;
+                const maxLength = this.getAttribute('maxlength');
+                bioCounter.textContent = `${currentLength}/${maxLength}`;
             });
+
+            const photoInput = document.getElementById('profile-photo-input');
+            const photoBtn = document.getElementById('profile-photo-btn');
+            const photoDropzone = document.getElementById('profile-photo-dropzone');
+            const photoPreview = document.getElementById('profile-photo-preview');
+
+            photoBtn.addEventListener('click', function () {
+                photoInput.click();
+            });
+
+            photoInput.addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        photoPreview.innerHTML = '';
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'w-full h-full object-cover';
+                        photoPreview.appendChild(img);
+                    };
+
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+
+            showStep(1);
+        });
     </script>
 </body>
 

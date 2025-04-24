@@ -1,31 +1,38 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Services\DomainsService;
 use App\Services\ProfileService;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
     protected $profileService;
-    public function __construct(ProfileService $profileService){
+    protected $domainService;
+
+
+    public function __construct(ProfileService $profileService , DomainsService $domainService){
         $this->profileService = $profileService;
+        $this->domainService = $domainService;
+
     }
 
 
     
     public function index(){
-        return view('users/profile');
+        $domains = $this->domainService->getDomains();
+        return view('users/profileForm', compact('domains'));
     }
 
-    public function show(){
-        return view('users/profileForm');
-    }
+    // public function show(){
+
+    //     return view('users/profileForm');
+    // }
 
 
     public function store(Request $request){
-        $this->profileService->create($request);
-        return view('users/profile');
+        $result = $this->profileService->storeProfile($request); 
+        return $result;
     }
     
 
