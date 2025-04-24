@@ -55,7 +55,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 // routes/web.php
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profile/create', [ProfileController::class, 'show'])->name('profile.create');
-    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+    Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile.store');
     // Route::get('/profile/{profile}', [ProfileController::class, 'show'])->name('profile.show');
 });
