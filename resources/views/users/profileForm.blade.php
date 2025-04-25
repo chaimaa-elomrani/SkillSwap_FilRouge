@@ -32,21 +32,14 @@
                 discover your services. This information helps match you with the right opportunities.</p>
         </header>
 
-        <!-- Progress Indicator -->
-        <div class="max-w-3xl mx-auto mb-8">
-            <div class="flex justify-between mb-2">
-                <div class="text-sm font-medium text-blue-600" id="step-indicator">Step 1 of 2</div>
-                <div class="text-sm text-gray-500" id="step-title">Basic Information</div>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                <div class="bg-blue-600 h-2.5 rounded-full" id="progress-bar" style="width: 50%"></div>
-            </div>
-        </div>
+     
 
         <!-- Form Container -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 max-w-3xl mx-auto overflow-hidden">
             <form id="onboarding-form" action="{{ route('profile.store') }}" method='POST' class="relative">
                 @csrf
+                <!-- Hidden input for user ID -->
+                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                 <!-- Step 1: Basic Information -->
                 <div class="form-step active p-8 " id="step-1" data-step="1">
                     <h3 class="text-xl font-semibold mb-6">Basic Information</h3>
@@ -143,7 +136,7 @@
                             placeholder="Your city and country" required>
                         <div class="hidden mt-1 text-sm text-red-500" id="city-error"></div>
                     </div>
-                    
+
                     <!-- status  -->
                     <div class="mb-6">
                         <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status <span
@@ -154,7 +147,7 @@
                             <option value="">Select your status</option>
                             <option value="available">Available</option>
                             <option value="limited_availability">Limited Availability</option>
-                            <option value="unvailable">unavailable</option>
+                            <option value="unavailable">unvailable</option>
                         </select>
                     </div>
 
@@ -163,14 +156,14 @@
                     <div class="mb-6">
                         <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Domain <span
                                 class="text-red-500">*</span></label>
-                        <select id="status" name="status"
+                        <select id="domain_id" name="domain_id"
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             required>
                             <option value="">Select your Domain</option>
-                            @foreach ( $domains as $domain )
-                            <option value="{{ $domain->name }}">{{ $domain->name }}</option>
+                            @foreach ($domains as $domain)
+                                <option value="{{ $domain->id }}">{{ $domain->name }}</option>
                             @endforeach
-                          
+
                         </select>
                     </div>
 
@@ -301,7 +294,6 @@
             const nextButton = document.querySelector('.next-step');
             const prevButton = document.querySelector('.prev-step');
             const submitButton = document.getElementById('submit-button');
-            const progressBar = document.getElementById('progress-bar');
             const stepIndicator = document.getElementById('step-indicator');
             const stepTitle = document.getElementById('step-title');
 
@@ -325,8 +317,7 @@
                 currentStep = stepNumber;
 
                 // Update progress bar and step indicator
-                const progress = (stepNumber / totalSteps) * 100;
-                progressBar.style.width = `${progress}%`;
+                
                 stepIndicator.textContent = `Step ${stepNumber} of ${totalSteps}`;
                 stepTitle.textContent = stepTitles[stepNumber];
             }
@@ -384,6 +375,56 @@
                 return isValid;
             }
 
+            // Add this to your existing JavaScript
+            function validateImageFile() {
+                const fileInput = document.getElementById('profile-photo-input');
+                const file = fileInput.files[0];
+
+                if (!file) {
+                    document.getElementById('profile-photo-error').textContent = 'Please select an image file';
+                    document.getElementById('profile-photo-error').classList.remove('hidden');
+                    return false;
+                }
+
+                // Check if file is an image
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
+                if (!validTypes.includes(file.type)) {
+                    document.getElementById('profile-photo-error').textContent = 'Please select a valid image file (JPEG, PNG, JPG, GIF, SVG)';
+                    document.getElementById('profile-photo-error').classList.remove('hidden');
+                    return false;
+                }
+
+                // Check file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    document.getElementById('profile-photo-error').textContent = 'Image size should not exceed 5MB';
+                    document.getElementById('profile-photo-error').classList.remove('hidden');
+                    return false;
+                }
+
+                return true;
+            }
+
+            // Update your validateStep function to include image validation
+            function validateStep(stepNumber) {
+                let isValid = true;
+                // Reset all error messages
+                const errorElements = document.querySelectorAll(`#step-${stepNumber} [id$="-error"]`);
+                errorElements.forEach(el => el.classList.add('hidden'));
+
+                // Step 1 validation
+                if (stepNumber === 1) {
+                    // Existing validation code...
+
+                    // Add image validation
+                    if (!validateImageFile()) {
+                        isValid = false;
+                    }
+                }
+
+                // Rest of your validation code...
+
+                return isValid;
+            }
 
 
             nextButton.addEventListener('click', () => {

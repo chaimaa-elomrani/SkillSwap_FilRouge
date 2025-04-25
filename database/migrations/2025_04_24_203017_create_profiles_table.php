@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('phone_number');
             $table->string('image')->nullable();
-            $table->enum('status', ['available', 'Limited Availability', 'unavailable'])->default('active');
+            $table->enum('status', ['available', 'Limited Availability', 'unavailable'])->default('available');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('domain_id')->constrained()->onDelete('cascade');
             $table->timestamps();

@@ -82,73 +82,61 @@
                 @apply px-2 py-1 text-xs rounded-full;
             }
             .badge-blue {
-                @apply bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200;
+                @apply bg-blue-100  text-blue-800 ;
             }
             .badge-purple {
-                @apply bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200;
+                @apply bg-purple-100 text-purple-800 ;
             }
             .badge-pink {
-                @apply bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200;
+                @apply bg-pink-100  text-pink-800 ;
             }
             .badge-green {
-                @apply bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200;
+                @apply bg-green-100  text-green-800 ;
             }
             .badge-red {
-                @apply bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200;
+                @apply bg-red-100  text-red-800 ;
             }
             .badge-orange {
-                @apply bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200;
+                @apply bg-orange-100 text-orange-800 ;
             }
             .badge-teal {
-                @apply bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200;
+                @apply bg-teal-100  text-teal-800 ;
             }
             .badge-indigo {
-                @apply bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200;
+                @apply bg-indigo-100  text-indigo-800 ;
             }
             .badge-yellow {
-                @apply bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200;
+                @apply bg-yellow-100  text-yellow-800 ;
             }
         }
     </style>
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+<body class="bg-gray-50  transition-colors duration-300">
     <!-- Navigation -->
-    <nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-50 transition-colors duration-300">
+    <nav class="bg-white  shadow-md fixed w-full z-50 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="#" class="flex-shrink-0 flex items-center">
-                        <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">SkillSwap</span>
+                        <span class="text-2xl font-bold text-primary-600">SkillSwap</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
-                    <button id="theme-toggle"
-                        class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
-                        <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                        <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
+                 
                     <a href="#"
-                        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">Home</a>
+                        class="text-gray-600  hover:text-primary-600">Home</a>
                     <a href="#"
-                        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">Explore</a>
+                        class="text-gray-600  hover:text-primary-600">Explore</a>
                     <a href="#"
-                        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">About</a>
+                        class="text-gray-600  hover:text-primary-600">About</a>
                     <a href="#"
                         class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors duration-300">Sign
                         Up</a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button"
-                        class="p-2 rounded-md text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                        class="p-2 rounded-md text-gray-500  hover:bg-gray-100 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
@@ -158,18 +146,18 @@
             </div>
         </div>
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
+        <div id="mobile-menu" class="hidden md:hidden bg-white  border-t ">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <button id="mobile-theme-toggle"
-                    class="w-full text-left p-2 rounded-md text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                    class="w-full text-left p-2 rounded-md text-gray-500  hover:bg-gray-100 focus:outline-none">
                     <span id="mobile-theme-text">Toggle Dark Mode</span>
                 </button>
                 <a href="#"
-                    class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+                    class="block p-2 rounded-md text-gray-600  hover:bg-gray-100">Home</a>
                 <a href="#"
-                    class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Explore</a>
+                    class="block p-2 rounded-md text-gray-600  hover:bg-gray-100">Explore</a>
                 <a href="#"
-                    class="block p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+                    class="block p-2 rounded-md text-gray-600  hover:bg-gray-100">About</a>
                 <a href="#" class="block p-2 rounded-md bg-primary-500 text-white hover:bg-primary-600">Sign Up</a>
             </div>
         </div>
@@ -208,13 +196,13 @@
                 viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path
                     d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                    class="fill-gray-50 dark:fill-gray-900"></path>
+                    class="fill-gray-50 "></path>
             </svg>
         </div>
     </section>
 
     <!-- Search & Filter Bar (Sticky) -->
-    <div id="search-bar" class="sticky top-16 z-40 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+    <div id="search-bar" class="sticky top-16 z-40 bg-white  shadow-md transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div class="relative flex-grow max-w-2xl w-full">
@@ -227,13 +215,13 @@
                         </svg>
                     </div>
                     <input type="text" id="search-input"
-                        class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors duration-300"
+                        class="block w-full pl-10 pr-3 py-3 border border-gray-300  rounded-lg bg-white  text-gray-900  placeholder-gray-500  focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors duration-300"
                         placeholder="Search categories...">
                 </div>
 
                 <div class="flex flex-wrap gap-3 w-full md:w-auto">
                     <select id="category-type"
-                        class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
+                        class="bg-gray-100  text-gray-800  rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
                         <option value="all">All Categories</option>
                         @foreach ($types as $type)
                         <option>{{ $type->name }}</option>
@@ -241,7 +229,7 @@
                     </select>
 
                     <select id="sort-by"
-                        class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
+                        class="bg-gray-100  text-gray-800  rounded-lg px-4 py-2 border-0 focus:ring-2 focus:ring-primary-500 transition-colors duration-300">
                         <option value="popular">Most Popular</option>
                         <option value="az">Alphabetical (A-Z)</option>  
                         <option value="za">Alphabetical (Z-A)</option>
@@ -254,22 +242,22 @@
     </div>
 
     <!-- Category Navigation -->
-    <div class="bg-gray-100 dark:bg-gray-800 py-4 border-y border-gray-200 dark:border-gray-700">
+    <div class="bg-gray-100  py-4 border-y border-gray-200 ">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex overflow-x-auto pb-2 scrollbar-hide space-x-4">
                 <a href="#digital-tech"
                     class="flex-shrink-0 px-4 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-colors duration-300">Digital
                     & Tech</a>
                 <a href="#creative"
-                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Creative</a>
+                    class="flex-shrink-0 px-4 py-2 bg-white  text-gray-800  rounded-full hover:bg-gray-200 transition-colors duration-300">Creative</a>
                 <a href="#professional"
-                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Professional</a>
+                    class="flex-shrink-0 px-4 py-2 bg-white  text-gray-800  rounded-full hover:bg-gray-200 transition-colors duration-300">Professional</a>
                 <a href="#lifestyle"
-                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Lifestyle</a>
+                    class="flex-shrink-0 px-4 py-2 bg-white  text-gray-800  rounded-full hover:bg-gray-200 transition-colors duration-300">Lifestyle</a>
                 <a href="#education"
-                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Education</a>
+                    class="flex-shrink-0 px-4 py-2 bg-white  text-gray-800  rounded-full hover:bg-gray-200 transition-colors duration-300">Education</a>
                 <a href="#specialized"
-                    class="flex-shrink-0 px-4 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Specialized</a>
+                    class="flex-shrink-0 px-4 py-2 bg-white  text-gray-800  rounded-full hover:bg-gray-200 transition-colors duration-300">Specialized</a>
                 <a href="#trending"
                     class="flex-shrink-0 px-4 py-2 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-full hover:from-pink-600 hover:to-orange-600 transition-colors duration-300">Others</a>
             </div>
@@ -281,17 +269,17 @@
         <!-- Digital & Tech Categories -->
         <section id="digital-tech" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
-                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
-                    <i class="fas fa-laptop-code text-primary-500 dark:text-primary-400 text-xl"></i>
+                <div class="w-12 h-12 rounded-full bg-blue-100  flex items-center justify-center mr-4">
+                    <i class="fas fa-laptop-code text-primary-500 text-xl"></i>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Digital & Tech</h2>
+                <h2 class="text-3xl font-bold text-gray-900 ">Digital & Tech</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Web Development -->
                 @foreach ($domains['Digital&Tech'] ?? [] as $domain)
 
-                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white  transition-colors duration-300"
                         data-category="digital">
                         <div class="relative h-48">
                             <img src="{{ $domain->image }}" alt="Web Development" class="w-full h-full object-cover">
@@ -302,7 +290,7 @@
                             </div>
                         </div>
                         <div class="p-4">
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <p class="text-gray-600  text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
                                     @foreach ( $domain->skills as $skill )
@@ -310,7 +298,7 @@
                                     @endforeach
                                 </div>
                                 <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
-                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    class="text-primary-500 hover:text-primary-600 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -324,15 +312,15 @@
         <!-- Creative Categories -->
         <section id="creative" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
-                <div class="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center mr-4">
+                <div class="w-12 h-12 rounded-full bg-pink-100  flex items-center justify-center mr-4">
                     <i class="fas fa-paint-brush text-accent-pink text-xl"></i>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Creative</h2>
+                <h2 class="text-3xl font-bold text-gray-900 ">Creative</h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach ($domains['Creative'] ?? [] as $domain)
                     <!-- Graphic Design -->
-                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white  transition-colors duration-300"
                         data-category="creative">
                         <div class="relative h-48">
                             <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
@@ -343,7 +331,7 @@
                             </div>
                         </div>
                         <div class="p-4">
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <p class="text-gray-600  text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
                                 @foreach ( $domain->skills as $skill )
@@ -351,7 +339,7 @@
                                     @endforeach
                                 </div>
                                 <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
-                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    class="text-primary-500 hover:text-primary-600 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -364,16 +352,16 @@
         <!-- Professional Services -->
         <section id="professional" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
-                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                <div class="w-12 h-12 rounded-full bg-blue-100  flex items-center justify-center mr-4">
                     <i class="fas fa-briefcase text-accent-blue text-xl"></i>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Professional Services</h2>
+                <h2 class="text-3xl font-bold text-gray-900 ">Professional Services</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach ($domains['Professional Services'] ?? [] as $domain)
                     <!-- Graphic Design -->
-                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white  transition-colors duration-300"
                         data-category="creative">
                         <div class="relative h-48">
                             <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
@@ -384,7 +372,7 @@
                             </div>
                         </div>
                         <div class="p-4">
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <p class="text-gray-600  text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
                                 @foreach ( $domain->skills as $skill )
@@ -392,7 +380,7 @@
                                     @endforeach
                                 </div>
                                 <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
-                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    class="text-primary-500 hover:text-primary-600 font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -406,16 +394,16 @@
         <section id="lifestyle" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
                 <div
-                    class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                    class="w-12 h-12 rounded-full bg-green-100  flex items-center justify-center mr-4">
                     <i class="fas fa-leaf text-accent-green text-xl"></i>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Lifestyle & Wellness</h2>
+                <h2 class="text-3xl font-bold text-gray-900 ">Lifestyle & Wellness</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Fitness Training -->
                 @foreach ($domains['Lifestyle & Wellness'] ?? [] as $domain)
-                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white  transition-colors duration-300"
                         data-category="creative">
                         <div class="relative h-48">
                             <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
@@ -426,7 +414,7 @@
                             </div>
                         </div>
                         <div class="p-4">
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <p class="text-gray-600  text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
                                 @foreach ( $domain->skills as $skill )
@@ -434,7 +422,7 @@
                                 @endforeach
                                 </div>
                                 <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
-                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    class="text-primary-500 hover:text-primary-600  font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -448,16 +436,16 @@
         <section id="education" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
                 <div
-                    class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center mr-4">
+                    class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mr-4">
                     <i class="fas fa-graduation-cap text-accent-yellow text-xl"></i>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Education & Learning</h2>
+                <h2 class="text-3xl font-bold text-gray-900 ">Education & Learning</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Fitness Training -->
                 @foreach ($domains['Education & Learning'] ?? [] as $domain)
-                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white  transition-colors duration-300"
                         data-category="creative">
                         <div class="relative h-48">
                             <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
@@ -468,7 +456,7 @@
                             </div>
                         </div>
                         <div class="p-4">
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <p class="text-gray-600  text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
                                 @foreach ( $domain->skills as $skill )
@@ -476,7 +464,7 @@
                                 @endforeach
                                 </div>
                                 <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
-                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    class="text-primary-500 hover:text-primary-600  font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -489,16 +477,16 @@
         <!-- Specialized Services -->
         <section id="specialized" class="mb-16 scroll-mt-32">
             <div class="flex items-center mb-8">
-                <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-4">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4">
                     <i class="fas fa-tools text-accent-red text-xl"></i>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Specialized Services</h2>
+                <h2 class="text-3xl font-bold text-gray-900 ">Specialized Services</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Fitness Training -->
                 @foreach ($domains['Specialized Services'] ?? [] as $domain)
-                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white  transition-colors duration-300"
                         data-category="creative">
                         <div class="relative h-48">
                             <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
@@ -509,7 +497,7 @@
                             </div>
                         </div>
                         <div class="p-4">
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <p class="text-gray-600  text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
                                 @foreach ( $domain->skills as $skill )
@@ -517,7 +505,7 @@
                                 @endforeach
                                 </div>
                                 <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
-                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    class="text-primary-500 hover:text-primary-600  font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -534,13 +522,13 @@
                     class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-orange-500 flex items-center justify-center mr-4">
                     <i class="fas fa-fire text-white text-xl"></i>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Others</h2>
+                <h2 class="text-3xl font-bold text-gray-900 ">Others</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Fitness Training -->
                 @foreach ($domains['Others'] ?? [] as $domain)
-                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                    <div class="category-card card-lift rounded-xl overflow-hidden shadow-lg bg-white  transition-colors duration-300"
                         data-category="creative">
                         <div class="relative h-48">
                             <img src="{{ $domain->image }}" alt="Graphic Design" class="w-full h-full object-cover">
@@ -551,7 +539,7 @@
                             </div>
                         </div>
                         <div class="p-4">
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{ $domain->description }}</p>
+                            <p class="text-gray-600  text-sm mb-4">{{ $domain->description }}</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex flex-wrap gap-1">
                                 @foreach ( $domain->skills as $skill )
@@ -559,7 +547,7 @@
                                 @endforeach
                                 </div>
                                 <a href="{{ route('domains.show', ['domains' => $domain->id]) }}"
-                                    class="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center transition-colors duration-300">
+                                    class="text-primary-500 hover:text-primary-600  font-medium flex items-center transition-colors duration-300">
                                     Explore <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -677,43 +665,8 @@
     <script>
         // Theme toggle functionality
         const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
         const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
         const mobileThemeText = document.getElementById('mobile-theme-text');
-
-        // Set initial theme based on user preference
-        if (localStorage.getItem('color-theme') === 'dark' ||
-            (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            themeToggleLightIcon.classList.remove('hidden');
-            mobileThemeText.textContent = 'Toggle Light Mode';
-        } else {
-            document.documentElement.classList.remove('dark');
-            themeToggleDarkIcon.classList.remove('hidden');
-            mobileThemeText.textContent = 'Toggle Dark Mode';
-        }
-
-        // Toggle theme on button click
-        function toggleTheme() {
-            // Toggle icons
-            themeToggleDarkIcon.classList.toggle('hidden');
-            themeToggleLightIcon.classList.toggle('hidden');
-
-            // Toggle dark class
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-                mobileThemeText.textContent = 'Toggle Dark Mode';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-                mobileThemeText.textContent = 'Toggle Light Mode';
-            }
-        }
-
-        themeToggleBtn.addEventListener('click', toggleTheme);
-        mobileThemeToggleBtn.addEventListener('click', toggleTheme);
 
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
