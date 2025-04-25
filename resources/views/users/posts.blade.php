@@ -19,6 +19,49 @@
       }
     }
 
+    /* Pulse animation for notification badge */
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
+      }
+      
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+      }
+      
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+      }
+    }
+
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+
+    /* Sidebar panel animation */
+    .sidebar-panel {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar-panel.open {
+      transform: translateX(0);
+    }
+
+    /* Overlay styles */
+    #overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #overlay.visible {
+      opacity: 1;
+    }
+
     .post-card {
       transition: all 0.2s ease;
     }
@@ -111,6 +154,32 @@
       margin: 0 8px;
       vertical-align: middle;
     }
+
+    /* Primary colors for Tailwind */
+    .bg-primary-50 { background-color: #eef2ff; }
+    .bg-primary-100 { background-color: #e0e7ff; }
+    .bg-primary-200 { background-color: #c7d2fe; }
+    .bg-primary-300 { background-color: #a5b4fc; }
+    .bg-primary-400 { background-color: #818cf8; }
+    .bg-primary-500 { background-color: #6366f1; }
+    .bg-primary-600 { background-color: #4f46e5; }
+    .bg-primary-700 { background-color: #4338ca; }
+    .bg-primary-800 { background-color: #3730a3; }
+    .bg-primary-900 { background-color: #312e81; }
+
+    .text-primary-500 { color: #6366f1; }
+    .text-primary-600 { color: #4f46e5; }
+    .text-primary-700 { color: #4338ca; }
+
+    .hover\:bg-primary-600:hover { background-color: #4f46e5; }
+    .border-primary-200 { border-color: #c7d2fe; }
+    .hover\:border-primary-200:hover { border-color: #c7d2fe; }
+
+    .from-primary-400 { --tw-gradient-from: #818cf8; }
+    .from-primary-500 { --tw-gradient-from: #6366f1; }
+    .from-primary-600 { --tw-gradient-from: #4f46e5; }
+    .to-primary-500 { --tw-gradient-to: #6366f1; }
+    .to-primary-600 { --tw-gradient-to: #4f46e5; }
   </style>
 </head>
 
@@ -181,6 +250,21 @@
               class="nav-item active flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
               <i class="fas fa-home w-5 h-5 mr-3 text-gray-500"></i>
               Home
+            </a>
+          </li>
+          <li>
+            <a href="#"
+              class="nav-item flex items-center px-1 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
+              <div class="relative cursor-pointer group" id="requestsToggle">
+              <div class="p-1 rounded-full group-hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-700 group-hover:text-primary-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+              <!-- Notification Badge -->
+              <span class="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full shadow-sm pulse-animation"></span>
+            </div>
+              Requests  
             </a>
           </li>
           <li>
@@ -348,7 +432,6 @@
           @endforeach
 
         </div>
-      </div>
 
       <!-- No results message (hidden by default) -->
       <div id="no-results" class="hidden container mx-auto px-4 py-12 text-center max-w-4xl">
@@ -487,6 +570,126 @@
     </aside>
   </div>
 
+  <!-- Requests section -->
+  <div class="sidebar-panel fixed top-0 right-0 h-full w-80 md:w-96 bg-white shadow-xl z-50 overflow-hidden flex flex-col">
+      <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gradient-to-r from-primary-500 to-primary-600 text-white">
+        <h2 class="text-lg font-semibold">Collaboration Requests</h2>
+        <button id="closePanelBtn" class="p-1.5 rounded-full hover:bg-white/20 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      <div class="flex-1 overflow-y-auto p-4 space-y-3">
+        <!-- Request Item 1 -->
+        <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-primary-200 transition-colors">
+          <div class="flex items-center space-x-3">
+            <div class="relative">
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full blur-sm opacity-70"></div>
+              <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User" class="relative w-12 h-12 rounded-full border-2 border-white object-cover" />
+            </div>
+            <div>
+              <p class="font-medium text-gray-800">johndoe</p>
+              <div class="flex items-center mt-1">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-blue-500"></span>
+                  Organizer
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="flex space-x-2">
+            <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+            <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Request Item 2 -->
+        <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-primary-200 transition-colors">
+          <div class="flex items-center space-x-3">
+            <div class="relative">
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full blur-sm opacity-70"></div>
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="relative w-12 h-12 rounded-full border-2 border-white object-cover" />
+            </div>
+            <div>
+              <p class="font-medium text-gray-800">sarahsmith</p>
+              <div class="flex items-center mt-1">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                  <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-purple-500"></span>
+                  Participant
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="flex space-x-2">
+            <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+            <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Request Item 3 -->
+        <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-primary-200 transition-colors">
+          <div class="flex items-center space-x-3">
+            <div class="relative">
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-green-400 to-green-600 rounded-full blur-sm opacity-70"></div>
+              <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User" class="relative w-12 h-12 rounded-full border-2 border-white object-cover" />
+            </div>
+            <div>
+              <p class="font-medium text-gray-800">mikebrown</p>
+              <div class="flex items-center mt-1">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-green-500"></span>
+                  Collaborator
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="flex space-x-2">
+            <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+            <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel Footer -->
+      <div class="p-4 border-t border-gray-100 bg-gray-50">
+        <button class="w-full py-2.5 px-4 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg shadow-sm transition-colors flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          New Request
+        </button>
+      </div>
+    </div>
+
+  <!-- Overlay for sidebar panel -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
   <!-- Mobile sidebar backdrop -->
   <div id="sidebar-backdrop" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-10 hidden lg:hidden"></div>
 
@@ -507,6 +710,12 @@
     const leftSidebar = document.getElementById('left-sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+
+    // Requests panel elements
+    const requestsToggle = document.getElementById('requestsToggle');
+    const closePanelBtn = document.getElementById('closePanelBtn');
+    const sidebarPanel = document.querySelector('.sidebar-panel');
+    const overlay = document.getElementById('overlay');
 
     // Toggle left sidebar on mobile
     sidebarToggle.addEventListener('click', () => {
@@ -534,7 +743,6 @@
       }
     });
 
-
     // Filter buttons
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -547,8 +755,6 @@
         // Here you would normally filter the posts based on the selected filter
         const filter = btn.dataset.filter;
         console.log(`Filter selected: ${filter}`);
-
-        // For demo purposes, we'll just log the filter
       });
     });
 
@@ -594,6 +800,35 @@
         navItems.forEach(i => i.classList.remove('active'));
         item.classList.add('active');
       });
+    });
+
+    // Requests panel functionality
+    function openPanel() {
+      sidebarPanel.classList.add('open');
+      overlay.classList.remove('hidden');
+      setTimeout(() => {
+        overlay.classList.add('visible');
+      }, 10);
+    }
+    
+    function closePanel() {
+      sidebarPanel.classList.remove('open');
+      overlay.classList.remove('visible');
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+      }, 300);
+    }
+    
+    // Event listeners for requests panel
+    requestsToggle.addEventListener('click', openPanel);
+    closePanelBtn.addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+    
+    // Close panel with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && sidebarPanel.classList.contains('open')) {
+        closePanel();
+      }
     });
   </script>
 </body>
