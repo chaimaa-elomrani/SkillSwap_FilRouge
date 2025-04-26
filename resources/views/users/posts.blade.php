@@ -7,7 +7,37 @@
   <title>Explore Posts</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#082f49',
+            },
+          },
+          boxShadow: {
+            'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+          },
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+      },
+    }
+  </script>
   <style>
+    
     /* Custom animations */
     @keyframes fadeIn {
       from {
@@ -211,11 +241,7 @@
             <span class="absolute top-0 right-0 h-2 w-2 bg-indigo-600 rounded-full"></span>
           </button>
 
-          <button id="messages-btn"
-            class="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 relative">
-            <i class="far fa-envelope text-gray-600"></i>
-            <span class="absolute top-0 right-0 h-2 w-2 bg-indigo-600 rounded-full"></span>
-          </button>
+       
 
           <div
             class="h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
@@ -262,7 +288,7 @@
                 </svg>
               </div>
               <!-- Notification Badge -->
-              <span class="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full shadow-sm pulse-animation"></span>
+              <!-- <span class="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full shadow-sm pulse-animation"></span> -->
             </div>
               Requests  
             </a>
@@ -572,8 +598,8 @@
 
   <!-- Requests section -->
   <div class="sidebar-panel fixed top-0 right-0 h-full w-80 md:w-96 bg-white shadow-xl z-50 overflow-hidden flex flex-col">
-      <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gradient-to-r from-primary-500 to-primary-600 text-white">
-        <h2 class="text-lg font-semibold">Collaboration Requests</h2>
+      <div class="p-5 border-b border-gray-100 flex justify-between items-center  bg-indigo-600 hover:bg-indigo-700 text-white">
+        <h2 class="text-lg font-semibold ">Collaboration Requests</h2>
         <button id="closePanelBtn" class="p-1.5 rounded-full hover:bg-white/20 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -586,17 +612,16 @@
         <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-primary-200 transition-colors">
           <div class="flex items-center space-x-3">
             <div class="relative">
-              <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full blur-sm opacity-70"></div>
+              <div class="absolute -inset-0.5  rounded-full "></div>
               <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User" class="relative w-12 h-12 rounded-full border-2 border-white object-cover" />
             </div>
             <div>
               <p class="font-medium text-gray-800">johndoe</p>
-              <div class="flex items-center mt-1">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                  <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-blue-500"></span>
-                  Organizer
-                </span>
-              </div>
+              <div>              
+              <div class="flex items-center text-xs text-gray-500 mt-0.5">
+                <span>Product Designer</span>
+                </div>
+            </div>
             </div>
           </div>
           <div class="flex space-x-2">
@@ -613,78 +638,10 @@
           </div>
         </div>
         
-        <!-- Request Item 2 -->
-        <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-primary-200 transition-colors">
-          <div class="flex items-center space-x-3">
-            <div class="relative">
-              <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full blur-sm opacity-70"></div>
-              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="relative w-12 h-12 rounded-full border-2 border-white object-cover" />
-            </div>
-            <div>
-              <p class="font-medium text-gray-800">sarahsmith</p>
-              <div class="flex items-center mt-1">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                  <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-purple-500"></span>
-                  Participant
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="flex space-x-2">
-            <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </button>
-            <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        
-        <!-- Request Item 3 -->
-        <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-primary-200 transition-colors">
-          <div class="flex items-center space-x-3">
-            <div class="relative">
-              <div class="absolute -inset-0.5 bg-gradient-to-r from-green-400 to-green-600 rounded-full blur-sm opacity-70"></div>
-              <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User" class="relative w-12 h-12 rounded-full border-2 border-white object-cover" />
-            </div>
-            <div>
-              <p class="font-medium text-gray-800">mikebrown</p>
-              <div class="flex items-center mt-1">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                  <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-green-500"></span>
-                  Collaborator
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="flex space-x-2">
-            <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </button>
-            <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
+
       </div>
       
-      <!-- Panel Footer -->
-      <div class="p-4 border-t border-gray-100 bg-gray-50">
-        <button class="w-full py-2.5 px-4 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg shadow-sm transition-colors flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-          New Request
-        </button>
-      </div>
+
     </div>
 
   <!-- Overlay for sidebar panel -->
