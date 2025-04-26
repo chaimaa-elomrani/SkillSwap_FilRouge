@@ -6,39 +6,45 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class AuthService{
+class AuthService
+{
 
-    public function register (array $data){
+    public function register(array $data)
+    {
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
 
-        return $user;   
+        return $user;
     }
 
 
-    public function login ($email, $password){
+    public function login($email, $password)
+    {
         if (!Auth::attempt(['email' => $email, 'password' => $password])) {
-            return false ;
+            return false;
         }
 
         $user = User::where('email', $email)->first();
-      
-        return   $user;
-       
+        $user->profile_completed = true;
+        $user->save();                              
+
+        return $user;
+
     }
 
 
-    public function logout(){
+    public function logout()
+    {
         $user = Auth::user();
 
-        if(!$user){
-            return false ; // User not authenticated
+        if (!$user) {
+            return false; // User not authenticated
         }
 
         $user->tokens()->delete();
-        return true ;
+        return true;
     }
 }

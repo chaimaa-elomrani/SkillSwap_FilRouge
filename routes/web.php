@@ -25,7 +25,7 @@ Route::get('/header',[HomeController::class , 'header']);
 Route::get('/search',[SearchController::class , 'index']);
 
 // domains page 
-Route::get('/domains',[DomainsController::class , 'index']);
+Route::get('/domains',[DomainsController::class , 'index'])->name('domains.index');
 Route::get('/domains/getDomainByType',[DomainsController::class , 'getDomainByType']);
 Route::get('/domains/{domains}', [DomainsController::class, 'showByDomain'])->name('domains.show');
 
