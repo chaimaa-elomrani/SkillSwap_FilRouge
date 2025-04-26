@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\Models\Posts;
 use App\Models\Skills;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection; 
 
 
@@ -40,5 +41,11 @@ class SkillService{
     {
         return Skills::where('name', 'like', "%{$query}%")
             ->get();
+    }
+
+
+    public function getSkillsByUserId($userId){
+        $user = User::findOrFail($userId);
+        return $user->skills()->get(); 
     }
 } 

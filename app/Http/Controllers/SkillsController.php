@@ -76,4 +76,9 @@ class SkillsController extends Controller
     //    return view('admin/skills', compact('domains'));
     // }
 
+    public function getSkillsByUserId($userId){
+        $skills = $this->skillService->getSkillsByUserId($userId);
+        return view('users/profile', compact('skills'));
+    }   
+
 }
