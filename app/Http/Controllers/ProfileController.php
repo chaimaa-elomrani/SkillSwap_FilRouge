@@ -20,9 +20,9 @@ class ProfileController extends Controller
 
     public function show(){
         $userId = auth()->user()->id;
-        $profiles = Profile::where('user_id', $userId)->firstOrFail();
+        $profile = Profile::where('user_id', $userId)->firstOrFail();
         // dd($profiles);
-        return view('users/profile' , compact('profiles'));
+        return view('users/profile' , compact('profile'));
     }
 
     

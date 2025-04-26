@@ -79,9 +79,9 @@
 <body class="bg-gray-50  transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white  shadow-sm sticky top-0 z-50 transition-colors duration-200">
-  
+
         <!-- Mobile Menu -->
- 
+
     </header>
 
     <main class="container mx-auto px-4 py-6">
@@ -96,7 +96,7 @@
             <!-- Profile Info -->
             <div
                 class="bg-white rounded-xl shadow-lg pr-6 pb-4 pl-4 md:p-8 -mt-20 md:-mt-24 ml-4 md:ml-8 mr-4 md:mr-8 relative z-10 transition-colors duration-200">
-                
+
                 <div class="flex flex-col md:flex-row">
                     <!-- Avatar -->
                     <div class="flex-shrink-0 -mt-16 md:-mt-20 mb-4 md:mb-0 md:mr-6">
@@ -111,20 +111,21 @@
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                             <div>
                                 <div class="flex items-center">
-                                    <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">{{$profiles->name}}</h1>
-        
+                                    <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">{{$profile->name}}
+                                    </h1>
+
                                 </div>
-                                <h2 class="text-lg text-secondary-600  mt-1">{{$profiles->title }}</h2>
+                                <h2 class="text-lg text-secondary-600  mt-1">{{$profile->title }}</h2>
                                 <div class="flex items-start mt-2 text-sm text-secondary-500 flex-col gap-2 ">
                                     <div class="flex items-center mr-4">
                                         <i class="fas fa-map-marker-alt mr-1"></i>
-                                        <span>{{ $profiles->location }}</span>
+                                        <span>{{ $profile->location }}</span>
                                     </div>
 
                                 </div>
                             </div>
                             <div>
-                
+
                                 <div class="mt-4 md:mt-4 flex flex-wrap gap-2 ">
 
                                     <div
@@ -135,7 +136,8 @@
                                     </div>
                                     <button class="">
                                         <a href="{{ route('posts.create') }}"
-                                            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Add Post</a>
+                                            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Add
+                                            Post</a>
 
                                     </button>
 
@@ -150,8 +152,8 @@
                         </div>
 
                     </div>
-                </div>               
-             </div>
+                </div>
+            </div>
         </section>
 
         <!-- Main Content -->
@@ -167,15 +169,15 @@
 
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Email</span>
-                            <span class="text-secondary-900 font-medium">{{ $profiles->email}}</span>
+                            <span class="text-secondary-900 font-medium">{{ $profile->email}}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Phone number</span>
-                            <span class="text-secondary-900  font-medium">{{ $profiles->phone}}</span>
+                            <span class="text-secondary-900  font-medium">{{ $profile->phone}}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Languages</span>
-                            <span class="text-secondary-900  font-medium">{{ $profiles->languages}}</span>
+                            <span class="text-secondary-900  font-medium">{{ $profile->languages}}</span>
                         </div>
                     </div>
                 </div>
@@ -348,10 +350,8 @@
                             </button>
                         </div>
                         <div class="prose max-w-none text-secondary-700" id="userBio">
-            
-                      
-                            <p> rjbejl'tjzebtjbgj</p>
-                      
+                                <p> {{ $profile->bio }}</p>
+
                         </div>
                     </section>
 
@@ -681,7 +681,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
 
             // Tab switching
             const tabButtons = document.querySelectorAll('.tab-button');
@@ -793,29 +793,29 @@ I specialize in design systems, responsive web applications, and bridging the ga
                 e.preventDefault();
                 const skillName = skillInput.value.trim();
                 const skillType = document.querySelector('input[name="skillType"]:checked').value;
-                
+
                 if (skillName) {
                     const skillElement = document.createElement('div');
-                    skillElement.className = skillType === 'technical' 
+                    skillElement.className = skillType === 'technical'
                         ? 'bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group'
                         : 'bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group';
-                    
+
                     skillElement.innerHTML = `
                         <span>${skillName}</span>
                         <button class="ml-2 text-${skillType === 'technical' ? 'secondary' : 'primary'}-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
                             <i class="fas fa-times"></i>
                         </button>
                     `;
-                    
+
                     const container = skillType === 'technical' ? technicalSkillsContainer : softSkillsContainer;
                     container.appendChild(skillElement);
-                    
+
                     // Add event listener to remove button
                     const removeBtn = skillElement.querySelector('button');
                     removeBtn.addEventListener('click', () => {
                         skillElement.remove();
                     });
-                    
+
                     closeModal(skillModal);
                 }
             });
