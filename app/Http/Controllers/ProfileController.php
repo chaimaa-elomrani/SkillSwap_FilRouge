@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Profile;
 use App\Services\DomainsService;
 use App\Services\ProfileService;
 use Illuminate\Http\Request;
@@ -17,6 +18,12 @@ class ProfileController extends Controller
 
     }
 
+    public function show(){
+        $userId = auth()->user()->id;
+        $profiles = Profile::where('user_id', $userId)->firstOrFail();
+        // dd($profiles);
+        return view('users/profile' , compact('profiles'));
+    }
 
     
     public function index(){
@@ -24,10 +31,7 @@ class ProfileController extends Controller
         return view('users/profileForm', compact('domains'));
     }
 
-    // public function show(){
-
-    //     return view('users/profileForm');
-    // }
+    
 
 
     public function store(Request $request){

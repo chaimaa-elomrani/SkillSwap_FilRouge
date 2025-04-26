@@ -55,7 +55,8 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 // routes/web.php
 
 Route::middleware(['auth'])->group(function () {    
-    // Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+    // Route::get('/profile/index', [ProfileController::class, 'show'])->name('profile.index');
+    Route::get('/myProfile', [ProfileController::class, 'show'])->name('profile.index');
     Route::get('/profile/show', [ProfileController::class, 'index'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
     // Route::get('/profile/{profile}', [ProfileController::class, 'show'])->name('profile.show');

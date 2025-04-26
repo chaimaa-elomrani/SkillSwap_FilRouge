@@ -60,18 +60,13 @@ class AuthController extends Controller
 
         
         $user = $this->authService->login($credentials['email'], $credentials['password']);
-        
-        // if ($user) {
-        //     session()->flash('success', 'Login successful!');
-        //     return view('users/profileForm');
-        // }
 
         if(!auth()->user()->profile_completed){
             return redirect(route('profile.show'));
         }
 
-        return redirect()->route('profile.show');
-    }
+        return redirect()->route('profile.index');
+    }   
 
 
 

@@ -96,11 +96,12 @@
             <!-- Profile Info -->
             <div
                 class="bg-white rounded-xl shadow-lg pr-6 pb-4 pl-4 md:p-8 -mt-20 md:-mt-24 ml-4 md:ml-8 mr-4 md:mr-8 relative z-10 transition-colors duration-200">
+                
                 <div class="flex flex-col md:flex-row">
                     <!-- Avatar -->
                     <div class="flex-shrink-0 -mt-16 md:-mt-20 mb-4 md:mb-0 md:mr-6">
                         <div class="relative">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Picture"
+                            <img src="{{ asset('images/profile.png') }}" alt="Profile Picture"
                                 class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white  object-cover shadow-md">
                         </div>
                     </div>
@@ -110,14 +111,14 @@
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                             <div>
                                 <div class="flex items-center">
-                                    <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">Alex Johnson</h1>
+                                    <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">{{$profiles->name}}</h1>
         
                                 </div>
-                                <h2 class="text-lg text-secondary-600  mt-1">Senior Full Stack Developer</h2>
+                                <h2 class="text-lg text-secondary-600  mt-1">{{$profiles->title }}</h2>
                                 <div class="flex items-start mt-2 text-sm text-secondary-500 flex-col gap-2 ">
                                     <div class="flex items-center mr-4">
                                         <i class="fas fa-map-marker-alt mr-1"></i>
-                                        <span>San Francisco, CA</span>
+                                        <span>{{ $profiles->location }}</span>
                                     </div>
 
                                 </div>
@@ -149,8 +150,8 @@
                         </div>
 
                     </div>
-                </div>
-            </div>
+                </div>               
+             </div>
         </section>
 
         <!-- Main Content -->
@@ -166,16 +167,15 @@
 
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Email</span>
-                            <span class="text-secondary-900 font-medium">chaima@gmail.com</span>
+                            <span class="text-secondary-900 font-medium">{{ $profiles->email}}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Phone number</span>
-                            <span class="text-secondary-900  font-medium">+1 (123) 456-7890</span>
+                            <span class="text-secondary-900  font-medium">{{ $profiles->phone}}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Languages</span>
-                            <span class="text-secondary-900  font-medium">English (Fluent), Spanish
-                                (Conversational)</span>
+                            <span class="text-secondary-900  font-medium">{{ $profiles->languages}}</span>
                         </div>
                     </div>
                 </div>
@@ -348,12 +348,10 @@
                             </button>
                         </div>
                         <div class="prose max-w-none text-secondary-700" id="userBio">
-                            <p>I'm a UX/UI Designer and Frontend Developer with over 8 years of experience creating
-                                intuitive digital experiences. My approach combines user-centered design principles with
-                                clean, efficient code to build products that are both beautiful and functional.</p>
-                            <p>I specialize in design systems, responsive web applications, and bridging the gap between
-                                design and development. I'm passionate about accessibility and creating inclusive
-                                experiences that work for everyone.</p>
+            
+                      
+                            <p> rjbejl'tjzebtjbgj</p>
+                      
                         </div>
                     </section>
 
