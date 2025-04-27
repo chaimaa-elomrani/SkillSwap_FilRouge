@@ -48,10 +48,10 @@ Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name(
 Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
 Route::get('/skills', [SkillsController::class, 'getSkillsByUser'])->name('skills.getSkillsByUser');
+Route::post('/save-skills', 'App\Http\Controllers\SkillsController@store')->name('skills.store');
 
 
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
 // routes/web.php
