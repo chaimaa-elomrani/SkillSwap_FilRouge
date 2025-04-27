@@ -46,6 +46,11 @@
             }
         }
     </script>
+    <style>
+        .bg-overlay {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+        }
+    </style>
     <style type="text/tailwindcss">
         @layer components {
             .tab-active {
@@ -204,9 +209,7 @@
                                 <div
                                     class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
                                     @foreach (auth()->user()->skills as $skill)
-                                        @if ($skill->type == 'hard')
-                                            <span>{{ $skill->name }}</span>
-                                        @endif
+                                        <span>{{ $skill->name }}</span>
                                     @endforeach
                                     <button
                                         class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
@@ -217,25 +220,7 @@
                             </div>
                         </div>
 
-                        <!-- Soft Skills -->
-                        <div>
-                            <h3 class="text-sm font-medium text-secondary-500 uppercase tracking-wider mb-3">Soft Skills
-                            </h3>
-                            <div class="flex flex-wrap gap-2" id="softSkillsContainer">
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    @foreach (auth()->user()->skills as $skill)
-                                        @if ($skill->type == 'soft')
-                                            <span>{{ $skill->name }}</span>
-                                        @endif
-                                    @endforeach
-                                    <button
-                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+
                     </section>
 
                 </div>
@@ -421,7 +406,6 @@
                     </div>
 
                     <div class="space-y-6" id="servicesContainer">
-                        <!-- Service Item 1 -->
                         @foreach (auth()->user()->personalServices as $service)
                             <div
                                 class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors">
@@ -556,6 +540,54 @@ I specialize in design systems, responsive web applications, and bridging the ga
             </div>
         </div>
 
+        <!--  services modal -->
+        <div id="AddServiceModal"
+            class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden ">
+           
+                <form class="service-item p-6 rounded-lg bg-white w-full max-w-xl mx-auto shadow-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-secondary-900">Edit Bio</h3>
+                        <button class="text-secondary-500 hover:text-secondary-700 transition-colors modal-close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" name="title"
+                            class="service-title w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Service Title (e.g., Web Development, Logo Design)" required>
+                    </div>
+
+                    <textarea name="description"
+                        class="service-description w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4"
+                        rows="4"
+                        placeholder="Describe this service in detail. What do you offer, and what can clients expect?"
+                        required></textarea>
+
+                    <div class="flex items-center">
+                        <span class="text-md text-gray-600 mr-2  ">Credit Cost:</span>
+                        <div class="flex items-center space-x-2">
+                            <input type="number" name="credit-cost"
+                                class="service-min-credits w-20 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="800..." required>
+                            <span class="text-gray-500">-</span>
+
+                        </div>
+                    </div>
+                    <div class=" flex items-end justify-end gap-4">
+                        <button type="button" id="cancelbtn"
+                            class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Save Service
+                        </button>
+                    </div>
+                </form>
+
+          
+        </div>
+
     </main>
 
 
@@ -657,7 +689,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
 
             // Skills  functionality
 
-            const addSkillBtn =document.getElementById('addSkillBtn')
+            const addSkillBtn = document.getElementById('addSkillBtn')
             const skillsModal = document.getElementById('skillModal');
             const canselBtn = document.getElementById('cancelbtn');
             const skillsInput = document.getElementById('skills-input');
@@ -685,7 +717,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
                 }
             });
 
-            function addSkill(skillName) {  
+            function addSkill(skillName) {
                 if (!skillName.trim()) return;
 
                 // Check if skill already exists
@@ -705,12 +737,12 @@ I specialize in design systems, responsive web applications, and bridging the ga
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-                `;  
+                `;
                 const skillId = nextId++;
                 skillsData.push({ id: skillId, name: skillName });
 
                 // Add remove event listener
-                skillTag.querySelector('button').addEventListener('click', function() {
+                skillTag.querySelector('button').addEventListener('click', function () {
                     skillTag.remove();
                     updateHiddenField();
                 });
@@ -727,23 +759,23 @@ I specialize in design systems, responsive web applications, and bridging the ga
                 skillsHidden.value = JSON.stringify(skills);
             }
 
-            addSkillBtn.addEventListener('click', function() {
+            addSkillBtn.addEventListener('click', function () {
                 addSkill(skillsInput.value);
             });
 
-            skillsInput.addEventListener('keydown', function(e) {
+            skillsInput.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter') {
                     e.preventDefault();
                     addSkill(this.value);
                 }
             });
 
-            skillsForm.addEventListener('submit', function(e) {
+            skillsForm.addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 // Validate that at least one skill is added
                 const skillTags = skillsContainer.querySelectorAll('.skill-tag');
-                
+
                 if (skillTags.length === 0) {
                     skillsError.textContent = 'Please add at least one skill';
                     skillsError.classList.remove('hidden');
@@ -751,12 +783,12 @@ I specialize in design systems, responsive web applications, and bridging the ga
                 } else {
                     skillsError.classList.add('hidden');
                 }
-                
+
                 // Get all skills
-                const skills = Array.from(skillTags).map(tag => 
+                const skills = Array.from(skillTags).map(tag =>
                     tag.querySelector('span').textContent
                 );
-                
+
                 // Send data to server
                 sendSkills(skills);
             });
@@ -765,7 +797,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
                 try {
                     // Show loading indicator if you have one
                     // loader.style.display = 'flex';
-                    
+
                     // Check if CSRF token exists
                     const csrfToken = document.querySelector('meta[name="csrf-token"]');
                     if (!csrfToken) {
@@ -773,10 +805,10 @@ I specialize in design systems, responsive web applications, and bridging the ga
                         alert('CSRF token not found. Please refresh the page.');
                         return;
                     }
-                    
+
                     console.log('Sending skills:', skills);
                     console.log('CSRF token:', csrfToken.getAttribute('content'));
-                    
+
                     const response = await fetch('/save-skills', {
                         method: 'POST',
                         headers: {
@@ -788,13 +820,13 @@ I specialize in design systems, responsive web applications, and bridging the ga
                             skills: JSON.stringify(skills)
                         })
                     });
-                    
+
                     console.log('Response status:', response.status);
-                    
+
                     // Try to get the response text first to debug
                     const responseText = await response.text();
                     console.log('Response text:', responseText);
-                    
+
                     // Parse the JSON if possible
                     let result;
                     try {
@@ -805,7 +837,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
                         alert('Server returned invalid JSON. Check console for details.');
                         return;
                     }
-                    
+
                     if (result.success) {
                         alert('Skills saved successfully!');
                     } else {
@@ -815,13 +847,23 @@ I specialize in design systems, responsive web applications, and bridging the ga
                     console.error('Fetch error:', error);
                     alert('An error occurred while saving skills: ' + error.message);
                 } finally {
-                  
+
                 }
-            }     
+            };
+
+
+            // services modal 
+            const addServiceBtn = document.getElementById('addServiceBtn');
+            const addServiceModal = document.getElementById('AddServiceModal');
+            
+            addServiceBtn.addEventListener('click', ()=> {
+                addServiceModal.classList.remove('hidden');
+            });
+
         });
 
-       
-    
+
+
     </script>
 </body>
 
