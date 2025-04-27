@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DomainsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguagesController;
+use App\Http\Controllers\PersonalServicesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
@@ -46,6 +47,7 @@ Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.
 Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
 Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
+Route::get('/skills', [SkillsController::class, 'getSkillsByUser'])->name('skills.getSkillsByUser');
 
 
 
@@ -55,9 +57,10 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 // routes/web.php
 
 Route::middleware(['auth'])->group(function () {    
-    // Route::get('/profile/index', [ProfileController::class, 'show'])->name('profile.index');
     Route::get('/myProfile', [ProfileController::class, 'show'])->name('profile.index');
     Route::get('/profile/show', [ProfileController::class, 'index'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
-    // Route::get('/profile/{profile}', [ProfileController::class, 'show'])->name('profile.show');
 });
+
+
+Route::get('/personal_services', [PersonalServicesController::class, 'getPersonalServicesbyUserId'])->name('personal_services.index');
