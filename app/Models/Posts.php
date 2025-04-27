@@ -23,4 +23,8 @@ class Posts extends Model
     public function domain(){
         return $this->belongsTo(Domains::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
