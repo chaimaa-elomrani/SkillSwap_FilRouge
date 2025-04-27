@@ -44,8 +44,8 @@ class SkillService{
     }
 
 
-    public function getSkillsByUserId($userId){
-        $user = User::findOrFail($userId);
-        return $user->skills()->get(); 
-    }
+    // public function getSkillsByUserId($userId){
+    //     $user = User::findOrFail($userId);
+    //     return $user->skills()->get(); 
+    // }
 } 

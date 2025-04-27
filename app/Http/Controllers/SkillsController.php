@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Skills;
+use App\Models\User;
 use App\Services\DomainService;
 use App\Services\SkillService;
 use Illuminate\Http\Request;
@@ -70,15 +71,9 @@ class SkillsController extends Controller
         return redirect()->route('skills.index');
     }
 
-    // public function getDomains(){
-
-    //    $domains = $this->domainService->getDomains();
-    //    return view('admin/skills', compact('domains'));
-    // }
 
     public function getSkillsByUserId($userId){
-        $skills = $this->skillService->getSkillsByUserId($userId);
-        return view('users/profile', compact('skills'));
-    }   
-
+        $user = auth()->user()->load('user_skills');
+        return view('users/profile', compact('user'));
+    }
 }
