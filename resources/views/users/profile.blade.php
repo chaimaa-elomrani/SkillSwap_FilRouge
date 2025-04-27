@@ -203,7 +203,9 @@
                                 <div
                                     class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
                                     @foreach (auth()->user()->skills as $skill )
+                                    @if ($skill->type == 'hard')
                                     <span>{{ $skill->name }}</span>
+                                    @endif
                                     @endforeach
                                     <button
                                         class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
@@ -219,38 +221,17 @@
                             <h3 class="text-sm font-medium text-secondary-500 uppercase tracking-wider mb-3">Soft Skills
                             </h3>
                             <div class="flex flex-wrap gap-2" id="softSkillsContainer">
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Communication</span>
+                                <div class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
+                                    @foreach (auth()->user()->skills as $skill )
+                                    @if ($skill->type == 'soft')
+                                    <span>{{ $skill->name }}</span>
+                                    @endif
+                                    @endforeach
                                     <button
                                         class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
                                         <i class="fas fa-times"></i>
                                     </button>
-                                </div>
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Problem Solving</span>
-                                    <button
-                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Collaboration</span>
-                                    <button
-                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Time Management</span>
-                                    <button
-                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
+                               </div>
                             </div>
                         </div>
                     </section>
@@ -312,7 +293,7 @@
 
                                 </div>
                                 <div class="ml-4">
-                                    <h4 class="text-md font-medium text-secondary-900 ">Responsive Web Design</h4>
+                                    <h4 class="text-md font-medium text-secondary-900 "></h4>
                                     <p class="mt-1 text-sm text-secondary-500 ">Mobile-first, responsive websites that
                                         work on all devices</p>
                                 </div>

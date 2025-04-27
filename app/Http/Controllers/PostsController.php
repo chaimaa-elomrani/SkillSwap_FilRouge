@@ -38,7 +38,7 @@ class PostsController extends Controller
 
     public function getPostByUserId($userId){
         $user = auth()->user()->load('posts');
-        return view('users/posts', compact('user'));
+        return view('users/profile', compact('user'));
     }
 
 
