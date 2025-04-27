@@ -260,7 +260,7 @@
                             <button
                                 class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
                                 data-tab="history">
-                                <i class="fas fa-history mr-2"></i>Work History
+                                <i class="fas fa-history mr-2"></i>Offered Services
                             </button>
                         </nav>
                     </div>
@@ -283,23 +283,7 @@
                         </div>
                     </section>
 
-                    <div class="bg-white  rounded-xl shadow-md p-6 mb-6 transition-colors duration-200">
-                        <h3 class="text-lg font-semibold mb-4">Services I Offer</h3>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
-                                <div
-                                    class="flex-shrink-0 h-10 w-10 rounded-md bg-secondary-100 flex items-center justify-center">
-                                    <img src="./images/servicesLogo.png" alt="">
-
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-md font-medium text-secondary-900 "></h4>
-                                    <p class="mt-1 text-sm text-secondary-500 ">Mobile-first, responsive websites that
-                                        work on all devices</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+               
 
                 </div>
 
@@ -457,58 +441,6 @@
                                 <span class="text-secondary-500">Estimated:</span>
                                 <span
                                     class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">150-300
-                                    credits</span>
-                            </div>
-                        </div>
-
-                        <!-- Service Item 2 -->
-                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
-                            data-service-id="2">
-                            <div class="flex justify-between">
-                                <h3 class="text-lg font-medium text-secondary-900">Frontend Development</h3>
-                                <div class="flex space-x-2">
-                                    <button
-                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    <button
-                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <p class="mt-2 text-secondary-600">Responsive web development using HTML, CSS, and
-                                JavaScript. Specializing in React, Vue, and modern frontend frameworks.</p>
-                            <div class="mt-3 flex items-center">
-                                <span class="text-secondary-500">Estimated:</span>
-                                <span
-                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">200-400
-                                    credits</span>
-                            </div>
-                        </div>
-
-                        <!-- Service Item 3 -->
-                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
-                            data-service-id="3">
-                            <div class="flex justify-between">
-                                <h3 class="text-lg font-medium text-secondary-900">Design System Creation</h3>
-                                <div class="flex space-x-2">
-                                    <button
-                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    <button
-                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <p class="mt-2 text-secondary-600">Development of comprehensive design systems including
-                                component libraries, style guides, and documentation for consistent product design.</p>
-                            <div class="mt-3 flex items-center">
-                                <span class="text-secondary-500">Estimated:</span>
-                                <span
-                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">300-500
                                     credits</span>
                             </div>
                         </div>
