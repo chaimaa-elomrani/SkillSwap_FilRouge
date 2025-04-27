@@ -202,17 +202,17 @@
                             <div class="flex flex-wrap gap-2" id="technicalSkillsContainer">
                                 <div
                                     class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    @foreach (auth()->user()->skills as $skill )
-                                    @if ($skill->type == 'hard')
-                                    <span>{{ $skill->name }}</span>
-                                    @endif
+                                    @foreach (auth()->user()->skills as $skill)
+                                        @if ($skill->type == 'hard')
+                                            <span>{{ $skill->name }}</span>
+                                        @endif
                                     @endforeach
                                     <button
                                         class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
-                               
+
                             </div>
                         </div>
 
@@ -221,17 +221,18 @@
                             <h3 class="text-sm font-medium text-secondary-500 uppercase tracking-wider mb-3">Soft Skills
                             </h3>
                             <div class="flex flex-wrap gap-2" id="softSkillsContainer">
-                                <div class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    @foreach (auth()->user()->skills as $skill )
-                                    @if ($skill->type == 'soft')
-                                    <span>{{ $skill->name }}</span>
-                                    @endif
+                                <div
+                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
+                                    @foreach (auth()->user()->skills as $skill)
+                                        @if ($skill->type == 'soft')
+                                            <span>{{ $skill->name }}</span>
+                                        @endif
                                     @endforeach
                                     <button
                                         class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
                                         <i class="fas fa-times"></i>
                                     </button>
-                               </div>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -278,12 +279,12 @@
                             </button>
                         </div>
                         <div class="prose max-w-none text-secondary-700" id="userBio">
-                                <p> {{ $profile->bio }}</p>
+                            <p> {{ $profile->bio }}</p>
 
                         </div>
                     </section>
 
-               
+
 
                 </div>
 
@@ -420,30 +421,30 @@
 
                     <div class="space-y-6" id="servicesContainer">
                         <!-- Service Item 1 -->
-                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
-                            data-service-id="1">
-                            <div class="flex justify-between">
-                                <h3 class="text-lg font-medium text-secondary-900">UX/UI Design</h3>
-                                <div class="flex space-x-2">
-                                    <button
-                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    <button
-                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                        @foreach (auth()->user()->personalServices as $service)
+                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors">
+                                <div class="flex justify-between">
+                                    <h3 class="text-lg font-medium text-secondary-900">{{ $service->title }}</h3>
+                                    <div class="flex space-x-2">
+                                        <button
+                                            class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                        <button
+                                            class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-secondary-600">{{ $service->description }}</p>
+                                <div class="mt-3 flex items-center">
+                                    <span class="text-secondary-500">Estimated:</span>
+                                    <span
+                                        class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">{{ $service->credit_cost }}</span>
                                 </div>
                             </div>
-                            <p class="mt-2 text-secondary-600">Complete UX/UI design for web and mobile applications,
-                                including user research, wireframing, prototyping, and design systems.</p>
-                            <div class="mt-3 flex items-center">
-                                <span class="text-secondary-500">Estimated:</span>
-                                <span
-                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">150-300
-                                    credits</span>
-                            </div>
-                        </div>
+                            @endforeach
+
                     </div>
                 </section>
 
