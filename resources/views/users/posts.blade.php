@@ -617,7 +617,7 @@
             </div>
             <div>
               <p class="font-medium text-gray-800">johndoe</p>
-              <div>              
+              <div>               
               <div class="flex items-center text-xs text-gray-500 mt-0.5">
                 <span>Product Designer</span>
                 </div>

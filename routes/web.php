@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DomainsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguagesController;
+use App\Http\Controllers\PersonalServicesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
@@ -22,10 +23,9 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/',[HomeController::class , 'index'])->name('home');
 Route::get('/header',[HomeController::class , 'header']);
-Route::get('/search',[SearchController::class , 'index']);
 
 // domains page 
-Route::get('/domains',[DomainsController::class , 'index']);
+Route::get('/domains',[DomainsController::class , 'index'])->name('domains.index');
 Route::get('/domains/getDomainByType',[DomainsController::class , 'getDomainByType']);
 Route::get('/domains/{domains}', [DomainsController::class, 'showByDomain'])->name('domains.show');
 
@@ -44,19 +44,27 @@ Route::get('/post/create',[PostsController::class , 'createPost'])->name('posts.
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
 Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.store');
 Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
-Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
+// Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
+Route::get('/skills', [SkillsController::class, 'getSkillsByUser'])->name('skills.getSkillsByUser');
+Route::post('/save-skills', 'App\Http\Controllers\SkillsController@store')->name('skills.store');
+Route::get('/skills/{skill}', [SkillsController::class, 'deleteSkill']);
 
 
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
 // routes/web.php
 
 Route::middleware(['auth'])->group(function () {    
-    // Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/myProfile', [ProfileController::class, 'show'])->name('profile.index');
     Route::get('/profile/show', [ProfileController::class, 'index'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
-    // Route::get('/profile/{profile}', [ProfileController::class, 'show'])->name('profile.show');
 });
+
+
+
+// services management
+Route::get('/personal_services', [PersonalServicesController::class, 'getPersonalServicesbyUserId'])->name('personal_services.index');
+Route::post('/personal_services/store', [PersonalServicesController::class, 'store']);
+Route::get('/personal_services/{id}', [PersonalServicesController::class, 'destroy']);

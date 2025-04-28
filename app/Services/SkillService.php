@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\Models\Posts;
 use App\Models\Skills;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection; 
 
 
@@ -19,14 +20,14 @@ class SkillService{
     }
     
 
-    public function create(array $data){
-        return Skills::create(
-            [
-                'name' => $data['name'],
-                'domain_id' => $data['domain_id'] ?? null,
-            ]
-        );
-    }
+    // public function create(array $data){
+    //     return Skills::create(
+    //         [
+    //             'name' => $data['name'],
+    //             'domain_id' => $data['domain_id'] ?? null,
+    //         ]
+    //     );
+    // }
 
     public function update(Skills $skill, array $data){
         return $skill->update($data);
@@ -41,4 +42,13 @@ class SkillService{
         return Skills::where('name', 'like', "%{$query}%")
             ->get();
     }
+
+
+    public function deleteSkill($id){
+        $skill = Skills::find($id);
+        $skill->delete();
+        return redirect()->route('profile.index' )->with('success', 'Skill deleted successfully!');
+    }
+
+ 
 } 

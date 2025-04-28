@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Services\DomainsService;
 use App\Services\PostService;
 use Illuminate\Http\Request;
@@ -29,22 +30,16 @@ class PostsController extends Controller
     }
 
 
-
-
-    // public function createPost(Request $request){
-
-    //     return view('users/createPost');
-
-    // }
-
-
-
     public function createPost(DomainsService $domainService){
         $domains = $domainService->getDomains();
         return view('users/createPost', compact('domains'));
        
     }
 
+    public function getPostByUserId($userId){
+        $user = auth()->user()->load('posts');
+        return view('users/profile', compact('user'));
+    }
 
 
    

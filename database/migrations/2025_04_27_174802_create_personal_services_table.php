@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('personal_services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('type', ['hard', 'soft'])->default('skill');
+            $table->string('title');
+            $table->text('description');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +25,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('skills_requireds');
+        Schema::dropIfExists('personal_services');
     }
+
+    
 };

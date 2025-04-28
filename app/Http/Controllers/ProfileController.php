@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Profile;
 use App\Services\DomainsService;
 use App\Services\ProfileService;
 use Illuminate\Http\Request;
@@ -14,9 +15,14 @@ class ProfileController extends Controller
     public function __construct(ProfileService $profileService , DomainsService $domainService){
         $this->profileService = $profileService;
         $this->domainService = $domainService;
-
     }
 
+    public function show(){
+        $userId = auth()->user()->id;
+        $profile = Profile::where('user_id', $userId)->firstOrFail();
+
+        return view('users/profile' , compact('profile'));
+    }
 
     
     public function index(){
@@ -24,10 +30,7 @@ class ProfileController extends Controller
         return view('users/profileForm', compact('domains'));
     }
 
-    // public function show(){
-
-    //     return view('users/profileForm');
-    // }
+    
 
 
     public function store(Request $request){

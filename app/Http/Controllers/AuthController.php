@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -58,14 +60,13 @@ class AuthController extends Controller
 
         
         $user = $this->authService->login($credentials['email'], $credentials['password']);
-        
-        if ($user) {
-            session()->flash('success', 'Login successful!');
-            return view('users/profileForm');
+
+        if(!auth()->user()->profile_completed){
+            return redirect(route('profile.show'));
         }
 
-        return view('register');
-    }
+        return redirect()->route('profile.index');
+    }   
 
 
 

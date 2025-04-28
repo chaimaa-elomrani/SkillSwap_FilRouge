@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('skills', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->enum('type', ['hard', 'soft'])->default('skill');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('profile_completed')->default(false);
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('skills_requireds');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

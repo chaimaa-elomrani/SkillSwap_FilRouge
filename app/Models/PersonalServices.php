@@ -4,25 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Posts extends Model
+class PersonalServices extends Model
 {
-    
+
     protected $fillable = [
         'title',
         'description',
-        'domain_id',
+        'credit_cost',
         'user_id',
-        'languages',
-        'experience',
-        'credits_cost',
-        'duration',
-        'duration_unit',
     ];
 
-
-    public function domain(){
-        return $this->belongsTo(Domains::class);
-    }
 
     public function user(){
         return $this->belongsTo(User::class);

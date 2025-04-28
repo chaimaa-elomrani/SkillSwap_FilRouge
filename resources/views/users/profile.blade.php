@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>User Profile | FreeLancer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -45,6 +46,11 @@
             }
         }
     </script>
+    <style>
+        .bg-overlay {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+        }
+    </style>
     <style type="text/tailwindcss">
         @layer components {
             .tab-active {
@@ -79,9 +85,9 @@
 <body class="bg-gray-50  transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white  shadow-sm sticky top-0 z-50 transition-colors duration-200">
-  
+
         <!-- Mobile Menu -->
- 
+
     </header>
 
     <main class="container mx-auto px-4 py-6">
@@ -96,11 +102,12 @@
             <!-- Profile Info -->
             <div
                 class="bg-white rounded-xl shadow-lg pr-6 pb-4 pl-4 md:p-8 -mt-20 md:-mt-24 ml-4 md:ml-8 mr-4 md:mr-8 relative z-10 transition-colors duration-200">
+
                 <div class="flex flex-col md:flex-row">
                     <!-- Avatar -->
                     <div class="flex-shrink-0 -mt-16 md:-mt-20 mb-4 md:mb-0 md:mr-6">
                         <div class="relative">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Picture"
+                            <img src="{{ asset('images/profile.png') }}" alt="Profile Picture"
                                 class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white  object-cover shadow-md">
                         </div>
                     </div>
@@ -110,20 +117,21 @@
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                             <div>
                                 <div class="flex items-center">
-                                    <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">Alex Johnson</h1>
-        
+                                    <h1 class="text-2xl md:text-3xl font-bold text-secondary-900">{{$profile->name}}
+                                    </h1>
+
                                 </div>
-                                <h2 class="text-lg text-secondary-600  mt-1">Senior Full Stack Developer</h2>
+                                <h2 class="text-lg text-secondary-600  mt-1">{{$profile->title }}</h2>
                                 <div class="flex items-start mt-2 text-sm text-secondary-500 flex-col gap-2 ">
                                     <div class="flex items-center mr-4">
                                         <i class="fas fa-map-marker-alt mr-1"></i>
-                                        <span>San Francisco, CA</span>
+                                        <span>{{ $profile->location }}</span>
                                     </div>
 
                                 </div>
                             </div>
                             <div>
-                
+
                                 <div class="mt-4 md:mt-4 flex flex-wrap gap-2 ">
 
                                     <div
@@ -134,7 +142,8 @@
                                     </div>
                                     <button class="">
                                         <a href="{{ route('posts.create') }}"
-                                            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Add Post</a>
+                                            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Add
+                                            Post</a>
 
                                     </button>
 
@@ -166,16 +175,15 @@
 
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Email</span>
-                            <span class="text-secondary-900 font-medium">chaima@gmail.com</span>
+                            <span class="text-secondary-900 font-medium">{{ $profile->email}}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Phone number</span>
-                            <span class="text-secondary-900  font-medium">+1 (123) 456-7890</span>
+                            <span class="text-secondary-900  font-medium">{{ $profile->phone}}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Languages</span>
-                            <span class="text-secondary-900  font-medium">English (Fluent), Spanish
-                                (Conversational)</span>
+                            <span class="text-secondary-900  font-medium">{{ $profile->languages}}</span>
                         </div>
                     </div>
                 </div>
@@ -198,112 +206,19 @@
                             <h3 class="text-sm font-medium text-secondary-500 uppercase tracking-wider mb-3">Technical
                                 Skills</h3>
                             <div class="flex flex-wrap gap-2" id="technicalSkillsContainer">
+                                @foreach (auth()->user()->skills as $skill)
+                                <!-- delete skill button  -->
                                 <div
                                     class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>UI/UX Design</span>
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+                                        <span>{{ $skill->name }}</span>
+                                        <a  class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500" aria-autocomplete=""href="/skills/{{$skill->id}}"><i class="fas fa-times"></i></a>
                                 </div>
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>HTML/CSS</span>
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>JavaScript</span>
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>React</span>
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Figma</span>
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Responsive Design</span>
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Design Systems</span>
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Tailwind CSS</span>
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
 
-                        <!-- Soft Skills -->
-                        <div>
-                            <h3 class="text-sm font-medium text-secondary-500 uppercase tracking-wider mb-3">Soft Skills
-                            </h3>
-                            <div class="flex flex-wrap gap-2" id="softSkillsContainer">
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Communication</span>
-                                    <button
-                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Problem Solving</span>
-                                    <button
-                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Collaboration</span>
-                                    <button
-                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div
-                                    class="bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group">
-                                    <span>Time Management</span>
-                                    <button
-                                        class="ml-2 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+
                     </section>
 
                 </div>
@@ -330,7 +245,7 @@
                             <button
                                 class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
                                 data-tab="history">
-                                <i class="fas fa-history mr-2"></i>Work History
+                                <i class="fas fa-history mr-2"></i>Offered Services
                             </button>
                         </nav>
                     </div>
@@ -348,32 +263,12 @@
                             </button>
                         </div>
                         <div class="prose max-w-none text-secondary-700" id="userBio">
-                            <p>I'm a UX/UI Designer and Frontend Developer with over 8 years of experience creating
-                                intuitive digital experiences. My approach combines user-centered design principles with
-                                clean, efficient code to build products that are both beautiful and functional.</p>
-                            <p>I specialize in design systems, responsive web applications, and bridging the gap between
-                                design and development. I'm passionate about accessibility and creating inclusive
-                                experiences that work for everyone.</p>
+                            <p> {{ $profile->bio }}</p>
+
                         </div>
                     </section>
 
-                    <div class="bg-white  rounded-xl shadow-md p-6 mb-6 transition-colors duration-200">
-                        <h3 class="text-lg font-semibold mb-4">Services I Offer</h3>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="flex p-4 rounded-lg border border-secondary-200 ">
-                                <div
-                                    class="flex-shrink-0 h-10 w-10 rounded-md bg-secondary-100 flex items-center justify-center">
-                                    <img src="./images/servicesLogo.png" alt="">
 
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-md font-medium text-secondary-900 ">Responsive Web Design</h4>
-                                    <p class="mt-1 text-sm text-secondary-500 ">Mobile-first, responsive websites that
-                                        work on all devices</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
@@ -509,83 +404,32 @@
                     </div>
 
                     <div class="space-y-6" id="servicesContainer">
-                        <!-- Service Item 1 -->
-                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
-                            data-service-id="1">
-                            <div class="flex justify-between">
-                                <h3 class="text-lg font-medium text-secondary-900">UX/UI Design</h3>
-                                <div class="flex space-x-2">
-                                    <button
-                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    <button
-                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <p class="mt-2 text-secondary-600">Complete UX/UI design for web and mobile applications,
-                                including user research, wireframing, prototyping, and design systems.</p>
-                            <div class="mt-3 flex items-center">
-                                <span class="text-secondary-500">Estimated:</span>
-                                <span
-                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">150-300
-                                    credits</span>
-                            </div>
-                        </div>
+                        @foreach (auth()->user()->personalServices as $service)
+                            <div
+                                class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors">
+                                <div class="flex justify-between">
+                                    <h3 class="text-lg font-medium text-secondary-900">{{ $service->title }}</h3>
+                                    <div class="flex space-x-2">
+                                        <button
+                                            class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                        <a href="/personal_services/{{ $service->id }}"
+                                            class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
+                                            <i class="fas fa-trash"></i>
 
-                        <!-- Service Item 2 -->
-                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
-                            data-service-id="2">
-                            <div class="flex justify-between">
-                                <h3 class="text-lg font-medium text-secondary-900">Frontend Development</h3>
-                                <div class="flex space-x-2">
-                                    <button
-                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    <button
-                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-secondary-600">{{ $service->description }}</p>
+                                <div class="mt-3 flex items-center">
+                                    <span class="text-secondary-500">Credit Cost:</span>
+                                    <span
+                                        class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">{{ $service->credit_cost }}</span>
                                 </div>
                             </div>
-                            <p class="mt-2 text-secondary-600">Responsive web development using HTML, CSS, and
-                                JavaScript. Specializing in React, Vue, and modern frontend frameworks.</p>
-                            <div class="mt-3 flex items-center">
-                                <span class="text-secondary-500">Estimated:</span>
-                                <span
-                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">200-400
-                                    credits</span>
-                            </div>
-                        </div>
+                        @endforeach
 
-                        <!-- Service Item 3 -->
-                        <div class="border border-secondary-200 rounded-lg p-5 hover:border-primary-300 transition-colors"
-                            data-service-id="3">
-                            <div class="flex justify-between">
-                                <h3 class="text-lg font-medium text-secondary-900">Design System Creation</h3>
-                                <div class="flex space-x-2">
-                                    <button
-                                        class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    <button
-                                        class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <p class="mt-2 text-secondary-600">Development of comprehensive design systems including
-                                component libraries, style guides, and documentation for consistent product design.</p>
-                            <div class="mt-3 flex items-center">
-                                <span class="text-secondary-500">Estimated:</span>
-                                <span
-                                    class="ml-2 bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-sm font-medium">300-500
-                                    credits</span>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
@@ -641,37 +485,54 @@ I specialize in design systems, responsive web applications, and bridging the ga
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
-                    <form id="skillForm">
-                        <div class="mb-4">
-                            <label for="skillInput" class="block text-sm font-medium text-secondary-700 mb-1">Skill
-                                Name</label>
-                            <input type="text" id="skillInput"
-                                class="w-full px-3 py-2 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                                placeholder="e.g., JavaScript">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-secondary-700 mb-1">Skill Type</label>
-                            <div class="flex space-x-4">
-                                <label class="inline-flex items-center">
-                                    <input type="radio" name="skillType" value="technical"
-                                        class="text-primary-600 focus:ring-primary-500" checked>
-                                    <span class="ml-2 text-secondary-700">Technical Skill</span>
+                    <form id="skills-form">
+                        @csrf
+                        <!-- Skills -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <label for="skills-input" class="block text-sm font-medium text-gray-700">Skills
+                                    <span class="text-red-500">*</span>
                                 </label>
-                                <label class="inline-flex items-center">
-                                    <input type="radio" name="skillType" value="soft"
-                                        class="text-primary-600 focus:ring-primary-500">
-                                    <span class="ml-2 text-secondary-700">Soft Skill</span>
-                                </label>
+                                <div class="flex items-center">
+                                    <span class="text-xs text-gray-500 mr-1">Add your top skills</span>
+                                    <span
+                                        class="inline-flex items-center justify-center w-5 h-5 bg-gray-100 text-gray-500 rounded-full cursor-pointer"
+                                        title="Add skills that showcase your expertise. These will help others find you for relevant projects.">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="relative flex-grow">
+                                    <input type="text" id="skills-input"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Type a skill and press Enter (e.g., JavaScript, Project Management)">
+                                </div>
+                                <button type="button" id="add-skill-btn"
+                                    class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                    Add
+                                </button>
+                            </div>
+                            <div id="skills-container"
+                                class="flex flex-wrap gap-2 min-h-[40px] max-h-[120px] overflow-y-auto p-2 border border-gray-200 rounded-lg tag-container">
+                                <!-- Skills tags will be added here dynamically -->
+                            </div>
+                            <div class="hidden mt-1 text-sm text-red-500" id="skills-error"></div>
+                            <input type="hidden" name="skills" id="skills-hidden">
                         </div>
-                        <div class="flex justify-end space-x-3">
-                            <button type="button"
+
+                        <div class="mt-6">
+                            <button type="button" id="cancelbtn"
                                 class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
                                 Cancel
                             </button>
                             <button type="submit"
-                                class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
-                                Add Skill
+                                class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                Save Skills
                             </button>
                         </div>
                     </form>
@@ -679,11 +540,55 @@ I specialize in design systems, responsive web applications, and bridging the ga
             </div>
         </div>
 
+        <!--  services modal -->
+        <div id="AddServiceModal"
+            class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden ">
+           
+                <form class="service-item p-6 rounded-lg bg-white w-full max-w-xl mx-auto shadow-lg" method="POST" action="/personal_services/store">
+                    @csrf
+                    @method('POST')
+                    <div class="mb-4">
+                        <input type="text" name="title"
+                            class="service-title w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Service Title (e.g., Web Development, Logo Design)" required>
+                    </div>
+
+                    <textarea name="description"
+                        class="service-description w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4"
+                        rows="4"
+                        placeholder="Describe this service in detail. What do you offer, and what can clients expect?"
+                        required></textarea>
+
+                    <div class="flex items-center">
+                        <span class="text-md text-gray-600 mr-2  ">Credit Cost:</span>
+                        <div class="flex items-center space-x-2">
+                            <input type="number" name="credit_cost"
+                                class="service-min-credits w-20 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="800..." required>
+                            <span class="text-gray-500">-</span>
+
+                        </div>
+                    </div>
+                    <div class=" flex items-end justify-end gap-4">
+                        <button type="button" id="cancelbtn"
+                            class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Save Service
+                        </button>
+                    </div>
+                </form>
+
+          
+        </div>
+
     </main>
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
 
             // Tab switching
             const tabButtons = document.querySelectorAll('.tab-button');
@@ -777,67 +682,184 @@ I specialize in design systems, responsive web applications, and bridging the ga
                 closeModal(editBioModal);
             });
 
-            // Skills functionality
-            const skillModal = document.getElementById('skillModal');
-            const addSkillBtn = document.getElementById('addSkillBtn');
-            const skillForm = document.getElementById('skillForm');
-            const skillInput = document.getElementById('skillInput');
-            const technicalSkillsContainer = document.getElementById('technicalSkillsContainer');
-            const softSkillsContainer = document.getElementById('softSkillsContainer');
+
+            // Skills  functionality
+
+            const addSkillBtn = document.getElementById('addSkillBtn')
+            const skillsModal = document.getElementById('skillModal');
+            const canselBtn = document.getElementById('cancelbtn');
+            const skillsInput = document.getElementById('skills-input');
+            const skillsContainer = document.getElementById('skills-container');
+            const skillsForm = document.getElementById('skills-form');
+            const skillsError = document.getElementById('skills-error');
+            const skillsHidden = document.getElementById('skills-hidden');
+            let skillsData = [];
+            let nextId = 1;
+
 
             addSkillBtn.addEventListener('click', () => {
-                skillInput.value = '';
-                document.querySelector('input[name="skillType"][value="technical"]').checked = true;
-                openModal(skillModal);
+                openModal(skillsModal);
             });
-
-            skillForm.addEventListener('submit', (e) => {
+            canselBtn.addEventListener('click', () => {
+                closeModal(skillsModal);
+            });
+            skillsForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const skillName = skillInput.value.trim();
-                const skillType = document.querySelector('input[name="skillType"]:checked').value;
-                
+                const skillName = skillsInput.value.trim();
                 if (skillName) {
-                    const skillElement = document.createElement('div');
-                    skillElement.className = skillType === 'technical' 
-                        ? 'bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group'
-                        : 'bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full flex items-center group';
-                    
-                    skillElement.innerHTML = `
-                        <span>${skillName}</span>
-                        <button class="ml-2 text-${skillType === 'technical' ? 'secondary' : 'primary'}-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    `;
-                    
-                    const container = skillType === 'technical' ? technicalSkillsContainer : softSkillsContainer;
-                    container.appendChild(skillElement);
-                    
-                    // Add event listener to remove button
-                    const removeBtn = skillElement.querySelector('button');
-                    removeBtn.addEventListener('click', () => {
-                        skillElement.remove();
-                    });
-                    
-                    closeModal(skillModal);
+                    addSkill(skillName);
+                    skillsInput.value = '';
+                    closeModal(skillsModal);
                 }
             });
 
-            // Initialize existing skill remove buttons
-            document.querySelectorAll('#technicalSkillsContainer button, #softSkillsContainer button').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    btn.closest('div').remove();
+            function addSkill(skillName) {
+                if (!skillName.trim()) return;
+
+                // Check if skill already exists
+                const existingSkills = Array.from(skillsContainer.querySelectorAll('.skill-tag')).map(tag =>
+                    tag.querySelector('span').textContent.toLowerCase()
+                );
+
+                if (existingSkills.includes(skillName.toLowerCase())) return;
+
+                // Create skill tag
+                const skillTag = document.createElement('div');
+                skillTag.className = 'skill-tag inline-flex items-center bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-sm';
+                skillTag.innerHTML = `
+                    <span>${skillName}</span>
+                    <button type="button" class="ml-1 text-blue-500 hover:text-blue-700 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                `;
+                const skillId = nextId++;
+                skillsData.push({ id: skillId, name: skillName });
+
+                // Add remove event listener
+                skillTag.querySelector('button').addEventListener('click', function () {
+                    skillTag.remove();
+                    updateHiddenField();
                 });
+
+                skillsContainer.appendChild(skillTag);
+                skillsInput.value = '';
+                updateHiddenField();
+            }
+
+            function updateHiddenField() {
+                const skills = Array.from(skillsContainer.querySelectorAll('.skill-tag')).map(tag =>
+                    tag.querySelector('span').textContent
+                );
+                skillsHidden.value = JSON.stringify(skills);
+            }
+
+            addSkillBtn.addEventListener('click', function () {
+                addSkill(skillsInput.value);
             });
 
-            // ESC key to close modals
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    document.querySelectorAll('.fixed:not(.hidden)').forEach(modal => {
-                        closeModal(modal);
-                    });
+            skillsInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addSkill(this.value);
                 }
             });
+
+            skillsForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Validate that at least one skill is added
+                const skillTags = skillsContainer.querySelectorAll('.skill-tag');
+
+                if (skillTags.length === 0) {
+                    skillsError.textContent = 'Please add at least one skill';
+                    skillsError.classList.remove('hidden');
+                    return;
+                } else {
+                    skillsError.classList.add('hidden');
+                }
+
+                // Get all skills
+                const skills = Array.from(skillTags).map(tag =>
+                    tag.querySelector('span').textContent
+                );
+
+                // Send data to server
+                sendSkills(skills);
+            });
+
+            async function sendSkills(skills) {
+                try {
+                    // Show loading indicator if you have one
+                    // loader.style.display = 'flex';
+
+                    // Check if CSRF token exists
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]');
+                    if (!csrfToken) {
+                        console.error('CSRF token not found');
+                        alert('CSRF token not found. Please refresh the page.');
+                        return;
+                    }
+
+                    console.log('Sending skills:', skills);
+                    console.log('CSRF token:', csrfToken.getAttribute('content'));
+
+                    const response = await fetch('/save-skills', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken.getAttribute('content'),
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            skills: JSON.stringify(skills)
+                        })
+                    });
+
+                    console.log('Response status:', response.status);
+
+                    // Try to get the response text first to debug
+                    const responseText = await response.text();
+                    console.log('Response text:', responseText);
+
+                    // Parse the JSON if possible
+                    let result;
+                    try {
+                        result = JSON.parse(responseText);
+                        console.log('Parsed result:', result);
+                    } catch (e) {
+                        console.error('Could not parse JSON response:', e);
+                        alert('Server returned invalid JSON. Check console for details.');
+                        return;
+                    }
+
+                    if (result.success) {
+                        alert('Skills saved successfully!');
+                    } else {
+                        alert('Error saving skills: ' + (result.message || 'Unknown error'));
+                    }
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                    alert('An error occurred while saving skills: ' + error.message);
+                } finally {
+
+                }
+            };
+
+
+            // services modal 
+            const addServiceBtn = document.getElementById('addServiceBtn');
+            const addServiceModal = document.getElementById('AddServiceModal');
+            
+            addServiceBtn.addEventListener('click', ()=> {
+                addServiceModal.classList.remove('hidden');
+            });
+
         });
+
+
+
     </script>
 </body>
 
