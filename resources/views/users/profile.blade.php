@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>User Profile | FreeLancer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -206,16 +206,14 @@
                             <h3 class="text-sm font-medium text-secondary-500 uppercase tracking-wider mb-3">Technical
                                 Skills</h3>
                             <div class="flex flex-wrap gap-2" id="technicalSkillsContainer">
+                                @foreach (auth()->user()->skills as $skill)
+                                <!-- delete skill button  -->
                                 <div
                                     class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                    @foreach (auth()->user()->skills as $skill)
                                         <span>{{ $skill->name }}</span>
-                                    @endforeach
-                                    <button
-                                        class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+                                        <a  class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500" aria-autocomplete=""href="/skills/{{$skill->id}}"><i class="fas fa-times"></i></a>
                                 </div>
+                                @endforeach
 
                             </div>
                         </div>
@@ -416,10 +414,11 @@
                                             class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
                                             <i class="fas fa-pen"></i>
                                         </button>
-                                        <button
+                                        <a href="/personal_services/{{ $service->id }}/delete"
                                             class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
                                             <i class="fas fa-trash"></i>
-                                        </button>
+                                            
+                                        </a>
                                     </div>
                                 </div>
                                 <p class="mt-2 text-secondary-600">{{ $service->description }}</p>
@@ -487,6 +486,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
                         </button>
                     </div>
                     <form id="skills-form">
+                        @csrf
                         <!-- Skills -->
                         <div>
                             <div class="flex items-center justify-between mb-1">
@@ -544,8 +544,9 @@ I specialize in design systems, responsive web applications, and bridging the ga
         <div id="AddServiceModal"
             class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden ">
            
-                <form class="service-item p-6 rounded-lg bg-white w-full max-w-xl mx-auto shadow-lg" method="POST" action="{{ route('personal_services.store') }}">
+                <form class="service-item p-6 rounded-lg bg-white w-full max-w-xl mx-auto shadow-lg" method="POST" action="/personal_services/store">
                     @csrf
+                    @method('POST')
                     <div class="mb-4">
                         <input type="text" name="title"
                             class="service-title w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -561,7 +562,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
                     <div class="flex items-center">
                         <span class="text-md text-gray-600 mr-2  ">Credit Cost:</span>
                         <div class="flex items-center space-x-2">
-                            <input type="number" name="creditcost"
+                            <input type="number" name="credit_cost"
                                 class="service-min-credits w-20 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="800..." required>
                             <span class="text-gray-500">-</span>

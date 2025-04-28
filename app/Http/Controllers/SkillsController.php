@@ -89,5 +89,11 @@ class SkillsController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
+
+
+    public function deleteSkill($skill){
+        $this->skillService->deleteSkill($skill);
+        return redirect()->route('profile.index')->with('success', 'Skill deleted successfully!');
+    }
     
 }

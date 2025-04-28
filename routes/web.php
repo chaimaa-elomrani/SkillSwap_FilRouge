@@ -44,10 +44,11 @@ Route::get('/post/create',[PostsController::class , 'createPost'])->name('posts.
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
 Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.store');
 Route::put('/skills/update/{skill}',[SkillsController::class , 'update'])->name('skills.update');
-Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
+// Route::delete('/skills/delete/{skill}',[SkillsController::class , 'destroy'])->name('skills.destroy');
 Route::get('/skills/search',[SkillsController::class , 'search'])->name('skills.search');
 Route::get('/skills', [SkillsController::class, 'getSkillsByUser'])->name('skills.getSkillsByUser');
 Route::post('/save-skills', 'App\Http\Controllers\SkillsController@store')->name('skills.store');
+Route::get('/skills/{skill}', [SkillsController::class, 'deleteSkill']);
 
 
 
@@ -65,4 +66,4 @@ Route::middleware(['auth'])->group(function () {
 
 // services management
 Route::get('/personal_services', [PersonalServicesController::class, 'getPersonalServicesbyUserId'])->name('personal_services.index');
-Route::post('/personal_services/store', [PersonalServicesController::class, 'store'])->name('personal_services.store');
+Route::post('/personal_services/store', [PersonalServicesController::class, 'store']);

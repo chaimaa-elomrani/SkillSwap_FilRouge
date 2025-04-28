@@ -44,8 +44,11 @@ class SkillService{
     }
 
 
-    // public function getSkillsByUserId($userId){
-    //     $user = User::findOrFail($userId);
-    //     return $user->skills()->get(); 
-    // }
+    public function deleteSkill($id){
+        $skill = Skills::find($id);
+        $skill->delete();
+        return redirect()->route('profile.index' )->with('success', 'Skill deleted successfully!');
+    }
+
+ 
 } 

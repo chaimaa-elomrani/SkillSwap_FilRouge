@@ -8,7 +8,7 @@ class PersonalServices extends Model
 {
 
     protected $fillable = [
-        'name',
+        'title',
         'description',
         'credit_cost',
         'user_id',
