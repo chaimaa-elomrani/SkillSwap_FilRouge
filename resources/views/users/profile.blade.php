@@ -414,10 +414,10 @@
                                             class="text-secondary-400 hover:text-primary-600 transition-colors service-edit-btn">
                                             <i class="fas fa-pen"></i>
                                         </button>
-                                        <a href="/personal_services/{{ $service->id }}/delete"
+                                        <a href="/personal_services/{{ $service->id }}"
                                             class="text-secondary-400 hover:text-red-500 transition-colors service-delete-btn">
                                             <i class="fas fa-trash"></i>
-                                            
+
                                         </a>
                                     </div>
                                 </div>

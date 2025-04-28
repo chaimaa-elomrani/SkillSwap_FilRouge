@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PersonalServices;
+use App\Services\PersonalServicesService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,8 +12,8 @@ class PersonalServicesController extends Controller
 
     protected $ServicesService;
 
-    public function __construct(){
-        $this->ServicesService = new PersonalServices();
+    public function __construct(PersonalServicesService $ServicesService){
+        $this->ServicesService = $ServicesService;
     }
 
     public function getPersonalServicesbyUserId($userId)
@@ -37,12 +38,18 @@ class PersonalServicesController extends Controller
 
         $attribute['user_id'] = auth()->id();
 
-        // dd($request);
+      
         $services = PersonalServices::create($attribute);
         // dd($services);
 
         $user = auth()->user()->load('personalServices');
         return redirect()->route('profile.index', compact('user'));
 
+    }
+    
+
+    public function destroy($service){
+        $this->ServicesService->deleteServices($service);
+        return redirect()->route('profile.index', compact('service'));
     }
 }

@@ -67,3 +67,4 @@ Route::middleware(['auth'])->group(function () {
 // services management
 Route::get('/personal_services', [PersonalServicesController::class, 'getPersonalServicesbyUserId'])->name('personal_services.index');
 Route::post('/personal_services/store', [PersonalServicesController::class, 'store']);
+Route::get('/personal_services/{id}', [PersonalServicesController::class, 'destroy']);

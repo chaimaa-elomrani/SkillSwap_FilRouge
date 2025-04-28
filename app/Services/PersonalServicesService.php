@@ -25,4 +25,11 @@ class PersonalServicesService{
         
     //     return ['success' => true, 'message' => 'Service created successfully!', 'user' => $user];
     // }
+
+
+    public function deleteServices($id){
+        $service = PersonalServices::find($id);
+        $service->delete();
+        return redirect()->route('profile.index')->with('success', 'Service deleted successfully!');
+    }
 }
