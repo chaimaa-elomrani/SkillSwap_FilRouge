@@ -179,7 +179,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Phone number</span>
-                            <span class="text-secondary-900  font-medium">{{ $profile->phone}}</span>
+                            <span class="text-secondary-900  font-medium">{{ $profile->phone_number}}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-secondary-600 ">Languages</span>

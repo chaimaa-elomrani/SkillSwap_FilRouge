@@ -20,7 +20,7 @@ class ProfileController extends Controller
     public function show(){
         $userId = auth()->user()->id;
         $profile = Profile::where('user_id', $userId)->firstOrFail();
-
+        $profile['email'] = auth()->user()->email;
         return view('users/profile' , compact('profile'));
     }
 
