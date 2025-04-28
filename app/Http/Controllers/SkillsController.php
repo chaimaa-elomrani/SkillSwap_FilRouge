@@ -12,36 +12,20 @@ class SkillsController extends Controller
 {
 
     protected $skillService;
-    protected $domainService;
 
 
-    // public function __construct(SkillService $skillService , DomainService $domainService)
-    // {
-    //     $this->skillService = $skillService;
-    //     $this->domainService = $domainService;
-    // }
+    public function __construct(SkillService $skillService)
+    {
+        $this->skillService = $skillService;
+    }
 
     public function index()
     {
         $skills = $this->skillService->getAllSkills();
-        $domains = $this->domainService->getDomains();
         return view('admin/skills', compact('skills', 'domains'));
     }
 
 
-    // public function store(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'domain_id' => 'required|exists:domains,id',
-    //     ]);
-    //    $this->skillService->create([
-    //         'name' => $validated['name'],
-    //         'domain_id' => $validated['domain_id'],
-    //     ]);
-        
-    //     return redirect()->route('skills.index');
-    // }
 
 
     public function update(Request $request, Skills $skill)
@@ -89,9 +73,14 @@ class SkillsController extends Controller
             
 
             \Log::info('Skills received:', ['skills' => $skills]);
-    
+
+            $userId = auth()->id();
             foreach ($skills as $skillName) {
-                Skills::firstOrCreate(['name' => $skillName]);
+               $skill = Skills::firstOrCreate(['name' => $skillName]);
+                \DB::table('user_skills')->insert([
+                    'user_id' => $userId,   
+                    'skill_id' => $skill->id, 
+                ]);
             }
             
             return response()->json(['success' => true, 'message' => 'Skills saved successfully']);

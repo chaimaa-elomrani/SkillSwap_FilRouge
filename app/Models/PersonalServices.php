@@ -10,6 +10,7 @@ class PersonalServices extends Model
     protected $fillable = [
         'name',
         'description',
+        'credit_cost',
         'user_id',
     ];
 

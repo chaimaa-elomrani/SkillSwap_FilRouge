@@ -23,7 +23,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/',[HomeController::class , 'index'])->name('home');
 Route::get('/header',[HomeController::class , 'header']);
-Route::get('/search',[SearchController::class , 'index']);
 
 // domains page 
 Route::get('/domains',[DomainsController::class , 'index'])->name('domains.index');
@@ -63,4 +62,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+
+// services management
 Route::get('/personal_services', [PersonalServicesController::class, 'getPersonalServicesbyUserId'])->name('personal_services.index');
+Route::post('/personal_services/store', [PersonalServicesController::class, 'store'])->name('personal_services.store');
