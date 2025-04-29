@@ -48,6 +48,8 @@ class PostService{
     public function deletePost($id){
         return Posts::destroy($id);
     }
+
+    
     
     
 }

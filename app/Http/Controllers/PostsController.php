@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use App\Models\User;
 use App\Services\DomainsService;
 use App\Services\PostService;
@@ -37,7 +38,7 @@ class PostsController extends Controller
     }
 
     public function getPostByUserId($userId){
-        $user = auth()->user()->load('posts');
+        $posts = Posts::with('user.profile')->latest()->get();
         return view('users/profile', compact('user'));
     }
 

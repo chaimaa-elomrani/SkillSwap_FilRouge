@@ -386,16 +386,16 @@
               <!-- Author and timestamp -->
               <div class="flex items-center mb-3">
               <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-                <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Alex Morgan"
+                <img src="{{ asset('images/profile.png') }}" alt="{{ $post->user->name }}"
                 class="h-full w-full object-cover">
               </div>
               <div class="flex-1">
                 <div class="flex items-center">
-                <h3 class="font-medium text-gray-900 text-sm">Alex Morgan</h3>
+                <h3 class="font-medium text-gray-900 text-sm">{{ $post->user->names}}</h3>
                 <i class="fas fa-check-circle ml-1 text-blue-500 text-xs"></i>
                 </div>
                 <div class="flex items-center text-xs text-gray-500 mt-0.5">
-                <span>Product Designer</span>
+                <span>{{ $post->user->profile->title ?? 'no title '}}</span>
                 <span class="mx-1">•</span>
                 <span>Created at:{{ $post->created_at }}</span>
                 </div>

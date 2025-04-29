@@ -680,7 +680,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
 
     <script src="{{ asset('js/profile.js') }}"></script>
 
-    <script>
+    <!-- <script>
      
       document.addEventListener('DOMContentLoaded', function(){
 
@@ -709,7 +709,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
 
         
       })
-    </script>
+    </script> -->
 
 </body>
 
