@@ -21,9 +21,9 @@ class RequestsController extends Controller
 
 //    }
 
-    public function ShowRequests($userId){
-        $requests = $this->requestService->ShowRequests($userId);
-        // dd($requests);
-        return view('layout/request', comact('requests'));
-    }
+    // public function ShowRequests($userId){
+    //     $requests = $this->requestService->ShowRequests($userId);
+    //     // dd($requests);
+    //     return view('layout/request', compact('requests'));
+    // }
 }

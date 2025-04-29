@@ -6,6 +6,7 @@ use App\Models\Posts;
 use App\Models\User;
 use App\Services\DomainsService;
 use App\Services\PostService;
+use Auth;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -27,7 +28,11 @@ class PostsController extends Controller
 
     public function show(){
        $posts = $this->postService->getAllPosts();
-        return view('users/posts', compact('posts'));
+       $request =  null ; 
+       if(Auth::check()){
+            $request = Auth::user()->pendingRequests()->with(['sender', 'sender.profile', 'post'])->latest->get();
+       }
+        return view('users/posts', compact('posts' , 'requests'));
     }
 
 
