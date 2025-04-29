@@ -107,7 +107,7 @@
                     <!-- Avatar -->
                     <div class="flex-shrink-0 -mt-16 md:-mt-20 mb-4 md:mb-0 md:mr-6">
                         <div class="relative">
-                            <img src="{{ asset('images/profile.png') }}" alt="Profile Picture"
+                            <img src="{{ $profile->image }}" alt="Profile Picture"
                                 class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white  object-cover shadow-md">
                         </div>
                     </div>

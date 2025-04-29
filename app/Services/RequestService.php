@@ -9,8 +9,8 @@ class RequestService
 {
 
     public function ShowRequests($userId){
-        $requests = Requests::with('sender.profile')->where('receiver_id', $userId)->get();
-        return $requests;
+       return  Requests::with('sender.profile')->where('receiver_id', $userId)->get();
+      
     }
 
 

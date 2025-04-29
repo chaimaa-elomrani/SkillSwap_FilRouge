@@ -37,7 +37,6 @@
     }
   </script>
   <style>
-    
     /* Custom animations */
     @keyframes fadeIn {
       from {
@@ -240,8 +239,6 @@
             <i class="far fa-bell text-gray-600"></i>
             <span class="absolute top-0 right-0 h-2 w-2 bg-indigo-600 rounded-full"></span>
           </button>
-
-       
 
           <div
             class="h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
@@ -596,53 +593,125 @@
     </aside>
   </div>
 
-  <!-- Requests section -->
-  <div class="sidebar-panel fixed top-0 right-0 h-full w-80 md:w-96 bg-white shadow-xl z-50 overflow-hidden flex flex-col">
-      <div class="p-5 border-b border-gray-100 flex justify-between items-center  bg-indigo-600 hover:bg-indigo-700 text-white">
-        <h2 class="text-lg font-semibold ">Collaboration Requests</h2>
-        <button id="closePanelBtn" class="p-1.5 rounded-full hover:bg-white/20 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      
-      <div class="flex-1 overflow-y-auto p-4 space-y-3">
-        <!-- Request Item 1 -->
-        <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-primary-200 transition-colors">
-          <div class="flex items-center space-x-3">
-            <div class="relative">
-              <div class="absolute -inset-0.5  rounded-full "></div>
-              <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User" class="relative w-12 h-12 rounded-full border-2 border-white object-cover" />
-            </div>
-            <div>
-              <p class="font-medium text-gray-800">johndoe</p>
-              <div>               
-              <div class="flex items-center text-xs text-gray-500 mt-0.5">
-                <span>Product Designer</span>
-                </div>
-            </div>
-            </div>
+  <!-- Requests Sidebar Panel -->
+  <div id="requestsPanel" class="sidebar-panel fixed top-0 right-0 h-full w-80 md:w-96 bg-white shadow-xl z-50 overflow-hidden flex flex-col">
+    <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-indigo-600 text-white">
+      <h2 class="text-lg font-semibold">Collaboration Requests</h2>
+      <button id="closePanelBtn" class="p-1.5 rounded-full hover:bg-white/20 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
+      <!-- Request Item 1 -->
+      <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-indigo-200 transition-colors">
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User" class="w-12 h-12 rounded-full border-2 border-white object-cover">
           </div>
-          <div class="flex space-x-2">
-            <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </button>
-            <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+          <div>
+            <p class="font-medium text-gray-800">Alex Morgan</p>
+            <div class="flex items-center text-xs text-gray-500 mt-0.5">
+              <span>Product Designer</span>
+            </div>
           </div>
         </div>
-        
-
+        <div class="flex space-x-2">
+          <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors" data-action="accept" data-id="1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </button>
+          <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors" data-action="reject" data-id="1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
-      
 
+      <!-- Request Item 2 -->
+      <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-indigo-200 transition-colors">
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="w-12 h-12 rounded-full border-2 border-white object-cover">
+          </div>
+          <div>
+            <p class="font-medium text-gray-800">Sarah Chen</p>
+            <div class="flex items-center text-xs text-gray-500 mt-0.5">
+              <span>Full Stack Developer</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex space-x-2">
+          <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors" data-action="accept" data-id="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </button>
+          <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors" data-action="reject" data-id="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Request Item 3 -->
+      <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-indigo-200 transition-colors">
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="User" class="w-12 h-12 rounded-full border-2 border-white object-cover">
+          </div>
+          <div>
+            <p class="font-medium text-gray-800">James Wilson</p>
+            <div class="flex items-center text-xs text-gray-500 mt-0.5">
+              <span>UX Researcher</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex space-x-2">
+          <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors" data-action="accept" data-id="3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </button>
+          <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors" data-action="reject" data-id="3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty State (shown when no requests) -->
+      <div id="emptyState" class="hidden flex flex-col items-center justify-center py-12 text-center">
+        <div class="bg-gray-100 p-4 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900">No pending requests</h3>
+        <p class="text-sm text-gray-500 mt-1">
+          You're all caught up! Check back later for new collaboration requests.
+        </p>
+      </div>
     </div>
+
+    <!-- Panel Footer -->
+    <div class="p-4 border-t border-gray-100 bg-gray-50">
+      <div class="flex justify-between items-center">
+        <span class="text-sm text-gray-500">
+          Showing <span id="requestCount">3</span> requests
+        </span>
+        <button id="clearAllBtn" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
+          Clear All
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Overlay for sidebar panel -->
   <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
@@ -650,9 +719,263 @@
   <!-- Mobile sidebar backdrop -->
   <div id="sidebar-backdrop" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-10 hidden lg:hidden"></div>
 
+  <!-- Toast Notifications -->
+  <div id="toastContainer" class="fixed bottom-4 right-4 z-50 flex flex-col space-y-2"></div>
+
   <!-- JavaScript for interactions -->
-    
-  <script src=""></script>
+  <script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sidebar toggle
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      const leftSidebar = document.getElementById('left-sidebar');
+      const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+
+      if (sidebarToggle && leftSidebar && sidebarBackdrop) {
+        sidebarToggle.addEventListener('click', function() {
+          leftSidebar.classList.toggle('-translate-x-full');
+          sidebarBackdrop.classList.toggle('hidden');
+        });
+
+        sidebarBackdrop.addEventListener('click', function() {
+          leftSidebar.classList.add('-translate-x-full');
+          sidebarBackdrop.classList.add('hidden');
+        });
+      }
+
+      // Filter dropdown
+      const filterDropdownBtn = document.getElementById('filter-dropdown-btn');
+      const filterDropdown = document.getElementById('filter-dropdown');
+
+      if (filterDropdownBtn && filterDropdown) {
+        filterDropdownBtn.addEventListener('click', function() {
+          filterDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!filterDropdownBtn.contains(event.target) && !filterDropdown.contains(event.target)) {
+            filterDropdown.classList.add('hidden');
+          }
+        });
+      }
+
+      // Filter buttons
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active', 'bg-white'));
+          // Add active class to clicked button
+          this.classList.add('active', 'bg-white');
+        });
+      });
+
+      // Requests panel
+      const requestsToggle = document.getElementById('requestsToggle');
+      const requestsPanel = document.getElementById('requestsPanel');
+      const overlay = document.getElementById('overlay');
+      const closePanelBtn = document.getElementById('closePanelBtn');
+
+      if (requestsToggle && requestsPanel && overlay && closePanelBtn) {
+        requestsToggle.addEventListener('click', function() {
+          requestsPanel.classList.add('open');
+          overlay.classList.add('visible');
+          overlay.classList.remove('hidden');
+          document.body.classList.add('overflow-hidden');
+        });
+
+        function closePanel() {
+          requestsPanel.classList.remove('open');
+          overlay.classList.remove('visible');
+          setTimeout(() => {
+            overlay.classList.add('hidden');
+          }, 300);
+          document.body.classList.remove('overflow-hidden');
+        }
+
+        closePanelBtn.addEventListener('click', closePanel);
+        overlay.addEventListener('click', closePanel);
+      }
+
+      // Search functionality
+      const searchInput = document.getElementById('search-input');
+      const mobileSearchInput = document.getElementById('mobile-search-input');
+      const postsContainer = document.getElementById('posts-container');
+      const noResults = document.getElementById('no-results');
+
+      function handleSearch(input) {
+        if (!input) return;
+        
+        input.addEventListener('input', function() {
+          const searchTerm = this.value.toLowerCase();
+          const posts = postsContainer.querySelectorAll('.post-card');
+          let hasResults = false;
+
+          posts.forEach(post => {
+            const title = post.querySelector('h2').textContent.toLowerCase();
+            const description = post.querySelector('p').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+              post.style.display = 'block';
+              hasResults = true;
+            } else {
+              post.style.display = 'none';
+            }
+          });
+
+          // Show/hide no results message
+          if (noResults) {
+            noResults.classList.toggle('hidden', hasResults);
+          }
+          
+          // Sync search inputs
+          if (this === searchInput && mobileSearchInput) {
+            mobileSearchInput.value = this.value;
+          } else if (this === mobileSearchInput && searchInput) {
+            searchInput.value = this.value;
+          }
+        });
+      }
+
+      if (searchInput) handleSearch(searchInput);
+      if (mobileSearchInput) handleSearch(mobileSearchInput);
+
+      // Notifications button
+      const notificationsBtn = document.getElementById('notifications-btn');
+      
+      if (notificationsBtn) {
+        notificationsBtn.addEventListener('click', function() {
+          // Toggle notification panel or show dropdown
+          // This is a placeholder for notification functionality
+          alert('Notifications feature coming soon!');
+        });
+      }
+      
+      // Handle request actions (accept/reject)
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('.action-button')) {
+          const button = e.target.closest('.action-button');
+          const action = button.dataset.action;
+          const id = button.dataset.id;
+          const requestItem = button.closest('.request-item');
+          
+          // Remove the request item with animation
+          requestItem.style.opacity = '0';
+          requestItem.style.transform = 'translateX(100%)';
+          requestItem.style.transition = 'opacity 300ms, transform 300ms';
+          
+          setTimeout(() => {
+            requestItem.remove();
+            
+            // Update request count
+            const remainingRequests = document.querySelectorAll('.request-item').length;
+            requestCount.textContent = remainingRequests;
+            
+            // Show empty state if no requests
+            if (remainingRequests === 0) {
+              emptyState.classList.remove('hidden');
+            }
+            
+            // Show toast notification
+            showToast(
+              action === 'accept' 
+                ? 'Request accepted successfully' 
+                : 'Request rejected',
+              action === 'accept' ? 'success' : 'error'
+            );
+          }, 300);
+        }
+      });
+      
+      // Clear all requests
+      const clearAllBtn = document.getElementById('clearAllBtn');
+      if (clearAllBtn) {
+        clearAllBtn.addEventListener('click', () => {
+          const requestItems = document.querySelectorAll('.request-item');
+          
+          requestItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.style.opacity = '0';
+              item.style.transform = 'translateX(100%)';
+              item.style.transition = 'opacity 300ms, transform 300ms';
+              
+              setTimeout(() => {
+                item.remove();
+                
+                // If last item, update count and show empty state
+                if (index === requestItems.length - 1) {
+                  requestCount.textContent = '0';
+                  emptyState.classList.remove('hidden');
+                  showToast('All requests cleared', 'info');
+                }
+              }, 300);
+            }, index * 100);
+          });
+        });
+      }
+      
+      // Toast notification function
+      function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        
+        // Set toast classes based on type
+        let bgColor, textColor, icon;
+        
+        switch(type) {
+          case 'success':
+            bgColor = 'bg-green-50';
+            textColor = 'text-green-800';
+            icon = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>';
+            break;
+          case 'error':
+            bgColor = 'bg-red-50';
+            textColor = 'text-red-800';
+            icon = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>';
+            break;
+          default:
+            bgColor = 'bg-blue-50';
+            textColor = 'text-blue-800';
+            icon = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>';
+        }
+        
+        toast.className = `${bgColor} ${textColor} px-4 py-3 rounded-lg shadow-md flex items-center w-72 transform translate-x-full transition-transform duration-300 ease-out`;
+        toast.innerHTML = `
+          <div class="mr-3">${icon}</div>
+          <div class="text-sm font-medium">${message}</div>
+          <button class="ml-auto text-gray-400 hover:text-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        `;
+        
+        toastContainer.appendChild(toast);
+        
+        // Animate in
+        setTimeout(() => {
+          toast.classList.remove('translate-x-full');
+        }, 10);
+        
+        // Auto dismiss after 3 seconds
+        setTimeout(() => {
+          toast.classList.add('translate-x-full');
+          setTimeout(() => {
+            toast.remove();
+          }, 300);
+        }, 3000);
+        
+        // Close button
+        toast.querySelector('button').addEventListener('click', () => {
+          toast.classList.add('translate-x-full');
+          setTimeout(() => {
+            toast.remove();
+          }, 300);
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

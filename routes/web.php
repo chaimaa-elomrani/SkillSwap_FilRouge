@@ -8,6 +8,7 @@ use App\Http\Controllers\LanguagesController;
 use App\Http\Controllers\PersonalServicesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\TypesController;
@@ -68,3 +69,8 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/personal_services', [PersonalServicesController::class, 'getPersonalServicesbyUserId'])->name('personal_services.index');
 Route::post('/personal_services/store', [PersonalServicesController::class, 'store']);
 Route::get('/personal_services/{id}', [PersonalServicesController::class, 'destroy']);
+
+
+// requests management
+
+Route::get('/requests',[RequestsController::class , 'ShowRequests']);
