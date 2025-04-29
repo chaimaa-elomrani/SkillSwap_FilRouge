@@ -68,4 +68,12 @@ class User extends Authenticatable
         return $this->hasMany(PersonalServices::class);
     }
 
+
+     public function requests(){
+         return $this->hasMany(Requests::class, 'sender_id');
+     }
+
+     public function receivedRequests(){
+         return $this->hasMany(Requests::class, 'receiver_id');
+     }
 }
