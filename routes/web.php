@@ -74,5 +74,9 @@ Route::get('/personal_services/{id}', [PersonalServicesController::class, 'destr
 // Requests routes
 Route::middleware('auth')->group(function() {
     Route::get('/requests', [RequestsController::class, 'getRequests']);
-    Route::post('/requests/{id}/status', [RequestsController::class, 'updateRequestStatus']);
+    Route::post('/requests/{id}/status', [RequestsController::class, 'updateRequestStatus'])->middleware('auth');
 });
+
+Route::post('/test-endpoint', function() {
+    return response()->json(['success' => true]);
+}); 

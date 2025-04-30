@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Explore Posts</title>
+  <!-- Add this line for CSRF token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
@@ -209,7 +211,8 @@
     .from-primary-600 { --tw-gradient-from: #4f46e5; }
     .to-primary-500 { --tw-gradient-to: #6366f1; }
     .to-primary-600 { --tw-gradient-to: #4f46e5; }
-  </style>
+
+</style>
 </head>
 
 <body class="bg-gray-50 min-h-screen">
@@ -801,28 +804,135 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!actionButton) return;
     
     const action = actionButton.dataset.action;
+    const requestId = actionButton.dataset.id;
     const requestItem = actionButton.closest('.request-item');
     
-    // Animate and remove the request
-    requestItem.style.opacity = '0';
-    requestItem.style.transform = 'translateX(100%)';
-    requestItem.style.transition = 'all 300ms';
+    // Determine status based on action
+    const status = action === 'accept' ? 'accepted' : 'declined';
     
+    // Animate the item while processing
+    requestItem.style.opacity = '0.5';
+    
+    // Send status update to server
+    fetch(`/requests/${requestId}/status`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+        },
+        body: JSON.stringify({ status: status })
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        
+        // Clone the response so we can see the body in the console
+        const clonedResponse = response.clone();
+        clonedResponse.text().then(text => {
+            console.log('Raw response:', text);
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Server responded with status: ${response.status}`);
+        }
+        
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success data:', data);
+        
+        // Remove the item with animation
+        requestItem.style.opacity = '0';
+        requestItem.style.transform = 'translateX(100%)';
+        requestItem.style.transition = 'all 300ms';
+        
+        setTimeout(() => {
+            requestItem.remove();
+            
+            // Update count
+            const count = document.querySelectorAll('.request-item').length;
+            const countEl = document.getElementById('requestCount');
+            if (countEl) countEl.textContent = count;
+            
+            // Show empty state if needed
+            const emptyState = document.getElementById('emptyState');
+            if (emptyState && count === 0) {
+                emptyState.classList.remove('hidden');
+            }
+            
+            // Show success message
+            showNotification(
+                action === 'accept' 
+                    ? 'Request accepted successfully!' 
+                    : 'Request declined',
+                action === 'accept' ? 'success' : 'info'
+            );
+        }, 300);
+    })
+    .catch(error => {
+        console.error('Error updating request:', error);
+        console.error('Error details:', error.message);
+        requestItem.style.opacity = '1';
+        showNotification('Failed to update request. Please try again.', 'error');
+    });
+});
+
+// Simple notification function
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    
+    // Set styles based on notification type
+    let bgColor, textColor, icon;
+    switch(type) {
+        case 'success':
+            bgColor = 'bg-green-50';
+            textColor = 'text-green-800';
+            icon = '<svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>';
+            break;
+        case 'error':
+            bgColor = 'bg-red-50';
+            textColor = 'text-red-800';
+            icon = '<svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 10-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>';
+            break;
+        default:
+            bgColor = 'bg-blue-50';
+            textColor = 'text-blue-800';
+            icon = '<svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>';
+    }
+    
+    // Set notification styles
+    notification.className = `fixed bottom-4 right-4 flex items-center p-4 rounded-lg shadow-lg ${bgColor} ${textColor} transform translate-y-0 opacity-100 transition-all duration-500 z-50`;
+    
+    // Set notification content
+    notification.innerHTML = `
+        <div class="flex-shrink-0 mr-3">
+            ${icon}
+        </div>
+        <div class="flex-1 text-sm font-medium">
+            ${message}
+        </div>
+        <button class="ml-4 text-gray-400 hover:text-gray-500 focus:outline-none">
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+        </button>
+    `;
+    
+    // Add to document
+    document.body.appendChild(notification);
+    
+    // Add close button functionality
+    notification.querySelector('button').addEventListener('click', () => {
+        notification.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => notification.remove(), 500);
+    });
+    
+    // Auto remove after 3 seconds
     setTimeout(() => {
-      requestItem.remove();
-      
-      // Update count
-      const count = document.querySelectorAll('.request-item').length;
-      const countEl = document.getElementById('requestCount');
-      if (countEl) countEl.textContent = count;
-      
-      // Show empty state if needed
-      const emptyState = document.getElementById('emptyState');
-      if (emptyState && count === 0) {
-        emptyState.classList.remove('hidden');
-      }
-    }, 300);
-  });
+        notification.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => notification.remove(), 500);
+    }, 3000);
+}
 });
 
   </script>
