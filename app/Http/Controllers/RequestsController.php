@@ -48,4 +48,19 @@ class RequestsController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+
+    public function accept($id){
+        $request =Request::where('id', $id)->update(['status' => 'accepted']);
+        if(!$request){
+            return response()->json(['message' => 'Error in controller method'], 404);
+        }
+    }
+
+    public function reject($id){
+        $request =Request::where('id', $id)->update(['status' => 'declined']);
+        if(!$request){
+            return response()->json(['message' => 'Error in controller method'], 404);
+        }
+    }
 }
