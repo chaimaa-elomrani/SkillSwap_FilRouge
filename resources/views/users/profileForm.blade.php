@@ -36,7 +36,7 @@
 
         <!-- Form Container -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 max-w-3xl mx-auto overflow-hidden">
-            <form id="onboarding-form" action="{{ route('profile.store') }}" method='POST' class="relative">
+            <form id="onboarding-form" action="{{ route('profile.store') }}" method='POST' class="relative" enctype="multipart/form-data">
                 @csrf
                 <!-- Hidden input for user ID -->
                 <input type="hidden" name="user_id" value="{{ auth()->id() }}">

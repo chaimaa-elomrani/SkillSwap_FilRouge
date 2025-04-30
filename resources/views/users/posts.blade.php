@@ -755,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function() {
           requestItem.innerHTML = 
             '<div class="flex items-center space-x-3">' +
               '<div class="relative">' +
-                '<img src="/images/profile.png" alt="' + (request.sender_name || 'User') + '" class="w-12 h-12 rounded-full border-2 border-white object-cover">' +
+                '<img src="/images/designer.png" alt="' + (request.sender_name || 'User') + '" class="w-12 h-12 rounded-full border-2 border-white object-cover">' +
               '</div>' +
               '<div>' +
                 '<p class="font-medium text-gray-800">' + (request.sender_name || 'User #' + request.sender_id) + '</p>' +
