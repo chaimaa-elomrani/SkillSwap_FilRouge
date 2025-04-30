@@ -604,48 +604,22 @@
       </button>
     </div>
 
-    <div class="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
-      <!-- Request Item 1 -->
-      <div class="request-item flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-white shadow-sm hover:border-indigo-200 transition-colors">
-        <div class="flex items-center space-x-3">
-          <div class="relative">
-            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User" class="w-12 h-12 rounded-full border-2 border-white object-cover">
-          </div>
-          <div>
-            <p class="font-medium text-gray-800">Alex Morgan</p>
-            <div class="flex items-center text-xs text-gray-500 mt-0.5">
-              <span>Product Designer</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex space-x-2">
-          <button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors" data-action="accept" data-id="1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-          </button>
-          <button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors" data-action="reject" data-id="1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
+    <div class="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar requests-container">
+      <!-- Request items will be inserted here dynamically -->
+    </div>
 
-     
-
-      <!-- Empty State (shown when no requests) -->
-      <div id="emptyState" class="hidden flex flex-col items-center justify-center py-12 text-center">
-        <div class="bg-gray-100 p-4 rounded-full mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-          </svg>
-        </div>
-        <h3 class="text-lg font-medium text-gray-900">No pending requests</h3>
-        <p class="text-sm text-gray-500 mt-1">
-          You're all caught up! Check back later for new collaboration requests.
-        </p>
+    <!-- Empty State (shown when no requests) -->
+    <div id="emptyState" class="hidden flex flex-col items-center justify-center py-12 text-center">
+      <div class="bg-gray-100 p-4 rounded-full mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
       </div>
+      <h3 class="text-lg font-medium text-gray-900">No pending requests</h3>
+      <p class="text-sm text-gray-500 mt-1">
+        You're all caught up! Check back later for new collaboration requests.
+      </p>
+    </div>
     </div>
 
     <!-- Panel Footer -->
@@ -661,7 +635,7 @@
     </div>
   </div>
 
-
+  <!-- Overlay for sidebar panel -->
   <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
 
 
@@ -669,9 +643,10 @@
 
 
   <script>
- 
+   // Wait for DOM to be fully loaded
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-  
+  // Mobile sidebar toggle
   const sidebarToggle = document.getElementById('sidebar-toggle');
   const leftSidebar = document.getElementById('left-sidebar');
   const sidebarBackdrop = document.getElementById('sidebar-backdrop');
@@ -690,6 +665,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Filter dropdown toggle
   const filterBtn = document.getElementById('filter-dropdown-btn');
   const filterDropdown = document.getElementById('filter-dropdown');
   
@@ -698,6 +674,7 @@ document.addEventListener('DOMContentLoaded', function() {
       filterDropdown.classList.toggle('hidden');
     });
     
+    // Close dropdown when clicking outside
     document.addEventListener('click', function(event) {
       if (!filterBtn.contains(event.target) && !filterDropdown.contains(event.target)) {
         filterDropdown.classList.add('hidden');
@@ -705,6 +682,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Filter buttons (Trending, Latest, Following)
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', function() {
@@ -713,6 +691,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Requests panel toggle
   const requestsToggle = document.getElementById('requestsToggle');
   const requestsPanel = document.getElementById('requestsPanel');
   const overlay = document.getElementById('overlay');
@@ -731,12 +710,92 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.classList.remove('visible');
     overlay.classList.add('hidden');
   }
-  
+  // Close panel when clicking close button or overlay
   if (closeBtn) closeBtn.addEventListener('click', closePanel);
   if (overlay) overlay.addEventListener('click', closePanel);
-  
- 
-  
+
+  // Fetch requests data
+  fetch('/requests')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log('Requests data:', data);
+    
+      const requestsContainer = document.querySelector('.requests-container');
+    
+      if (requestsContainer) {
+        requestsContainer.innerHTML = ''; // Clear existing content
+        
+        if (!data || data.length === 0) {
+          // Show empty state if no requests
+          const emptyState = document.getElementById('emptyState');
+          if (emptyState) emptyState.classList.remove('hidden');
+          return;
+        }
+        
+        // Hide empty state if we have data
+        const emptyState = document.getElementById('emptyState');
+        if (emptyState) emptyState.classList.add('hidden');
+        
+        // Update the request count
+        const countEl = document.getElementById('requestCount');
+        if (countEl) countEl.textContent = data.length;
+        
+        // Process the data with the actual structure
+        data.forEach(function(request) {
+          const requestItem = document.createElement('div');
+          requestItem.classList.add('request-item', 'flex', 'items-center', 'justify-between', 'p-4', 'border', 'border-gray-100', 'rounded-xl', 'bg-white', 'shadow-sm', 'hover:border-indigo-200', 'transition-colors');
+        
+          // Format the date (assuming created_at is a timestamp)
+          const createdDate = new Date(request.created_at);
+          const formattedDate = createdDate.toLocaleDateString();
+        
+          // Use the sender_name and sender_title from the response
+          requestItem.innerHTML = 
+            '<div class="flex items-center space-x-3">' +
+              '<div class="relative">' +
+                '<img src="/images/profile.png" alt="' + (request.sender_name || 'User') + '" class="w-12 h-12 rounded-full border-2 border-white object-cover">' +
+              '</div>' +
+              '<div>' +
+                '<p class="font-medium text-gray-800">' + (request.sender_name || 'User #' + request.sender_id) + '</p>' +
+                '<div class="flex items-center space-x-2">' +
+                  '<span class="text-xs text-gray-500">' + (request.sender_title || 'No title') + '</span>' +
+                  '<span class="mx-1">•</span>' +
+                  '<span class="text-xs text-gray-500">' + formattedDate + '</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="flex items-center space-x-4">' +
+              '<button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors" data-action="accept" data-id="' + request.id + '">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">' +
+                  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />' +
+                '</svg>' +
+              '</button>' +
+              '<button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors" data-action="reject" data-id="' + request.id + '">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">' +
+                  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />' +
+                '</svg>' +
+              '</button>' +
+            '</div>';
+        
+          requestsContainer.appendChild(requestItem);
+        });
+      } else {
+        console.error('Requests container not found');
+      }
+    })
+    .catch(function(error) {
+      console.error('Error fetching requests:', error);
+    
+      // Show an error message to the user
+      const requestsContainer = document.querySelector('.requests-container');
+      if (requestsContainer) {
+        requestsContainer.innerHTML = '<div class="text-center py-4 text-red-500">Failed to load requests. Please try again later.</div>';
+      }
+    });
+
+  // Handle request actions (accept/reject)
   document.addEventListener('click', function(e) {
     const actionButton = e.target.closest('.action-button');
     if (!actionButton) return;
@@ -762,13 +821,10 @@ document.addEventListener('DOMContentLoaded', function() {
       if (emptyState && count === 0) {
         emptyState.classList.remove('hidden');
       }
-      
-  
+    }, 300);
   });
-  
-  
 });
-});
+
   </script>
 </body>
 

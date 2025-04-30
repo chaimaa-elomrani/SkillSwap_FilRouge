@@ -13,7 +13,7 @@ class Requests extends Model
         'status'
     ];
 
-    public function sender()
+    public function user()
     {
         return $this->belongsTo(User::class, 'sender_id');
     }

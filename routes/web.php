@@ -71,6 +71,8 @@ Route::post('/personal_services/store', [PersonalServicesController::class, 'sto
 Route::get('/personal_services/{id}', [PersonalServicesController::class, 'destroy']);
 
 
-// requests management
-
-Route::get('/requests',[RequestsController::class , 'ShowRequests']);
+// Requests routes
+Route::middleware('auth')->group(function() {
+    Route::get('/requests', [RequestsController::class, 'getRequests']);
+    Route::post('/requests/{id}/status', [RequestsController::class, 'updateRequestStatus']);
+});
