@@ -14,12 +14,10 @@ class PostsController extends Controller
 
 
     protected $postService;
-    protected $domainService;
 
-    public function __construct(PostService $postService , DomainsService $domainsService){
+    public function __construct(PostService $postService){
         // $this->domainService = $domainService;
         $this->postService = $postService;
-        $this->domainService = $domainsService;
 
     }
 
@@ -30,12 +28,11 @@ class PostsController extends Controller
 
     public function show(){
        $posts = $this->postService->getAllPosts();
-       $domains = $this->domainService->getDomains();
        $request =  null ; 
        if(Auth::check()){
             $request = Auth::user()->pendingRequests()->with(['sender', 'sender.profile', 'post'])->latest->get();
        }
-        return view('users/posts', compact('posts' , 'requests' , 'domains'));
+        return view('users/posts', compact('posts' , 'requests'));
     }
 
 

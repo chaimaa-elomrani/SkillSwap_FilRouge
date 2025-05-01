@@ -88,7 +88,8 @@
           
           <!-- Form Container -->
           <div class="bg-white rounded-xl shadow-md overflow-hidden">
-              <form id="serviceForm" class="p-6" method="post" action="/post/create">
+              <form id="serviceForm" class="p-6" >
+                @csrf
                   <!-- Basic Information Section -->
                   <div class="mb-8">
                       <h2 class="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">Basic Information</h2>
@@ -156,27 +157,7 @@
                                     <option value="Intermediate">Intermediate</option>
                                     <option value="expert">expert</option>
                                  </select>
-                                  <!-- <div class="flex items-center">
-                                      <input id="expBeginner" name="experience_level" type="radio" value="beginner" 
-                                          class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300" required>
-                                      <label for="expBeginner" class="ml-3 block text-sm font-medium text-gray-700">
-                                          Beginner
-                                      </label>
-                                  </div>
-                                  <div class="flex items-center">
-                                      <input id="expIntermediate" name="experience_level" type="radio" value="intermediate" 
-                                          class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                      <label for="expIntermediate" class="ml-3 block text-sm font-medium text-gray-700">
-                                          Intermediate
-                                      </label>
-                                  </div>
-                                  <div class="flex items-center">
-                                      <input id="expExpert" name="experience_level" type="radio" value="expert" 
-                                          class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                      <label for="expExpert" class="ml-3 block text-sm font-medium text-gray-700">
-                                          Expert
-                                      </label>
-                                  </div> -->
+                                 
                               </div>
                           </div>
                           

@@ -6,6 +6,8 @@ use App\Models\Posts;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Request;
+use Validator;
 
 class PostService{
 
@@ -29,11 +31,7 @@ class PostService{
     /**
      * Store a newly created resource in storage
      */
-    public function store(array $data)
-    {
-        return Posts::create($data);
-       
-    }
+ 
 
     public function updatePost(array $data , $id){
         $post = Posts::find($id);
@@ -49,6 +47,25 @@ class PostService{
         return Posts::destroy($id);
     }
 
+
+    public function create(Request $request){
+    $validated = Validator::make($request->all(), [
+        'title' => 'required|string|max:255',
+        'description' => 'required|string|max:750',
+        'category' => 'required|string|max:255',
+        'user_id' => 'required|exists:users,id',
+        'service_id' => 'required|exists:services,id',
+    ])->validate();
+
+    $validated['user_id'] = auth()->user()->id;
+
+    if(isset($validated['languages']) && is_array($validated('languages'))){
+        $validated['languages'] = json_encode($validated['languages']);
+    }
+
+       return Posts::create($validated);
+
+    }
     
     
     
