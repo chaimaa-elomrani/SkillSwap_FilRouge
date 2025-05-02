@@ -369,7 +369,7 @@
               <!-- Author and timestamp -->
               <div class="flex items-center mb-3">
               <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-                <img src="{{ asset('storage/' . $post->user->profile->image) }}" alt="{{ $post->user->profile->name }}"
+                <img src="{{ asset('images/' . $post->user->profile->image) }}" alt="{{ $post->user->profile->name }}"
                 class="h-full w-full object-cover">
               </div>
               <div class="flex-1">
@@ -427,8 +427,20 @@
               <span
                 class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Adobe
                 XD</span>
-              <span class="inline-block badge-expert rounded-full px-2.5 py-0.5 text-xs font-medium">Expert</span>
               </div>
+
+              @if(isset($post->skills) && !empty($post->skills))
+                <div class="mt-3">
+                    <h4 class="text-sm font-medium text-gray-700 mb-2">Skills Required:</h4>
+                    <div class="flex flex-wrap gap-1">
+                        @foreach(explode(',', $post->skills) as $skill)
+                            <span class="inline-block bg-blue-100 text-blue-700 rounded-full px-2.5 py-0.5 text-xs font-medium mr-1 mb-1">
+                                {{ trim($skill) }}
+                            </span>
+                        @endforeach
+                    </div>
+                </div>
+              @endif
 
               <!-- Action button -->
               <button
