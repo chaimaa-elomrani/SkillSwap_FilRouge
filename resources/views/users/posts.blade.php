@@ -430,12 +430,14 @@
             <!-- Author and timestamp -->
             <div class="flex items-center mb-3">
             <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-              <img src="{{ asset('images/' . $post->user->profile->image) }}" alt="{{ $post->user->profile->name }}"
+              
+              <img src="{{ asset('./images/' . $post->user->image) }}" alt="{{ $post->user->name }}"
+
               class="h-full w-full object-cover">
             </div>
             <div class="flex-1">
               <div class="flex items-center">
-              <h3 class="font-medium text-gray-900 text-sm">{{ $post->user->profile->name }}</h3>
+              <h3 class="font-medium text-gray-900 text-sm">{{ $post->user->name }}</h3>
               </div>
               <div class="flex items-center text-xs text-gray-500 mt-0.5">
               <span>{{ $post->user->profile->title ?? 'no title '}}</span>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Profile;
+use App\Models\User;
 use App\Services\DomainsService;
 use App\Services\PostService;
 use App\Services\ProfileService;
@@ -26,6 +27,8 @@ class ProfileController extends Controller
         $posts = $this->postService->getPostByUser($userId);  
         $profile = Profile::where('user_id', $userId)->firstOrFail();
         $profile['email'] = auth()->user()->email;
+        $isOwnProfile = true;
+        dd($posts);
         return view('users/profile' , compact('profile', 'posts'));
     }
 
@@ -43,6 +46,7 @@ class ProfileController extends Controller
         return $result;
     }
     
+
 
 }
 

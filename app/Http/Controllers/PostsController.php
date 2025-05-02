@@ -67,9 +67,4 @@ class PostsController extends Controller
     }
 
 
-
-    public function destroy($id){
-        $this->postService->delete($id);
-        return redirect()->back()->with('success', 'Post deleted successfully!');
-    }
 }

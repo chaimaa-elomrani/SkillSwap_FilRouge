@@ -29,13 +29,11 @@ class PostService{
     public function  getPostByCategory($category){
         return Posts::where('category', $category)->get();
     }
-   
+    /**
+     * Store a newly created resource in storage
+     */
  
-    public function delete($id){
-        return Posts::destroy($id);
-    }
 
-    
     public function updatePost(array $data , $id){
         $post = Posts::find($id);
 
