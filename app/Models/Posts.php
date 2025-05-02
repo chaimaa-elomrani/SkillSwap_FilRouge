@@ -16,7 +16,7 @@ class Posts extends Model
         'experience',
         'credits_cost',
         'duration',
-        'duration_unit',
+        'duration_unit',    
     ];
 
 

@@ -4,9 +4,10 @@ namespace App\Services;
 
 use App\Models\Posts;
 use App\Models\Service;
+use Auth;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Request;
+use Illuminate\Http\Request;
 use Validator;
 
 class PostService{
@@ -48,25 +49,44 @@ class PostService{
     }
 
 
+    // public function create(Request $request){
+    // $validated = Validator::make($request->all(), [
+    //     'title' => 'required|string|max:255',
+    //     'description' => 'required|string|max:750',
+    //     'category' => 'required|string|max:255',
+    //     'user_id' => 'required|exists:users,id',
+    //     'service_id' => 'required|exists:services,id',
+    // ])->validate();
+
+    // $validated['user_id'] = auth()->user()->id;
+
+    // if(isset($validated['languages']) && is_array($validated('languages'))){
+    //     $validated['languages'] = json_encode($validated['languages']);
+    // }
+
+    //    return Posts::create($validated);
+
+    // }
+    
+    
     public function create(Request $request){
-    $validated = Validator::make($request->all(), [
-        'title' => 'required|string|max:255',
-        'description' => 'required|string|max:750',
-        'category' => 'required|string|max:255',
-        'user_id' => 'required|exists:users,id',
-        'service_id' => 'required|exists:services,id',
-    ])->validate();
+        $skills = $request->skills && is_string($request->skills) ? array_filter(explode(',', $request->skills)) : [];
 
-    $validated['user_id'] = auth()->user()->id;
-
-    if(isset($validated['languages']) && is_array($validated('languages'))){
-        $validated['languages'] = json_encode($validated['languages']);
-    }
-
-       return Posts::create($validated);
-
-    }
+        $languages = is_array($request->languages) ? $request->languages : [];
     
-    
-    
+        $post = Posts::create([
+            'title' => $request->title,
+            'description'=>$request->description,
+            'domain_id'=>$request->domain_id,
+            'user_id' => auth()->check() ? auth()->id() : null,
+            'languages' => json_encode($languages),
+            'skills' => json_encode($skills),       
+            'experience'=>$request->experience,
+            'credits_cost'=>$request->credits_cost,
+            'duration'=>$request->duration,
+            'duration_unit' => $request->duration_unit, 
+        ]);
+
+        return $post; 
+    }    
 }

@@ -35,9 +35,8 @@ Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 
 
 // posts pages 
-Route::get('/posts',[PostsController::class , 'index']);
-Route::get('/post/create',[PostsController::class , 'createPost'])->name('posts.create');
-// Route::post('/post/create',[PostsController::class , 'store']);
+Route::get('/post/create',[PostsController::class , 'index'])->name('posts.index');
+Route::post('/post', [PostsController::class , 'store'])->name('posts.store');
 
 
 
