@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>User Profile | FreeLancer</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -107,7 +107,7 @@
                     <!-- Avatar -->
                     <div class="flex-shrink-0 -mt-16 md:-mt-20 mb-4 md:mb-0 md:mr-6">
                         <div class="relative">
-                            <img src="{{ $profile->image }}" alt="Profile Picture"
+                            <img src="{{ asset('images/' . $profile->image) }}" alt="Profile Picture"
                                 class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white  object-cover shadow-md">
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                             <span class="text-secondary-600 ">Phone number</span>
                             <span class="text-secondary-900  font-medium">{{ $profile->phone_number}}</span>
                         </div>
-                    
+
                     </div>
                 </div>
 
@@ -204,12 +204,14 @@
                                 Skills</h3>
                             <div class="flex flex-wrap gap-2" id="technicalSkillsContainer">
                                 @foreach (auth()->user()->skills as $skill)
-                                <!-- delete skill button  -->
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <!-- delete skill button  -->
+                                    <div
+                                        class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
                                         <span>{{ $skill->name }}</span>
-                                        <a  class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500" aria-autocomplete=""href="/skills/{{$skill->id}}"><i class="fas fa-times"></i></a>
-                                </div>
+                                        <a class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500"
+                                            aria-autocomplete="" href="/skills/{{$skill->id}}"><i
+                                                class="fas fa-times"></i></a>
+                                    </div>
                                 @endforeach
 
                             </div>
@@ -237,7 +239,7 @@
                             <button
                                 class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
                                 data-tab="reviews">
-                                <i class="fas fa-star mr-2"></i>Reviews
+                                <i class="fas fa-star mr-2"></i>My Posts
                             </button>
                             <button
                                 class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
@@ -283,8 +285,10 @@
                                 <!-- delete skill button  -->
                                 <div
                                     class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                        <span>English</span>
-                                        <a  class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500" aria-autocomplete=""href="/skills/{{$skill->id}}"><i class="fas fa-times"></i></a>
+                                    <span>English</span>
+                                    <a class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500"
+                                        aria-autocomplete="" href="/skills/{{$skill->id}}"><i
+                                            class="fas fa-times"></i></a>
                                 </div>
                                 <!-- @endforeach -->
 
@@ -298,124 +302,114 @@
 
                 </div>
 
-
                 <div class="tab-content hidden" id="reviews">
                     <div class="bg-white  rounded-xl shadow-md p-6 mb-6 transition-colors duration-200">
                         <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-lg font-semibold">Client Reviews</h3>
-                            <div class="flex items-center">
-                                <div class="flex items-center mr-2">
-                                    <i class="fas fa-star text-yellow-400"></i>
-                                    <i class="fas fa-star text-yellow-400"></i>
-                                    <i class="fas fa-star text-yellow-400"></i>
-                                    <i class="fas fa-star text-yellow-400"></i>
-                                    <i class="fas fa-star text-yellow-400"></i>
-                                </div>
-                                <span class="text-lg font-bold text-secondary-900 ">4.9</span>
-                                <span class="text-sm text-secondary-500  ml-1">(48 reviews)</span>
-                            </div>
-                        </div>
+                <div class="container  mx-auto px-4 py-4 max-w-4xl">
+                        <div id="posts-container" class="grid grid-cols-1 gap-4 ">
+                    @foreach ($posts as $post)
+                        @php
+                            $langs = json_decode($post->languages);
+                          @endphp
+                            <!-- Post 1 -->
+                            <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
+                                <div class="p-4">
+                                    <!-- Author and timestamp -->
+                                    <div class="flex items-center mb-3">
+                                        <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
+                                            <img src="{{ asset('images/' . $post->user->profile->image) }}"
+                                                alt="{{ $post->user->profile->name }}" class="h-full w-full object-cover">
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center">
+                                                <h3 class="font-medium text-gray-900 text-sm">
+                                                    {{ $post->user->profile->name }}</h3>
+                                            </div>
+                                            <div class="flex items-center text-xs text-gray-500 mt-0.5">
+                                                <span>{{ $post->user->profile->title ?? 'no title '}}</span>
+                                                <span class="mx-1">•</span>
+                                                <span>Created at:{{ $post->created_at }}</span>
+                                            </div>
+                                        </div>
+                                        <button
+                                            class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                                            <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
+                                        </button>
+                                    </div>
 
-                        <div class="space-y-6">
-                            <div class="review-card">
-                                <div class="flex items-start">
-                                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Client"
-                                        class="w-12 h-12 rounded-full object-cover">
-                                    <div class="ml-4 flex-grow">
-                                        <div class="flex items-center justify-between">
-                                            <h4 class="font-medium text-secondary-900 ">Sarah Johnson</h4>
-                                            <span class="text-sm text-secondary-500 ">2 weeks ago</span>
+                                    <!-- Title and content -->
+                                    <h2 class="text-base font-semibold text-gray-900 mb-2">{{ $post->title }}</h2>
+                                    <p class="text-gray-700 text-sm mb-3">{{ $post->description }}</p>
+
+                                    <!-- Post meta information -->
+                                    <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
+                                        <!-- Experience Level -->
+                                        <div class="post-meta-item">
+                                            <i class="fas fa-user-graduate"></i>
+                                            <span>{{$post->experience}}</span>
                                         </div>
-                                        <div class="flex items-center mt-1">
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
+
+                                        <span class="post-meta-divider"></span>
+
+                                        <!-- Credit Cost -->
+                                        <div class="post-meta-item">
+                                            <i class="fas fa-credit-card"></i>
+                                            <span>{{ $post->credits_cost }} credits</span>
                                         </div>
-                                        <p class="mt-2 text-secondary-600 ">
-                                            Alex is an exceptional developer who delivered our e-commerce platform ahead
-                                            of schedule.
-                                            His communication was clear throughout the project, and he was quick to
-                                            implement changes
-                                            when needed. Highly recommended!
-                                        </p>
-                                        <div class="mt-3 text-sm text-secondary-500 ">
-                                            <span class="font-medium">Project:</span> E-commerce Platform
+
+                                        <span class="post-meta-divider"></span>
+
+                                        <!-- Duration -->
+                                        <div class="post-meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>{{ $post->duration }} {{ $post->duration_unit }}</span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="review-card">
-                                <div class="flex items-start">
-                                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Client"
-                                        class="w-12 h-12 rounded-full object-cover">
-                                    <div class="ml-4 flex-grow">
-                                        <div class="flex items-center justify-between">
-                                            <h4 class="font-medium text-secondary-900 ">Michael Chen</h4>
-                                            <span class="text-sm text-secondary-500 ">1 month ago</span>
-                                        </div>
-                                        <div class="flex items-center mt-1">
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                        </div>
-                                        <p class="mt-2 text-secondary-600 ">
-                                            Working with Alex was a pleasure. He built our analytics dashboard with
-                                            attention to detail
-                                            and made sure it was optimized for performance. The real-time features work
-                                            flawlessly,
-                                            and our team loves using it daily.
-                                        </p>
-                                        <div class="mt-3 text-sm text-secondary-500 ">
-                                            <span class="font-medium">Project:</span> Analytics Dashboard
-                                        </div>
+                                    <!-- Languages/Technologies -->
+                                    <div class="flex flex-wrap gap-1.5 mb-3">
+                                        @foreach($langs as $lang)
+                                            <span
+                                                class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">{{ $lang }}</span>
+                                        @endforeach
+                                        <span
+                                            class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Sketch</span>
+                                        <span
+                                            class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Adobe
+                                            XD</span>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="review-card">
-                                <div class="flex items-start">
-                                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Client"
-                                        class="w-12 h-12 rounded-full object-cover">
-                                    <div class="ml-4 flex-grow">
-                                        <div class="flex items-center justify-between">
-                                            <h4 class="font-medium text-secondary-900 ">Emily Rodriguez</h4>
-                                            <span class="text-sm text-secondary-500 ">2 months ago</span>
+                                    @if(isset($post->skills) && !empty($post->skills))
+                                        <div class="mt-3">
+                                            <h4 class="text-sm font-medium text-gray-700 mb-2">Skills Required:</h4>
+                                            <div class="flex flex-wrap gap-1">
+                                                @foreach(explode(',', $post->skills) as $skill)
+                                                    <span
+                                                        class="inline-block bg-blue-100 text-blue-700 rounded-full px-2.5 py-0.5 text-xs font-medium mr-1 mb-1">
+                                                        {{ trim($skill) }}
+                                                    </span>
+                                                @endforeach
+                                            </div>
                                         </div>
-                                        <div class="flex items-center mt-1">
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="far fa-star text-yellow-400"></i>
-                                        </div>
-                                        <p class="mt-2 text-secondary-600 ">
-                                            Alex developed our mobile app with great skill. The app is intuitive and
-                                            performs well
-                                            on both iOS and Android. There were a few minor issues after launch, but
-                                            Alex was quick
-                                            to fix them. Overall, a great experience.
-                                        </p>
-                                        <div class="mt-3 text-sm text-secondary-500 ">
-                                            <span class="font-medium">Project:</span> Fitness Tracker App
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    @endif
 
-                        <div class="mt-6 flex justify-center">
-                            <button
-                                class="px-4 py-2 border border-secondary-300 rounded-md text-secondary-700 hover:bg-secondary-50  transition-colors">
-                                Load More Reviews
-                            </button>
-                        </div>
+                                    <!-- Action button -->
+                                    <button
+                                        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+                                        <i class="fas fa-paper-plane mr-2"></i>
+                                        Send Request
+                                    </button>
+                                </div>
+                                
+                            </div>
+                            @endforeach
                     </div>
                 </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        
                 <!-- Services Offered -->
                 <section
                     class="bg-white rounded-xl shadow-md p-6 transition-colors duration-200 md:p-8 tab-content hidden"
@@ -569,49 +563,50 @@ I specialize in design systems, responsive web applications, and bridging the ga
         <!--  services modal -->
         <div id="AddServiceModal"
             class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden ">
-           
-                <form class="service-item p-6 rounded-lg bg-white w-full max-w-xl mx-auto shadow-lg" method="POST" action="/personal_services/store">
-                    @csrf
-                    @method('POST')
-                    <div class="mb-4">
-                        <input type="text" name="title"
-                            class="service-title w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Service Title (e.g., Web Development, Logo Design)" required>
+
+            <form class="service-item p-6 rounded-lg bg-white w-full max-w-xl mx-auto shadow-lg" method="POST"
+                action="/personal_services/store">
+                @csrf
+                @method('POST')
+                <div class="mb-4">
+                    <input type="text" name="title"
+                        class="service-title w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Service Title (e.g., Web Development, Logo Design)" required>
+                </div>
+
+                <textarea name="description"
+                    class="service-description w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4"
+                    rows="4"
+                    placeholder="Describe this service in detail. What do you offer, and what can clients expect?"
+                    required></textarea>
+
+                <div class="flex items-center">
+                    <span class="text-md text-gray-600 mr-2  ">Credit Cost:</span>
+                    <div class="flex items-center space-x-2">
+                        <input type="number" name="credit_cost"
+                            class="service-min-credits w-20 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="800..." required>
+                        <span class="text-gray-500">-</span>
+
                     </div>
+                </div>
+                <div class=" flex items-end justify-end gap-4">
+                    <button type="button" id="cancelbtn"
+                        class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                        class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Save Service
+                    </button>
+                </div>
+            </form>
 
-                    <textarea name="description"
-                        class="service-description w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4"
-                        rows="4"
-                        placeholder="Describe this service in detail. What do you offer, and what can clients expect?"
-                        required></textarea>
 
-                    <div class="flex items-center">
-                        <span class="text-md text-gray-600 mr-2  ">Credit Cost:</span>
-                        <div class="flex items-center space-x-2">
-                            <input type="number" name="credit_cost"
-                                class="service-min-credits w-20 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="800..." required>
-                            <span class="text-gray-500">-</span>
-
-                        </div>
-                    </div>
-                    <div class=" flex items-end justify-end gap-4">
-                        <button type="button" id="cancelbtn"
-                            class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
-                            Cancel
-                        </button>
-                        <button type="submit"
-                            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                            Save Service
-                        </button>
-                    </div>
-                </form>
-
-          
         </div>
 
-         <!-- Add Languagess Modal -->
-         <div id="LanguageModal" class="fixed inset-0 z-50 hidden">
+        <!-- Add Languagess Modal -->
+        <div id="LanguageModal" class="fixed inset-0 z-50 hidden">
             <div class="modal-backdrop absolute inset-0"></div>
             <div class="absolute inset-0 flex items-center justify-center p-4">
                 <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 animate-fade-in">

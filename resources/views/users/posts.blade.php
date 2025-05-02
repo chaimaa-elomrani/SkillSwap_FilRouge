@@ -56,12 +56,12 @@
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
       }
-      
+
       70% {
         transform: scale(1);
         box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
       }
-      
+
       100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
@@ -187,32 +187,90 @@
     }
 
     /* Primary colors for Tailwind */
-    .bg-primary-50 { background-color: #eef2ff; }
-    .bg-primary-100 { background-color: #e0e7ff; }
-    .bg-primary-200 { background-color: #c7d2fe; }
-    .bg-primary-300 { background-color: #a5b4fc; }
-    .bg-primary-400 { background-color: #818cf8; }
-    .bg-primary-500 { background-color: #6366f1; }
-    .bg-primary-600 { background-color: #4f46e5; }
-    .bg-primary-700 { background-color: #4338ca; }
-    .bg-primary-800 { background-color: #3730a3; }
-    .bg-primary-900 { background-color: #312e81; }
+    .bg-primary-50 {
+      background-color: #eef2ff;
+    }
 
-    .text-primary-500 { color: #6366f1; }
-    .text-primary-600 { color: #4f46e5; }
-    .text-primary-700 { color: #4338ca; }
+    .bg-primary-100 {
+      background-color: #e0e7ff;
+    }
 
-    .hover\:bg-primary-600:hover { background-color: #4f46e5; }
-    .border-primary-200 { border-color: #c7d2fe; }
-    .hover\:border-primary-200:hover { border-color: #c7d2fe; }
+    .bg-primary-200 {
+      background-color: #c7d2fe;
+    }
 
-    .from-primary-400 { --tw-gradient-from: #818cf8; }
-    .from-primary-500 { --tw-gradient-from: #6366f1; }
-    .from-primary-600 { --tw-gradient-from: #4f46e5; }
-    .to-primary-500 { --tw-gradient-to: #6366f1; }
-    .to-primary-600 { --tw-gradient-to: #4f46e5; }
+    .bg-primary-300 {
+      background-color: #a5b4fc;
+    }
 
-</style>
+    .bg-primary-400 {
+      background-color: #818cf8;
+    }
+
+    .bg-primary-500 {
+      background-color: #6366f1;
+    }
+
+    .bg-primary-600 {
+      background-color: #4f46e5;
+    }
+
+    .bg-primary-700 {
+      background-color: #4338ca;
+    }
+
+    .bg-primary-800 {
+      background-color: #3730a3;
+    }
+
+    .bg-primary-900 {
+      background-color: #312e81;
+    }
+
+    .text-primary-500 {
+      color: #6366f1;
+    }
+
+    .text-primary-600 {
+      color: #4f46e5;
+    }
+
+    .text-primary-700 {
+      color: #4338ca;
+    }
+
+    .hover\:bg-primary-600:hover {
+      background-color: #4f46e5;
+    }
+
+    .border-primary-200 {
+      border-color: #c7d2fe;
+    }
+
+    .hover\:border-primary-200:hover {
+      border-color: #c7d2fe;
+    }
+
+    .from-primary-400 {
+      --tw-gradient-from: #818cf8;
+    }
+
+    .from-primary-500 {
+      --tw-gradient-from: #6366f1;
+    }
+
+    .from-primary-600 {
+      --tw-gradient-from: #4f46e5;
+    }
+
+    .to-primary-500 {
+      --tw-gradient-to: #6366f1;
+    }
+
+    .to-primary-600 {
+      --tw-gradient-to: #4f46e5;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50 min-h-screen">
@@ -282,15 +340,18 @@
             <a href="#"
               class="nav-item flex items-center px-1 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
               <div class="relative cursor-pointer group" id="requestsToggle">
-              <div class="p-1 rounded-full group-hover:bg-gray-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-700 group-hover:text-primary-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                </svg>
+                <div class="p-1 rounded-full group-hover:bg-gray-100 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-3 text-gray-700 group-hover:text-primary-600 transition-colors" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                  </svg>
+                </div>
+                <!-- Notification Badge -->
+                <!-- <span class="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full shadow-sm pulse-animation"></span> -->
               </div>
-              <!-- Notification Badge -->
-              <!-- <span class="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full shadow-sm pulse-animation"></span> -->
-            </div>
-              Requests  
+              Requests
             </a>
           </li>
           <li>
@@ -358,107 +419,112 @@
 
       <!-- Posts List -->
       <div class="container  mx-auto px-4 py-4 max-w-4xl">
-          @foreach ($posts as $post)
-            @php
-              $langs = json_decode($post->languages);
-            @endphp
+        @foreach ($posts as $post)
+        @php
+        $langs = json_decode($post->languages);
+      @endphp
         <div id="posts-container" class="grid grid-cols-1 gap-4 ">
           <!-- Post 1 -->
-            <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-            <div class="p-4">
-              <!-- Author and timestamp -->
-              <div class="flex items-center mb-3">
-              <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-                <img src="{{ asset('images/' . $post->user->profile->image) }}" alt="{{ $post->user->profile->name }}"
-                class="h-full w-full object-cover">
-              </div>
-              <div class="flex-1">
-                <div class="flex items-center">
-                <h3 class="font-medium text-gray-900 text-sm">{{ $post->user->profile->name }}</h3>
-                </div>
-                <div class="flex items-center text-xs text-gray-500 mt-0.5">
-                <span>{{ $post->user->profile->title ?? 'no title '}}</span>
-                <span class="mx-1">•</span>
-                <span>Created at:{{ $post->created_at }}</span>
-                </div>
-              </div>
-              <button
-                class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-              </button>
-              </div>
-
-              <!-- Title and content -->
-              <h2 class="text-base font-semibold text-gray-900 mb-2">{{ $post->title }}</h2>
-              <p class="text-gray-700 text-sm mb-3">{{ $post->description }}</p>
-
-              <!-- Post meta information -->
-              <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
-              <!-- Experience Level -->
-              <div class="post-meta-item">
-                <i class="fas fa-user-graduate"></i>
-                <span>{{$post->experience}}</span>
-              </div>
-
-              <span class="post-meta-divider"></span>
-
-              <!-- Credit Cost -->
-              <div class="post-meta-item">
-                <i class="fas fa-credit-card"></i>
-                <span>{{ $post->credits_cost }} credits</span>
-              </div>
-
-              <span class="post-meta-divider"></span>
-
-              <!-- Duration -->
-              <div class="post-meta-item">
-                <i class="fas fa-clock"></i>
-                <span>{{ $post->duration }} {{ $post->duration_unit }}</span>
-              </div>
-              </div>
-
-              <!-- Languages/Technologies -->
-              <div class="flex flex-wrap gap-1.5 mb-3">
-              @foreach($langs as $lang)
-                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">{{ $lang }}</span>
-              @endforeach
-              <span
-                class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Sketch</span>
-              <span
-                class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Adobe
-                XD</span>
-              </div>
-
-              @if(isset($post->skills) && !empty($post->skills))
-                <div class="mt-3">
-                    <h4 class="text-sm font-medium text-gray-700 mb-2">Skills Required:</h4>
-                    <div class="flex flex-wrap gap-1">
-                        @foreach(explode(',', $post->skills) as $skill)
-                            <span class="inline-block bg-blue-100 text-blue-700 rounded-full px-2.5 py-0.5 text-xs font-medium mr-1 mb-1">
-                                {{ trim($skill) }}
-                            </span>
-                        @endforeach
-                    </div>
-                </div>
-              @endif
-
-              <!-- Action button -->
-              <button
-              class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
-              <i class="fas fa-paper-plane mr-2"></i>
-              Send Request
-              </button>
+          <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
+          <div class="p-4">
+            <!-- Author and timestamp -->
+            <div class="flex items-center mb-3">
+            <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
+              <img src="{{ asset('images/' . $post->user->profile->image) }}" alt="{{ $post->user->profile->name }}"
+              class="h-full w-full object-cover">
             </div>
-          </div>
+            <div class="flex-1">
+              <div class="flex items-center">
+              <h3 class="font-medium text-gray-900 text-sm">{{ $post->user->profile->name }}</h3>
+              </div>
+              <div class="flex items-center text-xs text-gray-500 mt-0.5">
+              <span>{{ $post->user->profile->title ?? 'no title '}}</span>
+              <span class="mx-1">•</span>
+              <span>Created at:{{ $post->created_at }}</span>
+              </div>
+            </div>
+            <button
+              class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+              <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
+            </button>
+            </div>
+
+            <!-- Title and content -->
+            <h2 class="text-base font-semibold text-gray-900 mb-2">{{ $post->title }}</h2>
+            <p class="text-gray-700 text-sm mb-3">{{ $post->description }}</p>
+
+            <!-- Post meta information -->
+            <div class="flex flex-wrap items-center mb-3 text-xs text-gray-500">
+            <!-- Experience Level -->
+            <div class="post-meta-item">
+              <i class="fas fa-user-graduate"></i>
+              <span>{{$post->experience}}</span>
+            </div>
+
+            <span class="post-meta-divider"></span>
+
+            <!-- Credit Cost -->
+            <div class="post-meta-item">
+              <i class="fas fa-credit-card"></i>
+              <span>{{ $post->credits_cost }} credits</span>
+            </div>
+
+            <span class="post-meta-divider"></span>
+
+            <!-- Duration -->
+            <div class="post-meta-item">
+              <i class="fas fa-clock"></i>
+              <span>{{ $post->duration }} {{ $post->duration_unit }}</span>
+            </div>
+            </div>
+
+            <!-- Languages/Technologies -->
+            <div class="flex flex-wrap gap-1.5 mb-3">
+            @foreach($langs as $lang)
+          <span
+          class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">{{ $lang }}</span>
+        @endforeach
+            <span
+              class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Sketch</span>
+            <span
+              class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Adobe
+              XD</span>
+            </div>
+
+            @if(isset($post->skills) && !empty($post->skills))
+          <div class="mt-3">
+          <h4 class="text-sm font-medium text-gray-700 mb-2">Skills Required:</h4>
+          <div class="flex flex-wrap gap-1">
+            @foreach(explode(',', $post->skills) as $skill)
+          <span
+          class="inline-block bg-blue-100 text-blue-700 rounded-full px-2.5 py-0.5 text-xs font-medium mr-1 mb-1">
+          {{ trim($skill) }}
+          </span>
           @endforeach
+          </div>
+          </div>
+        @endif
 
+            <!-- Action button -->
+            <button
+            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+            <i class="fas fa-paper-plane mr-2"></i>
+            Send Request
+            </button>
+          </div>
+    @endforeach
+
+          </div>
         </div>
+        </div>
+       
+        
 
-      <!-- No results message (hidden by default) -->
-      <div id="no-results" class="hidden container mx-auto px-4 py-12 text-center max-w-4xl">
-        <h3 class="text-lg font-medium text-gray-700">No posts found</h3>
-        <p class="text-gray-500 mt-2">Try adjusting your search or filters</p>
-      </div>
+          <!-- No results message (hidden by default) -->
+          <div id="no-results" class="hidden container mx-auto px-4 py-12 text-center max-w-4xl">
+            <h3 class="text-lg font-medium text-gray-700">No posts found</h3>
+            <p class="text-gray-500 mt-2">Try adjusting your search or filters</p>
+          </div>
     </main>
 
     <!-- Right Sidebar -->
@@ -592,7 +658,8 @@
   </div>
 
   <!-- Requests Sidebar Panel -->
-  <div id="requestsPanel" class="sidebar-panel fixed top-0 right-0 h-full w-80 md:w-96 bg-white shadow-xl z-50 overflow-hidden flex flex-col">
+  <div id="requestsPanel"
+    class="sidebar-panel fixed top-0 right-0 h-full w-80 md:w-96 bg-white shadow-xl z-50 overflow-hidden flex flex-col">
     <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-indigo-600 text-white">
       <h2 class="text-lg font-semibold">Collaboration Requests</h2>
       <button id="closePanelBtn" class="p-1.5 rounded-full hover:bg-white/20 transition-colors">
@@ -609,8 +676,10 @@
     <!-- Empty State (shown when no requests) -->
     <div id="emptyState" class="hidden flex flex-col items-center justify-center py-12 text-center">
       <div class="bg-gray-100 p-4 rounded-full mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
         </svg>
       </div>
       <h3 class="text-lg font-medium text-gray-900">No pending requests</h3>
@@ -618,19 +687,19 @@
         You're all caught up! Check back later for new collaboration requests.
       </p>
     </div>
-    </div>
+  </div>
 
-    <!-- Panel Footer -->
-    <div class="p-4 border-t border-gray-100 bg-gray-50">
-      <div class="flex justify-between items-center">
-        <span class="text-sm text-gray-500">
-          Showing <span id="requestCount">3</span> requests
-        </span>
-        <button id="clearAllBtn" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
-          Clear All
-        </button>
-      </div>
+  <!-- Panel Footer -->
+  <div class="p-4 border-t border-gray-100 bg-gray-50">
+    <div class="flex justify-between items-center">
+      <span class="text-sm text-gray-500">
+        Showing <span id="requestCount">3</span> requests
+      </span>
+      <button id="clearAllBtn" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
+        Clear All
+      </button>
     </div>
+  </div>
   </div>
 
   <!-- Overlay for sidebar panel -->
@@ -641,265 +710,265 @@
 
 
   <script>
-   // Wait for DOM to be fully loaded
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile sidebar toggle
-  const sidebarToggle = document.getElementById('sidebar-toggle');
-  const leftSidebar = document.getElementById('left-sidebar');
-  const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-  
-  if (sidebarToggle) {
-    sidebarToggle.addEventListener('click', function() {
-      leftSidebar.classList.toggle('-translate-x-full');
-      sidebarBackdrop.classList.toggle('hidden');
-    });
-  }
-  
-  if (sidebarBackdrop) {
-    sidebarBackdrop.addEventListener('click', function() {
-      leftSidebar.classList.add('-translate-x-full');
-      sidebarBackdrop.classList.add('hidden');
-    });
-  }
+    // Wait for DOM to be fully loaded
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mobile sidebar toggle
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      const leftSidebar = document.getElementById('left-sidebar');
+      const sidebarBackdrop = document.getElementById('sidebar-backdrop');
 
-  // Filter dropdown toggle
-  const filterBtn = document.getElementById('filter-dropdown-btn');
-  const filterDropdown = document.getElementById('filter-dropdown');
-  
-  if (filterBtn) {
-    filterBtn.addEventListener('click', function() {
-      filterDropdown.classList.toggle('hidden');
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(event) {
-      if (!filterBtn.contains(event.target) && !filterDropdown.contains(event.target)) {
-        filterDropdown.classList.add('hidden');
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', function () {
+          leftSidebar.classList.toggle('-translate-x-full');
+          sidebarBackdrop.classList.toggle('hidden');
+        });
       }
-    });
-  }
 
-  // Filter buttons (Trending, Latest, Following)
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      filterBtns.forEach(b => b.classList.remove('active', 'bg-white'));
-      this.classList.add('active', 'bg-white');
-    });
-  });
+      if (sidebarBackdrop) {
+        sidebarBackdrop.addEventListener('click', function () {
+          leftSidebar.classList.add('-translate-x-full');
+          sidebarBackdrop.classList.add('hidden');
+        });
+      }
 
-  // Requests panel toggle
-  const requestsToggle = document.getElementById('requestsToggle');
-  const requestsPanel = document.getElementById('requestsPanel');
-  const overlay = document.getElementById('overlay');
-  const closeBtn = document.getElementById('closePanelBtn');
-  
-  if (requestsToggle) {
-    requestsToggle.addEventListener('click', function() {
-      requestsPanel.classList.add('open');
-      overlay.classList.remove('hidden');
-      overlay.classList.add('visible');
-    });
-  }
-  
-  function closePanel() {
-    requestsPanel.classList.remove('open');
-    overlay.classList.remove('visible');
-    overlay.classList.add('hidden');
-  }
-  // Close panel when clicking close button or overlay
-  if (closeBtn) closeBtn.addEventListener('click', closePanel);
-  if (overlay) overlay.addEventListener('click', closePanel);
+      // Filter dropdown toggle
+      const filterBtn = document.getElementById('filter-dropdown-btn');
+      const filterDropdown = document.getElementById('filter-dropdown');
 
-  // Fetch requests data
-  fetch('/requests')
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      console.log('Requests data:', data);
-    
-      const requestsContainer = document.querySelector('.requests-container');
-    
-      if (requestsContainer) {
-        requestsContainer.innerHTML = ''; // Clear existing content
-        
-        if (!data || data.length === 0) {
-          // Show empty state if no requests
-          const emptyState = document.getElementById('emptyState');
-          if (emptyState) emptyState.classList.remove('hidden');
-          return;
-        }
-        
-        // Hide empty state if we have data
-        const emptyState = document.getElementById('emptyState');
-        if (emptyState) emptyState.classList.add('hidden');
-        
-        // Update the request count
-        const countEl = document.getElementById('requestCount');
-        if (countEl) countEl.textContent = data.length;
-        
-        // Process the data with the actual structure
-        data.forEach(function(request) {
-          const requestItem = document.createElement('div');
-          requestItem.classList.add('request-item', 'flex', 'items-center', 'justify-between', 'p-4', 'border', 'border-gray-100', 'rounded-xl', 'bg-white', 'shadow-sm', 'hover:border-indigo-200', 'transition-colors');
-        
-          // Format the date (assuming created_at is a timestamp)
-          const createdDate = new Date(request.created_at);
-          const formattedDate = createdDate.toLocaleDateString();
-        
-          // Use the sender_name and sender_title from the response
-          requestItem.innerHTML = 
-            '<div class="flex items-center space-x-3">' +
-              '<div class="relative">' +
+      if (filterBtn) {
+        filterBtn.addEventListener('click', function () {
+          filterDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (event) {
+          if (!filterBtn.contains(event.target) && !filterDropdown.contains(event.target)) {
+            filterDropdown.classList.add('hidden');
+          }
+        });
+      }
+
+      // Filter buttons (Trending, Latest, Following)
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(b => b.classList.remove('active', 'bg-white'));
+          this.classList.add('active', 'bg-white');
+        });
+      });
+
+      // Requests panel toggle
+      const requestsToggle = document.getElementById('requestsToggle');
+      const requestsPanel = document.getElementById('requestsPanel');
+      const overlay = document.getElementById('overlay');
+      const closeBtn = document.getElementById('closePanelBtn');
+
+      if (requestsToggle) {
+        requestsToggle.addEventListener('click', function () {
+          requestsPanel.classList.add('open');
+          overlay.classList.remove('hidden');
+          overlay.classList.add('visible');
+        });
+      }
+
+      function closePanel() {
+        requestsPanel.classList.remove('open');
+        overlay.classList.remove('visible');
+        overlay.classList.add('hidden');
+      }
+      // Close panel when clicking close button or overlay
+      if (closeBtn) closeBtn.addEventListener('click', closePanel);
+      if (overlay) overlay.addEventListener('click', closePanel);
+
+      // Fetch requests data
+      fetch('/requests')
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log('Requests data:', data);
+
+          const requestsContainer = document.querySelector('.requests-container');
+
+          if (requestsContainer) {
+            requestsContainer.innerHTML = ''; // Clear existing content
+
+            if (!data || data.length === 0) {
+              // Show empty state if no requests
+              const emptyState = document.getElementById('emptyState');
+              if (emptyState) emptyState.classList.remove('hidden');
+              return;
+            }
+
+            // Hide empty state if we have data
+            const emptyState = document.getElementById('emptyState');
+            if (emptyState) emptyState.classList.add('hidden');
+
+            // Update the request count
+            const countEl = document.getElementById('requestCount');
+            if (countEl) countEl.textContent = data.length;
+
+            // Process the data with the actual structure
+            data.forEach(function (request) {
+              const requestItem = document.createElement('div');
+              requestItem.classList.add('request-item', 'flex', 'items-center', 'justify-between', 'p-4', 'border', 'border-gray-100', 'rounded-xl', 'bg-white', 'shadow-sm', 'hover:border-indigo-200', 'transition-colors');
+
+              // Format the date (assuming created_at is a timestamp)
+              const createdDate = new Date(request.created_at);
+              const formattedDate = createdDate.toLocaleDateString();
+
+              // Use the sender_name and sender_title from the response
+              requestItem.innerHTML =
+                '<div class="flex items-center space-x-3">' +
+                '<div class="relative">' +
                 '<img src="/images/designer.png" alt="' + (request.sender_name || 'User') + '" class="w-12 h-12 rounded-full border-2 border-white object-cover">' +
-              '</div>' +
-              '<div>' +
+                '</div>' +
+                '<div>' +
                 '<p class="font-medium text-gray-800">' + (request.sender_name || 'User #' + request.sender_id) + '</p>' +
                 '<div class="flex items-center space-x-2">' +
-                  '<span class="text-xs text-gray-500">' + (request.sender_title || 'No title') + '</span>' +
-                  '<span class="mx-1">•</span>' +
-                  '<span class="text-xs text-gray-500">' + formattedDate + '</span>' +
+                '<span class="text-xs text-gray-500">' + (request.sender_title || 'No title') + '</span>' +
+                '<span class="mx-1">•</span>' +
+                '<span class="text-xs text-gray-500">' + formattedDate + '</span>' +
                 '</div>' +
-              '</div>' +
-            '</div>' +
-            '<div class="flex items-center space-x-4">' +
-              '<button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors" data-action="accept" data-id="' + request.id + '">' +
+                '</div>' +
+                '</div>' +
+                '<div class="flex items-center space-x-4">' +
+                '<button class="action-button p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors" data-action="accept" data-id="' + request.id + '">' +
                 '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">' +
-                  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />' +
+                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />' +
                 '</svg>' +
-              '</button>' +
-              '<button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors" data-action="reject" data-id="' + request.id + '">' +
+                '</button>' +
+                '<button class="action-button p-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors" data-action="reject" data-id="' + request.id + '">' +
                 '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">' +
-                  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />' +
+                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />' +
                 '</svg>' +
-              '</button>' +
-            '</div>';
-        
-          requestsContainer.appendChild(requestItem);
-        });
-      } else {
-        console.error('Requests container not found');
-      }
-    })
-    .catch(function(error) {
-      console.error('Error fetching requests:', error);
-    
-      // Show an error message to the user
-      const requestsContainer = document.querySelector('.requests-container');
-      if (requestsContainer) {
-        requestsContainer.innerHTML = '<div class="text-center py-4 text-red-500">Failed to load requests. Please try again later.</div>';
-      }
-    });
+                '</button>' +
+                '</div>';
 
-  // Handle request actions (accept/reject)
-  document.addEventListener('click', function(e) {
-    const actionButton = e.target.closest('.action-button');
-    if (!actionButton) return;
-    
-    const action = actionButton.dataset.action;
-    const requestId = actionButton.dataset.id;
-    const requestItem = actionButton.closest('.request-item');
-    
-    // Determine status based on action
-    const status = action === 'accept' ? 'accepted' : 'declined';
-    
-    // Animate the item while processing
-    requestItem.style.opacity = '0.5';
-    
-    // Send status update to server
-    fetch(`/requests/${requestId}/status`, {
-        method: 'POST',
-        headers: {
+              requestsContainer.appendChild(requestItem);
+            });
+          } else {
+            console.error('Requests container not found');
+          }
+        })
+        .catch(function (error) {
+          console.error('Error fetching requests:', error);
+
+          // Show an error message to the user
+          const requestsContainer = document.querySelector('.requests-container');
+          if (requestsContainer) {
+            requestsContainer.innerHTML = '<div class="text-center py-4 text-red-500">Failed to load requests. Please try again later.</div>';
+          }
+        });
+
+      // Handle request actions (accept/reject)
+      document.addEventListener('click', function (e) {
+        const actionButton = e.target.closest('.action-button');
+        if (!actionButton) return;
+
+        const action = actionButton.dataset.action;
+        const requestId = actionButton.dataset.id;
+        const requestItem = actionButton.closest('.request-item');
+
+        // Determine status based on action
+        const status = action === 'accept' ? 'accepted' : 'declined';
+
+        // Animate the item while processing
+        requestItem.style.opacity = '0.5';
+
+        // Send status update to server
+        fetch(`/requests/${requestId}/status`, {
+          method: 'POST',
+          headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
-        },
-        body: JSON.stringify({ status: status })
-    })
-    .then(response => {
-        console.log('Response status:', response.status);
-        
-        // Clone the response so we can see the body in the console
-        const clonedResponse = response.clone();
-        clonedResponse.text().then(text => {
-            console.log('Raw response:', text);
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Server responded with status: ${response.status}`);
-        }
-        
-        return response.json();
-    })
-    .then(data => {
-        console.log('Success data:', data);
-        
-        // Remove the item with animation
-        requestItem.style.opacity = '0';
-        requestItem.style.transform = 'translateX(100%)';
-        requestItem.style.transition = 'all 300ms';
-        
-        setTimeout(() => {
-            requestItem.remove();
-            
-            // Update count
-            const count = document.querySelectorAll('.request-item').length;
-            const countEl = document.getElementById('requestCount');
-            if (countEl) countEl.textContent = count;
-            
-            // Show empty state if needed
-            const emptyState = document.getElementById('emptyState');
-            if (emptyState && count === 0) {
-                emptyState.classList.remove('hidden');
-            }
-            
-            // Show success message
-            showNotification(
-                action === 'accept' 
-                    ? 'Request accepted successfully!' 
-                    : 'Request declined',
-                action === 'accept' ? 'success' : 'info'
-            );
-        }, 300);
-    })
-    .catch(error => {
-        console.error('Error updating request:', error);
-        console.error('Error details:', error.message);
-        requestItem.style.opacity = '1';
-        showNotification('Failed to update request. Please try again.', 'error');
-    });
-});
+          },
+          body: JSON.stringify({ status: status })
+        })
+          .then(response => {
+            console.log('Response status:', response.status);
 
-// Simple notification function
-function showNotification(message, type = 'info') {
-    // Create notification element
-    const notification = document.createElement('div');
-    
-    // Set styles based on notification type
-    let bgColor, textColor, icon;
-    switch(type) {
-        case 'success':
+            // Clone the response so we can see the body in the console
+            const clonedResponse = response.clone();
+            clonedResponse.text().then(text => {
+              console.log('Raw response:', text);
+            });
+
+            if (!response.ok) {
+              throw new Error(`Server responded with status: ${response.status}`);
+            }
+
+            return response.json();
+          })
+          .then(data => {
+            console.log('Success data:', data);
+
+            // Remove the item with animation
+            requestItem.style.opacity = '0';
+            requestItem.style.transform = 'translateX(100%)';
+            requestItem.style.transition = 'all 300ms';
+
+            setTimeout(() => {
+              requestItem.remove();
+
+              // Update count
+              const count = document.querySelectorAll('.request-item').length;
+              const countEl = document.getElementById('requestCount');
+              if (countEl) countEl.textContent = count;
+
+              // Show empty state if needed
+              const emptyState = document.getElementById('emptyState');
+              if (emptyState && count === 0) {
+                emptyState.classList.remove('hidden');
+              }
+
+              // Show success message
+              showNotification(
+                action === 'accept'
+                  ? 'Request accepted successfully!'
+                  : 'Request declined',
+                action === 'accept' ? 'success' : 'info'
+              );
+            }, 300);
+          })
+          .catch(error => {
+            console.error('Error updating request:', error);
+            console.error('Error details:', error.message);
+            requestItem.style.opacity = '1';
+            showNotification('Failed to update request. Please try again.', 'error');
+          });
+      });
+
+      // Simple notification function
+      function showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+
+        // Set styles based on notification type
+        let bgColor, textColor, icon;
+        switch (type) {
+          case 'success':
             bgColor = 'bg-green-50';
             textColor = 'text-green-800';
             icon = '<svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>';
             break;
-        case 'error':
+          case 'error':
             bgColor = 'bg-red-50';
             textColor = 'text-red-800';
             icon = '<svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 10-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>';
             break;
-        default:
+          default:
             bgColor = 'bg-blue-50';
             textColor = 'text-blue-800';
             icon = '<svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>';
-    }
-    
-    // Set notification styles
-    notification.className = `fixed bottom-4 right-4 flex items-center p-4 rounded-lg shadow-lg ${bgColor} ${textColor} transform translate-y-0 opacity-100 transition-all duration-500 z-50`;
-    
-    // Set notification content
-    notification.innerHTML = `
+        }
+
+        // Set notification styles
+        notification.className = `fixed bottom-4 right-4 flex items-center p-4 rounded-lg shadow-lg ${bgColor} ${textColor} transform translate-y-0 opacity-100 transition-all duration-500 z-50`;
+
+        // Set notification content
+        notification.innerHTML = `
         <div class="flex-shrink-0 mr-3">
             ${icon}
         </div>
@@ -912,23 +981,23 @@ function showNotification(message, type = 'info') {
             </svg>
         </button>
     `;
-    
-    // Add to document
-    document.body.appendChild(notification);
-    
-    // Add close button functionality
-    notification.querySelector('button').addEventListener('click', () => {
-        notification.classList.add('opacity-0', 'translate-y-2');
-        setTimeout(() => notification.remove(), 500);
+
+        // Add to document
+        document.body.appendChild(notification);
+
+        // Add close button functionality
+        notification.querySelector('button').addEventListener('click', () => {
+          notification.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => notification.remove(), 500);
+        });
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+          notification.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => notification.remove(), 500);
+        }, 3000);
+      }
     });
-    
-    // Auto remove after 3 seconds
-    setTimeout(() => {
-        notification.classList.add('opacity-0', 'translate-y-2');
-        setTimeout(() => notification.remove(), 500);
-    }, 3000);
-}
-});
 
   </script>
 </body>
