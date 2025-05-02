@@ -333,23 +333,6 @@
       <!-- Filters and View Options -->
       <div class="container mx-auto px-4 py-4 max-w-4xl">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
-          <div class="flex items-center space-x-2">
-            <div class="bg-gray-100 rounded-md p-1 flex">
-              <button class="filter-btn active px-4 py-1.5 rounded-md bg-white text-sm font-medium transition-colors"
-                data-filter="trending">
-                Trending
-              </button>
-              <button class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
-                data-filter="latest">
-                Latest
-              </button>
-              <button class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
-                data-filter="following">
-                Following
-              </button>
-            </div>
-          </div>
-
           <div class="flex items-center space-x-2 w-full sm:w-auto">
             <div class="relative">
               <button id="filter-dropdown-btn"
@@ -386,13 +369,12 @@
               <!-- Author and timestamp -->
               <div class="flex items-center mb-3">
               <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-                <img src="{{ asset('images/profile.png') }}" alt="{{ $post->user->name }}"
+                <img src="{{ asset('storage/' . $post->user->profile->image) }}" alt="{{ $post->user->profile->name }}"
                 class="h-full w-full object-cover">
               </div>
               <div class="flex-1">
                 <div class="flex items-center">
-                <h3 class="font-medium text-gray-900 text-sm">{{ $post->user->names}}</h3>
-                <i class="fas fa-check-circle ml-1 text-blue-500 text-xs"></i>
+                <h3 class="font-medium text-gray-900 text-sm">{{ $post->user->profile->name }}</h3>
                 </div>
                 <div class="flex items-center text-xs text-gray-500 mt-0.5">
                 <span>{{ $post->user->profile->title ?? 'no title '}}</span>
@@ -437,8 +419,9 @@
 
               <!-- Languages/Technologies -->
               <div class="flex flex-wrap gap-1.5 mb-3">
-              <span
-                class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">{{ implode(', ', $langs) }}</span>
+              @foreach($langs as $lang)
+                <span class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">{{ $lang }}</span>
+              @endforeach
               <span
                 class="inline-block bg-gray-100 text-gray-700 rounded-full px-2.5 py-0.5 text-xs font-medium">Sketch</span>
               <span
