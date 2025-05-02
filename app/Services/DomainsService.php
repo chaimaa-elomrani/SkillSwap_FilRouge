@@ -24,7 +24,10 @@ class DomainsService
 
     public function getPostByDomain($domains){
         $domains = Domains::findOr($domains);
-        $posts = Posts::where('domain_id', $domains->id)->get();
+        $posts = Posts::with('user.profile')
+            ->where('domain_id', $domains->id)
+            ->latest()
+            ->get();
         return [
             'domains' => $domains,
             'posts' => $posts,

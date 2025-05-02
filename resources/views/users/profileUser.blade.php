@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>User Profile | FreeLancer</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -107,7 +107,7 @@
                     <!-- Avatar -->
                     <div class="flex-shrink-0 -mt-16 md:-mt-20 mb-4 md:mb-0 md:mr-6">
                         <div class="relative">
-                            <img src="{{ $profile->image }}" alt="Profile Picture"
+                            <img src="{{ asset('images/' . $profile->image) }}" alt="Profile Picture"
                                 class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white  object-cover shadow-md">
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                                         <span class="text-primary-500 ml-1">credits</span>
                                     </div>
                                     <button class="">
-                                        <a href="{{ route('posts.store') }}"
+                                        <a href="{{ route('posts.index') }}"
                                             class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Add
                                             Post</a>
 
@@ -181,7 +181,7 @@
                             <span class="text-secondary-600 ">Phone number</span>
                             <span class="text-secondary-900  font-medium">{{ $profile->phone_number}}</span>
                         </div>
-                    
+
                     </div>
                 </div>
 
@@ -204,12 +204,14 @@
                                 Skills</h3>
                             <div class="flex flex-wrap gap-2" id="technicalSkillsContainer">
                                 @foreach (auth()->user()->skills as $skill)
-                                <!-- delete skill button  -->
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <!-- delete skill button  -->
+                                    <div
+                                        class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
                                         <span>{{ $skill->name }}</span>
-                                        <a  class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500" aria-autocomplete=""href="/skills/{{$skill->id}}"><i class="fas fa-times"></i></a>
-                                </div>
+                                        <a class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500"
+                                            aria-autocomplete="" href="/skills/{{$skill->id}}"><i
+                                                class="fas fa-times"></i></a>
+                                    </div>
                                 @endforeach
 
                             </div>
@@ -237,7 +239,7 @@
                             <button
                                 class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
                                 data-tab="reviews">
-                                <i class="fas fa-star mr-2"></i>Reviews
+                                <i class="fas fa-star mr-2"></i>My Posts
                             </button>
                             <button
                                 class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
@@ -283,8 +285,10 @@
                                 <!-- delete skill button  -->
                                 <div
                                     class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                        <span>English</span>
-                                        <a  class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500" aria-autocomplete=""href="/skills/{{$skill->id}}"><i class="fas fa-times"></i></a>
+                                    <span>English</span>
+                                    <a class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500"
+                                        aria-autocomplete="" href="/skills/{{$skill->id}}"><i
+                                            class="fas fa-times"></i></a>
                                 </div>
                                 <!-- @endforeach -->
 
@@ -297,7 +301,6 @@
 
 
                 </div>
-
 
                 <div class="tab-content hidden" id="reviews">
                     <div class="bg-white  rounded-xl shadow-md p-6 mb-6 transition-colors duration-200">
@@ -429,6 +432,8 @@
             </div>
             </div>
         </div>
+        </div>
+        
                 <!-- Services Offered -->
                 <section
                     class="bg-white rounded-xl shadow-md p-6 transition-colors duration-200 md:p-8 tab-content hidden"
@@ -582,49 +587,50 @@ I specialize in design systems, responsive web applications, and bridging the ga
         <!--  services modal -->
         <div id="AddServiceModal"
             class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden ">
-           
-                <form class="service-item p-6 rounded-lg bg-white w-full max-w-xl mx-auto shadow-lg" method="POST" action="/personal_services/store">
-                    @csrf
-                    @method('POST')
-                    <div class="mb-4">
-                        <input type="text" name="title"
-                            class="service-title w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Service Title (e.g., Web Development, Logo Design)" required>
+
+            <form class="service-item p-6 rounded-lg bg-white w-full max-w-xl mx-auto shadow-lg" method="POST"
+                action="/personal_services/store">
+                @csrf
+                @method('POST')
+                <div class="mb-4">
+                    <input type="text" name="title"
+                        class="service-title w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Service Title (e.g., Web Development, Logo Design)" required>
+                </div>
+
+                <textarea name="description"
+                    class="service-description w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4"
+                    rows="4"
+                    placeholder="Describe this service in detail. What do you offer, and what can clients expect?"
+                    required></textarea>
+
+                <div class="flex items-center">
+                    <span class="text-md text-gray-600 mr-2  ">Credit Cost:</span>
+                    <div class="flex items-center space-x-2">
+                        <input type="number" name="credit_cost"
+                            class="service-min-credits w-20 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="800..." required>
+                        <span class="text-gray-500">-</span>
+
                     </div>
+                </div>
+                <div class=" flex items-end justify-end gap-4">
+                    <button type="button" id="cancelbtn"
+                        class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                        class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Save Service
+                    </button>
+                </div>
+            </form>
 
-                    <textarea name="description"
-                        class="service-description w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4"
-                        rows="4"
-                        placeholder="Describe this service in detail. What do you offer, and what can clients expect?"
-                        required></textarea>
 
-                    <div class="flex items-center">
-                        <span class="text-md text-gray-600 mr-2  ">Credit Cost:</span>
-                        <div class="flex items-center space-x-2">
-                            <input type="number" name="credit_cost"
-                                class="service-min-credits w-20 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="800..." required>
-                            <span class="text-gray-500">-</span>
-
-                        </div>
-                    </div>
-                    <div class=" flex items-end justify-end gap-4">
-                        <button type="button" id="cancelbtn"
-                            class="px-4 py-2 border border-secondary-300 rounded-lg text-secondary-700 hover:bg-secondary-50 transition-colors modal-close">
-                            Cancel
-                        </button>
-                        <button type="submit"
-                            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                            Save Service
-                        </button>
-                    </div>
-                </form>
-
-          
         </div>
 
-         <!-- Add Languagess Modal -->
-         <div id="LanguageModal" class="fixed inset-0 z-50 hidden">
+        <!-- Add Languagess Modal -->
+        <div id="LanguageModal" class="fixed inset-0 z-50 hidden">
             <div class="modal-backdrop absolute inset-0"></div>
             <div class="absolute inset-0 flex items-center justify-center p-4">
                 <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 animate-fade-in">

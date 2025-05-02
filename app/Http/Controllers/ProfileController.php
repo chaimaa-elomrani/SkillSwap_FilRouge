@@ -27,9 +27,14 @@ class ProfileController extends Controller
         $posts = $this->postService->getPostByUser($userId);  
         $profile = Profile::where('user_id', $userId)->firstOrFail();
         $profile['email'] = auth()->user()->email;
-        $isOwnProfile = true;
-        dd($posts);
         return view('users/profile' , compact('profile', 'posts'));
+    }
+
+    public function userProfile(string $id){
+        $posts = $this->postService->getPostByUser($id);  
+        $profile = Profile::where('user_id', $id)->firstOrFail();
+        $profile['email'] = auth()->user()->email;
+        return view('users/profileUser' , compact('profile', 'posts'));
     }
 
     

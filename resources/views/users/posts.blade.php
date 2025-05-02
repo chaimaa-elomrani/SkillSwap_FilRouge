@@ -431,7 +431,7 @@
             <div class="flex items-center mb-3">
             <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
               
-              <img src="{{ asset('images/' . $post->user->profile->image) }}" alt="{{ $post->user->profile->name }}"
+              <img src="{{ asset('images/' . $post->user->profile->image) ?? '' }}" alt="{{ $post->user->profile->name }}"
 
               class="h-full w-full object-cover">
             </div>

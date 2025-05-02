@@ -41,6 +41,7 @@ Route::get('/posts/{id}', [PostsController::class , 'destroy'])->name('posts.des
 
 
 
+
 // skills management 
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
 Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.store');
@@ -60,6 +61,7 @@ Route::get('/skills/{skill}', [SkillsController::class, 'deleteSkill']);
 Route::middleware(['auth'])->group(function () {    
     Route::get('/myProfile', [ProfileController::class, 'show'])->name('profile.index');
     Route::get('/profile/show', [ProfileController::class, 'index'])->name('profile.show');
+    Route::get('/profile/{id}', [ProfileController::class, 'userProfile'])->name('profile.user');
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
     
 });
