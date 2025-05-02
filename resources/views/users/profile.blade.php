@@ -331,10 +331,13 @@
                                                 <span>Created at:{{ $post->created_at }}</span>
                                             </div>
                                         </div>
-                                        <button
-                                            class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                                            <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
-                                        </button>
+                                        <!-- Post actions dropdown -->
+                                        <div class="relative">
+                                            <button
+                                                class="h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                                                <i class="fas fa-ellipsis-h text-gray-500 text-sm"></i>
+                                            </button>
+                                        </div>
                                     </div>
 
                                     <!-- Title and content -->
@@ -393,12 +396,33 @@
                                         </div>
                                     @endif
 
-                                    <!-- Action button -->
-                                    <button
-                                        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
-                                        <i class="fas fa-paper-plane mr-2"></i>
-                                        Send Request
-                                    </button>
+                                    <!-- Action button - Only show for other users' posts -->
+                                    @if(auth()->id() != $post->user_id)
+                                        <button
+                                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+                                            <i class="fas fa-paper-plane mr-2"></i>
+                                            Send Request
+                                        </button>
+                                    @else
+                                        <!-- For user's own posts, show edit and delete buttons -->
+                                        <div class="flex justify-between mt-3">
+                                            <a href="" 
+                                               class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+                                                <i class="fas fa-edit mr-2"></i>
+                                                Edit Post
+                                            </a>
+                                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                                @csrf
+                                                @method('GET')
+                                                <button type="submit" 
+                                                        class="bg-red-600 hover:bg-red-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm"
+                                                        onclick="return confirm('Are you sure you want to delete this post?')">
+                                                    <i class="fas fa-trash mr-2"></i>
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    @endif
                                 </div>
                                 
                             </div>
