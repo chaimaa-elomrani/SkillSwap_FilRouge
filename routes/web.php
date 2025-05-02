@@ -37,7 +37,6 @@ Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 // posts pages 
 Route::get('/post/create',[PostsController::class , 'index'])->name('posts.index');
 Route::post('/post', [PostsController::class , 'store'])->name('posts.store');
-Route::get('/posts/{id}', [PostsController::class , 'destroy'])->name('posts.destroy');
 
 
 
@@ -61,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/myProfile', [ProfileController::class, 'show'])->name('profile.index');
     Route::get('/profile/show', [ProfileController::class, 'index'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+    
 });
 
 
@@ -75,6 +75,9 @@ Route::get('/personal_services/{id}', [PersonalServicesController::class, 'destr
 Route::middleware('auth')->group(function() {
     Route::get('/requests', [RequestsController::class, 'getRequests']);
     Route::post('/requests/{id}/status', [RequestsController::class, 'updateRequestStatus'])->middleware('auth');
+    Route::post('/requests', [App\Http\Controllers\RequestsController::class, 'store'])->name('requests.store');
+    Route::patch('/requests/{request}/accept', [App\Http\Controllers\RequestsController::class, 'accept'])->name('requests.accept');
+    Route::patch('/requests/{request}/reject', [App\Http\Controllers\RequestsController::class, 'reject'])->name('requests.reject');
 });
 
 Route::post('/test-endpoint', function() {
