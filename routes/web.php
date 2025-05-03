@@ -90,5 +90,5 @@ Route::middleware('auth')->group(function() {
 
 // transactions routes 
 Route::get('/transactions', [TransactionsController::class , 'index'])->name('transactions.index');
-Route::get('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm');
+Route::post('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm');
 // Route::get('transactions/service_confirm', [TransactionsController::class, 'getPendingServicesToConfirm'])->name('transactions.pendingServicesToConfirm');

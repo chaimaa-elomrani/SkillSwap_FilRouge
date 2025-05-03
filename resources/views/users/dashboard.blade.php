@@ -139,7 +139,7 @@
                                             with: {{ $request->user->name }}
                                         </span>
                                     </div>
-                                    <div class="mt-4 flex flex-wrap gap-2">
+                                    <div class="mt-4 grid md:grid-cols-3 gap-4">
                                         <form action="{{ route('transactions.confirm' , $request->id)}}" method="POST">
                                             @csrf
                                         <button type="submit" id=" ConfirmBtn" class="flex-1 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
