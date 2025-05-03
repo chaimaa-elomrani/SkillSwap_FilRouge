@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Request as RequestModel;
-use App\Models\Requests; 
+use App\Models\Requests;
 use App\Services\RequestService;
 use DB;
 use Illuminate\Http\Request;
@@ -66,17 +66,19 @@ class RequestsController extends Controller
 
 
     public function accept($id){
-        $request =Request::where('id', $id)->update(['status' => 'accepted']);
+        $request = Requests::where('id', $id)->update(['status' => 'accepted']);
         if(!$request){
             return response()->json(['message' => 'Error in controller method'], 404);
         }
+        return response()->json(['success' => true, 'message' => 'Request accepted successfully']);
     }
 
     public function reject($id){
-        $request =Request::where('id', $id)->update(['status' => 'declined']);
+        $request = Requests::where('id', $id)->update(['status' => 'declined']);
         if(!$request){
             return response()->json(['message' => 'Error in controller method'], 404);
         }
+        return response()->json(['success' => true, 'message' => 'Request rejected successfully']);
     }
 
 
@@ -158,6 +160,27 @@ class RequestsController extends Controller
     }
 }
 
+public function updateStatus(Request $httpRequest, $id)
+{
+    try {
+        $requestModel = Requests::findOrFail($id);
+        $requestModel->status = $httpRequest->status;
+        $requestModel->save();
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Request status updated successfully',
+            'request' => $requestModel
+        ]);
+    } catch (\Exception $e) {
+        Log::error('Request update error: ' . $e->getMessage());
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to update request status',
+            'error' => $e->getMessage()
+        ], 500);
+    }
+}
 
 
 

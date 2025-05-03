@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\DomainsService;
 use App\Services\PostService;
 use Auth;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 
 use Illuminate\Routing\Controller;
@@ -41,7 +42,7 @@ class PostsController extends Controller
 
 
     public function store(Request $request){
-        $validated = $request->validate([
+        $validated = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'title' => 'required|string|max:60',
             'description' => 'required|string',
             'domain_id' => 'required|exists:domains,id',
@@ -51,11 +52,11 @@ class PostsController extends Controller
             'duration_unit' => 'required|string|in:hours,days,weeks',
             'skills' => 'required|string',
         ]);
-        
         try {
             $post = $this->postService->create($request);
             
             if (!$post) {
+                dd($post);
                 return back()->withInput()->withErrors(['error' => 'Failed to create post']);
             }
             

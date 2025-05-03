@@ -80,13 +80,15 @@ Route::middleware('auth')->group(function() {
     Route::get('/requests', [RequestsController::class, 'getRequests']);
     Route::post('/requests/{id}/status', [RequestsController::class, 'updateRequestStatus'])->middleware('auth');
     Route::post('/requests', [App\Http\Controllers\RequestsController::class, 'store'])->name('requests.store');
-    Route::patch('/requests/{request}/accept', [App\Http\Controllers\RequestsController::class, 'accept'])->name('requests.accept');
-    Route::patch('/requests/{request}/reject', [App\Http\Controllers\RequestsController::class, 'reject'])->name('requests.reject');
+    Route::post('/requests/{id}/accept', [RequestsController::class, 'accept'])->name('requests.accept');
+    Route::post('/requests/{id}/reject', [RequestsController::class, 'reject'])->name('requests.reject');
     Route::post('/sendRequest', [RequestsController::class, 'sendRequest'])->name('requests.send');
     Route::get('/request/store', [RequestsController::class, 'store'])->name('requests.store');
+    Route::post('/requests/{id}/update-status', [RequestsController::class, 'updateStatus'])->name('requests.update-status');
 });
 
 
 
 // transactions routes 
 Route::get('/transactions', [TransactionsController::class , 'index'])->name('transactions.index');
+Route::get('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm ');

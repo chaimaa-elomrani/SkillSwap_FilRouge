@@ -500,7 +500,7 @@
             @foreach(explode(',', $post->skills) as $skill)
           <span
           class="inline-block bg-blue-100 text-blue-700 rounded-full px-2.5 py-0.5 text-xs font-medium mr-1 mb-1">
-          {{ trim($skill) }}
+          {{ trim($skill) ?? '' }}
           </span>
           @endforeach
           </div>
@@ -881,11 +881,19 @@
         requestItem.style.opacity = '0.5';
 
         // Send status update to server
-        fetch(`/requests/${requestId}/status`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+        let endpoint;
+if (action === 'accept') {
+  endpoint = `/requests/${requestId}/accept`;
+} else {
+  endpoint = `/requests/${requestId}/reject`;
+}
+
+// Send status update to server
+fetch(endpoint, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
           },
           body: JSON.stringify({ status: status })
         })

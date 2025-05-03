@@ -27,11 +27,18 @@ class TransactionsController extends Controller
         ]);
     }
 
-    // public function show(){
-    //   $transactions = $this->transactionService->show();
-    //   return view('users/dashboard',  compact('transactions'));
-    // }
+    
+    public function confirmService(Request $request , $requestId){
+        $result = $this->transactionService->confirmService($requestId);
 
+        if(!$result){
+            return redirect()->back()->with('error', 'error in the function confirmeService in the controller');
+
+        }else{
+            return redirect()->back()->with('success', 'Service confirmed successfully');
+        }
+
+    }
 
     
 

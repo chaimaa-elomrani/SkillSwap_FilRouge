@@ -140,9 +140,12 @@
                                         </span>
                                     </div>
                                     <div class="mt-4 flex flex-wrap gap-2">
-                                        <button id=" ConfirmBtn" class="flex-1 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
+                                        <form action="{{ route('transactions.confirm' , $request->id)}}" method="POST">
+                                            @csrf
+                                        <button type="submit" id=" ConfirmBtn" class="flex-1 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
                                             Confirm Delivery
                                         </button>
+                                        </form>
                                         <button id="DisputeBtn" class="flex-1 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
                                             Dispute
                                         </button>

@@ -68,7 +68,6 @@ class PostService{
             'duration'=>$request->duration,
             'duration_unit' => $request->duration_unit, 
         ]);
-
         return $post; 
     }    
 }
