@@ -98,21 +98,18 @@
                                 <tr class="border-b text-left text-sm font-medium text-gray-500">
                                     <th class="pb-3 pr-6">Service</th>
                                     <th class="pb-3 pr-6">Date</th>
-                                    <th class="pb-3 pr-6">Status</th>
                                     <th class="pb-3 text-right">Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($transactions as $transaction )
                                 <tr class="border-b">
-                                    <td class="py-4 pr-6 font-medium">Website Design</td>
-                                    <td class="py-4 pr-6 text-sm text-gray-500">May 4, 2023</td>
-                                    <td class="py-4 pr-6">
-                                        <span class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
-                                            Completed
-                                        </span>
-                                    </td>
-                                    <td class="py-4 text-right">$450.00</td>
+                                    <td class="py-4 pr-6 font-medium">{{$transaction->posts->title }}</td>
+                                    <td class="py-4 pr-6 text-sm text-gray-500">{{ $transcation->created_at }}</td>
+                                    <td class="py-4 text-right">{{ $transaction->amount }}</td>
                                 </tr>
+                                 
+                                @endforeach
                             
                             </tbody>
                         </table>

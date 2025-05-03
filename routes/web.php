@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SkillsController;
+use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\TypesController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,6 +86,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/request/store', [RequestsController::class, 'store'])->name('requests.store');
 });
 
-Route::post('/test-endpoint', function() {
-    return response()->json(['success' => true]);
-}); 
+
+
+// transactions routes 
+Route::get('/transactions', [TransactionsController::class , 'show'])->name('transactions.index');
+// Route::get('/transactions/{id}', [TransactionsController::class , 'show'])->name('transactions.show');
