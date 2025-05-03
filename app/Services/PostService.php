@@ -49,25 +49,7 @@ class PostService{
     }
 
 
-    // public function create(Request $request){
-    // $validated = Validator::make($request->all(), [
-    //     'title' => 'required|string|max:255',
-    //     'description' => 'required|string|max:750',
-    //     'category' => 'required|string|max:255',
-    //     'user_id' => 'required|exists:users,id',
-    //     'service_id' => 'required|exists:services,id',
-    // ])->validate();
 
-    // $validated['user_id'] = auth()->user()->id;
-
-    // if(isset($validated['languages']) && is_array($validated('languages'))){
-    //     $validated['languages'] = json_encode($validated['languages']);
-    // }
-
-    //    return Posts::create($validated);
-
-    // }
-    
     
     public function create(Request $request){
         $skills = $request->skills && is_string($request->skills) ? array_filter(explode(',', $request->skills)) : [];

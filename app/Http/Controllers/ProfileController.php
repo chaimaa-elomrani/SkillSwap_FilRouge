@@ -34,7 +34,7 @@ class ProfileController extends Controller
         $posts = $this->postService->getPostByUser($id);  
         $profile = Profile::where('user_id', $id)->firstOrFail();
         $profile['email'] = auth()->user()->email;
-        return view('users/profileUser' , compact('profile', 'posts'));
+        return redirect()->route('profile.user' , compact('profile', 'posts'));
     }
 
     

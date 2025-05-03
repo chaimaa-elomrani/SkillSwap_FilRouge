@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('status', ['available', 'Limited Availability', 'unavailable'])->default('available');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('domain_id')->constrained()->onDelete('cascade');
+            $table->boolean('profile_completed')->default(false);
             $table->timestamps();
         });
     }

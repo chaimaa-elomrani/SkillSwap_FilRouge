@@ -437,7 +437,7 @@
             </div>
             <div class="flex-1">
               <div class="flex items-center">
-              <h3 class="font-medium text-gray-900 text-sm">{{ $post->user->profile->name }}</h3>
+              <a class="font-medium text-gray-900 text-sm"  href="{{ route('profile.user', $post->id) }}"> {{ $post->user->profile->name }}</a>
               </div>
               <div class="flex items-center text-xs text-gray-500 mt-0.5">
               <span>{{ $post->user->profile->title ?? 'no title '}}</span>

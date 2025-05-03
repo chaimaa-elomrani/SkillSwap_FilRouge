@@ -13,5 +13,14 @@ class RequestService
       
     }
 
+    public function sendRequest($senderId, $receiverId, $postId) {
+        return Requests::create([
+            'sender_id' => $senderId,
+            'receiver_id' => $receiverId,
+            'post_id' => $postId,
+            'status' => 'pending'
+        ]);
+    }
+
 
 }

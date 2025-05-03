@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('domain_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->json('languages');
+            $table->json('skills')->nullable();   
             $table->enum('experience', ['Beginner', 'Intermediate', 'Expert']);
             $table->bigInteger('credits_cost');
             $table->integer('duration');

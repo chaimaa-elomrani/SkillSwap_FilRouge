@@ -107,7 +107,7 @@
                     <!-- Avatar -->
                     <div class="flex-shrink-0 -mt-16 md:-mt-20 mb-4 md:mb-0 md:mr-6">
                         <div class="relative">
-                            <img src="{{ $profile->image }}" alt="Profile Picture"
+                            <img src="{{ asset('images/' . $profile->image) ?? ''}}" alt="{{$profile->name}}"
                                 class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white  object-cover shadow-md">
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                                         <span class="text-primary-500 ml-1">credits</span>
                                     </div>
                                     <button class="">
-                                        <a href="{{ route('posts.store') }}"
+                                        <a href="{{ route('posts.index') }}"
                                             class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition-colors">Add
                                             Post</a>
 
@@ -237,7 +237,7 @@
                             <button
                                 class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
                                 data-tab="reviews">
-                                <i class="fas fa-star mr-2"></i>Reviews
+                                <i class="fas fa-star mr-2"></i>My Posts
                             </button>
                             <button
                                 class="tab-button whitespace-nowrap px-6 py-4 text-sm font-medium border-b-2 border-transparent text-secondary-500  hover:text-secondary-700 "
@@ -314,8 +314,8 @@
                                     <!-- Author and timestamp -->
                                     <div class="flex items-center mb-3">
                                         <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-                                            <img src="{{ asset('images/' . $post->user->profile->image) }}"
-                                                alt="{{ $post->user->profile->name }}" class="h-full w-full object-cover">
+                                        <img src="{{ asset('images/' . $profile->image) }}" alt="Profile Picture"
+                                        class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white  object-cover shadow-md">>
                                         </div>
                                         <div class="flex-1">
                                             <div class="flex items-center">
