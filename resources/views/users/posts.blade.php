@@ -1039,7 +1039,6 @@ document.addEventListener('click', function(e) {
       console.log('Response status:', response.status);
       console.log('Response headers:', [...response.headers.entries()]);
       
-      // Clone the response so we can see the body in the console
       const clonedResponse = response.clone();
       clonedResponse.text().then(text => {
         console.log('Raw response body:', text);
