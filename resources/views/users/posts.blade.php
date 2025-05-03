@@ -422,7 +422,7 @@
         @foreach ($posts as $post)
         @php
         $langs = json_decode($post->languages);
-      @endphp
+        @endphp
         <div id="posts-container" class="grid grid-cols-1 gap-4 ">
           <!-- Post 1 -->
           <div class="post-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
@@ -430,14 +430,14 @@
             <!-- Author and timestamp -->
             <div class="flex items-center mb-3">
             <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-3">
-              
-              <img src="{{ asset('images/' . $post->user->profile->image) ?? '' }}" alt="{{ $post->user->profile->name }}"
 
-              class="h-full w-full object-cover">
+              <img src="{{ asset('images/' . $post->user->profile->image) ?? '' }}"
+              alt="{{ $post->user->profile->name }}" class="h-full w-full object-cover">
             </div>
             <div class="flex-1">
               <div class="flex items-center">
-              <a class="font-medium text-gray-900 text-sm"  href="{{ route('profile.user', $post->id) }}"> {{ $post->user->profile->name }}</a>
+              <a class="font-medium text-gray-900 text-sm" href="{{ route('profile.user', $post->id) }}">
+                {{ $post->user->profile->name }}</a>
               </div>
               <div class="flex items-center text-xs text-gray-500 mt-0.5">
               <span>{{ $post->user->profile->title ?? 'no title '}}</span>
@@ -509,7 +509,8 @@
 
             <!-- Action button -->
             <button
-            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm">
+            class="send-request-btn w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-md transition-colors flex items-center justify-center text-sm"
+            data-post-id="{{ $post->id }}">
             <i class="fas fa-paper-plane mr-2"></i>
             Send Request
             </button>
@@ -518,15 +519,15 @@
 
           </div>
         </div>
-        </div>
-       
-        
+      </div>
 
-          <!-- No results message (hidden by default) -->
-          <div id="no-results" class="hidden container mx-auto px-4 py-12 text-center max-w-4xl">
-            <h3 class="text-lg font-medium text-gray-700">No posts found</h3>
-            <p class="text-gray-500 mt-2">Try adjusting your search or filters</p>
-          </div>
+
+
+      <!-- No results message (hidden by default) -->
+      <div id="no-results" class="hidden container mx-auto px-4 py-12 text-center max-w-4xl">
+        <h3 class="text-lg font-medium text-gray-700">No posts found</h3>
+        <p class="text-gray-500 mt-2">Try adjusting your search or filters</p>
+      </div>
     </main>
 
     <!-- Right Sidebar -->
@@ -1001,7 +1002,105 @@
       }
     });
 
+
+
+    // Handle send request buttons
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.send-request-btn')) {
+    const button = e.target.closest('.send-request-btn');
+    const postId = button.dataset.postId;
+    
+    // Disable the button and change appearance
+    button.disabled = true;
+    button.classList.add('opacity-75');
+    button.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i>Sending...';
+    
+    // Get the CSRF token
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    
+    // Log the request details for debugging
+    console.log('Sending request for post ID:', postId);
+    console.log('CSRF Token present:', !!csrfToken);
+    
+    // Send the request
+    fetch('/sendRequest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': csrfToken || '',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        post_id: postId
+      })
+    })
+    .then(response => {
+      // Log the raw response for debugging
+      console.log('Response status:', response.status);
+      console.log('Response headers:', [...response.headers.entries()]);
+      
+      // Clone the response so we can see the body in the console
+      const clonedResponse = response.clone();
+      clonedResponse.text().then(text => {
+        console.log('Raw response body:', text);
+        
+        // Try to parse as JSON if possible
+        try {
+          const jsonData = JSON.parse(text);
+          console.log('Parsed JSON response:', jsonData);
+        } catch (e) {
+          console.log('Response is not valid JSON');
+        }
+      });
+      
+      // Check if the response is ok (status in the range 200-299)
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+      
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success data:', data);
+      
+      if (data.success) {
+        // Success
+        button.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+        button.classList.add('bg-green-600', 'hover:bg-green-700');
+        button.innerHTML = '<i class="fas fa-check mr-2"></i>Request Sent';
+        
+        // Show success notification
+        showNotification(data.message || 'Request sent successfully!', 'success');
+      } else {
+        throw new Error(data.error || 'Failed to send request');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      console.error('Error details:', error.message);
+      
+      // Reset button
+      button.disabled = false;
+      button.classList.remove('opacity-75');
+      button.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Send Request';
+      
+      // Show error notification
+      showNotification(error.message || 'Failed to send request. Please try again.', 'error');
+    });
+  }
+});
+
+
+
+    
+
+    
+
   </script>
 </body>
 
 </html>
+
+
+
+

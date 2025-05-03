@@ -81,6 +81,8 @@ Route::middleware('auth')->group(function() {
     Route::post('/requests', [App\Http\Controllers\RequestsController::class, 'store'])->name('requests.store');
     Route::patch('/requests/{request}/accept', [App\Http\Controllers\RequestsController::class, 'accept'])->name('requests.accept');
     Route::patch('/requests/{request}/reject', [App\Http\Controllers\RequestsController::class, 'reject'])->name('requests.reject');
+    Route::post('/sendRequest', [RequestsController::class, 'sendRequest'])->name('requests.send');
+    Route::get('/request/store', [RequestsController::class, 'store'])->name('requests.store');
 });
 
 Route::post('/test-endpoint', function() {

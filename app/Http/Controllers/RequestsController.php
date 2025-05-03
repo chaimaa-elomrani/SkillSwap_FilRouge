@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Request as RequestModel;
-use App\Models\Requests;
+use App\Models\Requests; 
 use App\Services\RequestService;
 use DB;
 use Illuminate\Http\Request;
@@ -79,86 +79,87 @@ class RequestsController extends Controller
         }
     }
 
-    /**
-     * Update request status (accept/reject)
-     */
-    public function updateRequestStatus(Request $request, $id)
+
+    public function sendRequest(Request $request)
     {
         try {
-
-
-
-
-
-
             // Validate the input
-            $status = $request->input('status');
-            
-            if (!in_array($status, ['accepted', 'declined'])) {
-
-                return response()->json(['error' => 'Invalid status'], 400);
-            }
-            
-            // Get the authenticated user
-            $user = auth()->user();
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // Update the request status
-            $updated = DB::table('requests')
-                ->where('id', $id)
-                ->where('receiver_id', $user->id)
-                ->update(['status' => $status]);
-            
-
-
-
-
-
-            if (!$updated) {
-                return response()->json(['error' => 'Request not found or not authorized'], 404);
-            }
-            
-            // After updating the request status
-            \Log::info('Request status updated', [
-                'request_id' => $id,
-                'new_status' => $status,
-                'updated' => $updated
+            $request->validate([
+                'post_id' => 'required|exists:posts,id',
             ]);
-
-            // You can also log the request after update to verify
-            $updatedRequest = DB::table('requests')->where('id', $id)->first();
-            \Log::info('Updated request', ['request' => $updatedRequest]);
-
+            
+            $postId = $request->post_id;
+            $post = DB::table('posts')->where('id', $postId)->first();
+            
+            if (!$post) {
+                return response()->json(['error' => 'Post not found'], 404);
+            }
+            
+            $senderId = auth()->id();
+            $receiverId = $post->user_id;
+            
+            // Don't allow sending request to yourself
+            if ($senderId == $receiverId) {
+                return response()->json(['error' => 'Cannot send request to yourself'], 400);
+            }
+            
+            // Check if a request already exists
+            $existingRequest = DB::table('requests')
+                ->where('sender_id', $senderId)
+                ->where('receiver_id', $receiverId)
+                ->where('post_id', $postId)
+                ->whereIn('status', ['pending', 'accepted', 'declined'])
+                ->first();
+                
+            if ($existingRequest) {
+                return response()->json(['error' => 'Request already exists'], 400);
+            }
+            
+            // Create the request
+            $this->requestService->sendRequest($senderId, $receiverId, $postId);
+            
             return response()->json([
                 'success' => true,
-                'message' => $status === 'accepted' ? 'Request accepted successfully' : 'Request declined'
+                'message' => 'Collaboration request sent successfully',
+                'data' => []
             ]);
         } catch (\Exception $e) {
-
-
-
-
-
-            \Log::error('Error updating request: ' . $e->getMessage());
-            return response()->json(['error' => 'Failed to update request'], 500);
+            Log::error('Error sending request: ' . $e->getMessage());
+            return response()->json(['error' => 'Failed to send request: ' . $e->getMessage()], 500);
         }
     }
+
+
+    public function store(Request $request)
+{
+    // Validate the request
+    $validated = $request->validate([
+        'post_id' => 'required|exists:posts,id',
+    ]);
+    
+    try {
+        // Create the request record
+        $collaborationRequest = Requests::create([
+            'sender_id' => auth()->id(),
+            'post_id' => $validated['post_id'],
+            'status' => 'pending',
+        ]);
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Request sent successfully!',
+            'request_id' => $collaborationRequest->id
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'error' => 'Failed to send request: ' . $e->getMessage()
+        ], 500);
+    }
 }
+
+
+
+
+}
+

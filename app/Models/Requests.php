@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Requests extends Model
 {
     
-    protected $fillble = [
+    protected $fillable = [
         'sender_id',
         'receiver_id',
+        'post_id',
         'status'
     ];
 
@@ -23,5 +24,5 @@ class Requests extends Model
         return $this->belongsTo(User::class, 'receiver_id');
     }
 
-    
+
 }
