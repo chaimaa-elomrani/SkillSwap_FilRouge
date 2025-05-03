@@ -117,26 +117,26 @@
                 </div>
 
                 <!-- Pending Services and Services to Confirm -->
-                <div class="grid gap-8 md:grid-cols-2">
-                   
-
+                <div class="grid gap-8 md:grid-cols-1">
                     <!-- Services to Confirm -->
-                    <div class="rounded-lg border bg-white shadow-sm">
+                    <div class="rounded-lg border bg-white shadow-sm w-full ">
                         <div class="border-b p-6">
                             <h2 class="text-lg font-semibold">Services to Confirm</h2>
                             <p class="text-sm text-gray-500">Services awaiting your confirmation to release payment.</p>
                         </div>
                         <div class="p-6">
-                            <div class="space-y-4">
-                                @foreach ($pendingServices as $pendingService)
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            @foreach ($pendingServices as $post)
+                            @foreach ($post->requests as $request)
                                 <div class="rounded-lg border p-4">
                                     <div class="flex flex-wrap items-start justify-between gap-2">
                                         <div>
-                                            <h3 class="font-medium">{{ $pendingService->title}}</h3>
+                                            <h3 class="font-medium">{{ $post->title}}</h3>
+                                            <p class="text-gray-700 text-sm mb-3">{{ $post->description }}</p>
                                             <p class="text-sm text-gray-500">Delivered on May 12, 2023</p>
                                         </div>
                                         <span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
-                                            Awaiting Confirmation
+                                            with: {{ $request->user->name }}
                                         </span>
                                     </div>
                                     <div class="mt-4 flex flex-wrap gap-2">
@@ -151,6 +151,7 @@
                                         </button>
                                     </div>  
                                 </div>
+                                @endforeach
                                 @endforeach
                             </div>
                         </div>

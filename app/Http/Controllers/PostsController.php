@@ -68,4 +68,28 @@ class PostsController extends Controller
     }
 
 
+
+    public function getPendingServicesToConfirm()
+    {
+        $user = Auth::user();
+        
+        if (!$user) {
+            return collect();
+        }
+        
+        // Get posts created by the current user that have accepted requests
+        return Posts::where('user_id', $user->id)
+            ->whereHas('requests', function($query) {
+                $query->where('status', 'accepted')
+                      ->where('is_completed', false);  // Use the correct column name here
+            })
+            ->with(['requests' => function($query) {
+                $query->where('status', 'accepted')
+                      ->where('is_completed', false)  // And here
+                      ->with('user.profile');
+            }])
+            ->latest()
+            ->get();
+    }
+
 }

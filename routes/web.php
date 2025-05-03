@@ -42,7 +42,6 @@ Route::get('/posts/{id}', [PostsController::class , 'destroy'])->name('posts.des
 
 
 
-
 // skills management 
 Route::get('/skills',[SkillsController::class , 'index'])->name('skills.index');
 Route::post('/skills/create',[SkillsController::class , 'store'])->name('skills.store');
@@ -91,4 +90,5 @@ Route::middleware('auth')->group(function() {
 
 // transactions routes 
 Route::get('/transactions', [TransactionsController::class , 'index'])->name('transactions.index');
-Route::get('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm ');
+Route::get('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm');
+// Route::get('transactions/service_confirm', [TransactionsController::class, 'getPendingServicesToConfirm'])->name('transactions.pendingServicesToConfirm');
