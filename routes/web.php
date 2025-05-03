@@ -89,5 +89,4 @@ Route::middleware('auth')->group(function() {
 
 
 // transactions routes 
-Route::get('/transactions', [TransactionsController::class , 'show'])->name('transactions.index');
-// Route::get('/transactions/{id}', [TransactionsController::class , 'show'])->name('transactions.show');
+Route::get('/transactions', [TransactionsController::class , 'index'])->name('transactions.index');

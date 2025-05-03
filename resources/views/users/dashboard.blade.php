@@ -128,10 +128,11 @@
                         </div>
                         <div class="p-6">
                             <div class="space-y-4">
+                                @foreach ($pendingServices as $pendingService)
                                 <div class="rounded-lg border p-4">
                                     <div class="flex flex-wrap items-start justify-between gap-2">
                                         <div>
-                                            <h3 class="font-medium">UI/UX Design</h3>
+                                            <h3 class="font-medium">{{ $pendingService->title}}</h3>
                                             <p class="text-sm text-gray-500">Delivered on May 12, 2023</p>
                                         </div>
                                         <span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
@@ -147,7 +148,7 @@
                                         </button>
                                     </div>  
                                 </div>
-                
+                                @endforeach
                             </div>
                         </div>
                     </div>

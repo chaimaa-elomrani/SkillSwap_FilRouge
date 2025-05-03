@@ -24,5 +24,9 @@ class Requests extends Model
         return $this->belongsTo(User::class, 'receiver_id');
     }
 
+    public function post()
+    {
+        return $this->belongsTo(Posts::class, 'post_id');
+    }
 
 }

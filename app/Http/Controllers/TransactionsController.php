@@ -17,14 +17,22 @@ class TransactionsController extends Controller
     }
 
 
-    public function show(){
-      $transactions = $this->transactionService->show();
-      return view('users/dashboard',  compact('transactions'));
+    public function index(){
+        $pendingServices = $this->transactionService->getPendingServices();
+        $transactions = $this ->transactionService->show();
+
+        return view('users/dashboard', [
+            'transactions' => $transactions,
+            'pendingServices' => $pendingServices,
+        ]);
     }
 
-
-    // public function index(){
-    //     $this->transactionService->getUserTransactions(auth()->user()->id);
-    //     return view('users/dashboard', compact('transactions'));
+    // public function show(){
+    //   $transactions = $this->transactionService->show();
+    //   return view('users/dashboard',  compact('transactions'));
     // }
+
+
+    
+
 }
