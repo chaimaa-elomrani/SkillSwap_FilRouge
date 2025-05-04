@@ -4,6 +4,7 @@ use App\Models\Posts;
 use App\Models\Requests;
 use App\Models\Transactions;
 use App\Models\UserCredit;
+use App\Models\UserCredits;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -39,26 +40,65 @@ class TransactionServices{
 
 
     public function confirmService($requestId){
-        $user = Auth::user();
+
+        return DB::transaction(function() use ($requestId){
+
+            $user = Auth::user();
 
         if(!$user){
             return false;
         }
 
-        $request = Requests::findOrFail($requestId);
+        $request = Requests::with(['post' , 'user'])->findOrFail($requestId);
 
         if($request->post->user_id !== $user->id){
             return false; 
         }
 
+        if ($request->confirmed) {
+            return false; // Already confirmed, prevent double-crediting
+        }
+
+        $creditCost = $request->post->credit_cost;
+        $requester = $request->user;
+
+        //anchoufo wach the  user has credits  in the table ila makanouch ghancreeriyiw a new one (record)
+        $postOwnerCredits = UserCredits::firstOrCreate([
+            'user_id' => $user->id, 
+            'credits' => 0 , 
+        ]);
+        
+        $requesterCredits = UserCredits::firstOrCreate([
+            'user_id' => $requester->id,
+            'credits' => 0 ,
+        ]);
+
+        //checking wach the post owner 3endo enought credits bach ykheles bihoum the requester
+        if($postOwnerCredits->credits < $creditCost){
+            return false;
+        }
+
+        // incrementing for the requester and decrementing for the post owner
+        $postOwnerCredits->credits -= $creditCost;
+        $requesterCredits->credits += $creditCost;
+
+        // save changes 
+        $postOwnerCredits->save();
+        $requesterCredits->save();
+
+        
         $request->confirmed = true;
         $request->created_at = now();
         $request->save(); 
-
-        // ghanzid hna logic diyal credits transaction
-
-        return true; 
+        
+        $this->createTransactionRecord($user->id , $request->post_id , $creditCost , 'Service Payment');
+        $this->createTransactionRecord($requester->id , $request->post_id , $creditCost , 'Service earnings');
+        return true;
+    });
+    
     }
 
-}
 
+    
+
+}
