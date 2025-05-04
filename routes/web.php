@@ -13,6 +13,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\TypesController;
+use App\Http\Controllers\UserCreditsController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -88,8 +90,8 @@ Route::middleware('auth')->group(function() {
 
 
 
-// transactions routes 
+// transactions routes / credits
 Route::get('/transactions', [TransactionsController::class , 'index'])->name('transactions.index');
 Route::post('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm');
-// Route::get('transactions/service_confirm', [TransactionsController::class, 'getPendingServicesToConfirm'])->name('transactions.pendingServicesToConfirm');
 Route::post('/requests/{requestId}/confirm', [TransactionsController::class, 'confirmCompletion'])->name('transactions.confirm');
+Route::get('/Mycredits' , [UserCreditsController::class , 'index'])->name('credits.index');
