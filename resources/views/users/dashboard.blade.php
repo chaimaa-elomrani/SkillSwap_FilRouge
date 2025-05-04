@@ -104,11 +104,10 @@
                             <tbody>
                                 @foreach ($transactions as $transaction )
                                 <tr class="border-b">
-                                    <td class="py-4 pr-6 font-medium">{{$transaction->post->title }}</td>
+                                    <td class="py-4 pr-6 font-medium">{{ $transaction->post->title ?? 'N/A' }}</td>
                                     <td class="py-4 pr-6 text-sm text-gray-500">{{ $transaction->created_at }}</td>
                                     <td class="py-4 text-right">{{ $transaction->amount }}</td>
-                                </tr>
-                                 
+                                </tr>                                 
                                 @endforeach
                             
                             </tbody>
