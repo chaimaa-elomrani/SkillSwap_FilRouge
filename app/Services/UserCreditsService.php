@@ -10,7 +10,8 @@ class UserCreditsService
 {
     public function getUserCredits($userId)
     {
-        return UserCredits::where('user_id', $userId)->first();
+        $userCredit =UserCredits::where('user_id', $userId)->first();
+        return $userCredit ;
     }
 
     // public function addCredits($userId, $amount)
@@ -37,5 +38,6 @@ class UserCreditsService
     //     }
     //     return false;
     // }
+
 
 }

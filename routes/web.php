@@ -94,4 +94,5 @@ Route::middleware('auth')->group(function() {
 Route::get('/transactions', [TransactionsController::class , 'index'])->name('transactions.index');
 Route::post('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm');
 Route::post('/requests/{requestId}/confirm', [TransactionsController::class, 'confirmCompletion'])->name('transactions.confirm');
-Route::get('/Mycredits' , [UserCreditsController::class , 'index'])->name('credits.index');
+// Route::get('/profile/{userId}', 'UserCreditsController@index');
+// Route::get('/profile/{userId}', [UserCreditsController::class, 'index'])->name('user.credits.index');

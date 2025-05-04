@@ -137,7 +137,7 @@
                                     <div
                                         class="flex items-center bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full">
                                         <i class="fas fa-coins mr-2"></i>
-                                        <span class="font-medium">750</span>
+                                        <span class="font-medium">{{ $credits->credits ?? 0 }}</span>
                                         <span class="text-primary-500 ml-1">credits</span>
                                     </div>
                                     <button class="">

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Services\DomainsService;
 use App\Services\PostService;
 use App\Services\ProfileService;
+use App\Services\UserCreditsService;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -15,19 +16,25 @@ class ProfileController extends Controller
 
     protected $postService;
 
+    protected $userCreditsService;
 
-    public function __construct(ProfileService $profileService , DomainsService $domainService, PostService $postService){
+
+    public function __construct(ProfileService $profileService , DomainsService $domainService, PostService $postService , UserCreditsService $userCreditsService){
         $this->profileService = $profileService;
         $this->domainService = $domainService;
         $this->postService = $postService;
+        $this->userCreditsService = $userCreditsService;
     }
 
     public function show(){
         $userId = auth()->user()->id;
         $posts = $this->postService->getPostByUser($userId);  
+        $credits = $this->userCreditsService->getUserCredits($userId);
+        // dd($userCreditsService);
         $profile = Profile::where('user_id', $userId)->firstOrFail();
+        // dd($profile);
         $profile['email'] = auth()->user()->email;
-        return view('users/profile' , compact('profile', 'posts'));
+        return view('users/profile' , compact('profile', 'posts', 'credits'));
     }
 
     public function userProfile(string $id){

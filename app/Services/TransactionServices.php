@@ -57,13 +57,12 @@ class TransactionServices{
         }
 
         if ($request->confirmed) {
-            return false; // Already confirmed, prevent double-crediting
+            return false; 
         }
 
         $creditCost = $request->post->credit_cost;
         $requester = $request->user;
 
-        //anchoufo wach the  user has credits  in the table ila makanouch ghancreeriyiw a new one (record)
         $postOwnerCredits = UserCredits::firstOrCreate([
             'user_id' => $user->id, 
             'credits' => 0 , 
@@ -74,16 +73,13 @@ class TransactionServices{
             'credits' => 0 ,
         ]);
 
-        //checking wach the post owner 3endo enought credits bach ykheles bihoum the requester
         if($postOwnerCredits->credits < $creditCost){
             return false;
         }
 
-        // incrementing for the requester and decrementing for the post owner
         $postOwnerCredits->credits -= $creditCost;
         $requesterCredits->credits += $creditCost;
 
-        // save changes 
         $postOwnerCredits->save();
         $requesterCredits->save();
 

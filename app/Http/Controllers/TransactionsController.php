@@ -29,17 +29,6 @@ class TransactionsController extends Controller
     }
 
     
-    // public function confirmService(Request $request , $requestId){
-    //     $result = $this->transactionService->confirmServiceCompletion($requestId);
-
-    //     if(!$result){
-    //         return redirect()->back()->with('error', 'error in the function confirmeService in the controller');
-
-    //     }else{
-    //         return redirect()->back()->with('success', 'Service confirmed successfully');
-    //     }
-
-    // }
 
 
     public function confirmCompletion($requestId){
