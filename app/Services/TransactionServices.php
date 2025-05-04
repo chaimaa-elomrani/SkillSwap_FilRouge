@@ -99,6 +99,30 @@ class TransactionServices{
     }
 
 
-    
+
+    // create transaction record function
+     public function createTransactionRecord($userId, $postId, $amount, $description){
+        $transaction = new Transactions();
+        $transaction->user_id = $userId;
+        $transaction->post_id = $postId;
+        $transaction->amount = $amount;
+        $transaction->description = $description;
+        $transaction->save();
+     }
+
+
+     public function getPendingRequests(){
+        $user = Auth::user();
+
+        if(!$user){
+            return collect(); // Return empty collection if user is not authenticated
+        }
+
+        return Posts::where('user_id', $user->id)->whereHas('requests', function($query){
+            $query->where('status', 'accepted')->where('confirmed' , false);
+        })->with(['requests'=> function($query){
+            $query->where('status', 'accepted')->where('confirmed' , false)->with('user.profile');
+        }])->latest()->get();
+     }
 
 }
