@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('post_id')->constrained()->onDelete('cascade');
-            $table->integer('amount');
+            $table->integer('amount')->default(50)->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

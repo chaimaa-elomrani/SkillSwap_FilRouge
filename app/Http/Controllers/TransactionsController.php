@@ -14,6 +14,7 @@ class TransactionsController extends Controller
 
     public function __construct(TransactionServices $transactionServices){
         $this->transactionService = $transactionServices;
+        // $this->middleware('auth');
     }
 
 
@@ -28,16 +29,26 @@ class TransactionsController extends Controller
     }
 
     
-    public function confirmService(Request $request , $requestId){
-        $result = $this->transactionService->confirmService($requestId);
+    // public function confirmService(Request $request , $requestId){
+    //     $result = $this->transactionService->confirmServiceCompletion($requestId);
 
-        if(!$result){
-            return redirect()->back()->with('error', 'error in the function confirmeService in the controller');
+    //     if(!$result){
+    //         return redirect()->back()->with('error', 'error in the function confirmeService in the controller');
 
-        }else{
-            return redirect()->back()->with('success', 'Service confirmed successfully');
+    //     }else{
+    //         return redirect()->back()->with('success', 'Service confirmed successfully');
+    //     }
+
+    // }
+
+
+    public function confirmCompletion($requestId){
+        $result = $this->transactionService->confirmServiceCompletion($requestId);
+        if ($result) {
+            return redirect()->back()->with('success', 'Service confirmed and credits transferred successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Unable to confirm service. Please check if you have enough credits.');
         }
-
     }
 
     

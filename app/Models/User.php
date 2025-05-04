@@ -76,4 +76,15 @@ class User extends Authenticatable
      public function receivedRequests(){
          return $this->hasMany(Requests::class, 'receiver_id');
      }
+
+        public function transactions(){
+            return $this->hasMany(Transactions::class, 'user_id');
+        }
+
+        public function userCredits(){
+            return $this->hasMany(UserCredits::class, 'user_id');
+        }
+
+        
 }
+

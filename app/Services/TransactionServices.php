@@ -5,6 +5,7 @@ use App\Models\Requests;
 use App\Models\Transactions;
 use App\Models\UserCredit;
 use App\Models\UserCredits;
+use DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -39,7 +40,7 @@ class TransactionServices{
 
 
 
-    public function confirmService($requestId){
+    public function confirmServiceCompletion($requestId){
 
         return DB::transaction(function() use ($requestId){
 
@@ -91,8 +92,8 @@ class TransactionServices{
         $request->created_at = now();
         $request->save(); 
         
-        $this->createTransactionRecord($user->id , $request->post_id , $creditCost , 'Service Payment');
-        $this->createTransactionRecord($requester->id , $request->post_id , $creditCost , 'Service earnings');
+        $this->createTransactionRecord($user->id , $request->post_id , $creditCost);
+        $this->createTransactionRecord($requester->id , $request->post_id , $creditCost);
         return true;
     });
     
@@ -101,17 +102,16 @@ class TransactionServices{
 
 
     // create transaction record function
-     public function createTransactionRecord($userId, $postId, $amount, $description){
+     public function createTransactionRecord($userId, $postId, $amount){
         $transaction = new Transactions();
         $transaction->user_id = $userId;
         $transaction->post_id = $postId;
         $transaction->amount = $amount;
-        $transaction->description = $description;
         $transaction->save();
      }
 
 
-     public function getPendingRequests(){
+     public function getPendingServicesToConfirm(){
         $user = Auth::user();
 
         if(!$user){
