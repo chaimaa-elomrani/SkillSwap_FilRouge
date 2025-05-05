@@ -184,7 +184,7 @@
     <!-- Left side content -->
     <div class="text-5xl md:text-6xl text-white font-bold md:w-[40%] text-center md:text-left fade-in">
       <div class="relative">
-       <span class="gradient-text font-roboto">SkillSwap</span>
+      
         <h1 class="leading-tight">Sign up and Elevate your Skills with <span class="gradient-text font-roboto">SkillSwap</span></h1>
         <p class="text-lg md:text-xl font-normal mt-6 opacity-80">Join our community of skilled professionals and start exchanging expertise today.</p>
         
@@ -279,18 +279,12 @@
           <p class="text-gray-500 text-sm">Or continue with</p>
           <div class="h-px bg-gray-300 flex-grow"></div>
         </div>
-
-        <div class="px-8 md:px-12">
-          <button type="button" class="google-button bg-white hover:bg-gray-50 transition-all duration-300 px-6 py-3 w-full flex items-center justify-center gap-3 border border-gray-300 rounded-xl shadow-sm">
-            <img src="images/google.png" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
-            <span class="text-gray-700 font-medium">Continue with Google</span>
-          </button>
-        </div>
+    
 
         <div class="text-center ">
           <p class="text-gray-600">
             Already have an account? 
-            <a href="#" class="text-pink font-medium hover:text-primary transition-colors duration-300 animated-underline">Log in</a>
+            <a href="{{ route('login') }}" class="text-pink font-medium hover:text-primary transition-colors duration-300 animated-underline">Log in</a>
           </p>
         </div>
 

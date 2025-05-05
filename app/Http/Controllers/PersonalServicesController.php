@@ -22,12 +22,6 @@ class PersonalServicesController extends Controller
         return view('users/profile', compact('user'));
     }
 
-
-    // public function  store(){
-    //     $services = $this->ServicesService->storePersonalServices();
-    //     return view('users/profile', compact('services'));
-    // }
-
     public function store(Request $request){
    
         $attribute = $request->validate([
@@ -40,7 +34,7 @@ class PersonalServicesController extends Controller
 
       
         $services = PersonalServices::create($attribute);
-        // dd($services);
+ 
 
         $user = auth()->user()->load('personalServices');
         return redirect()->route('profile.index', compact('user'));

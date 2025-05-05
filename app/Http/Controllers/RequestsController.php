@@ -26,10 +26,10 @@ class RequestsController extends Controller
                 return response()->json([], 401);
             }
             
-            // Get ONLY PENDING requests with sender information
+           
             $requests = DB::table('requests')
                 ->where('requests.receiver_id', $user->id)
-                ->where('requests.status', 'pending') // Only get pending requests
+                ->where('requests.status', 'pending') 
                 ->join('users', 'requests.sender_id', '=', 'users.id')
                 ->leftJoin('profiles', 'users.id', '=', 'profiles.user_id')
                 ->select(
@@ -42,12 +42,9 @@ class RequestsController extends Controller
                 )
                 ->get();
             
-            // Transform the data to include full image URL if needed
             $requests = $requests->map(function($request) {
-                // Convert the stdClass object to an array
                 $requestArray = (array) $request;
                 
-                // Add the full image URL if image exists, otherwise use default
                 if (!empty($request->sender_image)) {
                     $requestArray['sender_image_url'] = asset('storage/' . $request->sender_image);
                 } else {
@@ -134,13 +131,13 @@ class RequestsController extends Controller
 
     public function store(Request $request)
 {
-    // Validate the request
+
     $validated = $request->validate([
         'post_id' => 'required|exists:posts,id',
     ]);
     
     try {
-        // Create the request record
+       
         $collaborationRequest = Requests::create([
             'sender_id' => auth()->id(),
             'post_id' => $validated['post_id'],

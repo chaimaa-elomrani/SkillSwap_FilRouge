@@ -320,8 +320,8 @@
                         </button>
                         
                         <!-- Resources Mega Menu -->
-                        <div class="absolute left-1/2 -translate-x-1/2 max-w-7xl w-screen px-4 sm:px-6 opacity-0 invisible transition-all duration-300 transform dropdown-menu z-20" id="resources-dropdown">
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 bg-white p-6 rounded-lg shadow-dropdown ring-1 ring-black ring-opacity-5 mt-2">
+                        <div class="absolute left-0 mt-2 w-[22rem]  -translate-x-1/2  px-4 sm:px-6 opacity-0 invisible transition-all duration-300 transform dropdown-menu z-20" id="resources-dropdown">
+                            <div class="grid grid-cols-2 md:grid-cols-2 gap-6 bg-white p-6 rounded-lg shadow-dropdown ring-1 ring-black ring-opacity-5 mt-2">
                                 <!-- Column 1 -->
                                 <div>
                                     <h3 class="text-sm font-semibold text-secondary-900 mb-3">Documentation</h3>
@@ -384,48 +384,8 @@
                                         </li>
                                     </ul>
                                 </div>
+        
                                 
-                                <!-- Column 3 -->
-                                <div class="col-span-2">
-                                    <h3 class="text-sm font-semibold text-secondary-900 mb-3">Featured Resources</h3>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <!-- Featured Item 1 -->
-                                        <div class="stagger-item bg-primary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
-                                            <div class="p-4">
-                                                <div class="flex justify-between items-center mb-2">
-                                                    <span class="text-xs text-secondary-500">Mar 16, 2023</span>
-                                                    <span class="text-xs font-medium text-primary-600 bg-primary-100 px-2 py-1 rounded-full">Marketing</span>
-                                                </div>
-                                                <h3 class="text-base font-medium text-secondary-900 mb-2">Boost your conversion rate</h3>
-                                                <p class="text-sm text-secondary-600 mb-3">Learn how to optimize your landing pages and improve your conversion rates with our proven strategies.</p>
-                                                <a href="#" class="text-sm font-medium text-primary-600 hover:text-primary-700 inline-flex items-center">
-                                                    Read more
-                                                    <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Featured Item 2 -->
-                                        <div class="stagger-item bg-secondary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
-                                            <div class="p-4">
-                                                <div class="flex justify-between items-center mb-2">
-                                                    <span class="text-xs text-secondary-500">Mar 10, 2023</span>
-                                                    <span class="text-xs font-medium text-secondary-600 bg-secondary-100 px-2 py-1 rounded-full">Sales</span>
-                                                </div>
-                                                <h3 class="text-base font-medium text-secondary-900 mb-2">How to use search engine optimization</h3>
-                                                <p class="text-sm text-secondary-600 mb-3">Discover how to leverage SEO to drive more traffic to your website and increase your sales.</p>
-                                                <a href="#" class="text-sm font-medium text-secondary-600 hover:text-secondary-700 inline-flex items-center">
-                                                    Read more
-                                                    <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

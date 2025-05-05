@@ -30,9 +30,7 @@ class ProfileController extends Controller
         $userId = auth()->user()->id;
         $posts = $this->postService->getPostByUser($userId);  
         $credits = $this->userCreditsService->getUserCredits($userId);
-        // dd($userCreditsService);
         $profile = Profile::where('user_id', $userId)->firstOrFail();
-        // dd($profile);
         $profile['email'] = auth()->user()->email;
         return view('users/profile' , compact('profile', 'posts', 'credits'));
     }

@@ -19,16 +19,7 @@ class SkillService{
         return Skills::orderBy('name')->paginate(10);
     }
     
-
-    // public function create(array $data){
-    //     return Skills::create(
-    //         [
-    //             'name' => $data['name'],
-    //             'domain_id' => $data['domain_id'] ?? null,
-    //         ]
-    //     );
-    // }
-
+    
     public function update(Skills $skill, array $data){
         return $skill->update($data);
     }

@@ -27,7 +27,6 @@ class DomainsController extends Controller
         $typesToShow = ['Digital&Tech','Creative','Professional Services','Lifestyle & Wellness','Education & Learning','Specialized Services','Others'];
         $domains = $this->domainService->getGroupedDomainsByType($typesToShow);
         $types = $this->typeService->getTypes();
-        // dd($domains);
         return view('users.domains', compact('domains', 'types'));
     }
 

@@ -279,10 +279,8 @@
 
                         <!-- language section -->
                         <div class="mb-6">
-                            <!-- <h3 class="  uppercase tracking-wider mb-3">Languages</h3> -->
                             <div class="flex flex-wrap gap-2" id="technicalSkillsContainer">
-                                <!-- @foreach (auth()->user()->skills as $skill) -->
-                                <!-- delete skill button  -->
+                 
                                 <div
                                     class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
                                     <span>English</span>

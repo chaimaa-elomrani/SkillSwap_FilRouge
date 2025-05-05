@@ -275,41 +275,9 @@
 
 <body class="bg-gray-50 min-h-screen">
   <!-- Header -->
-  <header class="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
-    <div class="container mx-auto px-4 py-3">
-      <div class="flex items-center justify-between">
-        <!-- Left section with logo and toggle -->
-        <div class="flex items-center space-x-4">
-          <button id="sidebar-toggle"
-            class="h-9 w-9 flex items-center justify-center rounded-md hover:bg-gray-100 lg:hidden">
-            <i class="fas fa-bars text-gray-600"></i>
-          </button>
-          <h1 class="text-xl font-semibold text-gray-800">Explore</h1>
-        </div>
-
-        <!-- Right section with search and profile -->
-        <div class="flex items-center space-x-4">
-          <div class="relative hidden md:block w-64">
-            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
-            <input type="text" id="search-input" placeholder="Search posts..."
-              class="pl-10 py-2 pr-4 w-full rounded-md bg-gray-100 border-0 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
-          </div>
-
-          <button id="notifications-btn"
-            class="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 relative">
-            <i class="far fa-bell text-gray-600"></i>
-            <span class="absolute top-0 right-0 h-2 w-2 bg-indigo-600 rounded-full"></span>
-          </button>
-
-          <div
-            class="h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"
-              class="h-full w-full rounded-full object-cover">
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+   
+</header>
 
   <!-- Search bar for mobile -->
   <div class="md:hidden container mx-auto px-4 py-3">

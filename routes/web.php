@@ -27,6 +27,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/',[HomeController::class , 'index'])->name('home');
 Route::get('/header',[HomeController::class , 'header']);
+Route::get('explore', [HomeController::class , 'explore'])->name('explore');
 
 // domains page 
 Route::get('/domains',[DomainsController::class , 'index'])->name('domains.index');
@@ -94,5 +95,3 @@ Route::middleware('auth')->group(function() {
 Route::get('/transactions', [TransactionsController::class , 'index'])->name('transactions.index');
 Route::post('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm');
 Route::post('/requests/{requestId}/confirm', [TransactionsController::class, 'confirmCompletion'])->name('transactions.confirm');
-// Route::get('/profile/{userId}', 'UserCreditsController@index');
-// Route::get('/profile/{userId}', [UserCreditsController::class, 'index'])->name('user.credits.index');

@@ -12,4 +12,11 @@ class HomeController extends Controller
     public function header(){
         return view('layout/users');
     }
+
+
+    public function explore(){
+        return view('explore');
+    }
 }
+
+

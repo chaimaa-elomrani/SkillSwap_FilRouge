@@ -16,7 +16,7 @@ class TransactionServices{
     public function show(){
         $user = Auth::user();
         if (!$user) {
-            return collect(); // Return empty collection if user is not authenticated
+            return collect(); 
         }
         
         $transactions = Transactions::where('user_id', $user->id)->latest()->get();
@@ -28,7 +28,7 @@ class TransactionServices{
         $user = Auth::user();
 
         if (!$user) {
-            return collect(); // Return empty collection if user is not authenticated
+            return collect(); 
         }
 
         return Posts::where('user_id', $user->id)->whereHas('requests', function($query){
@@ -97,7 +97,7 @@ class TransactionServices{
 
 
 
-    // create transaction record function
+  
      public function createTransactionRecord($userId, $postId, $amount){
         $transaction = new Transactions();
         $transaction->user_id = $userId;
@@ -111,7 +111,7 @@ class TransactionServices{
         $user = Auth::user();
 
         if(!$user){
-            return collect(); // Return empty collection if user is not authenticated
+            return collect();
         }
 
         return Posts::where('user_id', $user->id)->whereHas('requests', function($query){

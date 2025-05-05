@@ -41,7 +41,7 @@ class AuthService
         $user = Auth::user();
 
         if (!$user) {
-            return false; // User not authenticated
+            return false; 
         }
 
         $user->tokens()->delete();

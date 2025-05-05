@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Domains;
 use App\Models\Posts;
 use App\Models\User;
 use App\Services\DomainsService;
@@ -76,20 +77,69 @@ class PostsController extends Controller
         if (!$user) {
             return collect();
         }
-        
-        // Get posts created by the current user that have accepted requests
+       
         return Posts::where('user_id', $user->id)
             ->whereHas('requests', function($query) {
                 $query->where('status', 'accepted')
-                      ->where('is_completed', false);  // Use the correct column name here
+                      ->where('is_completed', false);  
             })
             ->with(['requests' => function($query) {
                 $query->where('status', 'accepted')
-                      ->where('is_completed', false)  // And here
+                      ->where('is_completed', false)  
                       ->with('user.profile');
             }])
             ->latest()
             ->get();
     }
+
+
+
+    public function edit(Posts $post)
+{
+    // Check if the user is authorized to edit this post
+    if (auth()->id() !== $post->user_id) {
+        return redirect()->route('home')->with('error', 'You are not authorized to edit this post');
+    }
+    
+    // Get domains for the dropdown
+    $domains = Domains::all();
+    
+    return view('users.editPost', compact('post', 'domains'));
+}
+
+public function update(Request $request, Posts $post)
+{
+    // Check if the user is authorized to update this post
+    if (auth()->id() !== $post->user_id) {
+        return redirect()->route('home')->with('error', 'You are not authorized to update this post');
+    }
+    
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'domain_id' => 'required|exists:domains,id',
+        'languages' => 'required|array',
+        'experience' => 'required|string|in:Beginner,Intermediate,Expert',
+        'credits_cost' => 'required|integer|min:1',
+        'duration' => 'required|integer|min:1',
+        'duration_unit' => 'required|string|in:hours,days,weeks,months',
+        'skills' => 'nullable|string',
+    ]);
+    
+    // Update post
+    $post->title = $request->title;
+    $post->description = $request->description;
+    $post->domain_id = $request->domain_id;
+    $post->languages = json_encode($request->languages);
+    $post->experience = $request->experience;
+    $post->credits_cost = $request->credits_cost;
+    $post->duration = $request->duration;
+    $post->duration_unit = $request->duration_unit;
+    $post->skills = $request->skills;
+    $post->save();
+    
+    return redirect()->route('users.profile')->with('success', 'Post updated successfully');
+}
+
 
 }

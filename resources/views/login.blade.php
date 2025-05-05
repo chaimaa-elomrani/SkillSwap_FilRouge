@@ -269,17 +269,12 @@
           <div class="h-px bg-gray-300 flex-grow"></div>
         </div>
 
-        <div class="px-8 md:px-12">
-          <button type="button" class="google-button bg-white hover:bg-gray-50 transition-all duration-300 px-6 py-3 w-full flex items-center justify-center gap-3 border border-gray-300 rounded-xl shadow-sm">
-            <img src="images/google.png" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
-            <span class="text-gray-700 font-medium">Continue with Google</span>
-          </button>
-        </div>
+      
 
         <div class="text-center mt-4">
           <p class="text-gray-600">
             Don't have an account? 
-            <a href="#" class="text-pink font-medium hover:text-primary transition-colors duration-300 animated-underline">Sign up</a>
+            <a href="{{ route('register') }}" class="text-pink font-medium hover:text-primary transition-colors duration-300 animated-underline">Sign up</a>
           </p>
         </div>
 
