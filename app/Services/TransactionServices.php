@@ -60,7 +60,7 @@ class TransactionServices{
             return false; 
         }
 
-        $creditCost = $request->post->credit_cost;
+        $creditCost = $request->post->credits_cost;
         $requester = $request->user;
 
         $postOwnerCredits = UserCredits::firstOrCreate([
@@ -73,10 +73,8 @@ class TransactionServices{
             'credits' => 0 ,
         ]);
 
-        if($postOwnerCredits->credits < $creditCost){
-            return false;
-        }
-
+     
+       
         $postOwnerCredits->credits -= $creditCost;
         $requesterCredits->credits += $creditCost;
 
@@ -89,12 +87,12 @@ class TransactionServices{
         $request->save(); 
         
         $this->createTransactionRecord($user->id , $request->post_id , $creditCost);
+        //
         $this->createTransactionRecord($requester->id , $request->post_id , $creditCost);
         return true;
     });
     
     }
-
 
 
   

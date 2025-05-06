@@ -35,6 +35,6 @@ class Transactions extends Model
 
     public function service()
     {
-        return $this->belongsTo(Post::class, 'service_id');
+        return $this->belongsTo(Posts::class, 'service_id');
     }
 }
