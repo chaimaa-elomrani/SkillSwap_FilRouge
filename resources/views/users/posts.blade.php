@@ -249,18 +249,7 @@
 
     <aside id="right-sidebar"
       class="hidden xl:block w-80 bg-white border-l border-gray-200 sticky top-[70px] h-[calc(100vh-70px)] overflow-y-auto custom-scrollbar">
-      <div class="p-4 border-b border-gray-200">
-        <div class="flex items-center space-x-3">
-          <div class="h-12 w-12 rounded-full bg-gray-200 overflow-hidden">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Your Profile"
-              class="h-full w-full object-cover">
-          </div>
-          <div>
-            <h3 class="font-medium text-gray-900">John Doe</h3>
-            <p class="text-sm text-gray-500">Software Engineer</p>
-          </div>
-        </div>
-      </div>
+     
 
       <div class="p-4 border-b border-gray-200">
         <h3 class="text-sm font-semibold text-gray-700 mb-3">Trending Topics</h3>

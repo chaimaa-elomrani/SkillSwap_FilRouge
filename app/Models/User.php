@@ -64,27 +64,38 @@ class User extends Authenticatable
         return $this->belongsToMany(Skills::class, 'user_skills', 'user_id', 'skill_id');
     }
 
-    public function personalServices(){
+    public function personalServices()
+    {
         return $this->hasMany(PersonalServices::class);
     }
 
 
-     public function requests(){
-         return $this->hasMany(Requests::class, 'sender_id');
-     }
+    public function requests()
+    {
+        return $this->hasMany(Requests::class, 'sender_id');
+    }
 
-     public function receivedRequests(){
-         return $this->hasMany(Requests::class, 'receiver_id');
-     }
+    public function receivedRequests()
+    {
+        return $this->hasMany(Requests::class, 'receiver_id');
+    }
 
-        public function transactions(){
-            return $this->hasMany(Transactions::class, 'user_id');
-        }
+    public function transactions()
+    {
+        return $this->hasMany(Transactions::class, 'user_id');
+    }
 
-        public function userCredits(){
-            return $this->hasMany(UserCredits::class, 'user_id');
-        }
+    public function userCredits()
+    {
+        return $this->hasMany(UserCredits::class, 'user_id');
+    }
 
-        
+    // Add this method to your User model
+    public function languages()
+    {
+        return $this->belongsToMany(Language::class, 'user_to_languages');
+    }
+
+
 }
 

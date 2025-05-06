@@ -51,9 +51,13 @@ class ProfileService
 
             ]);
 
-            return ['success' => true, 'message' => 'Profile created successfully!', 'profile' => $profile];
+            return redirect()->route('profile.index')->with('success', 'Profile created successfully');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return ['success' => false, 'message' => 'Validation failed', 'errors' => $e->validator->errors()->all()];
         }
     }
+
+
+
+    
 }

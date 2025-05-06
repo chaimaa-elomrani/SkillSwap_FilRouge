@@ -8,79 +8,47 @@
     <title>Service Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-50 font-sans">
-    <div class="flex min-h-screen">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out bg-white border-r border-gray-200">
-            <div class="flex h-16 items-center border-b px-6">
-                <div class="flex items-center gap-2 font-semibold">
-                    <i class="fas fa-box text-gray-700"></i>
-                    <span>ServiceHub</span>
-                </div>
-            </div>
-            <nav class="flex flex-col gap-1 p-4">
-                <a href="#" class="flex items-center gap-3 rounded-lg bg-gray-100 px-4 py-2 text-gray-900 transition-all">
-                    <i class="fas fa-home text-sm"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a href="#" class="flex items-center gap-3 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all">
-                    <i class="fas fa-credit-card text-sm"></i>
-                    <span>Transactions</span>
-                </a>
-                <a href="#" class="flex items-center gap-3 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all">
-                    <i class="fas fa-box-open text-sm"></i>
-                    <span>Services</span>
-                </a>
-                <a href="#" class="flex items-center gap-3 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all">
-                    <i class="fas fa-user text-sm"></i>
-                    <span>Profile</span>
-                </a>
-                <a href="#" class="flex items-center gap-3 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all">
-                    <i class="fas fa-cog text-sm"></i>
-                    <span>Settings</span>
-                </a>
-            </nav>
-            <div class="mt-auto border-t p-4">
-                <a href="#" class="flex items-center gap-3 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all">
-                    <i class="fas fa-sign-out-alt text-sm"></i>
-                    <span>Logout</span>
-                </a>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <div class="flex-1 md:ml-64">
+  
+        
+      
             <!-- Header -->
-            <header class="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-white px-6">
-                <button id="sidebar-toggle" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 md:hidden">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="ml-auto flex items-center gap-4">
-                    <button class="relative rounded-full p-2 text-gray-500 hover:bg-gray-100">
-                        <i class="fas fa-bell"></i>
-                        <span class="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
-                    </button>
-                    <div class="relative" id="user-menu">
-                        <button class="flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50" id="user-menu-button">
-                            <img src="https://via.placeholder.com/32" alt="User" class="h-8 w-8 rounded-full">
-                            <span class="hidden md:inline-block">John Doe</span>
-                            <i class="fas fa-chevron-down text-xs"></i>
-                        </button>
-                        <div class="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="user-dropdown">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            @include('layouts.header   ')
+           
 
             <!-- Dashboard Content -->
             <main class="p-6">
                 <div class="mb-8">
                     <h1 class="text-2xl font-bold tracking-tight">Dashboard</h1>
                     <p class="text-gray-500">Welcome back, John! Here's an overview of your service activity.</p>
+                </div>
+
+                <!-- Analytics Section with Charts -->
+                <div class="mb-8 grid gap-8 md:grid-cols-2">
+                    <!-- Activity Overview Chart -->
+                    <div class="rounded-lg border bg-white shadow-sm p-6">
+                        <div class="mb-4">
+                            <h2 class="text-lg font-semibold">Activity Overview</h2>
+                            <p class="text-sm text-gray-500">Your service activity over the last 6 months</p>
+                        </div>
+                        <div class="h-80">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Credits Distribution Chart -->
+                    <div class="rounded-lg border bg-white shadow-sm p-6">
+                        <div class="mb-4">
+                            <h2 class="text-lg font-semibold">Credits Distribution</h2>
+                            <p class="text-sm text-gray-500">How your credits are earned and spent</p>
+                        </div>
+                        <div class="h-80">
+                            <canvas id="creditsChart"></canvas>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Transactions History -->
@@ -162,5 +130,154 @@
         </div>
     </div>
 
+    <!-- Add Chart.js initialization script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Activity Chart
+            const activityCtx = document.getElementById('activityChart').getContext('2d');
+            const activityChart = new Chart(activityCtx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                    datasets: [
+                        {
+                            label: 'Services Provided',
+                            data: [5, 8, 12, 9, 14, 16],
+                            borderColor: 'rgb(59, 130, 246)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Services Received',
+                            data: [3, 5, 7, 8, 6, 10],
+                            borderColor: 'rgb(236, 72, 153)',
+                            backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#111827',
+                            bodyColor: '#4B5563',
+                            borderColor: '#E5E7EB',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 6,
+                            usePointStyle: true,
+                            callbacks: {
+                                // You can customize tooltip text here
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + ' services';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                borderDash: [2, 4],
+                                color: '#E5E7EB'
+                            },
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    elements: {
+                        point: {
+                            radius: 3,
+                            hoverRadius: 6
+                        }
+                    }
+                }
+            });
+
+            // Credits Distribution Chart
+            const creditsCtx = document.getElementById('creditsChart').getContext('2d');
+            const creditsChart = new Chart(creditsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Earned', 'Spent', 'Available'],
+                    datasets: [{
+                        data: [350, 220, 130],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.8)',  // Green for earned
+                            'rgba(239, 68, 68, 0.8)',   // Red for spent
+                            'rgba(59, 130, 246, 0.8)'   // Blue for available
+                        ],
+                        borderColor: [
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(239, 68, 68, 1)',
+                            'rgba(59, 130, 246, 1)'
+                        ],
+                        borderWidth: 1,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#111827',
+                            bodyColor: '#4B5563',
+                            borderColor: '#E5E7EB',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 6,
+                            usePointStyle: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw + ' credits';
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
+                    }
+                }
+            });
+
+            // Make charts responsive
+            window.addEventListener('resize', function() {
+                activityChart.resize();
+                creditsChart.resize();
+            });
+        });
+    </script>
 </body>
 </html>

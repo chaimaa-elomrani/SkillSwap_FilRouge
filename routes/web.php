@@ -67,7 +67,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/show', [ProfileController::class, 'index'])->name('profile.show');
     Route::get('/profile/{id}', [ProfileController::class, 'userProfile'])->name('profile.user');
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     
+    // General routes with parameters after
+    Route::get('/profile/{id}', [ProfileController::class, 'userProfile'])->name('profile.user');
+
 });
 
 
@@ -96,3 +101,8 @@ Route::middleware('auth')->group(function() {
 Route::get('/transactions', [TransactionsController::class , 'index'])->name('transactions.index');
 Route::post('/transactions/confirm/{requestId}', [TransactionsController::class , 'confirmService'])->name('transactions.confirm');
 Route::post('/requests/{requestId}/confirm', [TransactionsController::class, 'confirmCompletion'])->name('transactions.confirm');
+
+
+// Language routes
+Route::post('/languages/store', [App\Http\Controllers\LanguageController::class, 'store'])->name('languages.store');
+Route::get('/languages/{id}', [App\Http\Controllers\LanguageController::class, 'destroy'])->name('languages.destroy');

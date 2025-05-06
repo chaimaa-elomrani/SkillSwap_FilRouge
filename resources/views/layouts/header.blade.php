@@ -20,7 +20,7 @@
                     <a href="" class="text-gray-700 hover:text-primary-600 transition-colors duration-200">
                         Community
                     </a>
-                    <a href="" class="text-gray-700 hover:text-primary-600 transition-colors duration-200">
+                    <a href="{{ route('transactions.index') }}" class="text-gray-700 hover:text-primary-600 transition-colors duration-200">
                         Dashboard
                     </a>
                 </nav>

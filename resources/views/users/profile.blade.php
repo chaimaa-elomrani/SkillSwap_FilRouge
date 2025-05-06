@@ -276,16 +276,16 @@
                         <!-- language section -->
                         <div class="mb-6">
                             <!-- <h3 class="  uppercase tracking-wider mb-3">Languages</h3> -->
-                            <div class="flex flex-wrap gap-2" id="technicalSkillsContainer">
-                                <!-- @foreach (auth()->user()->skills as $skill) -->
-                                <!-- delete skill button  -->
-                                <div
-                                    class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
-                                        <span>English</span>
-                                        <a  class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500" aria-autocomplete=""href="/skills/{{$skill->id}}"><i class="fas fa-times"></i></a>
+                            <div class="flex flex-wrap gap-2" id="languagesContainer">
+                                @foreach (auth()->user()->languages as $language)
+                                <div class="bg-secondary-100 text-secondary-800 px-3 py-1.5 rounded-full flex items-center group">
+                                    <span>{{ $language->name }}</span>
+                                    <a class="ml-2 text-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500" 
+                                       href="{{ route('languages.destroy', $language->id) }}">
+                                        <i class="fas fa-times"></i>
+                                    </a>
                                 </div>
-                                <!-- @endforeach -->
-
+                                @endforeach
                             </div>
                         </div>
 
@@ -690,6 +690,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
     </main>
 
     <script src="{{ asset('js/profile.js') }}"></script>
+    <script src="{{ asset('js/languages.js') }}"></script>
 
 
 </body>
