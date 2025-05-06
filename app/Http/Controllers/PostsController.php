@@ -28,6 +28,9 @@ class PostsController extends Controller
 
     }
 
+    public function show(){
+        return view('users/createPost');
+    }
 
     public function index(DomainsService $domainService){
         $domains = $domainService->getDomains();

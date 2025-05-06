@@ -677,7 +677,7 @@
                         <button class="px-6 py-3 rounded-full bg-white border border-primary-200 text-primary-700 font-medium hover:bg-primary-100 transition-colors">
                             Learn how it works
                         </button>
-                        <a href='' class="px-6 py-3 rounded-full bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors">
+                        <a href='{{ route('register') }}' class="px-6 py-3 rounded-full bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors">
                             Sign up now
                         </a>
                     </div>

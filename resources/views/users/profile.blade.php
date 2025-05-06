@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Échangez vos compétences facilement</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>User Profile | FreeLancer</title>
         <script src="https://cdn.tailwindcss.com"></script>
@@ -84,11 +86,7 @@
 
 <body class="bg-gray-50  transition-colors duration-200">
     <!-- Header -->
-    <header class="bg-white  shadow-sm sticky top-0 z-50 transition-colors duration-200">
-
-        <!-- Mobile Menu -->
-
-    </header>
+    @include('layouts/header')
 
     <main class="container mx-auto px-4 py-6">
         <!-- Profile Header -->

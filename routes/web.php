@@ -39,6 +39,7 @@ Route::get('/domains/types',[DomainsController::class , 'getTypes']);
 
 
 // posts pages 
+Route::get('/createPost',[PostsController::class , 'show'])->name('posts.show');
 Route::get('/post/create',[PostsController::class , 'index'])->name('posts.index');
 Route::post('/post/store', [PostsController::class , 'store'])->name('posts.store');
 Route::get('/posts/{id}', [PostsController::class , 'destroy'])->name('posts.destroy');

@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Échangez vos compétences facilement</title>
+  <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
   <title>Explore Posts</title>
   <!-- Add this line for CSRF token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -276,7 +278,8 @@
 <body class="bg-gray-50 min-h-screen">
   <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
-   
+  @include('layouts.header')
+
 </header>
 
   <!-- Search bar for mobile -->
@@ -386,8 +389,8 @@
       </div>
 
       <!-- Posts List -->
+      @foreach ($posts as $post)
       <div class="container  mx-auto px-4 py-4 max-w-4xl">
-        @foreach ($posts as $post)
         @php
         $langs = json_decode($post->languages);
         @endphp
@@ -483,11 +486,10 @@
             Send Request
             </button>
           </div>
-    @endforeach
-
-          </div>
         </div>
       </div>
+    </div>
+    @endforeach
 
 
 
@@ -660,18 +662,6 @@
     </div>
   </div>
 
-  <!-- Panel Footer -->
-  <div class="p-4 border-t border-gray-100 bg-gray-50">
-    <div class="flex justify-between items-center">
-      <span class="text-sm text-gray-500">
-        Showing <span id="requestCount">3</span> requests
-      </span>
-      <button id="clearAllBtn" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
-        Clear All
-      </button>
-    </div>
-  </div>
-  </div>
 
   <!-- Overlay for sidebar panel -->
   <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>

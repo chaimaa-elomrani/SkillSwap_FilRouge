@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Categories - The Complete Freelance Marketplace</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>SkillSwap - Échangez vos compétences facilement</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -113,13 +113,14 @@
 </head>
 
 <body class="bg-gray-50  transition-colors duration-300">
-    <!-- Navigation -->
-   
+
+    
+    @include('layouts/header')
 
     <!-- Hero Section with Parallax -->
     <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+        <div class="absolute inset-0 bg-cover bg-center bg-[url('../images/Group2072.png')]" 
+            >
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
         </div>
 
@@ -133,29 +134,18 @@
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#categories"
-                    class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Browse Categories
                 </a>
-                <a href="#"
-                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    Become an Expert
-                </a>
+             
             </div>
         </div>
 
-        <!-- Animated shapes -->
-        <div class="absolute -bottom-4 left-0 w-full overflow-hidden">
-            <svg class="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                    class="fill-gray-50 "></path>
-            </svg>
-        </div>
+      
     </section>
 
     <!-- Search & Filter Bar (Sticky) -->
-    <div id="search-bar" class="sticky top-16 z-40 bg-white  shadow-md transition-colors duration-300">
+    <div id="search-bar" class=" top-16 z-40 bg-white  shadow-md transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div class="relative flex-grow max-w-2xl w-full">
@@ -518,14 +508,11 @@
             <p class="text-xl mb-8 max-w-3xl mx-auto">Let us know what skills or services you need, and we'll help
                 connect you with the right experts.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button
+                <a href="{{ route('posts.index') }}"
                     class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Request a Skill
-                </button>
-                <button
-                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    Become an Expert
-                </button>
+                </a>
+              
             </div>
         </div>
     </section>
@@ -721,6 +708,10 @@
                 }
             });
         });
+
+
+
+
     </script>
 </body>
 
