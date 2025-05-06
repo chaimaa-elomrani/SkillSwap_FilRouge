@@ -35,12 +35,22 @@ class ProfileController extends Controller
         return view('users/profile' , compact('profile', 'posts', 'credits'));
     }
 
-    public function userProfile(string $id){
-        $posts = $this->postService->getPostByUser($id);  
-        $profile = Profile::where('user_id', $id)->firstOrFail();
-        $profile['email'] = auth()->user()->email;
-        return redirect()->route('profile.user' , compact('profile', 'posts'));
-    }
+    // public function userProfile(string $id){
+    //     $posts = $this->postService->getPostByUser($id);  
+    //     $profile = Profile::where('user_id', $id)->firstOrFail();
+    //     $profile['email'] = auth()->user()->email;
+    //     return redirect()->route('profile.user' , compact('profile', 'posts'));
+    // }
+
+    public function userProfile($id)
+{
+    $posts = $this->postService->getPostByUser($id);  
+
+    $user = User::findOrFail($id);
+    $profile = $user->profile;
+    return view('users.profile', compact('profile', 'user' , 'posts'));
+}
+
 
     
     public function index(){

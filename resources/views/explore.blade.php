@@ -697,7 +697,6 @@
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Masonry layout effect for Available Services section
         function adjustMasonryLayout() {
             const cards = document.querySelectorAll('.masonry-grid > div');
             let currentColumn = 0;
@@ -708,19 +707,17 @@
             const heights = Array(columns).fill(0);
             
             cards.forEach((card, index) => {
-                // Find the column with the smallest height
                 currentColumn = heights.indexOf(Math.min(...heights));
                 
-                // Update the height of the current column
-                heights[currentColumn] += card.offsetHeight + 16; // 16px for gap
+                heights[currentColumn] += card.offsetHeight + 16; 
             });
         }
         
-        // Run on load and resize
+       
         window.addEventListener('load', adjustMasonryLayout);
         window.addEventListener('resize', adjustMasonryLayout);
         
-        // Bookmark button functionality
+     
         const bookmarkButtons = document.querySelectorAll('.card-hover button');
         
         bookmarkButtons.forEach(button => {
@@ -729,7 +726,7 @@
                 button.classList.toggle('text-neutral-500');
                 button.classList.toggle('text-secondary-900');
                 
-                // Add a little animation
+           
                 button.classList.add('scale-125');
                 setTimeout(() => {
                     button.classList.remove('scale-125');
@@ -737,7 +734,6 @@
             });
         });
 
-        // Sticky header
         const navbar = document.getElementById('navbar');
         let lastScrollTop = 0;
         
@@ -759,6 +755,7 @@
             }
             
             lastScrollTop = scrollTop;
+        }
         });
         
     </script>
