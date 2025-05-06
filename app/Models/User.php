@@ -93,9 +93,10 @@ class User extends Authenticatable
     // Add this method to your User model
     public function languages()
     {
+
         return $this->belongsToMany(Language::class, 'user_to_languages');
     }
-
+    
 
 }
 

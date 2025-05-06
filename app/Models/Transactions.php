@@ -32,4 +32,9 @@ class Transactions extends Model
     {
         return $this->belongsTo(UserCredits::class);
     }
+
+    public function service()
+    {
+        return $this->belongsTo(Post::class, 'service_id');
+    }
 }
