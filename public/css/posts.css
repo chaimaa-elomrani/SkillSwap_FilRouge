@@ -1,0 +1,232 @@
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pulse animation for notification badge */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Sidebar panel animation */
+.sidebar-panel {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-panel.open {
+  transform: translateX(0);
+}
+
+/* Overlay styles */
+#overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#overlay.visible {
+  opacity: 1;
+}
+
+.post-card {
+  transition: all 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-icon {
+  transition: all 0.15s ease;
+}
+
+.btn-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sidebar transitions */
+.sidebar-transition {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Active nav item */
+.nav-item.active {
+  background-color: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+  border-left: 3px solid #4f46e5;
+}
+
+/* Experience level badges */
+.badge-beginner {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badge-intermediate {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-expert {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+}
+
+/* LinkedIn-style post cards */
+.post-meta-item {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 12px;
+  color: #6b7280;
+  font-size: 0.8125rem;
+}
+
+.post-meta-item i {
+  margin-right: 4px;
+  font-size: 0.875rem;
+}
+
+.post-meta-divider {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  margin: 0 8px;
+  vertical-align: middle;
+}
+
+/* Primary colors for Tailwind */
+.bg-primary-50 {
+  background-color: #eef2ff;
+}
+
+.bg-primary-100 {
+  background-color: #e0e7ff;
+}
+
+.bg-primary-200 {
+  background-color: #c7d2fe;
+}
+
+.bg-primary-300 {
+  background-color: #a5b4fc;
+}
+
+.bg-primary-400 {
+  background-color: #818cf8;
+}
+
+.bg-primary-500 {
+  background-color: #6366f1;
+}
+
+.bg-primary-600 {
+  background-color: #4f46e5;
+}
+
+.bg-primary-700 {
+  background-color: #4338ca;
+}
+
+.bg-primary-800 {
+  background-color: #3730a3;
+}
+
+.bg-primary-900 {
+  background-color: #312e81;
+}
+
+.text-primary-500 {
+  color: #6366f1;
+}
+
+.text-primary-600 {
+  color: #4f46e5;
+}
+
+.text-primary-700 {
+  color: #4338ca;
+}
+
+.hover\:bg-primary-600:hover {
+  background-color: #4f46e5;
+}
+
+.border-primary-200 {
+  border-color: #c7d2fe;
+}
+
+.hover\:border-primary-200:hover {
+  border-color: #c7d2fe;
+}
+
+.from-primary-400 {
+  --tw-gradient-from: #818cf8;
+}
+
+.from-primary-500 {
+  --tw-gradient-from: #6366f1;
+}
+
+.from-primary-600 {
+  --tw-gradient-from: #4f46e5;
+}
+
+.to-primary-500 {
+  --tw-gradient-to: #6366f1;
+}
+
+.to-primary-600 {
+  --tw-gradient-to: #4f46e5;
+}

@@ -697,36 +697,7 @@ I specialize in design systems, responsive web applications, and bridging the ga
 
     <script src="{{ asset('js/profile.js') }}"></script>
 
-    <!-- <script>
-     
-      document.addEventListener('DOMContentLoaded', function(){
-
-        const addLanguageBtn = document.getElementById('addLanguageBtn');
-        const languagesModal = document.getElementById('LanguageModal');
-        const cancelBtn = document.getElementById('cancelbtn');
-    
-        addLanguageBtn.addEventListener('click', function(){
-            languagesModal.classList.remove('hidden');
-        });
-
-        cancelBtn.addEventListener('click', function(){
-            languagesModal.classList.add('hidden');
-        });
-
-        const LanguagesInput = document.getElementById('languages_input');
-        const languagesContainer = document.getElementById('languages_container');
-        const addBtn = document.getElementById('add-language-btn');
-
-
-        addBtn.addEventListener('click', function(){
-            const languages = LanguagesInput.value.trim();
-
-            const languagesTag = document.createElement('span');
-        })
-
-        
-      })
-    </script> -->
+   
 
 </body>
 

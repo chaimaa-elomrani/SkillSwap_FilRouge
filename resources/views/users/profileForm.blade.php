@@ -444,48 +444,6 @@
             })
 
 
-            // Form submission
-
-            // form.addEventListener('submit', function (e) {
-            //     e.preventDefault();
-
-            //     const termsCheckbox = document.getElementById('terms');
-            //     if (!termsCheckbox.checked) {
-            //         document.getElementById('terms-error').textContent = 'You must agree to the terms to continue';
-            //         document.getElementById('terms-error').classList.remove('hidden');
-            //         return;
-            //     }
-
-            //     const formData = new FormData(form);
-
-            //     fetch('/profile', { // Use the Laravel route URI                    
-            //         method: 'POST',
-            //         headers: {
-            //             'X-CSRF-TOKEN': getCsrfToken(), // Include the CSRF token
-            //         },
-            //         body: formData,
-            //     })
-            //         .then(response => {
-            //             if (!response.ok) {
-            //                 console.log('status : ', response.status);
-            //                 return response.json().then(errorData => {
-            //                     throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message || 'Something went wrong'}`);
-            //                 });
-            //             }
-            //             return response.json();
-            //         })
-            //         .then(data => {
-            //             console.log('Success:', data);
-            //             steps.forEach(step => step.classList.remove('active'));
-            //             document.getElementById('success-step').classList.add('active');
-            //             document.querySelector('.max-w-3xl.mx-auto.mb-8').style.display = 'none';
-            //         })
-            //         .catch(error => {
-            //             console.error('Error submitting form:', error);
-            //             // Optionally display error messages to the user
-            //         });
-            // });
-
             // Bio character counter
             const bioTextarea = document.getElementById('bio');
             const bioCounter = document.getElementById('bio-counter');
