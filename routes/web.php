@@ -106,7 +106,3 @@ Route::post('/requests/{requestId}/confirm', [TransactionsController::class, 'co
 Route::post('/languages/store', [App\Http\Controllers\LanguageController::class, 'store'])->name('languages.store');
 Route::get('/languages/{id}', [App\Http\Controllers\LanguageController::class, 'destroy'])->name('languages.destroy');
 
-
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/transactions', [TransactionsController::class, 'adminIndex'])->name('admin.transactions');
-});

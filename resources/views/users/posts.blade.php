@@ -64,7 +64,7 @@
         <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Navigation</h2>
         <ul class="space-y-1">
           <li>
-            <a href="#"
+            <a href="{{ route('domains.index') }}"
               class="nav-item active flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors">
               <i class="fas fa-home w-5 h-5 mr-3 text-gray-500"></i>
               Home
